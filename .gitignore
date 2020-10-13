@@ -25,6 +25,8 @@ env/
 
 /media/shop/item
 **/media/shop/item/**
+media
+
 
 static_root/
 node_modules
