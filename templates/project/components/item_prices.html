@@ -1,0 +1,131 @@
+{% load i18n sw_catalog sw_content %}
+<!-- <div class="kredit__block">
+  <div class="kredit_text sub_title sub_title_2 color_black">
+    Від 10 057/місяць при купівлі товару в кредит або оплаті частинами
+  </div>
+  <div class="kredit_btn btn_standart btn_standart_yellow standart_title standart_title_5 color_black">
+    {% trans 'Купити в кредит' %}
+  </div>
+</div> -->
+{% get_item_price item current_currency "price" as chosen_price %} 
+{% get_item_price item current_currency "price_with_discount" as chosen_price_with_discount %} 
+{% get_item_price item item.currency "price" as admin_price %} 
+{% get_item_price item item.currency "price_with_discount" as admin_price_with_discount %} 
+
+<!-- <div class="additional__block">
+  <div class="addit_name sub_title sub_title_3 color_black">
+    Ціна у вибраній валюті без знижки
+  </div>
+  <div class="addit_price main__title main__title_5 color_black">
+    {{chosen_price|floatformat}} {{current_currency.code}}
+  </div>
+</div> 
+<div class="additional__block">
+  <div class="addit_name sub_title sub_title_3 color_black">
+    Ціна у вибраній валюті зі знижкою
+  </div>
+  <div class="addit_price main__title main__title_5 color_black">
+    {{chosen_price_with_discount|floatformat}} {{current_currency.code}}
+  </div>
+</div> 
+<div class="additional__block">
+  <div class="addit_name sub_title sub_title_3 color_black">
+    Ціна у адмінці без знижки
+  </div>
+  <div class="addit_price main__title main__title_5 color_black">
+    {{admin_price|floatformat}} {{item.currency.code}}
+  </div>
+</div> 
+<div class="additional__block">
+  <div class="addit_name sub_title sub_title_3 color_black">
+    Ціна у адмінці зі знижкою
+  </div>
+  <div class="addit_price main__title main__title_5 color_black">
+    {{admin_price_with_discount|floatformat}} {{item.currency.code}}
+  </div>
+</div>  -->
+
+<!-- {% if admin_price != admin_price_with_discount%}
+  <div class="additional__block">
+    <div class="addit_name sub_title sub_title_3 color_black">
+      Стара ціна у адмінці
+    </div>
+    <div class="addit_price main__title main__title_5 color_black">
+        <s> {{admin_price}} {{item.currency}}</s>
+    </div>
+  </div>
+  <div class="additional__block">
+    <div class="addit_name sub_title sub_title_3 color_black">
+      Нова ціна у адмінці
+    </div>
+    <div class="addit_price main__title main__title_5 color_black">
+        {{admin_price_with_discount}} {{item.currency}}
+    </div>
+  </div>
+{% elif admin_price %}
+  <div class="additional__block">
+  <div class="addit_name sub_title sub_title_3 color_black">
+    Ціна у адмінці:
+  </div>
+  <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
+      {{admin_price|floatformat}} {{item.currency}}
+  </div>
+  </div>
+{% endif %} -->
+
+{% if chosen_price != chosen_price_with_discount %}
+  <div class="additional__block">
+    <div class="addit_name sub_title sub_title_3 color_black">
+      Стара ціна:
+    </div>
+    <div class="addit_price main__title main__title_5 color_black">
+        <s> {{chosen_price|floatformat}} {{current_currency}}</s>
+    </div>
+  </div>
+  <!-- <div class="additional__block">
+    <div class="addit_name sub_title sub_title_3 color_black">
+      Нова ціна:
+    </div>
+    <div class="addit_price main__title main__title_5 color_black">
+        {{chosen_price_with_discount}} {{item.currency}}
+    </div>
+  </div> -->
+{% elif chosen_price %}
+  <!-- <div class="additional__block">
+  <div class="addit_name sub_title sub_title_3 color_black">
+    Ціна:
+  </div>
+  <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
+      {{chosen_price|floatformat}} {{item.currency}}
+  </div>
+  </div> -->
+{% endif %}
+
+
+
+
+{% if item_has_options %}
+<div class="additional__block">
+  <div class="addit_name sub_title sub_title_3 color_black">
+    {% trans 'Ціна додаткових опцій' %}:
+  </div>
+  <div class="addit_price main__title main__title_5 color_black">
+    <!-- ₴  -->
+    <span class="additional_price main__title_5 main__title_5 color_black">0</span>
+    {{current_currency.symbol}}
+  </div>
+</div>
+<div class="additional__block absolute_additional__block">
+  <div class="addit_name sub_title sub_title_3 color_black">
+    {% trans 'Ціна додаткових опцій' %}:
+  </div>
+  <div class="addit_price main__title main__title_5 color_black">
+    ₴ 
+    <span class="absolute_additional_price main__title_5 main__title_5 color_black">0</span>
+    {{current_currency.symbol}}
+  </div>
+</div>
+{% endif %}
+
+
+

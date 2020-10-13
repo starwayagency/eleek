@@ -1,0 +1,95 @@
+{% extends 'project/base.html' %}
+{% load i18n sw_content %}
+{% block styles %}
+<link rel="stylesheet" href="/static/source/pages/login/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/pages/login/index.css?v=3">
+{% endblock styles %}
+{% block main_class %}
+item_section__wrapper
+{% endblock main_class %}
+{% block content %}
+<section class="login_section">
+  <div class="registery__wrap">
+    <div class="registery_bg">
+      <img src="/static/source/img/registery/screenshot-2020-06-04-at-19-33-14.png" alt="">
+    </div>
+    <div class="registery_content">
+      <div class="registery__block absolute_center">
+        {% render 'text149' as text149 %}
+        <h2 class="db_content registery_name main__title main__title_2 color_black" data-admin_url="{{text149.get_admin_url}}">
+          {{text149.text}}
+          <!-- {% trans 'Реєстрація' %} -->
+        </h2>
+        <form action="/api/users/" class="registery_form login_form">
+          <div class="footer_input__wrap inp-vak-wrap">
+            {% render 'text150' as text150 %}
+            <label for="login_mail" class="db_content login_label label__style color_black" data-admin_url="{{text150.get_admin_url}}">
+              {{text150.text}}
+              <!-- {% trans 'Логін' %} -->
+            </label>
+            <input type="text" id="login_mail" name="username" class="login_mail login_input input_focus">
+          </div>
+          <div class="footer_input__wrap inp-vak-wrap">
+            <label for="login_mail" class="login_label label__style color_black">
+              Email
+            </label>
+            <input type="text" id="login_mail" name="email" class="login_mail login_input input_focus">
+          </div>
+          <div class="footer_input__wrap inp-vak-wrap">
+            {% render 'text151' as text151 %}
+            <label for="login_tel" class="db_content login_label label__style color_black" data-admin_url="{{text151.get_admin_url}}">
+              {{text151.text}}
+              <!-- {% trans 'Телефон' %} -->
+            </label>
+            <input type="tel" id="login_tel" name="phone_number" class="login_tel login_input input_focus">
+          </div>
+          <div class="footer_input__wrap inp-vak-wrap">
+            {% render 'text152' as text152 %}
+            <label for="login_pass" class="login_label label__style color_black db_content" data-admin_url="{{text152.get_admin_url}}">
+              {{text152.text}}
+              <!-- {% trans 'Пароль' %} -->
+            </label>
+            <input type="password" id="login_pass" name="password" class="login_pass login_input input_focus">
+          </div>
+          <div class="footer_input__wrap inp-vak-wrap">
+            {% render 'text153' as text153 %}
+            <label for="login_pass2" class="db_content login_label label__style color_black"  data-admin_url="{{text153.get_admin_url}}">
+              {{text153.text}}
+              <!-- Повторіть пароль -->
+            </label>
+            <input type="password" id="login_pass2" name="password2" class="login_pass2 login_input input_focus">
+          </div>
+          <div class="pass_checked_error login_checked_error"></div>
+
+          <div class="bottom_registery__block registery_fix">
+            <input type="submit" value="Зареєструватись" class="btn_standart btn_standart_black">
+          </div>
+          
+          <div class="last_registery__block">
+            {% render 'text154' as text154 %}
+            <div class="db_content last_registery_text sub_title sub_title_2 color_black" data-admin_url="{{text154.get_admin_url}}">
+              {{text154.text}}
+              <!-- {% trans 'Вже маєте аккаунт?' %} -->
+            </div>
+            {% render 'text155' as text155 %}
+            <a href="{% url 'login' %}" class="db_content ultra_link sub_title sub_title_2 color_yellow" data-admin_url="{{text155.get_admin_url}}">
+              {{text155.text}}
+              <!-- {% trans 'Увійти' %} -->
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script>
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/pages/login/index.js"></script> 
+{% endblock scripts %}

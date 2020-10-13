@@ -1,0 +1,255 @@
+{% extends 'project/base.html' %} 
+{% load i18n sw_content %} 
+{% block styles %}
+
+<link rel="stylesheet" href="/static/source/pages/profile/index.css.map" />
+<link rel="stylesheet" href="/static/source/lib/slick/slick.min.css" />
+<link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css" />
+<link
+  rel="stylesheet"
+  href="/static/source/lib/fancybox/jquery.fancybox.min.css"
+/>
+<link rel="stylesheet" href="/static/source/pages/item/index.css?v=3" />
+<link rel="stylesheet" href="/static/source/pages//login/index.css" />
+<link rel="stylesheet" href="/static/source/pages/profile/index.css?v=3" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+  rel="stylesheet"
+/>
+<link
+  rel="stylesheet"
+  href="/static/source/pages/constructor_model/index.css"
+/>
+<link
+  rel="stylesheet"
+  href="/static/source/pages/constructor_model/index.css.map"
+/>
+{% endblock styles %} {% block content %}
+<main>
+  <div class="views">
+    <div class="views__visual">
+      <div class="views__visual_model">
+        <div class="views__visula_bg">
+          <!-- <img class="views__visual_model-img" src="./../../static/source/img/constructor/views_model/gridBacgroundModel@2x.png" alt=""> -->
+        </div>
+        <div class="views__visula_3d"></div>
+        <div class="views__visula_loading visula__loading_wrap visula__loading_wrap-active">
+          
+            <div class="visula__loading">
+              <div class="visula__loading-line" ></div>
+            <div class="visula__loading-text">0%</div>
+       
+          </div>
+          
+      </div>
+      </div>
+      <div class="views__visual_control">
+        <div class="views__visual_left">
+          <svg width="36" height="15" viewBox="0 0 36 15">
+            <path
+              fill="#1B1813"
+              fill-rule="evenodd"
+              d="M7.071 0l.707.707L1.91 6.574h33.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"
+            />
+          </svg>
+        </div>
+        <div class="views__visual_right">
+          <svg width="37" height="15" viewBox="0 0 37 15">
+            <path
+              fill="#1B1813"
+              fill-rule="evenodd"
+              d="M29.087 14.142l-.707-.707 5.87-5.867H.58v-1h33.662L28.38.708 29.087 0l7.072 7.071-7.072 7.071z"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="views__parameter_wrap">
+      <div class="views__parameter_back">
+        <div class="icon">
+          <svg width="36" height="15" viewBox="0 0 36 15">
+            <path
+              fill="#1B1813" 
+              d="M7.071 0l.707.707L1.91 6.574h33.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"
+            ></path>
+          </svg>
+        </div>
+        <div class="text">3D ОГЛЯД</div>
+      </div>
+      <div class="views__parameter">
+        <div class="views__parameter_close">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+          >
+            <path
+              fill="#2B2A27"
+              fill-rule="evenodd"
+              d="M31.113 0l.707.707L16.617 15.91 31.82 31.113l-.707.707L15.91 16.617.707 31.82 0 31.113 15.203 15.91 0 .707.707 0 15.91 15.203 31.113 0z"
+            />
+          </svg>
+        </div>
+        <div class="views__parameter_title">Технічні характеристики</div>
+        <div class="settings__group_wrap">
+
+          <form class="constructor_model" action="">
+
+            {% for dict_value in dict_values %}
+              <div class="settings__group">
+                <div class="settings__group_title"></div>
+                <div class="settings__box">
+                  <div class="settings__box_title">{{dict_value.parameter.name}}</div>
+                  {% if dict_value.parameter.type == "checkbox_options" %}
+                  <div
+                    class="settings__box_main settings__box_main-checkbox"
+                    data-input_value="{{dict_value.parameter.code}}"
+                  >
+                  {% else %}
+                  <div
+                    class="settings__box_main settings__box_main-radio"
+                    data-input_value="{{dict_value.parameter.code}}"
+                  >
+                  {% endif %}
+                    <div class="settings__box_loader"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>
+                    <input
+                      type="hidden"
+                      value="{{dict_value.value.code}}"
+                      name="{{dict_value.parameter.code}}"
+                      id="{{dict_value.parameter.code}}"
+                    />
+                    <div class="settings__box_main_content">
+                      {% for value in dict_value.values %}
+                        {% if value.parameter.type == "checkbox_options" %}
+                          <div class="settings__group settings__group-start">
+                            <div class="{{value.value_class}} form_box__item form_box__item-black_bord2">
+                              <svg class="plus" width="9" height="9" viewBox="0 0 9 9">
+                                <path
+                                  fill="#242321"
+                                  fill-rule="evenodd"
+                                  d="M5 0v4h4v1H5v4H4V5H0V4h4V0h1z"
+                                ></path>
+                              </svg>
+                              <div class="name">{{value.name}}</div>
+                              <input
+                                {% if value.value_class == "form_box__item-active" %} checked {%endif%}
+                                name="{{value.code}}"
+                                id="{{value.id}}"
+                                type="checkbox"
+                                value="true"
+                              />
+                            </div>
+                          </div> 
+                        {% else %}
+                          <div
+                            class="form__radio {{value.value_class}}"
+                            data-childrens='{{value.generate_children_json}}'
+                            data-value="{{value.code}}"
+                          >
+                            <div class="form__radio_check"></div>
+                            <div class="form__radio_main">
+                              <div class="form__radio_title">{{value.name}}</div>
+                              <div class="form__radio_price">{{value.price}} грн</div>
+                            </div>
+                          </div>
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+          {% endfor %}
+          </form>
+
+
+
+          
+
+
+
+
+
+
+
+        </div>
+        <div class="views__parameter_footer">
+          <div class="price">
+            <div class="title">Загальна ціна</div>
+            <div class="value">{{initial_price}} грн.</div>
+          </div>
+          <div class="">
+            <div class="btn_standart btn_standart_yellow order_constructor" href="">Замовити</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="views__back">
+      <div class="views__back_icon">
+        <svg width="36" height="15" viewBox="0 0 36 15">
+          <path
+            fill="#1B1813"
+            fill-rule="evenodd"
+            d="M7.071 0l.707.707L1.91 6.574h33.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"
+          ></path>
+        </svg>
+      </div>
+      <div class="views__back_text">Конструктор</div>
+    </div>
+
+    <div class="views__order_wrap">
+      <div class="views__order">
+        <div class="views__order_price">
+          <div class="views__order_title">Загальна ціна</div>
+          <div class="views__order_value">{{initial_price}}грн</div>
+        </div>
+        <a class="views__order_go btn_standart btn_standart_yellow" href=""
+          >Перейти до замовлення</a
+        >
+      </div>
+    </div>
+  </div>
+</main>
+<!-- <div class="">
+  <form action="{% url 'sw_contact' %}" method="POST" id="order__form_constructor" class="order__form_constructor">
+    <div class="footer_input__wrap inp-vak-wrap">
+      <label for="footer_name" class="footer_label label__style color_white">
+        {% trans "Ім'я" %}
+      </label>
+      <input type="text" id="footer_name" name='name' class="footer_input input_focus">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      <label for="footer_email" class="footer_label label__style color_white">
+        Телефон
+      </label>
+      <input type="tel" id="footer_email" name='tel' class="footer_input input_focus">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      <label for="footer_email" class="footer_label label__style color_white">
+        Email
+      </label>
+      <input type="text" id="footer_email" name='email' class="footer_input input_focus">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      <label for="footer_email" class="footer_label label__style color_white">
+        {% trans 'Повідомлення' %}
+      </label>
+      <textarea name='message' id="user_send" class="user_send footer_input input_focus"></textarea>
+    </div>
+    <div class="wrap_for_footer_btn">
+      <input type="submit" value="Відправити" class="btn_standart btn_standart_yellow">
+    </div>
+  </form>
+</div> -->
+{% endblock content %} {% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script>
+<script src="/static/source/lib/maskinput/maskinput.js"></script>
+<script src="/static/source/lib/slick/slick.min.js"></script>
+<script src="/static/source/lib/wow/wow.min.js"></script>
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script>
+<script src="/static/source/lib/validation/validation.min.js"></script>
+<script src="/static/development/components/module/form_errors/index.js"></script>
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script>
+<script src="/static/source/pages/constructor_model/index.js"></script>
+<script src="/static/source/pages/constructor_model/index.js.map"></script>
+{% endblock scripts %}

@@ -1,0 +1,20 @@
+{% load i18n sw_content %}
+{% if request.user.is_superuser %}
+<div class="absolute_admin__block">
+  <a href="{{page.get_admin_url}}" target="_blank">
+    <div data-title='Редагувати сторінку' class="admin_nav-bar">
+        <svg class="admin_svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="door-open" class="svg-inline--fa fa-door-open fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M624 448h-80V113.45C544 86.19 522.47 64 496 64H384v64h96v384h144c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zM312.24 1.01l-192 49.74C105.99 54.44 96 67.7 96 82.92V448H16c-8.84 0-16 7.16-16 16v32c0 8.84 7.16 16 16 16h336V33.18c0-21.58-19.56-37.41-39.76-32.17zM264 288c-13.25 0-24-14.33-24-32s10.75-32 24-32 24 14.33 24 32-10.75 32-24 32z"></path></svg>
+    </div>
+    </a>
+    <div data-title='Включити редагування' class="admin_button">
+        <label class="power">
+            <input class="admin_checkbox" type="checkbox">
+            <div>
+                <svg class="svg_power" viewBox="0 0 44 44">
+                    <path d="M22,6 C31,6 38,13 38,22 C38,31 31,38 22,38 C13,38 6,31 6,22 C6,13 13,6 22,6 L22,28" id="path"></path>
+                </svg>
+            </div>
+        </label>
+    </div>
+</div>
+{% endif %}

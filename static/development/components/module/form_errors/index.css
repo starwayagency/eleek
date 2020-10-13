@@ -1,0 +1,67 @@
+.error {
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  color: #FF0000;
+}
+
+.pass_checked_error, .error_block_false {
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  color: #FF0000;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.true_form {
+  position: absolute;
+  z-index: 9999;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 50%;
+  padding: 0;
+  width: 500px;
+  height: 250px;
+  background: #fff !important;
+  min-width: unset;
+  text-align: center;
+  min-height: unset;
+}
+
+.true_form .fancybox-button svg {
+  display: none;
+}
+
+.form_true_img {
+  margin-top: 35px;
+  width: 100px;
+}
+
+.usually_modal_text {
+  font-size: 16px;
+  margin-top: 30px;
+  font-weight: 300;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+@media (max-width: 600px) {
+  .true_form {
+    width: 85%;
+  }
+  .usually_modal_text {
+    font-size: 15px;
+  }
+}
+/*# sourceMappingURL=index.css.map */

@@ -1,0 +1,237 @@
+{% load i18n sw_content sw_catalog %}
+<!-- Атрибути без категорій -->
+{% for attribute in item.get_attributes_without_categories %}
+  <!-- Атрибути без категорій(одиночні)  -->
+  {% if not attribute.is_option %}
+    <div 
+    data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}' 
+    data-item_attribute_value_id="{{attribute.get_values.first.id}}" 
+    class="color_change__wrap current_attribute_change__wrap"
+    >
+    <div class="color_change__block">
+        <div class="color_change_prof">
+        <div class="color_change_title main_sub_title main_sub_title_3 color_black">
+            {{attribute.attribute.name}}: 
+        </div>
+        <div class="color_change_name sub_title sub_title_2 color_black">
+            {{attribute.get_values.first.value.value}}
+        </div>
+        </div>
+        <div class="color_change_btn">
+        <img src="/static/source/img/item/close.svg" alt="">
+        </div>
+    </div>
+    <div class="color_change_content">
+        <div class="color_change_content_wrap">
+        {% for value in attribute.get_values %}
+        <div class="option_content_prof price_simple_option change_attribute {% if forloop.counter == 1 %}option_content_prof_active{% endif %}" 
+            data-price-option='{{value.price|stringformat:".2f"}}'>
+            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
+            <div class="option_text standart_title standart_title_6">
+            <!-- {{value.value.value}} ({{value.price}} {{value.currency.code}}) -->
+            {% get_item_attribute_value_price value current_currency  as item_attribute_value_price %}
+            {{value.value.value}} ({{item_attribute_value_price|floatformat}} {{current_currency.code}})
+            <input
+                class="hidden_color_attr"
+                type="hidden"
+                name="{{forloop.parentloop.counter}}" 
+                value="{{value.value.value}}" 
+                data-item_attribute_id="{{value.item_attribute.id}}"
+                data-item_attribute_value_id="{{value.id}}"
+            >
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+    </div>
+  <!-- Атрибути без категорій(опції-чекбокси) -->
+  {% elif attribute.is_option %}
+    <div class="option__wrap">
+        <div 
+        class="db_content item_char_title main__title main__title_4"
+        data-item_attribute_id='{{attribute.id}}'
+        data-admin_url="{{attribute.get_admin_url}}"
+        >
+        {{attribute.attribute.name|title}}
+        </div>
+        <div class="option_content__block">
+        {% for option in attribute.get_values %}
+        {% get_item_attribute_value_price option current_currency  as item_attribute_value_price %}
+        <div
+            class="db_content option_content_prof price_multiple_option price_option" 
+            data-admin_url="{{option.get_admin_url}}"
+            data-value="{{option.value.value}}" 
+            data-price-option='{{item_attribute_value_price|stringformat:".2f"}}'
+            data-item_attribute_id='{{option.attribute.id}}'
+            data-item_attribute_value_id='{{option.id}}'
+        >
+            <img class="option_img" src="/static/source/img/item/close.svg" alt="">
+            <div class="option_text standart_title standart_title_6">
+            <!-- {{option.value.value}} ({{option.price}} {{option.currency.code}}) -->
+            {{option.value.value}} ({{item_attribute_value_price|floatformat}} {{current_currency.code}})
+            <!-- {{option.attribute}} -->
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+  {% endif %}
+{% endfor %}
+
+
+
+
+
+
+
+<!-- Категорії атрибутів -->
+{% for attribute_category in item.get_attribute_categories %}
+  {% get_category_attribute_values attribute_category item as category_attribute_values %}
+  {% if category_attribute_values.exists %}
+    <div class="item_char_title main__title main__title_4 db_content" data-admin_url="{{attribute_category.get_admin_url}}">
+        {{attribute_category.name|title}}
+    </div>
+    <!-- Атрибути в категорії  -->
+    {% get_category_attributes attribute_category item as attributes %}
+    {% for attribute in attributes %}
+      {% if attribute.get_values.exists %}
+        <!-- Атрибути в категорії одиночні(кольори) -->
+        {% if attribute_category.code == 'colours' %}
+
+
+
+
+
+          <div class="color_change__wrap only_color_change__wrap"
+              data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}'
+              data-item_attribute_value_id='{{attribute.get_values.first.id}}'
+          >
+          <!-- attribute.get_values.first.value.code: {{attribute.get_values.first.value.code}}<br>
+          attribute.get_values.first.value.id: {{attribute.get_values.first.value.id}}<br>
+          attribute.get_values.first.value.value: {{attribute.get_values.first.value.value}}<br> -->
+              <div class="color_change__block">
+              <div class="color_change_prof">
+                  <div class="db_content color_change_title main_sub_title main_sub_title_3 color_black" data-admin_url="{{attribute.get_admin_url}}">
+                  {{attribute.attribute.name}}
+                  </div>
+                  <div 
+                  data-color="#{{attribute.get_values.first.value.code}}" 
+                  style="background:#{{attribute.get_values.first.value.code}};" 
+                  class="main_color_change_oval color_change_oval"
+                  >
+                  <!-- Код кольору вибраного значення -->
+                  </div>
+                  <div
+                  class="color_change_name sub_title sub_title_2 color_black" 
+                  data-item_attribute_value_id="{{attribute.get_values.first.id}}" 
+                  data-item_attribute_id="{{attribute.get_values.first.item_attribute.id}}"
+                  >
+                  <!-- Назва вибраного значення -->
+                  <!-- {{attribute.get_values.first.value.value}} -->
+                  </div>
+              </div>
+              <div class="color_change_btn">
+                  <img src="/static/source/img/item/close.svg" alt="">
+              </div>
+              </div>
+              <div class="color_change_content">
+              <div class="color_change_content_wrap">
+                  {% for value in attribute.get_values %}
+                  <div
+                  class="color_change_oval color_change_select db_content {% if value.value.code == 'FFFFFF' %} white_color_change_oval {% endif %}"
+                  data-admin_url="{{value.get_admin_url}}"
+                  style="background:#{{value.value.code}};" 
+                  data-color='#{{value.value.code}}' 
+                  data-value="{{value.value.value}}"
+                  >
+                  <div class="success_color {% if forloop.counter == 1 %}success_color_active{% endif %}">
+                      <img src="/static/source/img/item/okey.svg" alt="open">
+                  </div>
+                  <input
+                      class="hidden_color_attr"
+                      type="hidden"
+                      name="{{forloop.parentloop.counter}}" 
+                      value="{{value.value.value}}" 
+                      data-item_attribute_id="{{value.item_attribute.id}}"
+                      data-item_attribute_value_id="{{value.id}}"
+                  >
+                  </div>
+                  <!-- value.id:{{value.id}}<br> -->
+                  {% endfor %}
+              </div>
+              </div>
+          </div>
+
+
+
+
+
+        <!-- Атрибути в категорії одиночні(некольори) -->
+        {% elif attribute_category.code != 'colours' %}
+
+
+
+
+
+
+          <div 
+              data-item_attribute_id='{{attribute.get_values.first.item_attribute.id}}' 
+              data-item_attribute_value_id="{{attribute.get_values.first.id}}" 
+              class="color_change__wrap current_attribute_change__wrap"
+          >
+              <div class="color_change__block">
+              <div class="color_change_prof">
+                  <div class="db_content color_change_title main_sub_title main_sub_title_3 color_black" data-admin_url="{{attribute.get_admin_url}}">
+                  {{attribute.attribute.name}}: 
+                  </div>
+                  <div class="color_change_name sub_title sub_title_2 color_black">
+                  {{attribute.get_values.first.value.value}}
+                  </div>
+              </div>
+              <div class="color_change_btn">
+                <img src="/static/source/img/item/close.svg" alt="">
+              </div>
+              </div>
+              <div class="color_change_content">
+              <div class="color_change_content_wrap">
+                  {% for value in attribute.get_values %}
+                  {% get_item_attribute_value_price value current_currency  as item_attribute_value_price %}
+                  <div 
+                    class="option_content_prof price_simple_option change_attribute {% if forloop.counter == 1 %}option_content_prof_active{% endif %}" 
+                    data-price-option='{{item_attribute_value_price|stringformat:".2f"}}'
+                  >
+                  <img class="option_img" src="/static/source/img/item/close.svg" alt="">
+                  <div class="option_text standart_title standart_title_6 db_content" data-admin_url="{{value.get_admin_url}}">
+                      <!-- {{value.value.value}} ({{value.price}} {{value.currency.code}}) -->
+                      {{value.value.value}} ({{item_attribute_value_price|stringformat:".2f"}} {{current_currency.code}})          
+                      <input
+                      class="hidden_color_attr"
+                      type="hidden"
+                      name="{{forloop.parentloop.counter}}" 
+                      value="{{value.value.value}}" 
+                      data-item_attribute_id="{{value.item_attribute.id}}"
+                      data-item_attribute_value_id="{{value.id}}"
+                      >
+                  </div>
+                  </div>
+                  {% endfor %}
+              </div>
+              </div>
+          </div>
+
+
+
+
+
+          
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+
+
+
+

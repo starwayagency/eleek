@@ -1,0 +1,462 @@
+id,name,content_type,codename
+45,Can add email address,12,add_emailaddress
+46,Can change email address,12,change_emailaddress
+47,Can delete email address,12,delete_emailaddress
+48,Can view email address,12,view_emailaddress
+49,Can add email confirmation,13,add_emailconfirmation
+50,Can change email confirmation,13,change_emailconfirmation
+51,Can delete email confirmation,13,delete_emailconfirmation
+52,Can view email confirmation,13,view_emailconfirmation
+21,Can add log entry,6,add_logentry
+22,Can change log entry,6,change_logentry
+23,Can delete log entry,6,delete_logentry
+24,Can view log entry,6,view_logentry
+13,Can add group,4,add_group
+14,Can change group,4,change_group
+15,Can delete group,4,delete_group
+16,Can view group,4,view_group
+9,Can add permission,3,add_permission
+10,Can change permission,3,change_permission
+11,Can delete permission,3,delete_permission
+12,Can view permission,3,view_permission
+65,Can add Token,17,add_token
+66,Can change Token,17,change_token
+67,Can delete Token,17,delete_token
+68,Can view Token,17,view_token
+450,Can add Заявка з конструктора,113,add_constructorform
+451,Can change Заявка з конструктора,113,change_constructorform
+452,Can delete Заявка з конструктора,113,delete_constructorform
+453,Can view Заявка з конструктора,113,view_constructorform
+446,Can add Колір рами,112,add_framecolor
+447,Can change Колір рами,112,change_framecolor
+448,Can delete Колір рами,112,delete_framecolor
+449,Can view Колір рами,112,view_framecolor
+426,Can add Тип рами,107,add_frametype
+427,Can change Тип рами,107,change_frametype
+428,Can delete Тип рами,107,delete_frametype
+429,Can view Тип рами,107,view_frametype
+430,Can add Параметер групи,108,add_parameter
+431,Can change Параметер групи,108,change_parameter
+432,Can delete Параметер групи,108,delete_parameter
+433,Can view Параметер групи,108,view_parameter
+454,Can add Звязок між елементами,114,add_relationship
+455,Can change Звязок між елементами,114,change_relationship
+456,Can delete Звязок між елементами,114,delete_relationship
+457,Can view Звязок між елементами,114,view_relationship
+434,Can add Вкладка,109,add_tab
+435,Can change Вкладка,109,change_tab
+436,Can delete Вкладка,109,delete_tab
+437,Can view Вкладка,109,view_tab
+442,Can add Група,111,add_tabgroup
+443,Can change Група,111,change_tabgroup
+444,Can delete Група,111,delete_tabgroup
+445,Can view Група,111,view_tabgroup
+438,Can add Значення параметра,110,add_value
+439,Can change Значення параметра,110,change_value
+440,Can delete Значення параметра,110,delete_value
+441,Can view Значення параметра,110,view_value
+25,Can add content type,7,add_contenttype
+26,Can change content type,7,change_contenttype
+27,Can delete content type,7,delete_contenttype
+28,Can view content type,7,view_contenttype
+5,Can add dashboard preferences,2,add_dashboardpreferences
+6,Can change dashboard preferences,2,change_dashboardpreferences
+7,Can delete dashboard preferences,2,delete_dashboardpreferences
+8,Can view dashboard preferences,2,view_dashboardpreferences
+41,Can add attachment,11,add_attachment
+42,Can change attachment,11,change_attachment
+43,Can delete attachment,11,delete_attachment
+44,Can view attachment,11,view_attachment
+69,Can add source,18,add_source
+70,Can change source,18,change_source
+71,Can delete source,18,delete_source
+72,Can view source,18,view_source
+73,Can add thumbnail,19,add_thumbnail
+74,Can change thumbnail,19,change_thumbnail
+75,Can delete thumbnail,19,delete_thumbnail
+76,Can view thumbnail,19,view_thumbnail
+77,Can add thumbnail dimensions,20,add_thumbnaildimensions
+78,Can change thumbnail dimensions,20,change_thumbnaildimensions
+79,Can delete thumbnail dimensions,20,delete_thumbnaildimensions
+80,Can view thumbnail dimensions,20,view_thumbnaildimensions
+81,Can add clipboard,21,add_clipboard
+82,Can change clipboard,21,change_clipboard
+83,Can delete clipboard,21,delete_clipboard
+84,Can view clipboard,21,view_clipboard
+85,Can add clipboard item,22,add_clipboarditem
+86,Can change clipboard item,22,change_clipboarditem
+87,Can delete clipboard item,22,delete_clipboarditem
+88,Can view clipboard item,22,view_clipboarditem
+89,Can add file,23,add_file
+90,Can change file,23,change_file
+91,Can delete file,23,delete_file
+92,Can view file,23,view_file
+93,Can add Folder,24,add_folder
+97,Can use directory listing,24,can_use_directory_listing
+94,Can change Folder,24,change_folder
+95,Can delete Folder,24,delete_folder
+96,Can view Folder,24,view_folder
+98,Can add folder permission,25,add_folderpermission
+99,Can change folder permission,25,change_folderpermission
+100,Can delete folder permission,25,delete_folderpermission
+101,Can view folder permission,25,view_folderpermission
+102,Can add image,26,add_image
+103,Can change image,26,change_image
+104,Can delete image,26,delete_image
+105,Can view image,26,view_image
+106,Can add thumbnail option,27,add_thumbnailoption
+107,Can change thumbnail option,27,change_thumbnailoption
+108,Can delete thumbnail option,27,delete_thumbnailoption
+109,Can view thumbnail option,27,view_thumbnailoption
+37,Can add flat page,10,add_flatpage
+38,Can change flat page,10,change_flatpage
+39,Can delete flat page,10,delete_flatpage
+40,Can view flat page,10,view_flatpage
+374,Can add налаштування Liqpay,94,add_liqpayconfig
+375,Can change налаштування Liqpay,94,change_liqpayconfig
+376,Can delete налаштування Liqpay,94,delete_liqpayconfig
+377,Can view налаштування Liqpay,94,view_liqpayconfig
+378,Can add трансзакція liqpay,95,add_liqpaytransaction
+379,Can change трансзакція liqpay,95,change_liqpaytransaction
+380,Can delete трансзакція liqpay,95,delete_liqpaytransaction
+381,Can view трансзакція liqpay,95,view_liqpaytransaction
+1,Can add bookmark,1,add_bookmark
+2,Can change bookmark,1,change_bookmark
+3,Can delete bookmark,1,delete_bookmark
+4,Can view bookmark,1,view_bookmark
+402,Can add Сертифікат,101,add_certificate
+403,Can change Сертифікат,101,change_certificate
+404,Can delete Сертифікат,101,delete_certificate
+405,Can view Сертифікат,101,view_certificate
+406,Can add Парнтер,102,add_partner
+407,Can change Парнтер,102,change_partner
+408,Can delete Парнтер,102,delete_partner
+409,Can view Парнтер,102,view_partner
+398,Can add user,100,add_projectuser
+399,Can change user,100,change_projectuser
+400,Can delete user,100,delete_projectuser
+401,Can view user,100,view_projectuser
+410,Can add заявка на тест драйв,103,add_testdrive
+411,Can change заявка на тест драйв,103,change_testdrive
+412,Can delete заявка на тест драйв,103,delete_testdrive
+413,Can view заявка на тест драйв,103,view_testdrive
+414,Can add модель велосипеда для тест драйву,104,add_testdrivemodel
+415,Can change модель велосипеда для тест драйву,104,change_testdrivemodel
+416,Can delete модель велосипеда для тест драйву,104,delete_testdrivemodel
+417,Can view модель велосипеда для тест драйву,104,view_testdrivemodel
+418,Can add модель велосипеда для тест драйву,105,add_testdriveslider
+419,Can change модель велосипеда для тест драйву,105,change_testdriveslider
+420,Can delete модель велосипеда для тест драйву,105,delete_testdriveslider
+421,Can view модель велосипеда для тест драйву,105,view_testdriveslider
+422,Can add модель велосипеда для тест драйву,106,add_veloslider
+423,Can change модель велосипеда для тест драйву,106,change_veloslider
+424,Can delete модель велосипеда для тест драйву,106,delete_veloslider
+425,Can view модель велосипеда для тест драйву,106,view_veloslider
+33,Can add redirect,9,add_redirect
+34,Can change redirect,9,change_redirect
+35,Can delete redirect,9,delete_redirect
+36,Can view redirect,9,view_redirect
+29,Can add session,8,add_session
+30,Can change session,8,change_session
+31,Can delete session,8,delete_session
+32,Can view session,8,view_session
+17,Can add site,5,add_site
+18,Can change site,5,change_site
+19,Can delete site,5,delete_site
+20,Can view site,5,view_site
+53,Can add social account,14,add_socialaccount
+54,Can change social account,14,change_socialaccount
+55,Can delete social account,14,delete_socialaccount
+56,Can view social account,14,view_socialaccount
+57,Can add social application,15,add_socialapp
+58,Can change social application,15,change_socialapp
+59,Can delete social application,15,delete_socialapp
+60,Can view social application,15,view_socialapp
+61,Can add social application token,16,add_socialtoken
+62,Can change social application token,16,change_socialtoken
+63,Can delete social application token,16,delete_socialtoken
+64,Can view social application token,16,view_socialtoken
+382,Can add Публікація,96,add_post
+383,Can change Публікація,96,change_post
+384,Can delete Публікація,96,delete_post
+385,Can view Публікація,96,view_post
+386,Can add Категорія,97,add_postcategory
+387,Can change Категорія,97,change_postcategory
+388,Can delete Категорія,97,delete_postcategory
+389,Can view Категорія,97,view_postcategory
+394,Can add Коментар,99,add_postcomment
+395,Can change Коментар,99,change_postcomment
+396,Can delete Коментар,99,delete_postcomment
+397,Can view Коментар,99,view_postcomment
+390,Can add Перегляд,98,add_postview
+391,Can change Перегляд,98,change_postview
+392,Can delete Перегляд,98,delete_postview
+393,Can view Перегляд,98,view_postview
+342,Can add Корзина,86,add_cart
+343,Can change Корзина,86,change_cart
+344,Can delete Корзина,86,delete_cart
+345,Can view Корзина,86,view_cart
+346,Can add Товар в корзині,87,add_cartitem
+347,Can change Товар в корзині,87,change_cartitem
+348,Can delete Товар в корзині,87,delete_cartitem
+349,Can view Товар в корзині,87,view_cartitem
+354,Can add вибраний атрибут у товара в корзині,89,add_cartitemattribute
+355,Can change вибраний атрибут у товара в корзині,89,change_cartitemattribute
+356,Can delete вибраний атрибут у товара в корзині,89,delete_cartitemattribute
+357,Can view вибраний атрибут у товара в корзині,89,view_cartitemattribute
+350,Can add Улюблений товар,88,add_favouritem
+351,Can change Улюблений товар,88,change_favouritem
+352,Can delete Улюблений товар,88,delete_favouritem
+353,Can view Улюблений товар,88,view_favouritem
+234,Can add атрибут,59,add_attribute
+235,Can change атрибут,59,change_attribute
+236,Can delete атрибут,59,delete_attribute
+237,Can view атрибут,59,view_attribute
+238,Can add категорія атрибутів,60,add_attributecategory
+239,Can change категорія атрибутів,60,change_attributecategory
+240,Can delete категорія атрибутів,60,delete_attributecategory
+241,Can view категорія атрибутів,60,view_attributecategory
+242,Can add значення атрибуту,61,add_attributevalue
+243,Can change значення атрибуту,61,change_attributevalue
+244,Can delete значення атрибуту,61,delete_attributevalue
+245,Can view значення атрибуту,61,view_attributevalue
+246,Can add Налаштування каталогу,62,add_catalogconfig
+247,Can change Налаштування каталогу,62,change_catalogconfig
+248,Can delete Налаштування каталогу,62,delete_catalogconfig
+249,Can view Налаштування каталогу,62,view_catalogconfig
+310,Can add емейл для сповіщень про товари,78,add_catalogrecipientemail
+311,Can change емейл для сповіщень про товари,78,change_catalogrecipientemail
+312,Can delete емейл для сповіщень про товари,78,delete_catalogrecipientemail
+313,Can view емейл для сповіщень про товари,78,view_catalogrecipientemail
+250,Can add Налаштування каталогу,63,add_catalogueconfig
+251,Can change Налаштування каталогу,63,change_catalogueconfig
+252,Can delete Налаштування каталогу,63,delete_catalogueconfig
+253,Can view Налаштування каталогу,63,view_catalogueconfig
+254,Can add назва характеристики,64,add_feature
+255,Can change назва характеристики,64,change_feature
+256,Can delete назва характеристики,64,delete_feature
+257,Can view назва характеристики,64,view_feature
+258,Can add категорія характеристик,65,add_featurecategory
+259,Can change категорія характеристик,65,change_featurecategory
+260,Can delete категорія характеристик,65,delete_featurecategory
+261,Can view категорія характеристик,65,view_featurecategory
+262,Can add значення характеристики,66,add_featurevalue
+263,Can change значення характеристики,66,change_featurevalue
+264,Can delete значення характеристики,66,delete_featurevalue
+265,Can view значення характеристики,66,view_featurevalue
+266,Can add товар,67,add_item
+267,Can change товар,67,change_item
+268,Can delete товар,67,delete_item
+269,Can view товар,67,view_item
+270,Can add атрибут товару,68,add_itemattribute
+271,Can change атрибут товару,68,change_itemattribute
+272,Can delete атрибут товару,68,delete_itemattribute
+273,Can view атрибут товару,68,view_itemattribute
+314,Can add значення атрибутів товарів,79,add_itemattributevalue
+315,Can change значення атрибутів товарів,79,change_itemattributevalue
+316,Can delete значення атрибутів товарів,79,delete_itemattributevalue
+317,Can view значення атрибутів товарів,79,view_itemattributevalue
+274,Can add Бренд,69,add_itembrand
+275,Can change Бренд,69,change_itembrand
+276,Can delete Бренд,69,delete_itembrand
+277,Can view Бренд,69,view_itembrand
+306,Can add категорія,77,add_itemcategory
+307,Can change категорія,77,change_itemcategory
+308,Can delete категорія,77,delete_itemcategory
+309,Can view категорія,77,view_itemcategory
+302,Can add характеристика товара,76,add_itemfeature
+303,Can change характеристика товара,76,change_itemfeature
+304,Can delete характеристика товара,76,delete_itemfeature
+305,Can view характеристика товара,76,view_itemfeature
+298,Can add зображення товару,75,add_itemimage
+299,Can change зображення товару,75,change_itemimage
+300,Can delete зображення товару,75,delete_itemimage
+301,Can view зображення товару,75,view_itemimage
+278,Can add виробник товарів,70,add_itemmanufacturer
+279,Can change виробник товарів,70,change_itemmanufacturer
+280,Can delete виробник товарів,70,delete_itemmanufacturer
+281,Can view виробник товарів,70,view_itemmanufacturer
+294,Can add Відгук,74,add_itemreview
+295,Can change Відгук,74,change_itemreview
+296,Can delete Відгук,74,delete_itemreview
+297,Can view Відгук,74,view_itemreview
+282,Can add статус наявності,71,add_itemstock
+283,Can change статус наявності,71,change_itemstock
+284,Can delete статус наявності,71,delete_itemstock
+285,Can view статус наявності,71,view_itemstock
+286,Can add одиниця вимірювання товарів,72,add_itemunit
+287,Can change одиниця вимірювання товарів,72,change_itemunit
+288,Can delete одиниця вимірювання товарів,72,delete_itemunit
+289,Can view одиниця вимірювання товарів,72,view_itemunit
+290,Can add item view,73,add_itemview
+291,Can change item view,73,change_itemview
+292,Can delete item view,73,delete_itemview
+293,Can view item view,73,view_itemview
+198,Can add Зворотний звязок,50,add_contact
+199,Can change Зворотний звязок,50,change_contact
+200,Can delete Зворотний звязок,50,delete_contact
+201,Can view Зворотний звязок,50,view_contact
+202,Can add Налаштування зворотнього звязку,51,add_contactconfig
+203,Can change Налаштування зворотнього звязку,51,change_contactconfig
+204,Can delete Налаштування зворотнього звязку,51,delete_contactconfig
+205,Can view Налаштування зворотнього звязку,51,view_contactconfig
+206,Can add емейл для сповіщень про контактні форми,52,add_contactrecipientemail
+207,Can change емейл для сповіщень про контактні форми,52,change_contactrecipientemail
+208,Can delete емейл для сповіщень про контактні форми,52,delete_contactrecipientemail
+209,Can view емейл для сповіщень про контактні форми,52,view_contactrecipientemail
+194,Can add адрес,49,add_address
+195,Can change адрес,49,change_address
+196,Can delete адрес,49,delete_address
+197,Can view адрес,49,view_address
+150,Can add FAQ,38,add_faq
+151,Can change FAQ,38,change_faq
+152,Can delete FAQ,38,delete_faq
+153,Can view FAQ,38,view_faq
+190,Can add картинка,48,add_img
+191,Can change картинка,48,change_img
+192,Can delete картинка,48,delete_img
+193,Can view картинка,48,view_img
+186,Can add посилання,47,add_link
+187,Can change посилання,47,change_link
+188,Can delete посилання,47,delete_link
+189,Can view посилання,47,view_link
+182,Can add емейл,46,add_mailto
+183,Can change емейл,46,change_mailto
+184,Can delete емейл,46,delete_mailto
+185,Can view емейл,46,view_mailto
+178,Can add карта,45,add_map
+179,Can change карта,45,change_map
+180,Can delete карта,45,delete_map
+181,Can view карта,45,view_map
+154,Can add cторінка,39,add_page
+155,Can change cторінка,39,change_page
+156,Can delete cторінка,39,delete_page
+157,Can view cторінка,39,view_page
+174,Can add Слайд,44,add_slide
+175,Can change Слайд,44,change_slide
+176,Can delete Слайд,44,delete_slide
+177,Can view Слайд,44,view_slide
+170,Can add Слайдер,43,add_slider
+171,Can change Слайдер,43,change_slider
+172,Can delete Слайдер,43,delete_slider
+173,Can view Слайдер,43,view_slider
+166,Can add телефонний номер,42,add_tel
+167,Can change телефонний номер,42,change_tel
+168,Can delete телефонний номер,42,delete_tel
+169,Can view телефонний номер,42,view_tel
+162,Can add переклад,41,add_text
+163,Can change переклад,41,change_text
+164,Can delete переклад,41,delete_text
+165,Can view переклад,41,view_text
+158,Can add unreal content,40,add_unrealcontent
+159,Can change unreal content,40,change_unrealcontent
+160,Can delete unreal content,40,delete_unrealcontent
+161,Can view unreal content,40,view_unrealcontent
+138,Can add валюта,35,add_currency
+139,Can change валюта,35,change_currency
+140,Can delete валюта,35,delete_currency
+141,Can view валюта,35,view_currency
+142,Can add Налаштування валют,36,add_currencyconfig
+143,Can change Налаштування валют,36,change_currencyconfig
+144,Can delete Налаштування валют,36,delete_currencyconfig
+145,Can view Налаштування валют,36,view_currencyconfig
+146,Can add Валюта для парсингу,37,add_parsecurrency
+147,Can change Валюта для парсингу,37,change_parsecurrency
+148,Can delete Валюта для парсингу,37,delete_parsecurrency
+149,Can view Валюта для парсингу,37,view_parsecurrency
+358,Can add купон,90,add_coupon
+359,Can change купон,90,change_coupon
+360,Can delete купон,90,delete_coupon
+361,Can view купон,90,view_coupon
+366,Can add покупець,92,add_customer
+367,Can change покупець,92,change_customer
+368,Can delete покупець,92,delete_customer
+369,Can view покупець,92,view_customer
+370,Can add група,93,add_customergroup
+371,Can change група,93,change_customergroup
+372,Can delete група,93,delete_customergroup
+373,Can view група,93,view_customergroup
+362,Can add підписник,91,add_subscriber
+363,Can change підписник,91,change_subscriber
+364,Can delete підписник,91,delete_subscriber
+365,Can view підписник,91,view_subscriber
+230,Can add region,58,add_region
+231,Can change region,58,change_region
+232,Can delete region,58,delete_region
+233,Can view region,58,view_region
+110,Can add Глобальні налаштування,28,add_globalconfig
+111,Can change Глобальні налаштування,28,change_globalconfig
+112,Can delete Глобальні налаштування,28,delete_globalconfig
+113,Can view Глобальні налаштування,28,view_globalconfig
+114,Can add мітка,29,add_globallabel
+115,Can change мітка,29,change_globallabel
+116,Can delete мітка,29,delete_globallabel
+117,Can view мітка,29,view_globallabel
+118,Can add маркер,30,add_globalmarker
+119,Can change маркер,30,change_globalmarker
+120,Can delete маркер,30,delete_globalmarker
+121,Can view маркер,30,view_globalmarker
+130,Can add емейл для всіх сповіщень,33,add_globalrecipientemail
+131,Can change емейл для всіх сповіщень,33,change_globalrecipientemail
+132,Can delete емейл для всіх сповіщень,33,delete_globalrecipientemail
+133,Can view емейл для всіх сповіщень,33,view_globalrecipientemail
+126,Can add тег,32,add_globaltag
+127,Can change тег,32,change_globaltag
+128,Can delete тег,32,delete_globaltag
+129,Can view тег,32,view_globaltag
+122,Can add Код,31,add_seoscript
+123,Can change Код,31,change_seoscript
+124,Can delete Код,31,delete_seoscript
+125,Can view Код,31,view_seoscript
+210,Can add Область,53,add_area
+211,Can change Область,53,change_area
+212,Can delete Область,53,delete_area
+213,Can view Область,53,view_area
+214,Can add район,54,add_region
+215,Can change район,54,change_region
+216,Can delete район,54,delete_region
+217,Can view район,54,view_region
+226,Can add населений пункт,57,add_settlement
+227,Can change населений пункт,57,change_settlement
+228,Can delete населений пункт,57,delete_settlement
+229,Can view населений пункт,57,view_settlement
+218,Can add Тип населеного пункту,55,add_type
+219,Can change Тип населеного пункту,55,change_type
+220,Can delete Тип населеного пункту,55,delete_type
+221,Can view Тип населеного пункту,55,view_type
+222,Can add Warehouse,56,add_warehouse
+223,Can change Warehouse,56,change_warehouse
+224,Can delete Warehouse,56,delete_warehouse
+225,Can view Warehouse,56,view_warehouse
+338,Can add Заявка на інформацію про товар,85,add_itemrequest
+339,Can change Заявка на інформацію про товар,85,change_itemrequest
+340,Can delete Заявка на інформацію про товар,85,delete_itemrequest
+341,Can view Заявка на інформацію про товар,85,view_itemrequest
+318,Can add замовлення,80,add_order
+319,Can change замовлення,80,change_order
+320,Can delete замовлення,80,delete_order
+321,Can view замовлення,80,view_order
+458,Can add емейл для сповіщень про замовлення,115,add_orderadditionalprice
+459,Can change емейл для сповіщень про замовлення,115,change_orderadditionalprice
+460,Can delete емейл для сповіщень про замовлення,115,delete_orderadditionalprice
+461,Can view емейл для сповіщень про замовлення,115,view_orderadditionalprice
+322,Can add Налаштування замовленя,81,add_orderconfig
+323,Can change Налаштування замовленя,81,change_orderconfig
+324,Can delete Налаштування замовленя,81,delete_orderconfig
+325,Can view Налаштування замовленя,81,view_orderconfig
+334,Can add емейл для сповіщень про замовлення,84,add_orderrecipientemail
+335,Can change емейл для сповіщень про замовлення,84,change_orderrecipientemail
+336,Can delete емейл для сповіщень про замовлення,84,delete_orderrecipientemail
+337,Can view емейл для сповіщень про замовлення,84,view_orderrecipientemail
+330,Can add статус замовленнь,83,add_orderstatus
+331,Can change статус замовленнь,83,change_orderstatus
+332,Can delete статус замовленнь,83,delete_orderstatus
+333,Can view статус замовленнь,83,view_orderstatus
+326,Can add оплата замовлення,82,add_payment
+327,Can change оплата замовлення,82,change_payment
+328,Can delete оплата замовлення,82,delete_payment
+329,Can view оплата замовлення,82,view_payment
+134,Can add watermark,34,add_watermark
+135,Can change watermark,34,change_watermark
+136,Can delete watermark,34,delete_watermark
+137,Can view watermark,34,view_watermark

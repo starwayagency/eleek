@@ -1,0 +1,5 @@
+id,text,text_uk,text_en,text_ru,availability,colour
+1,є в наявності,є в наявності,Is in stock,есть в наличии,1,#15FF54
+2,обмежена кількість,обмежена кількість,text_en,Limited amount,1,#CCD225
+3,під замовлення,під замовлення,Under the order,под заказ,1,#A68F35
+4,немає в наявності,немає в наявності,Not in stock,нет в наличии,0,#A60000

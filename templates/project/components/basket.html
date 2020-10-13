@@ -1,0 +1,94 @@
+{% load i18n sw_content %}
+<div class="basket_menu">
+    <div class="search_menu_title">
+      {% render 'text69' as text69 %}
+      <div class="db_content main__title main__title_2 color_black" data-admin_url="{{text69.get_admin_url}}">
+        {{text69.text}}
+        <!-- {% trans 'Корзина' %} -->
+      </div>
+      <img class="modal_basket modal_search_close" src="/static/source/img/index/close.svg" alt="">
+    </div>
+    <div class="basket_content__block">
+      <div class="none_content_send main__title color_black">
+      </div>
+      <!-- {% for cart_item in cart_items %}
+      <div class="basket_content_profile">
+          <div class="basket_profile_img">
+              <img src="{{cart_item.item.image_url}}" alt="{{cart_item.item.alt}}">
+          </div>
+          <div class="basket_right_content">
+            <div class="basket_title__block">
+              <div class="basket_title main__title main__title_5">
+                {{cart_item.item.title}}
+              </div>
+              <img class="basket_del" src="/static/source/img/index/trash.svg" alt="">
+            </div>
+            <div class="basket_bottom__wrap">
+              <div class="basket_counter__block">
+                <div class="basket_text sub_title sub_title_2">
+                  {% trans 'Кількість' %}
+                </div>
+                <div class="basket_counter">
+                  <div class="basket_prep basket_count sub_title sub_title_21">
+                    -
+                  </div>
+                  <input type="number" class="basket_input basket_count main__title main__title_5" value="{{cart_item.quantity}}">
+                  <div class="basket_next basket_count sub_title sub_title_21">
+                    +
+                  </div>
+                </div>
+              </div>
+              <div class="basket_sum__block">
+                <div class="basket_text sub_title sub_title_2">
+                  {% trans 'Ціна' %}
+                </div>
+                <div class="basket_summ main__title main__title_5">
+                  {{cart_item.item.price}}
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      {% endfor %} -->
+    </div>
+    <div class="basket_bottom_result">
+      <div class="basket_result__block">
+        <div class="basket_all_result_title__block">
+          {% render 'text70' as text70 %}
+          <div class="db_content basket_all_result_title main__title main__title_4" data-admin_url="{{text70.get_admin_url}}">
+            {{text70.text}}
+            <!-- {% trans 'Всього' %} -->
+          </div>
+          <div class="basket_all_result main__title main__title_4">
+            <!-- ₴ 100 500 -->
+          </div>
+        </div>
+        <div class="flex_box">
+            <div class="discount__block">
+              {% render 'text71' as text71 %}
+              <div class="db_content discount_title" data-admin_url="{{text71.get_admin_url}}">
+                <!-- {{text71.text}} -->
+                  <!-- {% trans 'Знижка' %} -->
+                </div>
+                <div class="discount_result main__title main__title_5">
+                  <!-- ₴ 2 000 -->
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="basket_btn basket_nobtn_wrap">
+        {% render 'text72' as text72 %}
+        <div class="db_content sub_title sub_title_2" data-admin_url="{{text72.get_admin_url}}">
+          {{text72.text}}
+          <!-- {% trans 'Замовити' %} -->
+        </div>
+      </div>
+      <a href="{% url 'order' %}" class="basket_btn basket_btn_wrap">
+        {% render 'text73' as text73 %}
+        <div class="db_content sub_title sub_title_2"  data-admin_url="{{text73.get_admin_url}}">
+          {{text73.text}}
+          <!-- {% trans 'Замовити' %} -->
+        </div>
+      </a>
+    </div>
+  </div>

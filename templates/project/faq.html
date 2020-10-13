@@ -1,0 +1,69 @@
+{% extends "project/base.html" %}
+{% load sw_content i18n %}
+{% block styles %}
+<link rel="stylesheet" href="/static/source/pages/about/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/select2/select2.min.css">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick.min.css">
+<link rel="stylesheet" href="/static/source/pages/login/index.css">
+<link rel="stylesheet" href="/static/source/pages/about/index.css">
+<link rel="stylesheet" href="/static/source/pages/another_pages/index.css">
+{% endblock styles %}
+
+{% block main_class %}
+item_section__wrapper
+{% endblock main_class %}
+
+{% block content %}
+<div class="bg_for_usually_page">
+  <!-- <video class="eleek_video" data-src="/static/source/img/index/video.mp4" autoplay muted poster="/static/source/img/index/post.png">
+    Sorry, your browser doesn't support embedded videos, 
+    but don't worry, you can <a href="/static/source/img/index/video.mp4">download it</a>
+    and watch it with your favorite video player!
+  </video> -->
+  <img class="eleek_video" src="/static/source/img/another/header-bg.png" alt="">
+</div>
+<section class="another_pages">
+    <div class="another_container">
+      {% render 'text50' as text50 %}
+      <h1 class="db_content faq_title main__title main__title_2" data-admin_url="{{text50.get_admin_url}}">
+        {{text50.text}}
+        <!-- Питання та відповіді -->
+      </h1>
+      {% for faq in faqs %}
+      <div class="color_change__wrap current_attribute_change__wrap db_content" data-admin_url="{{faq.get_admin_url}}">
+        <div class="color_change__block">
+          <div class="color_change_prof">
+            <div class="color_change_title standart_title standart_title_3 color_black">
+              {{faq.title}}
+            </div>
+          </div>
+          <div class="color_change_btn">
+          <!-- <div class="color_change_btn color_change_btn_active"> -->
+            <img src="/static/source/img/item/close.svg" alt="">
+          </div>
+        </div>
+        <div class="color_change_content sub_title sub_title_2">
+        <!-- <div class="color_change_content color_change_content_active sub_title sub_title_2"> -->
+          {{faq.content|safe}}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+</section>
+{% endblock content%}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/lib/slick/slick.min.js"></script> 
+<script src="/static/source/lib/select2/select2.full.min.js"></script> 
+<script src="/static/source/pages/another_pages/index.js"></script> 
+{% endblock scripts %}
+
+
+

@@ -1,0 +1,27 @@
+sudo ln -s /home/jurgeon/projects/eleek/src/config/eleek         /etc/nginx/sites-enabled/
+sudo ln -s /home/jurgeon/projects/eleek/src/config/eleek.service /etc/systemd/system/
+
+
+
+sudo systemctl enable nginx
+sudo systemctl start nginx
+sudo systemctl restart nginx
+# sudo systemctl status nginx
+
+
+
+sudo systemctl enable eleek
+sudo systemctl start eleek
+sudo systemctl restart eleek
+# sudo systemctl status eleek
+
+
+
+sudo systemctl daemon-reload
+
+
+
+sudo certbot --nginx -d <domain>
+sudo certbot renew --dry-run
+
+

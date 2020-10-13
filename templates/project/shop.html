@@ -1,0 +1,57 @@
+{% extends 'project/base.html' %}
+{% load i18n sw_content %}
+{% block styles %}
+<link rel="stylesheet" href="/static/source/pages/shop/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/pages/shop/index.css?v=3">
+{% endblock styles %}
+{% block body_class %}
+black_body
+{% endblock body_class %}
+{% block main_class %}
+item_section__wrapper
+{% endblock main_class %}
+{% block content %}
+<section class="shop_section padding_sect">
+  <div class="container">
+    {% render 'shop_shop' as shop_shop %}
+    <h2 class="shop_title main__title main__title_2 color_white db_content" data-admin_url="{{shop_shop.get_admin_url}}"> 
+      {{shop_shop.text}}
+      <!-- Магазин -->
+    </h2>
+    <div class="shop__wrapper">
+      <a href="{{velo.get_absolute_url}}" class="shop_item db_content" data-admin_url="{{velo.get_admin_url}}">
+        <img src="/static/source/img/shop/fl-002-2020-may-15-01-52-19-pm-000-customized-view-24433306083.png" alt="" class="shop_bg">
+        <div class="shop_name_category main__title main__title_3 color_yellow db_content" data-admin_url="{{velo.get_admin_url}}">
+          {{velo.title|title}}
+        </div>
+      </a>
+      <a href="{{ramy.get_absolute_url}}" class="shop_item db_content" data-admin_url="{{ramy.get_admin_url}}">
+        <img src="/static/source/img/shop/rrama-png.png" alt="" class="shop_bg">
+        <div class="shop_name_category main__title main__title_3 color_yellow db_content" data-admin_url="{{ramy.get_admin_url}}">
+          {{ramy.title|title}}
+        </div>
+      </a>
+      <a href="{{comp.get_absolute_url}}" class="shop_item db_content" data-admin_url="{{comp.get_admin_url}}">
+        <img src="/static/source/img/shop/amort.png" alt="" class="shop_bg">
+        <div class="shop_name_category main__title main__title_3 color_yellow db_content" data-admin_url="{{comp.get_admin_url}}">
+          {{comp.title|title}}
+        </div>
+      </a>
+    </div>
+  </div>
+  <!-- /.container -->
+</section>
+{% endblock content %}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/pages/shop/index.js"></script> 
+{% endblock scripts %}
+
+
+

@@ -1,0 +1,583 @@
+{% extends 'project/base.html' %}
+{% load i18n sw_content %}
+{% block styles %}
+<link rel="stylesheet" type="text/css" href="/static/source/pages/index/index.css.map">
+<link rel="stylesheet" type="text/css" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" type="text/css" href="/static/source/lib/slick/slick.min.css">
+<link rel="stylesheet" type="text/css" href="/static/source/lib/slick/slick-theme.css">
+<link rel="stylesheet" type="text/css" href="/static/source/pages/index/index.css?v=3">
+{% endblock styles %}
+{% block main_class %}
+section__wrapper
+{% endblock main_class %}
+{% block content %}
+<script>
+  function findWord(word, str) {
+    return RegExp('\\b'+ word +'\\b').test(str)
+  };
+  
+      let check_animation = findWord('animation', document.cookie);
+    
+      var ready = (callback) => {
+        if (document.readyState != "loading") callback();
+        else document.addEventListener("DOMContentLoaded", callback);
+      }
+      ready(() => { 
+        if (check_animation == false) {
+          document.body.scrollTop = document.documentElement.scrollTop = 0;
+          document.querySelectorAll(".site_loader__block")[0].classList.add("site_loader__block_active");
+        loader(4000);
+        } else {
+          console.log(11);
+          document.querySelectorAll(".first_section")[0].classList.add("first_section_active");
+        }
+      });
+  document.cookie = "animation; max-age=7200";
+  function loader(duration) {
+    document.querySelectorAll("html, body")[0].style.overflow = "hidden";
+    let current_speed = duration / 100;
+    let counter = 0;
+      let timerId = setInterval(() => {
+        document.querySelectorAll(".load_num")[0].textContent = counter;
+        document.querySelectorAll(".load_active")[0].style.width = counter + "%";
+        counter++;
+        if (counter > 100) {
+          clearTimeout(timerId);
+          setTimeout(() => {
+          document.querySelectorAll("html, body")[0].style.overflow = "visible";
+            document.querySelectorAll(".first_section")[0].classList.add("first_section_active");
+            document.querySelectorAll(".site_loader__block")[0].classList.remove("site_loader__block_active");
+          }, 400);
+        }
+     }, current_speed);
+     setTimeout(() => {
+      document.querySelectorAll(".logos_anim")[0].classList.add("logos_anim_active");
+     }, 2300);
+  }
+</script>
+<section style="opacity: 0;" class="first_section">
+  <div class="bike_trailer__block">
+    {% for slider in test_drive_sliders %}
+    <div class="bike_trailer__wrapper db_content" data-index="{{forloop.counter}}" data-admin_url="{{slider.get_admin_url}}">
+      <div class="bike_trailer_content">
+        <h1 class="main__title main__title_1 color_black slide-name">
+          {{slider.text|safe}}
+        </h1>
+        <div class="bike_trailer_btn__wrap slide-name">
+          {% render 'text82' as text82 %}
+          <a href="{% url 'test_drive' %}" class="db_content btn_standart btn_standart_transparent" data-admin_url="{{text82.get_admin_url}}">
+              {{text82.text}}
+              <!-- {% trans 'Тест-драйв' %} -->
+            </a>
+            {% if slider.item %}
+            {% render 'text83' as text83 %}
+            <a href="{{slider.item.get_absolute_url}}" class="db_content btn_standart btn_standart_black" data-admin_url="{{text83.get_admin_url}}">
+              {{text83.text}}
+              <!-- {% trans 'Детальніше' %} -->
+            </a>
+            {% endif %}
+        </div>
+      </div>
+        <div class="bike_trailer_img__block">
+            <img class="bike_trailer_img slide-img" data-lazy="{{slider.image.url}}" alt="{{slider.alt}}">
+        </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="nav_for_bike_trailer" data-arrow='next'>
+    <div class="bike_progress__block">
+      <span class="first_num_name num_name title_text_regular">
+        01
+      </span>
+      <div class="line_progress__block">
+        <div class="line_active"></div>
+      </div>
+      <span class="num_name title_text_regular last_click_num">
+        ...
+      </span>
+    </div>
+    <div class="bike_progress_arrow">
+        <button type="button" class="slick-first all_class_slick">
+            <img data-src="/static/source/img/index/combined-arrow.svg" alt="">
+        </button>
+        <button type="button" class="slick-second all_class_slick">
+          <img data-src="/static/source/img/index/combined-arrow.svg" alt="">
+        </button>
+    </div>
+  </div>
+</section>
+<!-- /.first_section -->
+<section class="second_section">
+  
+  <div class="container">
+    {% render 'index_feel' as index_feel %}
+    <h1 class="second_title main__title main__title_1 color_white db_content down_wrap" data-wow-duration="2s" data-admin_url="{{index_feel.get_admin_url}}">
+      {{index_feel.text}}
+      <!-- Відчуй переваги професіоналів -->
+    </h1>
+    {% render 'index_our_velek' as index_our_velek %}
+    <div class="second_sub_title sub_title sub_title_2 color_white text_center db_content down_wrap" data-wow-duration="2.2s" data-admin_url="{{index_our_velek.get_admin_url}}">
+      {{index_our_velek.text}}
+      <!-- Наші велосипеди одні з найпотужніших та найякісніших на ринку -->
+    </div>
+    <div class="preferens__wrap">
+        <img data-src="/static/source/img/index/grid-eleek.png" alt="" class="hidden_preferens__bg">
+        <div class="preferens_profile">
+
+          <div class="preferens_item preferens_item_fix down_wrap" data-wow-duration="2.6s">
+                <div class="preferens_title__block">
+                    <span class="pref_num main__title main__title_5 color_white">
+                      01
+                    </span>
+                    <span class="pref_line"></span>
+                    {% render 'text84' as text84 %}
+                    <span class="db_content pref_text main__title main__title_5 color_white" data-admin_url="{{text84.get_admin_url}}">
+                      {{text84.text}}
+                      <!-- {% trans 'Дистанція' %} -->
+                    </span>
+                </div>
+                <div class="preferens_counter__block">
+                    <span data-count="150" id="preferens_counter_1" class="lines preferens_counter_1 color_yellow main__title main__title_0">
+                      0
+                    </span>
+                    {% render 'text85' as text85 %}
+                    <span class="db_content sub_title sub_title_1 color_white" data-admin_url="{{text85.get_admin_url}}">
+                      {{text85.text}}
+                      <!-- {% trans 'км' %} -->
+                    </span>
+                </div>
+          </div>
+          <div class="preferens_item down_wrap" data-wow-duration="2.6s">
+              <div class="preferens_title__block">
+                  <span class="pref_num main__title main__title_5 color_white">
+                    02
+                  </span>
+                  <span class="pref_line">
+
+                  </span>
+                  {% render 'text86' as text86 %}
+                  <span class="db_content pref_text main__title main__title_5 color_white" data-admin_url="{{text86.get_admin_url}}">
+                    {{text86.text}}
+                    <!-- {% trans 'Швидкість' %} -->
+                  </span>
+              </div>
+              <div class="preferens_counter__block">
+                  <span data-count="100" id="preferens_counter_2" class="lines preferens_counter_2 color_yellow main__title main__title_0">
+                    0
+                  </span>
+                  {% render 'text87' as text87 %}
+                  <span class="db_content sub_title sub_title_1 color_white" data-admin_url="{{text87.get_admin_url}}">
+                    {{text87.text}}
+                    <!-- {% trans 'км/год' %} -->
+                  </span>
+              </div>
+          </div>
+        </div>
+        <div class="preferens_profile">
+          <div class="preferens_item preferens_item_fix down_wrap" data-wow-duration="2.6s">
+            <div class="preferens_title__block">
+                <span class="pref_num main__title main__title_5 color_white">
+                  03
+                </span>
+                <span class="pref_line">
+
+                </span>
+                {% render 'text88' as text88 %}
+                <span class="db_content pref_text main__title main__title_5 color_white" data-admin_url="{{text88.get_admin_url}}">
+                  {{text88.text}}
+                  <!-- {% trans 'Потужність' %} -->
+                </span>
+            </div>
+            <div class="preferens_counter__block">
+                <span data-count="3954" id="preferens_counter_3" class="lines preferens_counter_3 color_yellow main__title main__title_0">
+                  0
+                </span>
+                <span class="sub_title sub_title_1 color_white">
+                  вт
+                </span>
+            </div>
+          </div>
+          <div class="preferens_item down_wrap" data-wow-duration="2.6s">
+          <div class="preferens_title__block">
+              <span class="pref_num main__title main__title_5 color_white">
+                04
+              </span>
+              <span class="pref_line">
+
+              </span>
+              {% render 'text89' as text89 %}
+              <span class="db_content pref_text main__title main__title_5 color_white"  data-admin_url="{{text89.get_admin_url}}">
+                {{text89.text}}
+                <!-- {% trans 'Тривалість заряду' %} -->
+              </span>
+          </div>
+          <div class="preferens_counter__block">
+              <span data-count="4" id="preferens_counter_4" class="lines preferens_counter_4 color_yellow main__title main__title_0">
+                0
+              </span>
+              {% render 'text90' as text90 %}
+              <span class="db_content sub_title sub_title_1 color_white" data-admin_url="{{text90.get_admin_url}}">
+                {{text90.text}}
+                <!-- {% trans 'год' %} -->
+              </span>
+          </div>
+          </div>
+        </div>
+    </div>
+    <div class="img_preferens__block">
+      
+      <img data-src="/static/source/img/index/111333.png" alt="" data-wow-duration="2.4s" class="img_preferens down_wrap">
+    </div>
+  </div>
+  <!-- /.container -->
+</section>
+<!-- /.second_section -->
+<section class="three_section">
+    <div class="eleek_title__wrap down_wrap">
+      <a href="{{velo.get_absolute_url}}">
+        <h1 class="color_black three_title main__title main__title_1">
+          {{velo.title|title}}
+        </h1>
+      </a>
+      <div class="eleek_arrow__block">
+          <div class="eleek_prev_arrow eleek_arrow">
+              <img data-src="/static/source/img/index/combined-arrow.svg" alt="">
+          </div>
+          <div class="eleek_next_arrow eleek_arrow">
+            <img data-src="/static/source/img/index/combined-arrow.svg" alt="">
+          </div>
+      </div>
+    </div>
+    <div class="eleek_slider__wrap">
+      {% for slide in velo_sliders %}
+        <div class="eleek_slide db_content" data-admin_url="{{slide.get_admin_url}}">
+          <div class="eleek_num_counter main__title main__title_01 color_white">
+            {% if forloop.counter > 9 %}
+              {{forloop.counter}}
+            {% else %}
+              0{{forloop.counter}}
+            {% endif %}
+          </div>
+          <div class="eleek_slide_name main__title main__title_3 color_black">
+            {{slide.name}}
+          </div>
+          <div class="eleek_slide_img">
+              <img data-lazy="{{slide.image.url}}" alt="{{slide.alt}}">
+              <!-- <img data-lazy="/static/source/img/index/slide-{{slide}}.png" alt=""> -->
+              <img class="oval_slide" data-lazy="/static/source/img/index/oval.png" alt="">
+          </div>
+          <div class="eleek_slide_info__wrapp">
+            <div class="eleek_slide_info__block">
+              {% render 'text91' as text91 %}
+              <div class="db_content eleek_slide_info sub_title sub_title_2" data-admin_url="{{text91.get_admin_url}}">
+                {{text91.text}}
+                <!-- {% trans 'Дистанція' %} -->
+              </div>
+              <div class="eleek_slide_info eleek_info_result">
+                {{slide.distance}}
+              </div>
+            </div>
+            <div class="eleek_slide_info__block">
+              {% render 'text92' as text92 %}
+              <div class="db_content eleek_slide_info sub_title sub_title_2" data-admin_url="{{text92.get_admin_url}}">
+                {{text92.text}}
+                <!-- {% trans 'Макс. швидкість' %} -->
+              </div>
+              <div class="eleek_slide_info eleek_info_result">
+                {{slide.speed}}
+              </div>
+            </div>
+            
+            <div class="eleek_slide_info__block">
+              {% render 'text93' as text93 %}
+              <div class="db_content eleek_slide_info sub_title sub_title_2" data-admin_url="{{text93.get_admin_url}}">
+                {{text93.text}}
+                <!-- {% trans 'Потужність' %} -->
+              </div>
+              <div class="eleek_slide_info eleek_info_result">
+                {{slide.power}}
+              </div>
+            </div>
+          </div>
+          {% if slide.item %}
+          {% render 'text94' as text94 %}
+          <a href="{{slide.item.get_absolute_url}}" class="db_content eleek_slide_btn btn_standart btn_standart_transparent" data-admin_url="{{text94.get_admin_url}}">
+            {{text94.text}}
+            <!-- {% trans 'Детальніше' %} -->
+          </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+</section>
+<!-- /.three_section -->
+<section class="four_section">
+  
+  <img data-src="/static/source/img/index/rrama-png.png" alt="" style="animation-delay: 0.5s" class="absolute_rams_1 hvr-bob">
+  <img data-src="/static/source/img/index/lite.png" alt="" style="animation-delay: 1s" class="absolute_rams_2 hvr-bob">
+  <img data-src="/static/source/img/index/ekross-copy.png" style="animation-delay: 1.5s" alt="" class="absolute_rams_3 hvr-bob">
+  <div class="four_bg"></div>
+  <div class="four_wrapp down_wrap">
+    <h1 class="color_black four_title main__title main__title_1">
+      {{ramy.title|title}}
+    </h1>
+    {% render 'index_choose' as index_choose %}
+    <div class="sub_title sub_title_2 db_content" data-admin_url="{{index_choose.get_admin_url}}">
+      {{index_choose.text}}
+      <!-- При виборі електро велосипеда можна не обмежувати себе в побажаннях. Ми можемо підібрати велосипед який підійде саме Вам. Починаючи з велосипеда для неспішних прогулянок по парку, закінчуючи зарядженим брутальним мотоциклом для агресивної їзди всюди. -->
+    </div>
+    {% render 'text95' as text95 %}
+    <a href="{{ramy.get_absolute_url}}" class="db_content btn_standart btn_standart_black" data-admin_url="{{text95.get_admin_url}}">
+      {{text95.text}}
+      <!-- {% trans 'Детальніше' %} -->
+    </a>
+    <a href="#" class="glo">
+      Кнопка с анимацией загрузки
+    </a>
+  </div>
+  <!-- /.four_wrapp -->
+</section>
+<!-- /.four_section -->
+<section class="five_section">
+  <div class="five_bg"></div>
+  <div class="absolute_product__block">
+    <div class="absolute_product_profile absolute_product_profile_1">
+      <div class="absolute_product_img">
+        <picture>
+          <source media="(max-width: 1130px)" data-lazy="/static/source/img/index/koleso.png">
+          <img data-src="/static/source/img/index/koleso.png" alt="">
+        </picture>
+          <!-- <img data-lazy="/static/source/img/index/koleso.png" alt=""> -->
+      </div>
+      <a href="{{kole.get_absolute_url}}" class="main__title main__title_5 color_white">
+        {{kole.title|title}}
+        <div class="absolute_product_arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+            <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+    <div class="absolute_product_profile absolute_product_profile_2">
+      <div class="absolute_product_img">
+        <picture>
+          <source media="(max-width: 1130px)" data-lazy="/static/source/img/index/stop.png">
+          <img data-src="/static/source/img/index/stop.png" alt="">
+        </picture>
+          <!-- <img data-lazy="/static/source/img/index/stop.png" alt=""> -->
+      </div>
+      <a href="{{galm.get_absolute_url}}" class="main__title main__title_5 color_white">
+        {{galm.title|title}}
+        <div class="absolute_product_arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+            <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+    <div class="absolute_product_profile absolute_product_profile_3">
+      <a href="{{vilk.get_absolute_url}}" class="main__title main__title_5 color_white">
+        <div class="absolute_product_img">
+          <picture>
+            <source media="(max-width: 1130px)" data-lazy="/static/source/img/index/vylka.png">
+            <img data-src="/static/source/img/index/vylka.png" alt="">
+          </picture>
+            <!-- <img data-lazy="/static/source/img/index/vylka.png" alt=""> -->
+        </div>
+        {{vilk.title|title}}
+        <div class="absolute_product_arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+            <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+    <div class="absolute_product_profile absolute_product_profile_4">
+      <a href="{{moto.get_absolute_url}}" class="main__title main__title_5 color_white">
+      <div class="absolute_product_img">
+        <picture>
+          <source media="(max-width: 1130px)" data-lazy="/static/source/img/index/motor.png">
+          <img data-src="/static/source/img/index/motor.png" alt="">
+        </picture>
+          <!-- <img data-lazy="/static/source/img/index/motor.png" alt=""> -->
+      </div>
+        {{moto.title|title}}
+        <div class="absolute_product_arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+            <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+    <div class="absolute_product_profile absolute_product_profile_5">
+      <div class="absolute_product_img">
+        <picture>
+          <source media="(max-width: 1130px)" data-lazy="/static/source/img/index/amort.png">
+          <img data-src="/static/source/img/index/amort.png" alt="">
+        </picture>
+          <!-- <img data-lazy="/static/source/img/index/amort.png" alt=""> -->
+      </div>
+      <a href="{{amor.get_absolute_url}}" class="main__title main__title_5 color_white">
+        {{amor.title|title}}
+        <div class="absolute_product_arrow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+            <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+          </svg>
+        </div>
+      </a>
+    </div>
+</div>
+  <div class="five_wrapp">
+      <div class="five_title__block paroller" >
+        <h1 class="color_white five_title main__title main__title_1">
+          {{comp.title|title}}
+        </h1>
+        {% render 'index_assort' as index_assort %}
+        <div class="color_white sub_title sub_title_2 db_content" data-admin_url="{{index_assort.get_admin_url}}">
+          {{index_assort.text}}
+          <!-- В нашому асортименті ви можете знайти усі найнеобхідніші товари для вашого байку -->
+        </div>
+        {% render 'index_all_assort' as index_all_assort %}
+        <a href="{{comp.get_absolute_url}}" class="btn_standart btn_standart_yellow db_content" data-admin_url="{{index_all_assort.get_admin_url}}">
+          {{index_all_assort.text}}
+          <!-- Весь асортимент -->
+        </a>
+      </div>
+      <div class="complect__wrap">
+        <div class="complect_slide">
+            <img data-src="/static/source/img/index/koleso.png" alt="" class="complect_img">
+            <div class="main__title main__title_5 color_white">
+              {{kole.title|title}}
+            </div>
+            <a href="{{kole.get_absolute_url}}" class="absolute_product_arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+              </svg>
+            </a>
+        </div>
+        <div class="complect_slide">
+          <img data-src="/static/source/img/index/stop.png" alt="" class="complect_img">
+          <div class="main__title main__title_5 color_white">
+            {{galm.title|title}}
+          </div>
+          <a href="{{kole.get_absolute_url}}" class="absolute_product_arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+            </svg>
+          </a>
+        </div>
+        <div class="complect_slide">
+          <img data-src="/static/source/img/index/vylka.png" alt="" class="complect_img">
+          <div class="main__title main__title_5 color_white">
+            {{vilk.title|title}}
+          </div>
+          <a href="{{vilk.get_absolute_url}}" class="absolute_product_arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+            </svg>
+          </a>
+        </div>
+        <div class="complect_slide">
+          <img data-src="/static/source/img/index/motor.png" alt="" class="complect_img">
+          <div class="main__title main__title_5 color_white">
+            {{moto.title|title}}
+          </div>
+          <a href="{{moto.get_absolute_url}}" class="absolute_product_arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+            </svg>
+          </a>
+        </div>
+        <div class="complect_slide">
+          <img data-src="/static/source/img/index/amort.png" alt="" class="complect_img">
+          <div class="main__title main__title_5 color_white">
+            {{amor.title|title}}
+          </div>
+          <a href="{{amor.get_absolute_url}}" class="absolute_product_arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+            </svg>
+          </a>
+        </div>
+    </div>
+      <!-- <div class="complect__wrap">
+          <div class="complect_slide">
+            <a href="{{kole.get_absolute_url}}" class="absolute_product_arrow">
+              <img src="/static/source/img/index/koleso.png" alt="" class="complect_img">
+              <div class="main__title main__title_5 color_white">
+                {{kole.title|title}}
+              </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                  <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+                </svg>
+            </a>
+          </div>
+          <div class="complect_slide">
+            <a href="{{galm.get_absolute_url}}" class="absolute_product_arrow">
+            <img src="/static/source/img/index/stop.png" alt="" class="complect_img">
+            <div class="main__title main__title_5 color_white">
+            {{galm.title|title}}
+            </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+              </svg>
+            </a>
+          </div>
+          <div class="complect_slide">
+            <a href="{{vilk.get_absolute_url}}" class="absolute_product_arrow">
+            <img src="/static/source/img/index/vylka.png" alt="" class="complect_img">
+            <div class="main__title main__title_5 color_white">
+              {{vilk.title|title}}
+            </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+              </svg>
+            </a>
+          </div>
+          <div class="complect_slide">
+            <a href="{{moto.get_absolute_url}}" class="absolute_product_arrow">
+            <img src="/static/source/img/index/motor.png" alt="" class="complect_img">
+            <div class="main__title main__title_5 color_white">
+              {{moto.title|title}}
+            </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+              </svg>
+            </a>
+          </div>
+          <div class="complect_slide">
+            <a href="{{amor.get_absolute_url}}" class="absolute_product_arrow">
+            <img src="/static/source/img/index/amort.png" alt="" class="complect_img">
+            <div class="main__title main__title_5 color_white">
+              {{amor.title|title}}
+            </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+              </svg>
+            </a>
+          </div>
+      </div> -->
+      
+  </div>
+</section>
+<!-- /.five_section -->
+<section class="six_section">
+  <!-- poster="/static/source/img/index/post.png" -->
+  <video class="eleek_video" data-src="/static/source/img/index/video.mp4" loop="loop" controls="controls" autoplay muted>
+    Sorry, your browser doesn't support embedded videos, 
+    but don't worry, you can <a href="/static/source/img/index/video.mp4">download it</a>
+    and watch it with your favorite video player!
+  </video>
+</section>
+{% endblock content %}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
+<script src="/static/source/lib/slick/slick.min.js"></script> 
+<script src="/static/source/lib/wow/wow.min.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/pages/index/index.js"></script> 
+{% endblock scripts %}

@@ -1,0 +1,25 @@
+<div class="item_rating__block">
+    <svg class="rating_svg {% if item.rounded_stars in '12345'|make_list %} rating_svg_active {% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+      <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+    </svg>
+
+    <svg class="rating_svg {% if item.rounded_stars in '2345'|make_list %} rating_svg_active {% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+      <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+    </svg>
+
+    <svg class="rating_svg {% if item.rounded_stars in '345'|make_list %} rating_svg_active {% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+      <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+    </svg>
+    
+    <svg class="rating_svg {% if item.rounded_stars in '45'|make_list %} rating_svg_active {% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+      <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+    </svg>
+    
+    <svg class="rating_svg {% if item.rounded_stars in '5'|make_list %} rating_svg_active {% endif %}" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+      <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+    </svg>
+
+    <span class="rating_num standart_title standart_title_5 color_black">
+      {{item.rounded_stars}}/5 {% if item.stars|stringformat:".2f" %} ({{item.stars|stringformat:".2f"}}) {% endif %} 
+    </span>
+</div>

@@ -1,0 +1,129 @@
+.three_section {
+    background-color: #efefef;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 250px;
+}
+.three_title {
+
+}
+ 
+  
+.eleek {
+    &_title__wrap {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 50px;
+    }
+    &_arrow__block {
+        display: flex;
+        align-items: center;
+        width: 120px;
+        justify-content: space-between;
+    }
+    &_arrow {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        border: solid 1px #1e1b15;
+        text-align: center;
+        cursor: pointer;
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    &_prev_arrow {
+
+    }
+    &_next_arrow {
+            transform: rotate(180deg);
+
+    }
+
+
+    &_slider__wrap {
+        margin-top: 60px;
+        .slick-list {
+            padding-left: 0px!important; // half partial
+        }
+
+    }
+    &_slide {
+        position: relative;
+        cursor: pointer;
+        // width: 80% !important;
+        // margin: 0px -150px;
+        // padding: 0px 150px;
+        padding: 30px;
+        &_btn {
+            width: 160px;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+        &_name {
+            position: relative;
+            text-align: center;
+        }
+        &_img {
+            position: relative;
+            max-width: 450px;
+            margin: 0 auto;
+            margin-top: 30px;
+            img {
+
+                width: 100%;
+                height: auto;
+            }
+            .oval_slide {
+                position: absolute;
+                bottom: -27px;
+            }
+        }
+        &_info__wrapp {
+            max-width: 400px;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+        &_info__block {
+            padding: 7px 0px;
+            border-bottom: 1px solid #242321;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+    &_num_counter {
+        position: absolute;
+        z-index: 0;
+        top: 20px;
+        left: 0px;
+    
+    }
+}
+.eleek_info_result {
+    font-weight: 800;
+}
+
+@media (max-width: 650px) {
+    .eleek_arrow__block {
+        margin-right: 0;
+        width: 140px;
+    }
+    .three_section {
+        padding-bottom: 150px;
+    }
+}
+@media (max-width: 400px) {
+    .eleek_title__wrap {
+        width: 90%;
+    }    
+    .eleek_arrow__block {
+        width: 110px;
+    }
+}

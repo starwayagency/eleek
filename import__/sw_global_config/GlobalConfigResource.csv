@@ -1,0 +1,2 @@
+id,robots,robots_txt,favicon,og_image_square,og_image_square_uk,og_image_square_en,og_image_square_ru,og_image_rectangle,og_image_rectangle_uk,og_image_rectangle_en,og_image_rectangle_ru,host,port,from_email,username,password,use_tls,use_ssl,fail_silently,timeout
+1,,,favicon/favicon.ico,ogimage/square.png,ogimage/square.png,ogimage/square.png,ogimage/square.png,ogimage/rectangle.png,ogimage/rectangle.png,ogimage/rectangle.png,ogimage/rectangle.png,mail.starwayua.com,587,dev@starwayua.com,dev@starwayua.com,dev69018,1,0,0,

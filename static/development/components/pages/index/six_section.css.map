@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACK,AAAD,YAAS,CAAC;EACN,MAAM,EAAE,KAAK;CAChB;;AAEL,AAAA,YAAY,CAAC;EACT,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,UAAU,EAAE,KAAK;CACpB",
+    "sources": [
+        "six_section.scss"
+    ],
+    "names": [],
+    "file": "six_section.css"
+}

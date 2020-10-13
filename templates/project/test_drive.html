@@ -1,0 +1,97 @@
+{% extends 'project/base.html' %}
+{% load i18n sw_content %}
+{% block styles %}
+<link rel="stylesheet" href="/static/source/pages/drive/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/select2/select2.min.css">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/pages/login/index.css">
+<link rel="stylesheet" href="/static/source/pages/drive/index.css">
+{% endblock styles %}
+{% block main_class %}
+item_section__wrapper
+{% endblock main_class %}
+{% block content %}
+<div class="bg_for_usually_page">
+  <img src="/static/source/img/usually/20200303-150738.jpg" alt="">
+</div>
+<section class="usually_section">
+  <div class="drive_form__block">
+    <form action="{% url 'test_drive_contact' %}" method='POST' class="drive__form">
+      {% render 'test_drive_test_drive' as test_drive_test_drive %}
+      <h3 class="drive_title main__title main__title_2 color_black db_content" data-admin_url="{{test_drive_test_drive.get_admin_url}}">
+        {{test_drive_test_drive.text}}
+        <!-- Тест-драйв -->
+      </h3>
+      {% render 'test_drive_text1' as test_drive_text1 %}
+      <div class="drive_subtitle sub_title sub_title_2 color_black db_content" data-admin_url="{{test_drive_text1.get_admin_url}}">
+        {{test_drive_text1.text}}
+        <!-- Відчуйте силу електро-велосипеду перед покупкою. Заповніть форму на тест-драйф, та наш менеджер зв’яжиться з вами. -->
+      </div>
+      <div class="footer_input__wrap inp-vak-wrap">
+        {% render 'text64' as text64 %}
+        <label for="login_name" data-admin_url="{{text64.get_admin_url}}" class="db_content login_label label__style color_black">
+          {{text64.text}}
+          <!-- {% trans "Ім'я" %} -->
+        </label>
+        <input id="login_name" name="name" class="login_name login_input input_focus">
+      </div>
+      <div class="footer_input__wrap inp-vak-wrap">
+        {% render 'text65' as text65 %}
+        <label for="login_tel" data-admin_url="{{text65.get_admin_url}}" class="db_content login_label label__style color_black">
+          {{text65.text}}
+          <!-- {% trans 'Телефон' %} -->
+        </label>
+        <input id="login_tel" type="tel" name="phone" class="login_tel login_input input_focus">
+      </div>
+      <div class="footer_input__wrap inp-vak-wrap">
+        <label for="login_mail" class="login_label label__style color_black">
+          Email
+        </label>
+        <input type="text" id="login_mail" name="email" class="login_mail login_input input_focus">
+      </div>
+      <div class="footer_input__wrap inp-vak-wrap">
+        {% render 'text66' as text66 %}
+        <label for="select_drive" data-admin_url="{{text66.get_admin_url}}" class="db_content label_select_drive login_label label__style color_black">
+          {{text66.text}}
+          <!-- {% trans 'Модель велосипеда' %} -->
+        </label>
+        <select name="select_drive" id="" style="width: 100%;" class="select_drive">
+          {% for model in models %}
+          <option {% if forloop.counter == 1 %} selected='selected' {% endif%} value="{{model.name}}">
+            {{model.name}}
+          </option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="footer_input__wrap area_input__wrap inp-vak-wrap">
+        {% render 'text67' as text67 %}
+        <label for="drive_send" data-admin_url="{{text67.get_admin_url}}" class="db_content login_label label__style color_black">
+          {{text67.text}}
+          <!-- {% trans 'Повідомлення' %} -->
+        </label>
+        <textarea name='drive_send' id="drive_send" class="login_input input_focus"></textarea>
+      </div>
+      {% render 'text68' as text68 %}
+      <input type="submit" value="{{text68.text}}" class="db_content btn_standart btn_standart_yellow" data-admin_url="{{text68.get_admin_url}}">   
+      <!-- <input type="submit" value="{% trans 'Замовити' %}" class="btn_standart btn_standart_yellow"> -->
+    </form>
+    <div class="drive_map__block">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d626.5368564183469!2d25.55722983059672!3d49.54148059378946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473036dd4ef33ebf%3A0x1bbc6010ee64c2f!2sELEEK!5e0!3m2!1sru!2sua!4v1593086495915!5m2!1sru!2sua" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+  </div>
+</section>
+</main>
+{% endblock content %}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/lib/select2/select2.full.min.js"></script> 
+<script src="/static/source/pages/drive/index.js"></script> 
+{% endblock scripts %}
+
+
+

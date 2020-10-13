@@ -1,0 +1,16 @@
+# створює юзера в БД. Вводити 1 раз перед початком розробки. 
+sudo -u postgres psql -c "create user jurgeon with password '69018'; alter role jurgeon set client_encoding to 'utf8'; alter role jurgeon set default_transaction_isolation to 'read committed'; alter role jurgeon set timezone to 'UTC';"
+
+# це не чіпай 
+#####sudo -u postgres psql -c 'create database dopomoga;'
+#####sudo -u postgres psql -c 'grant all privileges on database dopomoga to jurgeon;'
+
+
+# видаляє БД
+sudo -u postgres psql -c "drop database eleek; "
+
+# створює БД 
+sudo -u postgres psql -c "create database eleek owner jurgeon; "
+
+
+

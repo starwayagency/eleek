@@ -1,0 +1,158 @@
+{% extends "project/base.html" %}
+{% load sw_content i18n %}
+{% block styles %}
+<link rel="stylesheet" href="/static/source/pages/about/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/select2/select2.min.css">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick.min.css">
+<link rel="stylesheet" href="/static/source/pages/login/index.css">
+<link rel="stylesheet" href="/static/source/pages/about/index.css">
+{% endblock styles %}
+
+{% block main_class %}
+item_section__wrapper
+{% endblock main_class %}
+
+{% block content %}
+<div class="bg_for_usually_page">
+  <video class="eleek_video" data-src="/static/source/img/index/video.mp4" autoplay muted poster="/static/source/img/index/post.png">
+    Sorry, your browser doesn't support embedded videos, 
+    but don't worry, you can <a href="/static/source/img/index/video.mp4">download it</a>
+    and watch it with your favorite video player!
+  </video>
+</div>
+<section class="usually_section">
+  <div class="drive_form__block">
+    <div class="drive__form">
+      {% render 'about_us' as about_us %}
+      <h3 class="drive_title main__title main__title_2 color_black db_content" data-admin_url="{{about_us.}}">
+        <!-- Про нас -->
+        {{about_us.text}}
+      </h3>
+      {% render 'text_1' as text_1 %}
+      <div class="drive_subtitle sub_title sub_title_2 color_black db_content" data-admin_url="{{text_1.get_admin_url}}">
+        <!-- Елік – це наступний крок у вело-еволюції. Вже багато років у місті Тернополі функціонує електро-вело-майстерня, яка об’єднала під одним дахом справжніх професіоналів і просто фанатів легкого електротранспорту. Ми постійно розробляємо та тестуємо всілякі новинки, а також приймаємо активну участь в популяризації екотраспорту в Україні та за її межами. -->
+        {{text_1.text}}
+      </div>
+      {% render 'text_2' as text_2 %}
+      <div class="drive_subtitle sub_title sub_title_2 color_black db_content" data-admin_url="{{text_2.get_admin_url}}">
+        {{text_2.text}}
+        <!-- За всі роки існування команії, ми здобули чималий досвід у розробці та виготовленні електротранспорту, із яким ділимося зі всіма зацікавленими. -->
+      </div>
+    </div>
+    <div class="drive_map__block contact_map__block">
+      <div class="eleek_title__wrap">
+        {% render 'certs' as certs %}
+        <div class="eleek_title main__title main__title_4 color_black db_content" data-admin_url="{{certs.get_admin_url}}">
+          {{certs.text}}
+          <!-- Сертифікати -->
+        </div>
+        <div class="eleek_arrow__block">
+          <div class="eleek_prev_arrow eleek_arrow">
+              <img src="/static/source/img/index/combined-arrow.svg" alt="">
+          </div>
+          <div class="eleek_next_arrow eleek_arrow">
+            <img src="/static/source/img/index/combined-arrow.svg" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="doc_slider">
+        {% for cert in certificates %}
+        <div class="doc_prof db_content" data-admin_url="{{cert.get_admin_url}}">
+          <a href="{{cert.image.url}}"></a>
+					<a data-fancybox="gallery" class="gallery_wrap" href="{{cert.image.url}}">
+            <img class="big_gallery bbb" alt="{{cert.alt}}" data-lazy="{{cert.image.url}}">
+          </a>			
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="partners_block">
+    <div class="partner_title__wrap">
+      {% render 'our_partners' as our_partners %}
+      <div class="partners_title main__title main__title_3 color_black db_content" data-admin_url="{{our_partners.get_admin_url}}">
+        {{our_partners.text}}
+        <!-- Партнери -->
+      </div>
+      <div class="eleek_arrow__block partner_arrow">
+        <div class="part_prev_arrow eleek_arrow">
+            <img src="/static/source/img/index/combined-arrow.svg" alt="">
+        </div>
+        <div class="part_next_arrow eleek_arrow">
+          <img src="/static/source/img/index/combined-arrow.svg" alt="">
+        </div>
+      </div>
+    </div>
+      <div class="partner_slider">
+        {% for partner in partners %}
+        <div class="partner_prof db_content" data-admin_url="{{partner.get_admin_url}}">
+          <img src="{{partner.image.url}}" alt="{{partner.alt}}">
+        </div>
+        {% endfor %}
+      </div>
+  </div>
+  
+  <div class="drive_form__block contact_form__block">
+    <form action="{% url 'sw_contact' %}" method="POST" class="drive__form drive__form_last">
+      {% render 'about_contacts' as about_contacts %}
+      <h3 class="drive_title main__title main__title_3 color_black db_content" data-admin_url="{{about_contacts.get_admin_url}}">
+        {{about_contacts.text}}
+        <!-- Контакти -->
+      </h3>
+      {% render 'about_name' as about_name %}
+      <div class="footer_input__wrap inp-vak-wrap db_content" data-admin_url="{{about_name.get_admin_url}}">
+        <label for="login_name" class="login_label label__style color_black">
+          <!-- Ім'я -->
+          {{about_name.text}}
+        </label>
+        <input type="text" id="login_name" name="name" class="login_name login_input input_focus">
+      </div>
+      <div class="footer_input__wrap inp-vak-wrap">
+        {% render 'about_phone' as about_phone %}
+        <label for="login_tel" class="login_label label__style color_black db_content" data-admin_url="{{about_phone.get_admin_url}}">
+          {{about_phone.text}}
+          <!-- Телефон -->
+        </label>
+        <input type="tel" id="login_tel" name="phone" class="login_tel login_input input_focus">
+      </div>
+      <div class="footer_input__wrap inp-vak-wrap">
+        {% render 'about_email' as about_email %}
+        <label for="login_mail" class="login_label label__style color_black db_content" data-admin_url="{{about_email.get_admin_url}}">
+          {{about_email.text}}
+        </label>
+        <input type="text" id="login_mail" name="email" class="login_mail login_input input_focus">
+      </div>
+      
+      <div class="footer_input__wrap area_input__wrap inp-vak-wrap">
+        {% render 'about_message' as about_message %}
+        <label for="drive_send" class="login_label label__style color_black db_content" data-admin_url="{{about_message.get_admin_url}}">
+          <!-- Повідомлення -->
+          {{about_message.text}}
+        </label>
+        <textarea name='message' id="drive_send" class="login_input input_focus"></textarea>
+      </div>
+      {% render 'about_order' as about_order %}
+      <input type="submit" value="{{about_order.text}}" class="btn_standart btn_standart_yellow db_content" data-admin_url="{{about_order.get_admin_url}}">
+    </form>
+    <div class="drive_map__block">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d626.5368564183469!2d25.55722983059672!3d49.54148059378946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473036dd4ef33ebf%3A0x1bbc6010ee64c2f!2sELEEK!5e0!3m2!1sru!2sua!4v1593086495915!5m2!1sru!2sua" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+  </div>
+</section>
+{% endblock content%}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/lib/slick/slick.min.js"></script> 
+<script src="/static/source/lib/select2/select2.full.min.js"></script> 
+<script src="/static/source/pages/about/index.js"></script> 
+{% endblock scripts %}
+
+
+

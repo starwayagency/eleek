@@ -1,0 +1,9 @@
+{% load i18n sw_content %}
+<form method="POST" action="" class="true_form" id="modal-form_true" style="display:none;">
+    <img class="form_true_img" src="/static/source/img/index/png-123.png" alt="">
+    {% render 'text75' as text75 %}
+    <div class="db_content usually_modal_text standart_title standart_title_6 color_black" data-admin_url="{{text75.get_admin_url}}">
+      {{text75.text|safe}}
+      <!-- {% trans 'Дякуємо, заявка опрацьована <br>Наші менеджери звяжуться з Вами' %} -->
+    </div>
+</form>

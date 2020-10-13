@@ -1,0 +1,139 @@
+.three_section {
+  background-color: #efefef;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 250px;
+}
+
+.eleek_title__wrap {
+  width: 80%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-top: 50px;
+}
+
+.eleek_arrow__block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 120px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.eleek_arrow {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border: solid 1px #1e1b15;
+  text-align: center;
+  cursor: pointer;
+}
+
+.eleek_arrow img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.eleek_next_arrow {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.eleek_slider__wrap {
+  margin-top: 60px;
+}
+
+.eleek_slider__wrap .slick-list {
+  padding-left: 0px !important;
+}
+
+.eleek_slide {
+  position: relative;
+  padding: 30px;
+}
+
+.eleek_slide_btn {
+  width: 160px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.eleek_slide_name {
+  position: relative;
+  text-align: center;
+}
+
+.eleek_slide_img {
+  position: relative;
+  max-width: 450px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.eleek_slide_img img {
+  width: 100%;
+  height: auto;
+}
+
+.eleek_slide_img .oval_slide {
+  position: absolute;
+  bottom: -27px;
+}
+
+.eleek_slide_info__wrapp {
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.eleek_slide_info__block {
+  padding: 7px 0px;
+  border-bottom: 1px solid #242321;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.eleek_num_counter {
+  position: absolute;
+  z-index: 0;
+  top: 20px;
+  left: 0px;
+}
+
+.eleek_info_result {
+  font-weight: 800;
+}
+
+@media (max-width: 650px) {
+  .eleek_arrow__block {
+    margin-right: 0;
+    width: 140px;
+  }
+  .three_section {
+    padding-bottom: 150px;
+  }
+}
+/*# sourceMappingURL=three_section.css.map */

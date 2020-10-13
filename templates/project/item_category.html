@@ -1,0 +1,179 @@
+{% extends 'project/base.html' %}
+{% load i18n sw_content sw_catalog %}
+{% block styles %}
+<link rel="stylesheet" href="/static/source/pages/items/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/nouislider/nouislider.min.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick.min.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/pages/items/index.css?v=3">
+{% endblock styles %}
+{% block main_class %}
+item_section__wrapper
+{% endblock main_class %}
+{% block content %}
+<input type="hidden" name="current_currency" id="current_currency" class="current_currency" value="{{current_currency.code}}">
+<section class="prod_header">
+  <input type="hidden" class="category_id" name="category_id" value={{category.id}}>
+  <div class="container">
+    <div class="product-block">
+      {% if items %}
+      <div class="product_filter">
+          <div class="filter filter_center">
+              <input type="checkbox" id="filter3" name="filter-group" class="inp_filter">
+              <label for="filter3" class="filter-title">
+                  <span class="filter__title standart_title standart_title_4 color_black">
+                    <!-- {% trans 'Фільтр' %} -->
+                  </span> 
+                  <div class="mobale_filter">
+                      <img src="/static/source/img/items/set-2.svg" alt="">
+                  </div>
+              </label> 
+              <div class="filter-content"> 
+                  <form action="" class="filter_form">
+                    <!-- {% trans 'Ціна' %} -->
+                    <!-- {% render 'text58' as text58 %}
+                    <div class="db_content filter_category standart_title standart_title_4 color_black" data-admin_url="{{text58.get_admin_url}}">
+                      {{text58.text}}
+                    </div>
+                  <input type="hidden" name="min_sum" class="input_for_min_range">
+                  <input type="hidden" name="max_sum" class="input_for_max_range">
+                  <input type="hidden" id="max_min_prices" data-max_price="{{max_price}}" data-min_price="{{min_price}}"_>
+                      <div class="cost_filter_num standart_title standart_title_6 color_black">
+                          
+                      </div>
+                  <div class="range_slider" id="slider"></div> -->
+                  {% for parent_category in parent_categories %}
+                  <div class="items_filter_content__wrap {% if parent_category == page %} items_filter_content__wrap_active {% endif %}">
+                    <a href="{{parent_category.get_absolute_url}}">
+                      <div class="items_filter_title standart_title standart_title_4 color_black db_content" data-admin_url="{{parent_category.get_admin_url}}">
+                        {{parent_category.title|title}}
+                      </div>
+                    </a>
+                    <div class="items_filter_content">
+                      {% for subcategory in parent_category.get_children %}
+                      <div class="radio_block">
+                        <!-- <input class="input_radio input_all_arr" name="discount" value="{{subcategory.id}}" type="checkbox" id="rb-{{subcategory.id}}">  -->
+                        <!-- <label class="label_radio standart_title standart_title_6 color_black" for="rb-{{subcategory.id}}">{{subcategory.title}}</label> -->
+                        <a href="{{subcategory.get_absolute_url}}" class="label_radio standart_title standart_title_6 color_black db_content" data-admin_url="{{subcategory.get_admin_url}}">
+                          {{subcategory.title}}
+                        </a>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  {% endfor %}
+                  </form>
+              </div> 
+          </div> 
+      </div>
+      <div class="product_content">
+        <div class="mini_navigate-block">
+          {% render 'text59' as text59 %}
+          <a href="{% url 'index' %}" data-admin_url="{{text59.get_admin_url}}" class="db_content mini_nav_name sub_title sub_title_2 color_black_2">
+            {{text59.text}}
+            <!-- {% trans 'Головна' %} -->
+          </a>
+          <span class="slash sub_title sub_title_2 color_black">
+              /
+          </span>
+          {% render 'text60' as text60 %}
+          <a href="{% url 'shop' %}" data-admin_url="{{text60.get_admin_url}}" class="db_content mini_nav_name sub_title sub_title_2 color_black_2">
+            {{text60.text}}
+            <!-- {% trans 'Магазин' %} -->
+          </a>
+          {% for cat in category.parents %}
+            {% if cat%}
+              <span class="slash sub_title sub_title_2 color_black">
+                  /
+              </span>
+              <a href="{{cat.get_absolute_url}}" data-admin_url="{{cat.get_admin_url}}" class="db_content mini_nav_name sub_title sub_title_2 color_black_2">
+                {{cat.title|title}}
+              </a>
+            {% endif %}
+          {% endfor %}
+      </div>
+          <h2 class="product_title main__title main__title_3 color_black db_content" data-admin_url="{{category.get_admin_url}}">
+            {{category.title|title}}
+          </h2>
+          <div class="main_product-block">
+            <div class="load_product">
+              <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+              <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.0" width="64px" height="64px" viewBox="0 0 128 128" xml:space="preserve">
+                <g>
+                  <path d="M122.5 69.25H96.47a33.1 33.1 0 0 0 0-10.5h26.05a5.25 5.25 0 0 1 0 10.5z" fill="#ffd10a4a"/>
+                  <path d="M112.04 97.83L89.47 84.8a33.1 33.1 0 0 0 5.25-9.1l22.57 13.03a5.25 5.25 0 0 1-5.28 9.1z" fill="#ffd10a4a"/>
+                  <path d="M88.68 117.35L75.65 94.78a33.1 33.1 0 0 0 9.1-5.25l13.02 22.57a5.25 5.25 0 1 1-9.1 5.25z" fill="#ffd10a4a"/>
+                  <path d="M58.7 122.57V96.5a33.1 33.1 0 0 0 10.5 0v26.07a5.25 5.25 0 0 1-10.5 0z" fill="#ffd10a4a"/>
+                  <path d="M30.1 112.1l13.04-22.57a33.1 33.1 0 0 0 9.1 5.25L39.2 117.35a5.25 5.25 0 1 1-9.1-5.25z" fill="#ffd10a4a"/>
+                  <path d="M10.6 88.74L33.16 75.7a33.1 33.1 0 0 0 5.25 9.1L15.88 97.83a5.25 5.25 0 1 1-5.25-9.1z" fill="#ffd10a4a"/>
+                  <path d="M5.37 58.75h26.06a33.1 33.1 0 0 0 0 10.5H5.37a5.25 5.25 0 0 1 0-10.5z" fill="#ffd10a73"/>
+                  <path d="M15.85 30.17L38.4 43.2a33.1 33.1 0 0 0-5.24 9.1L10.6 39.25a5.25 5.25 0 1 1 5.25-9.1z" fill="#ffd10aa1"/>
+                  <path d="M39.2 10.65l13.03 22.57a33.1 33.1 0 0 0-9.1 5.25l-13-22.57a5.25 5.25 0 1 1 9.1-5.25z" fill="#ffd10aa1"/>
+                  <path d="M69.2 5.43V31.5a33.1 33.1 0 0 0-10.5 0V5.42a5.25 5.25 0 1 1 10.5 0z" fill="#ffd10abd"/>
+                  <path d="M97.77 15.9L84.75 38.47a33.1 33.1 0 0 0-9.1-5.25l13.03-22.57a5.25 5.25 0 1 1 9.1 5.25z" fill="#ffd10abd"/>
+                  <path d="M117.3 39.26L94.7 52.3a33.1 33.1 0 0 0-5.25-9.1l22.57-13.03a5.25 5.25 0 0 1 5.25 9.1z" fill="#ffd10a"/>
+                  <animateTransform attributeName="transform" type="rotate" values="0 64 64;30 64 64;60 64 64;90 64 64;120 64 64;150 64 64;180 64 64;210 64 64;240 64 64;270 64 64;300 64 64;330 64 64" calcMode="discrete" dur="1080ms" repeatCount="indefinite">
+                  </animateTransform>
+                </g>
+              </svg>
+            </div>
+            {% for item in items %}
+              <div class="product_card-prof db_content" data-admin_url="{{item.get_admin_url}}">
+                  <a href="{{item.get_absolute_url}}" class="prod_card_link">
+                      <img src="{{item.image_url}}" alt="" class="prod_card-img">
+                  </a>
+                  <div class="prod_card_info__wrap">
+                    <div class="prod_card-name standart_title standart_title_4 color_black">
+                      {{item.title|title}}
+                    </div>
+                    <div class="prod_card-info">
+                        <div class="prod_card-cost main__title main__title_5 color_black">
+                            {% get_item_price item current_currency "price_with_discount" as item_price%}
+                            {{item_price|floatformat}} {{current_currency.code}}
+ 
+                            <!-- {{item.price}} {{item.currency}} -->
+
+                        </div>
+                        <a href="{{item.get_absolute_url}}" class="prod_card-btn">
+                            <img class="absolute_center" src="/static/source/img/items/okey.svg" alt="">
+                        </a>
+                    </div>
+                  </div>
+              </div>
+            {% endfor %}
+          </div>
+          {% if show_more %}
+          {% render 'text61' as text61 %}
+          <div class="db_content prod_card_more btn_standart_transparent standart_title standart_title_4 color_black" data-admin_url="{{text61.get_admin_url}}">
+            {{text61.text}}
+            <!-- {% trans 'Більше товарів' %} -->
+          </div>
+          {% endif %}
+      </div>
+      {% else %}
+      {% render 'text62' as text62 %}
+      <div class="db_content unset_title__block main__title main__title_00 color_black" data-admin_url="{{text62.get_admin_url}}">
+        {{text62.text}}
+        <!-- {% trans 'В даній категорії немає товарів!' %} -->
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  <!-- /.container -->
+</section>
+{% endblock content %}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
+<script src="/static/source/lib/slick/slick.min.js"></script> 
+<script src="/static/source/lib/wow/wow.min.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/source/lib/nouislider/nouislider.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/pages/items/index.js"></script> 
+{% endblock scripts %}
+
+

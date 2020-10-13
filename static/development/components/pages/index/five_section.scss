@@ -1,0 +1,163 @@
+.five {
+    &_section {
+        position: relative;
+        background: #1b1b1a;
+        height: 1200px;
+
+        .slick-list {
+            padding-left: 0px!important; // half partial
+        }
+    }
+    &_bg {
+        position: absolute;
+        background-color: #1b1b1a;
+        width: 120vw;
+        height: 500px;
+        transform: rotate(-4deg);
+        top: -90px;
+        left: -35px;
+    }
+    &_wrapp {
+        position: relative;
+        max-width: 600px;
+        margin: 0 auto;
+        padding-top: 50px;
+        text-align: center;
+
+        .sub_title {
+            text-align: center;
+            width: 90%;
+            margin: 30px auto;
+        }
+
+        .btn_standart {
+            width: 255px;
+            text-transform: uppercase;
+            text-align: center;
+            margin: 0 auto;
+            margin-bottom: 80px;
+
+        }
+    }
+}
+.absolute_product {
+    &_arrow {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        border: solid 1px #fff;
+        text-align: center;
+        transform: rotate(180deg);
+        cursor: pointer;
+        margin: 0 auto;
+        margin-top: 20px;
+        display: block;
+
+
+        svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            stroke: #fff;
+        }
+    }
+    &_img {
+        margin-bottom: 20px;
+    }
+    &_profile {
+        .main__title {
+            text-align: center;
+            display: block;
+        }
+        &_1 {
+            position: absolute;
+            top: 15%;
+            left: 2%;
+        }
+        &_2 {
+            position: absolute;
+            top: 350px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        &_3 {
+            position: absolute;
+            top: 1%;
+            right: 3%;
+        }
+        &_4 {
+            position: absolute;
+            bottom: 100px;
+            left: 20%;
+        }
+        &_5 {
+            position: absolute;
+            bottom: 200px;
+            right: 20%;
+        }
+    }
+}
+.complect__wrap {
+    display: none;
+}
+
+@media (max-width: 1234px) {
+    .absolute_product_img {
+        img {
+            width: 200px;
+        }
+    }
+    .five_section {
+        height: 1000px;
+    }
+    .absolute_product_profile_1 {
+        top: 18%;
+        left: 4%;
+    }
+    .absolute_product_profile_4 {
+        bottom: 60px;
+        left: 20%;
+    }
+    .absolute_product_profile {
+        z-index: 3;
+    }
+    .absolute_product_profile_5 {
+        right: 26%;
+        bottom: 80px;
+
+    }
+}
+
+@media (max-width: 1030px) {
+    
+    .five_section {
+        height: unset;
+        padding-bottom: 100px;
+    }
+    .five_wrapp {
+        max-width: 100%;
+    }
+    .absolute_product__block {
+        display: none;
+    }
+    .complect__wrap {
+        display: block;
+
+        .main__title_5 {
+            margin: 25px 0;
+        }
+    }
+    .complect_img {
+        width: 100%;
+        height: 400px;
+        object-fit: contain;
+    }
+}
+@media (max-width: 676px) {
+    .complect_img {
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+    }
+}

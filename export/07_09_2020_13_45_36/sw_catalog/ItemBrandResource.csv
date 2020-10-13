@@ -1,0 +1,5 @@
+id,code,order,is_active,created,updated,meta_title,meta_title_uk,meta_title_en,meta_title_ru,meta_descr,meta_descr_uk,meta_descr_en,meta_descr_ru,meta_key,meta_key_uk,meta_key_en,meta_key_ru,slug,alt,alt_uk,alt_en,alt_ru,image,title,title_uk,title_en,title_ru,description,description_uk,description_en,description_ru
+1,,0,1,2020-07-03 16:54:32,2020-09-02 09:08:08,Бренд 2,Бренд 2,,,,,,,,,,,brend-2,Бренд 2,Бренд 2,,,H170b270c41df4a7da57f5996f475414eL.png,QuanShun,QuanShun,,,,,,
+2,,0,1,2020-07-03 16:54:33,2020-07-27 09:43:16,Бренд 4,Бренд 4,,,,,,,,,,,brend-4,Бренд 4,Бренд 4,,,,Eleek,Eleek,,,,,,
+3,,0,1,2020-07-03 16:54:33,2020-07-03 16:54:33,Бренд 3,Бренд 3,,,,,,,,,,,brend-3,Бренд 3,Бренд 3,,,,Бренд 3,Бренд 3,,,,,,
+4,,0,1,2020-07-03 16:54:34,2020-07-03 16:54:34,Бренд 1,Бренд 1,,,,,,,,,,,brend-1,Бренд 1,Бренд 1,,,,Бренд 1,Бренд 1,,,,,,

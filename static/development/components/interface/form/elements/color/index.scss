@@ -1,0 +1,29 @@
+.form__color {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #3431;
+  min-height: 45px;
+  min-width: 45px;
+  transition: 0.3s;
+  &:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    opacity: 0.7;
+  }
+  &_check {
+    display: none;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 23px;
+    height: 23px;
+  }
+  &-active {
+    .form__color_check {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}

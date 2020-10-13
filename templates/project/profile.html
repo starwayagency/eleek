@@ -1,0 +1,269 @@
+{% extends 'project/base.html' %}
+{% load i18n sw_content %}
+{% block styles %}
+<link rel="stylesheet" href="/static/source/pages/items/index.css.map">
+<link rel="stylesheet" href="/static/source/pages/profile/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/slick/slick.min.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/pages/item/index.css?v=3">
+<link rel="stylesheet" href="/static/source/pages//login/index.css">
+<link rel="stylesheet" href="/static/source/pages/profile/index.css?v=3">
+{% endblock styles %}
+{% block content %}
+<main class="item_section__wrapper">
+  <section class="item_tab profile_tab padding_sect">
+    {% render 'cabinet' as cabinet %}
+    <div class="profile_name main__title main__title_2 color_black db_content" data-admin_url="{{cabinet.get_admin_url}}">
+      {{cabinet.text}}
+      <!-- Особистий кабінет -->
+    </div>
+    <div class="sub_profile__block">
+      <div class="sub_mail main__title main__title_4 color_black">
+        {{request.user.username}} {% if request.user.email %} ({{request.user.email}}) {% endif %}
+      </div>
+      {% render 'text96' as text96 %}
+      <a href="{% url 'sw_logout' %}" class="db_content exit_profile main_sub_title main_sub_title_3" data-admin_url="{{text96.get_admin_url}}">
+        {{text96.text}}
+        <!-- {% trans 'Вийти' %} -->
+      </a>
+    </div>
+    <div class="tab_container">
+      <div class="item_tab_link__block">
+        {% render 'text97' as text97 %}
+        <div data-tab="1" class="db_content item_tab_link standart_title standart_title_3 color_black item_tab_link_active" data-admin_url="{{text97.get_admin_url}}">
+          {{text97.text}}
+          <!-- {% trans 'Історія покупок' %} -->
+        </div>
+        {% render 'text98' as text98 %}
+        <div data-tab="2" class="db_content item_tab_link standart_title standart_title_3 color_black" data-admin_url="{{text98.get_admin_url}}">
+          {{text98.text}}
+          <!-- {% trans 'Програма лояльності' %} -->
+        </div>
+        {% render 'text99' as text99 %}
+        <div data-tab="3" class="db_content item_tab_link item_tab_link_3 standart_title standart_title_3 color_black" data-admin_url="{{text99.get_admin_url}}">
+          {{text99.text}}
+          <!-- {% trans 'Налаштування профілю' %} -->
+        </div>
+      </div>
+      <div class="item_tab_content__block">
+        <!-- Історія покупок -->
+        <div id="1" class="item_tab_content item_tab_content_active">
+          <div class="profile_content__wrap">
+            <!-- <div class="profile_warning__block">
+                  <div class="warning_text">
+                    У вас все ще немає покупок. Оберіть категорію товару для покупки. 
+                  </div>
+                  <a href="#" class="ultra_link sub_title sub_title_2 color_yellow">
+                    Категорії товарів
+                  </a>
+                </div> -->
+            {% if orders.exists %}
+              <div class="profile_attributes__block">
+                {% render 'text100' as text100 %}
+                <div class="db_content profile_attr_name standart_title standart_title_6 color_black attr_size_1" data-admin_url="{{text100.get_admin_url}}">
+                  {{text100.text}}
+                  <!-- {% trans "Фото" %}               -->
+                </div>
+                {% render 'text101' as text101 %}
+                <div class="db_content profile_attr_name standart_title standart_title_6 color_black attr_size_2" data-admin_url="{{text101.get_admin_url}}">
+                  {{text101.text}}
+                  <!-- {% trans "Назва" %}               -->
+                </div>
+                {% render 'text102' as text102 %}
+                <div class="db_content profile_attr_name standart_title standart_title_6 color_black attr_size_3" data-admin_url="{{text102.get_admin_url}}">
+                  {{text102.text}}
+                  <!-- {% trans "К-сть" %}               -->
+                </div>
+                {% render 'text103' as text103 %}
+                <div class="db_content profile_attr_name standart_title standart_title_6 color_black attr_size_4" data-admin_url="{{text103.get_admin_url}}">
+                  {{text103.text}}
+                  <!-- {% trans "Дата" %}               -->
+                </div>
+                {% render 'text104' as text104 %}
+                <div class="db_content profile_attr_name standart_title standart_title_6 color_black attr_size_5" data-admin_url="{{text104.get_admin_url}}">
+                  {{text104.text}}
+                  <!-- {% trans "Ціна" %}               -->
+                </div>
+                {% render 'text105' as text105 %}
+                <div class="db_content profile_attr_name standart_title standart_title_6 color_black attr_size_5" data-admin_url="{{text105.get_admin_url}}">
+                  {{text105.text}}
+                  <!-- {% trans "№ заказу" %}               -->
+                </div>
+              </div>
+              {% for order in orders %}
+              {% for cart_item in order.cart_items.all %}
+              <a href="{{cart_item.item.get_absolute_url}}">
+              <div class="profile_item">
+                <div class="profile_characteristick attr_size_1">
+                  <img src="{{cart_item.item.image_url}}" alt="{{cart_item.item.alt}}">
+                </div>
+                <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_2">
+                  {{cart_item.item.title}}
+                </div>
+                <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_3">
+                  {{cart_item.quantity}} шт.
+                </div>
+                <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_4">
+                  {{order.created|date:"d.m.Y"}}
+                </div>
+                <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_5">
+                  {{cart_item.item.price}} {{cart_item.item.currency.code}}
+                </div>
+                <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_5">
+                  {{order.id}}
+                </div>
+              </div>
+              </a>
+              {% endfor %}
+              {% endfor %}
+            {% else %}
+            {% render 'text106' as text106 %}
+            <div class="db_content" data-admin_url="{{text106.get_admin_url}}">
+              {{text106.text}}
+              <!-- Ви ще не зробили ніяких замовлень -->
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <!-- Програма лояльності -->
+        <div id="2" class="item_tab_content">
+          <div class="profile_content__wrap">
+            <!-- <div class="profile_warning__block">
+              <div class="warning_text">
+                У вас поки що немає спеціальних пропозицій.
+              </div>
+              <a href="#" class="ultra_link sub_title sub_title_2 color_yellow">
+                Магазин 
+              </a>
+            </div> -->
+            <div class="profile_attributes__block">
+              {% render 'text107' as text107 %}
+              <div class="db_content profile_attr_name standart_title standart_title_6 color_black attr_size_10" data-admin_url="{{text107.get_admin_url}}">
+                {{text107.text}}
+                <!-- {% trans 'Назва' %} -->
+              </div>
+              {% render 'text108' as text108 %}
+              <div class="db_content profile_attr_name standart_title standart_title_6 color_black attr_size_11" data-admin_url="{{text108.get_admin_url}}">
+                {{text108.text}}
+                <!-- {% trans 'Знижка' %} -->
+              </div>
+              {% render 'text109' as text109 %}
+              <div class="db_content profile_attr_name standart_title standart_title_6 color_black attr_size_12" data-admin_url="{{text109.get_admin_url}}">
+                {{text109.text}}
+                <!-- {% trans 'Термін дії' %} -->
+              </div>
+              {% render 'text110' as text110 %}
+              <div class="db_content profile_attr_name standart_title standart_title_6 color_black attr_size_13" data-admin_url="{{text110.get_admin_url}}">
+                {{text110.text}}
+                <!-- {% trans 'Дія' %}   -->
+              </div>
+            </div>
+            {% for coupon in coupons  %}
+            <div class="profile_item ">
+              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_10 db_content" data-admin_url="{{coupon.get_admin_url}}">
+                {{coupon.name}}
+              </div>
+              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_11">
+                {{coupon.discount_amount}} 
+                {% if coupon.discount_type == 'percent' %} 
+                % 
+                {% else %}
+                {{coupon.currency.code}}
+                {% endif %}
+              </div>
+              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_12">
+                <!-- 16.03.2020-10.06.2020 -->
+                {{coupon.started|date:"Y.m.d"}}-{{coupon.period|date:"Y.m.d"}}
+              </div>
+              <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_13">
+                <a href="{% url 'shop' %}">
+                <div class="btn_standart btn_standart_transparent">
+                    В магазин
+                  </div>
+                </a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        <!-- Налаштування профілю -->
+        <div id="3" class="item_tab_content">
+          <form action="{% url 'update_project_user' %}" class="change_profile registery_form PATCH">
+            <div class="footer_input__wrap inp-vak-wrap">
+              {% render 'text111' as text111 %}
+              <label for="login_name" class="db_content login_label label__style color_black" data-admin_url="{{text111.get_admin_url}}">
+                {{text111.text}}
+                <!-- Ім'я та прізвище -->
+              </label>
+              <input type="text" id="login_name" name="first_name" value="{% if request.user.first_name %}{{request.user.first_name}}{% endif %}" class="login_name login_input input_focus">
+            </div>
+            <div class="footer_input__wrap inp-vak-wrap">
+              <label for="login_mail" class="login_label label__style color_black">
+                Email
+              </label>
+              <input type="text" id="login_mail" name="email" value="{% if request.user.email %}{{request.user.email}}{% endif %}" class="login_mail login_input input_focus">
+            </div>
+            <div class="footer_input__wrap inp-vak-wrap">
+              {% render 'text112' as text112 %}
+              <label for="login_tel" class="db_content login_label label__style color_black" data-admin_url="{{text112.get_admin_url}}">
+                {{text112.text}}
+                <!-- Телефон -->
+              </label>
+              <input type="tel" id="login_tel" name="phone_number" value="{% if request.user.phone_number %}{{request.user.phone_number}}{% endif %}" class="mobile login_tel login_input input_focus">
+            </div>
+            <div class="footer_input__wrap inp-vak-wrap">
+              {% render 'text113' as text113 %}
+              <label for="login_city" class="db_content login_label label__style color_black" data-admin_url="{{text113.get_admin_url}}">
+                {{text113.text}}
+                <!-- Місто -->
+              </label>
+              <input type="text" id="login_city" name="address" value="{% if request.user.address %}{{request.user.address}}{% endif %}" class="login_city login_input input_focus">
+            </div>
+            <!-- <div class="footer_input__wrap inp-vak-wrap">
+              <label for="login_old_pass" class="login_label label__style color_black">
+                Пароль
+              </label>
+              <input type="password" id="login_old_pass" name="old_password" class="login_old_pass login_input input_focus">
+            </div> -->
+            <div class="footer_input__wrap inp-vak-wrap">
+              {% render 'text114' as text114 %}
+              <label for="login_pass" class="login_label label__style color_black"  data-admin_url="{{text114.get_admin_url}}">
+                {{text114.text}}
+                <!-- Новий Пароль -->
+              </label>
+              <input type="password" id="login_pass" name="pass1" class="login_pass login_input input_focus">
+            </div>
+            <div class="footer_input__wrap inp-vak-wrap">
+              {% render 'text115' as text115 %}
+              <label for="login_pass2" class="db_content login_label label__style color_black" data-admin_url="{{text115.get_admin_url}}">
+                {{text115.text}}
+                <!-- Повторіть пароль -->
+              </label>
+              <input type="password" id="login_pass2" name="password2" class="login_pass2 login_input input_focus">
+            </div>
+            <div class="pass_checked_error"></div>
+            <div class="bottom_registery__block">
+              <input type="submit" value="Зберегти" class="btn_standart btn_standart_yellow">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock content %}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
+<script src="/static/source/lib/slick/slick.min.js"></script> 
+<script src="/static/source/lib/wow/wow.min.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/pages/profile/index.js"></script> 
+{% endblock scripts %}
+
+
+

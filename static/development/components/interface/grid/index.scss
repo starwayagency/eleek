@@ -1,0 +1,258 @@
+main{
+    position: relative;
+    
+}
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.padding_sect {
+    padding-top: 70px;
+}
+
+.absolute_center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.ultra_link {
+    padding-bottom: 3px;
+    border-bottom: 1px solid #2b2a27;
+}
+//  тут шрифти Oswald ==================>
+.main__title {
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.08;
+    letter-spacing: normal;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    &_01 {
+        font-size: 220px;
+        font-weight: 700;
+    }
+    &_0 {
+        font-size: 100px;
+    }
+    &_00 {
+        font-size: 75px;
+    }
+    &_1 {
+        font-size: 65px;
+    }
+    &_2 {
+        font-size: 45px;
+    }
+    &_3 {
+        font-size: 36px;
+    }
+    &_4 {
+        font-size: 24px;
+    }
+    &_5 {
+        font-size: 18px;
+    }
+    &_6 {
+        font-size: 14px;
+    }
+}
+//  тут шрифти Oswald 400 ==================>
+
+.standart_title {
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.08;
+    letter-spacing: normal;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    &_1 {
+        font-size: 45px;
+    }
+    &_3 {
+        font-size: 24px;
+    }
+    &_4 {
+        font-size: 18px;
+    }
+    &_5 {
+        font-size: 16px;
+    }
+    &_6 {
+        font-size: 14px;
+    }
+}
+
+
+// тут шрифти Lato  ==================>
+.sub_title {
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    &_1 {
+        font-size: 36px;
+    }
+    &_21 {
+        font-size: 22px;
+    }
+    &_2 {
+        font-size: 16px;
+    }
+    &_3 {
+        font-size: 14px;
+    }
+}
+
+// тут шрифти Lato 700  ==================>
+.main_sub_title {
+    font-weight: 700;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    &_3 {
+        font-size: 18px;
+    }
+}
+
+.title_text_regular {
+    font-size: 18px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #3d3c3a;
+    font-family: 'Oswald', sans-serif;
+}
+.discount_title {
+    font-size: 14px;
+    color: #b2b2b2;
+    text-align: right;
+}
+.basket_btn {
+    text-align: center;
+    text-transform: uppercase;
+    color: #2b2a27;
+    background-color: #ffd10a;
+    
+}
+
+.none_content_send {
+    position: absolute;
+    top: 50%;
+    left: 200%;
+    font-size: 22px;
+    opacity: 0;
+    transition: all .3s;
+    transition-delay: .2s;
+    width: 100%;
+    text-align: center;
+
+    &_active {
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+.color {
+    &_yellow {
+        color: #ffd10a;
+    }
+    &_black {
+        color: #3d3c3a;
+    }
+    &_black_2 {
+        color: #8d8d8d;
+    }
+    &_white {
+        color: #fff;
+    }
+}
+
+
+.label__style {
+    top: -13px;
+    font-size: 16px;
+    transition: all .2s;
+    position: absolute;
+
+}
+.label__style_active {
+    top: -16px;
+    font-size: 13px;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    transition: all .2s;
+    background-color: #ffd10a !important;
+}
+@media (max-width: 1460px) { 
+    .container {
+        max-width: unset;
+        width: 85%;
+        margin: 0 auto;
+    }
+}
+@media (max-width: 1309px) { 
+    .main__title {
+        &_1 {
+            font-size: 45px;
+        }
+        &_0 {
+            font-size: 60px;
+        }
+        &_5 {
+            font-size: 15px;
+        }
+    }
+}
+@media (max-width: 631px) {
+    
+    .main__title {
+        &_0 {
+            font-size: 30px;
+        }
+        &_1 {
+            font-size: 27px;
+        }
+        &_5 {
+            font-size: 13px;
+        }
+    }
+    .sub_title {
+        &_2 {
+            font-size: 13px;
+        }
+        &_1 {
+            font-size: 22px;
+        }
+    }
+}
+@media (max-width: 602px) {
+    .btn_standart {
+        font-size: 13px;
+    }
+    .main__title {
+        &_2 {
+            font-size: 35px;
+        }
+    }
+}
+@media (max-width: 533px) {
+    .padding_sect {
+        padding-top: 60px;
+    }
+}
+@media (max-width: 470px) {
+    .standart_title_3 {
+        font-size: 16px;
+    }
+    .main__title_1 {
+        font-size: 25px;
+    }
+    .main__title_3 {
+        font-size: 29px;
+    }
+}
+

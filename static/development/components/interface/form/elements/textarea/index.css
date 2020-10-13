@@ -1,0 +1,82 @@
+.textarea {
+  width: 100%;
+  height: calc(100% - 60px);
+  position: relative;
+  margin: 30px 0;
+}
+
+.textarea_box {
+  position: relative;
+  height: 100%;
+}
+
+.textarea_label {
+  position: absolute;
+  top: 12px;
+  left: 0;
+  -webkit-transition: .3s;
+  transition: .3s;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.textarea-field {
+  height: 100%;
+  max-height: 100%;
+  min-height: 160px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  width: 100%;
+  background: inherit;
+  outline: none;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  padding: 13px 0;
+}
+
+.textarea-black .textarea_label {
+  color: #242321;
+}
+
+.textarea-black .textarea-field {
+  color: #242321;
+  border-bottom: 1px solid #242321;
+}
+
+.textarea-white .textarea_label {
+  color: #fff;
+}
+
+.textarea-white .textarea-field {
+  color: #fff;
+  border-bottom: 1px solid #fff;
+}
+
+.in-focus .textarea_label {
+  top: -10px;
+  -webkit-transition: .3s;
+  transition: .3s;
+  font-size: 14px;
+}
+
+.is-error.in-focus .textarea_label {
+  color: #ff4b4b;
+}
+
+.is-error .textarea-field {
+  border-bottom: 1px solid #ff4b4b;
+  color: #ff4b4b;
+}
+
+.is-error .textarea_label {
+  color: #ff4b4b;
+}
+
+.is-error label.error {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #ff4b4b;
+}
+/*# sourceMappingURL=index.css.map */

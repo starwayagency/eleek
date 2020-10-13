@@ -1,0 +1,4 @@
+id,item,image,alt,alt_uk,alt_en,alt_ru,name,name_uk,name_en,name_ru,distance,distance_uk,distance_en,distance_ru,speed,speed_uk,speed_en,speed_ru,power,power_uk,power_en,power_ru
+1,1,sliders/slide-1.png,Eleek Neo,Eleek Neo,алт,алт,Neo,Neo,Neo 1,Neo 1,40 км,40 км,До 151км,До 151км,до 40 км/год,до 40 км/год,82км/год,82км/год,600 Вт,600 Вт,2000вт,2000вт
+2,325,sliders/slide-2.png,Eleek Atom,Eleek Atom,алт,алт,Atom,Atom,Neo 2,Neo 2,150 км,150 км,До 151км,До 151км,70 км/год,70 км/год,82км/год,82км/год,3000 Вт,3000 Вт,2000вт,2000вт
+3,4,sliders/slide-3.png,Eleek Lite,Eleek Lite,алт,алт,Lite,Lite,Neo 3,Neo 3,80 км,80 км,До 151км,До 151км,до 50 км/год,до 50 км/год,82км/год,82км/год,1000 Вт,1000 Вт,2000вт,2000вт

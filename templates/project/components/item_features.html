@@ -1,0 +1,18 @@
+{% load i18n sw_content sw_catalog %}
+{% for feature_category in item.get_feature_categories %}
+<div id="{{forloop.counter|add:'1'}}" class="item_tab_content {% if forloop.counter == 1 %} item_tab_content_active {% endif %}">
+  <div class="characteristick__wrap">
+      {% get_category_features feature_category item as features %}
+      {% for feature in features %}
+      <div class="char_prof db_content" data-admin_url="{{feature.get_admin_url}}">
+        <div class="char_text standart_title standart_title_5 color_black">
+          {{feature.name}}
+        </div>
+        <div class="char_result main__title main__title_5 color_black">
+          {{feature.value}}
+        </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+{% endfor %}

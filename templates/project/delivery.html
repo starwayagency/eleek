@@ -1,0 +1,239 @@
+{% extends "project/base.html" %}
+{% load sw_content i18n %}
+{% block styles %}
+<link rel="stylesheet" href="/static/source/pages/about/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/select2/select2.min.css">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick.min.css">
+<link rel="stylesheet" href="/static/source/pages/login/index.css">
+<link rel="stylesheet" href="/static/source/pages/about/index.css">
+<link rel="stylesheet" href="/static/source/pages/another_pages/index.css">
+{% endblock styles %}
+
+{% block main_class %}
+item_section__wrapper
+{% endblock main_class %}
+
+{% block content %}
+<div class="bg_for_usually_page">
+  <video class="eleek_video" data-src="/static/source/img/index/video.mp4" autoplay muted poster="/static/source/img/index/post.png">
+    Sorry, your browser doesn't support embedded videos, 
+    but don't worry, you can <a href="/static/source/img/index/video.mp4">download it</a>
+    and watch it with your favorite video player!
+  </video>
+  <img class="eleek_video" src="/static/source/img/another/7350.png" alt="">
+</div>
+<section class="another_pages">
+    <div class="another_container">
+      {% render 'text27' as text27 %}
+      <h1 class="db_content faq_title main__title main__title_2 color_black" data-admin_url="{{text27.get_admin_url}}">
+        {{text27.text}}
+        <!-- Оплата і доставка -->
+      </h1>
+      <div class="another__block">
+        {% render 'text28' as text28 %}
+        <div class="db_content standart_title standart_title_3 color_black" data-admin_url="{{text28.get_admin_url}}">
+          {{text28.text}}
+          <!-- Спосіб оплати товару і послуг для клієнтів з України: -->
+        </div>
+        <div class="another_list__block">
+          <div class="another_symbol standart_title standart_title_1 color_yellow">
+            -
+          </div>
+          {% render 'text29' as text29 %}
+          <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text29.get_admin_url}}">
+            {{text29.text}}
+            <!-- Готівковий розрахунок (при отриманні замовлення в офісі) -->
+          </div>
+        </div>
+        <div class="another_list__block">
+          <div class="another_symbol standart_title standart_title_1 color_yellow">
+            -
+          </div>
+          {% render 'text30' as text30 %}
+          <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text30.get_admin_url}}">
+            {{text30.text}}
+            <!-- Перерахування на картку Visa через інтернет банкінг -->
+          </div>
+        </div>
+        <div class="another_list__block">
+          <div class="another_symbol standart_title standart_title_1 color_yellow">
+            -
+          </div>
+          {% render 'text31' as text31 %}
+          <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text31.get_admin_url}}">
+            {{text31.text}}
+            <!-- Оплата готівкою на картку Visa через термінал поповнення -->
+          </div>
+        </div>
+        <div class="another_list__block">
+          <div class="another_symbol standart_title standart_title_1 color_yellow">
+            -
+          </div>
+          {% render 'text32' as text32 %}
+          <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text32.get_admin_url}}">
+            {{text32.text}}
+            <!-- Оплата післяплатою, при отриманні в транспортних компаніях: «Нова пошта» (при виборі цього способу оплати клієнт оплачує авансом вартість пересилки) -->
+          </div>
+        </div>
+        <div class="another_list__block">
+          <div class="another_symbol standart_title standart_title_1 color_yellow">
+            -
+          </div>
+          {% render 'text33' as text33 %}
+          <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text33.get_admin_url}}">
+            {{text33.text}}
+            <!-- Перерахування на розрахунковий рахунок -->
+          </div>
+        </div>
+      </div>
+      <div class="another__block">
+        {% render 'text34' as text34 %}
+        <div class="db_content standart_title standart_title_3 color_black" data-admin_url="{{text34.get_admin_url}}">
+          {{text34.text}}
+          <!-- Способи оплати товару для клієнтів з інших країн: -->
+        </div>
+        <div class="another_list__block">
+          <div class="another_symbol standart_title standart_title_1 color_yellow">
+            -
+          </div>
+          {% render 'text35' as text35 %}
+          <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text35.get_admin_url}}">
+            {{text35.text}}
+            <!-- Грошовий переказ за системою Western Union (www.westernunion.ru) -->
+          </div>
+        </div>
+        <div class="another_list__block">
+          <div class="another_symbol standart_title standart_title_1 color_yellow">
+            -
+          </div>
+          {% render 'text36' as text36 %}
+          <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text36.get_admin_url}}">
+            {{text36.text}}
+            <!-- Грошовий переказ за системою “Золотая корона” (www.perevod-korona.com) -->
+          </div>
+        </div>
+      </div>
+      <div class="another__block">
+        {% render 'text37' as text37 %}
+        <div class="db_content standart_title standart_title_3 color_black" data-admin_url="{{text37.get_admin_url}}">
+          {{text37.text}}
+          <!-- Доставка по Україні. -->
+        </div>
+        <div class="another_list__block">
+          {% render 'text38' as text38 %}
+          <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text38.get_admin_url}}">
+            {{text38.text}}
+            <!-- Товар доставляється в будь-який регіон України транспортної компанії за 1-4 дня, через транспортні компанії «Нова пошта», «Автолюкс», «Делівері”, “Інтайм”, “САТ”,. Вартість доставки оплачує покупець. -->
+          </div>
+        </div>
+        <div class="another_list__block">
+          {% render 'text39' as text39 %}
+          <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text39.get_admin_url}}">
+            {{text39.text}}
+            <!-- Доставка товару по місту Тернопіль – безкоштовна. -->
+          </div>
+        </div>
+      </div>
+      <div class="another__block">
+        {% render 'text40' as text40 %}
+        <div class="db_content standart_title standart_title_3 color_black" data-admin_url="{{text40.get_admin_url}}">
+          {{text40.text}}
+          <!-- Міжнародна доставка. -->
+        </div>
+        <div class="another_list__block">
+          <div class="another_symbol standart_title standart_title_1 color_yellow">
+            -
+          </div>
+          {% render 'text41' as text41 %}
+          <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text41.get_admin_url}}">
+            {{text41.text}}
+            <!-- Товар доставляється в будь-яку країну, «EMS» «DHL» -->
+          </div>
+        </div>
+        <div class="another_list__block">
+          <div class="another_symbol standart_title standart_title_1 color_yellow">
+            -
+          </div>
+          {% render 'text42' as text42 %}
+          <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text42.get_admin_url}}">
+            {{text42.text}}
+            <!-- Доставка в Росію за допомогою транспортною компанією (Деловие лінії) -->
+          </div>
+        </div>
+      </div>
+      <div class="another__block">
+        {% render 'text43' as text43 %}
+        <div class="db_content standart_title standart_title_3 color_black" data-admin_url="{{text43.get_admin_url}}">
+          {{text43.text}}
+          <!-- Вартість доставки оплачує покупець. -->
+        </div>
+        <div class="another_list__block">
+          {% render 'text44' as text44 %}
+          <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text44.get_admin_url}}">
+            {{text44.text}}
+            <!-- Ми зацікавлені в тому, щоб товари, придбані в нас задовольняли Ваші потреби найкращим чином, тому, рекомендуємо перед замовленням обговорити плановану покупку з менеджером, по телефонів, зазначених на головній сторінці сайті. Також, менеджер може передзвонити на вказаний Вами номер телефону (в межах України) -->
+          </div>
+        </div>
+        <div class="another_list__block">
+          <div class="another_symbol standart_title standart_title_1 color_yellow">
+            -
+          </div>
+          {% render 'text45' as text45 %}
+          <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text45.get_admin_url}}">
+            {{text45.text}}
+            <!-- Якщо Задаються технічні питання, виходять за межі компетенції менеджера, Вас проконсультує фахівець служби техпідтримки. -->
+          </div>
+        </div>
+        <div class="another_list__block">
+          <div class="another_symbol standart_title standart_title_1 color_yellow">
+            -
+          </div>
+          {% render 'text46' as text46 %}
+          <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text46.get_admin_url}}">
+            {{text46.text}}
+            <!-- Для того, щоб виключити можливі претензії і непорозуміння, процес перевірки компонентів або вироби, а також їх упаковки, знімається на фото. Фотофайли зберігається не менше 1 місяця з моменту відправлення товару. Це дозволяє оперативно і об’єктивно розглядати претензії, які можуть виникнути в момент отримання товару, наприклад, – при недостатньо дбайливого транспортуванні. -->
+          </div>
+        </div>
+        <div class="another_list__block">
+          <div class="another_symbol standart_title standart_title_1 color_yellow">
+            -
+          </div>
+          {% render 'text47' as text47 %}
+          <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text47.get_admin_url}}">
+            {{text47.text}}
+            <!-- Після відправки, менеджер повідомляє клієнтові номер декларації для отримання товару на транспортної компанії, у клієнта виникнуть питання по збірці або експлуатації виробу, – відповіді на них дадуть фахівці служби техпідтримки. -->
+          </div>
+        </div>
+      </div>
+      <div class="another_warning">
+        {% render 'text48' as text48 %}
+        <div class="db_content another_warning_title standart_title standart_title_3 color_yellow" data-admin_url="{{text48.get_admin_url}}">
+          {{text48.text}}
+          <!-- Зверніть увагу! -->
+        </div>
+        {% render 'text49' as text49 %}
+        <div class="db_content another_text sub_title sub_title_2 color_black" data-admin_url="{{text49.get_admin_url}}">
+          {{text49.text}}
+          <!-- При отриманні замовлення від кур’єра або на складі транспортної служби, покупець зобов’язаний у присутності співробітника кур’єрської служби розкрити посилку і перевірити вміст. У разі, якщо покупець не перевірив товар при отриманні, подальші претензії з приводу механічних пошкоджень або неправильної комплектації не приймаються. -->
+        </div>
+      </div>
+    </div>
+</section>
+<!-- /.another_pages -->
+{% endblock content%}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/lib/slick/slick.min.js"></script> 
+<script src="/static/source/lib/select2/select2.full.min.js"></script> 
+<script src="/static/source/pages/another_pages/index.js"></script> 
+{% endblock scripts %}
+
+
+

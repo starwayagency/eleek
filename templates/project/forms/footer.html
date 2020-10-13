@@ -1,0 +1,32 @@
+{% load sw_content i18n  %}
+<div class="footer_accordeon_content">
+    <form action="{% url 'sw_contact' %}" method="POST" class="footer_form">
+      <div class="footer_input__wrap inp-vak-wrap">
+        {% render 'text20' as text20 %}
+        <label for="footer_name" class="db_content footer_label label__style color_white" data-admin_url="{{text20.get_admin_url}}">
+          {{text20.text}}
+          <!-- {% trans "Ім'я" %} -->
+        </label>
+        <input type="text" id="footer_name" name='name' class="footer_input input_focus">
+      </div>
+      <div class="footer_input__wrap inp-vak-wrap">
+        <label for="footer_email" class="footer_label label__style color_white">
+          Email
+        </label>
+        <input type="text" id="footer_email" name='email' class="footer_input input_focus">
+      </div>
+      <div class="footer_input__wrap inp-vak-wrap">
+        {% render 'text21' as text21 %}
+        <label for="footer_email" class="db_content footer_label label__style color_white" data-admin_url="{{text21.get_admin_url}}">
+          {{text21.text}}
+          <!-- {% trans 'Повідомлення' %} -->
+        </label>
+        <textarea name='message' id="user_send" class="user_send footer_input input_focus"></textarea>
+      </div>
+      <div class="wrap_for_footer_btn">
+        {% render 'text22' as text22 %}
+        <input type="submit" value="{{text22.text}}" class="db_content btn_standart btn_standart_yellow" data-admin_url="{{text22.get_admin_url}}">
+        <!-- <input type="submit" value="Відправити" class="btn_standart btn_standart_yellow"> -->
+      </div>
+    </form>
+</div>

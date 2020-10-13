@@ -1,0 +1,419 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-02 09:31+0000\n"
+"PO-Revision-Date: 2020-07-02 09:24+0000\n"
+"Last-Translator: b'admin_name admin_surname <dev@starwayua.com>'\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Translated-Using: django-rosetta 0.9.4\n"
+
+#: project/__init__.py:9
+msgid "Проект"
+msgstr ""
+
+#: templates/account/password_reset.html:6
+#: templates/account/password_reset.html:8
+#: templates/account/password_reset_done.html:7
+#: templates/account/password_reset_done.html:9
+msgid "Password Reset"
+msgstr ""
+
+#: templates/account/password_reset.html:12
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
+msgstr ""
+
+#: templates/account/password_reset.html:16
+msgid "Reset My Password"
+msgstr ""
+
+#: templates/account/password_reset.html:18
+msgid "Please contact us if you have any trouble resetting your password."
+msgstr ""
+
+#: templates/account/password_reset_done.html:13
+msgid ""
+"We have sent you an e-mail. Please contact us if you do not receive it "
+"within a few minutes."
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:9
+#: templates/account/password_reset_from_key.html:11
+#: templates/account/password_reset_from_key_done.html:8
+#: templates/account/password_reset_from_key_done.html:10
+msgid "Change Password"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:11
+msgid "Bad Token"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:15
+#, python-format
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a <a href=\"%(passwd_reset_url)s\">new password reset</"
+"a>."
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:21
+msgid "change password"
+msgstr ""
+
+#: templates/account/password_reset_from_key.html:24
+#: templates/account/password_reset_from_key_done.html:11
+msgid "Your password is now changed."
+msgstr ""
+
+#: templates/project/auth/login.html:20
+msgid "Вхід"
+msgstr "Login"
+
+#: templates/project/auth/login.html:25
+msgid "Логін"
+msgstr "Login"
+
+#: templates/project/auth/login.html:32 templates/project/auth/register.html:40
+msgid "Пароль"
+msgstr "Password"
+
+#: templates/project/auth/login.html:39
+msgid "Забули пароль?"
+msgstr "Forgot password?"
+
+#: templates/project/auth/login.html:45
+msgid "Ще не зареєстровані?"
+msgstr "Are not registered yet?"
+
+#: templates/project/auth/login.html:48
+msgid "Зареєструватись"
+msgstr "Register"
+
+#: templates/project/auth/login.html:51
+msgid "Вхід через Google"
+msgstr "Login with Google"
+
+#: templates/project/auth/register.html:20
+msgid "Реєстрація"
+msgstr "Registration"
+
+#: templates/project/auth/register.html:33 templates/project/order.html:46
+#: templates/project/test_drive.html:38
+msgid "Телефон"
+msgstr "Phone"
+
+#: templates/project/auth/register.html:58
+msgid "Вже маєте аккаунт?"
+msgstr "Already have an account?"
+
+#: templates/project/auth/register.html:61
+msgid "Увійти"
+msgstr "Login"
+
+#: templates/project/includes/footer.html:70
+msgid "Клієнтам"
+msgstr "Clients"
+
+#: templates/project/includes/footer.html:74
+msgid "Про нас"
+msgstr "About us"
+
+#: templates/project/includes/footer.html:77
+msgid "Часті питання"
+msgstr "FAQ"
+
+#: templates/project/includes/footer.html:80
+msgid "Доставка і оплата"
+msgstr "Delivery and payment"
+
+#: templates/project/includes/footer.html:83
+#: templates/project/includes/header.html:218 templates/project/index.html:23
+msgid "Тест-драйв"
+msgstr "Test-drive"
+
+#: templates/project/includes/footer.html:86
+msgid "Конструктор"
+msgstr "Constructor"
+
+#: templates/project/includes/footer.html:92
+#: templates/project/item_category.html:75
+msgid "Магазин"
+msgstr "Shop"
+
+#: templates/project/includes/footer.html:108
+msgid "Зв’язок"
+msgstr "Contacts"
+
+#: templates/project/includes/footer.html:114
+#: templates/project/test_drive.html:32
+msgid "Ім'я"
+msgstr "Name"
+
+#: templates/project/includes/footer.html:126
+#: templates/project/test_drive.html:60
+msgid "Повідомлення"
+msgstr "Messages"
+
+#: templates/project/includes/footer.html:147
+msgid "Розробка"
+msgstr "Development"
+
+#: templates/project/includes/header.html:10
+msgid "Дякуємо, заявка опрацьована <br>Наші менеджери звяжуться з Вами"
+msgstr ""
+"Thank you, the application has been processed. <br> Our managers will "
+"contact you."
+
+#: templates/project/includes/header.html:185
+msgid "Тест - драйв"
+msgstr "Test-drive"
+
+#: templates/project/includes/header.html:189
+msgid "Записатить на тест-драйв"
+msgstr "Write to the test drive"
+
+#: templates/project/includes/header.html:192
+msgid "Записатись"
+msgstr "Sign up"
+
+#: templates/project/includes/header.html:203
+#: templates/project/includes/header.html:224
+msgid "Конструктор Велосипедів"
+msgstr "Bicycles constructor"
+
+#: templates/project/includes/header.html:212
+msgid "Почати"
+msgstr "Start"
+
+#: templates/project/includes/header.html:234
+msgid "Пошук"
+msgstr "Search"
+
+#: templates/project/includes/header.html:251
+msgid "Корзина"
+msgstr "Cart"
+
+#: templates/project/includes/header.html:302 templates/project/order.html:233
+msgid "Всього"
+msgstr "Total"
+
+#: templates/project/includes/header.html:311
+#: templates/project/profile.html:116
+msgid "Знижка"
+msgstr "Discount"
+
+#: templates/project/includes/header.html:321
+#: templates/project/test_drive.html:64
+msgid "Замовити"
+msgstr "Order"
+
+#: templates/project/index.html:27 templates/project/index.html:236
+#: templates/project/index.html:259
+msgid "Детальніше"
+msgstr "Detail"
+
+#: templates/project/index.html:87 templates/project/index.html:211
+msgid "Дистанція"
+msgstr "Distance"
+
+#: templates/project/index.html:95
+msgid "км"
+msgstr "km"
+
+#: templates/project/index.html:108
+msgid "Швидкість"
+msgstr "Speed"
+
+#: templates/project/index.html:116
+msgid "км/год"
+msgstr "km/hrs"
+
+#: templates/project/index.html:132 templates/project/index.html:227
+msgid "Потужність"
+msgstr "Power"
+
+#: templates/project/index.html:153
+msgid "Час"
+msgstr "time"
+
+#: templates/project/index.html:161
+msgid "год"
+msgstr "hrs"
+
+#: templates/project/index.html:219
+msgid "Макс. швидкість"
+msgstr "Max. speed"
+
+#: templates/project/item.html:35
+msgid "Показати в 3Д"
+msgstr "Show in 3D"
+
+#: templates/project/item.html:76
+msgid "Купити"
+msgstr "Buy"
+
+#: templates/project/item.html:81
+msgid "Ціна додаткових опцій"
+msgstr "The price of additional options"
+
+#: templates/project/item.html:92
+msgid "Купити в кредит"
+msgstr "Buy on credit"
+
+#: templates/project/item.html:96
+msgid "Характеристики"
+msgstr "Features"
+
+#: templates/project/item.html:196
+msgid "Атрибути"
+msgstr "Attributes"
+
+#: templates/project/item.html:222
+msgid "Відгуки"
+msgstr "Reviews"
+
+#: templates/project/item.html:253
+msgid "Додати відгук"
+msgstr "Add review"
+
+#: templates/project/item.html:257
+msgid "У даного товару ще немає відруків. Ви можете бути першим. "
+msgstr "This product has no reviews yet. You can create first review."
+
+#: templates/project/item_category.html:25
+msgid "Фільтр"
+msgstr "Filter"
+
+#: templates/project/item_category.html:34 templates/project/order.html:220
+#: templates/project/profile.html:72
+msgid "Ціна"
+msgstr "Price"
+
+#: templates/project/item_category.html:69
+msgid "Головна"
+msgstr "Home"
+
+#: templates/project/item_category.html:136
+msgid "Більше товарів"
+msgstr "More products"
+
+#: templates/project/item_category.html:141
+msgid "В даній категорії немає товарів!"
+msgstr "There are no products in this category "
+
+#: templates/project/order.html:34
+msgid "Ім'я та прізвище"
+msgstr "Full name"
+
+#: templates/project/order.html:52 templates/project/order.html:137
+msgid "Далі"
+msgstr "Next"
+
+#: templates/project/order.html:74
+msgid "Доставка від Eleek"
+msgstr "Delivery by Eleek"
+
+#: templates/project/order.html:82
+msgid "Нова пошта"
+msgstr "Novaposhta"
+
+#: templates/project/order.html:98
+msgid "Укр пошта"
+msgstr "Ukrposhta"
+
+#: templates/project/order.html:114
+msgid "Самовивіз з магазину"
+msgstr "Self-pickup from the store"
+
+#: templates/project/order.html:120
+msgid "Місто"
+msgstr "City"
+
+#: templates/project/order.html:129
+msgid "Номер відділення"
+msgstr "Post office number"
+
+#: templates/project/order.html:159
+msgid "Готівка"
+msgstr "Payment by cash"
+
+#: templates/project/order.html:167
+msgid "Оплата карткою"
+msgstr "Payment by card"
+
+#: templates/project/order.html:175
+msgid "Оплата частинами"
+msgstr "Payment by parts"
+
+#: templates/project/order.html:206
+msgid "Кількість"
+msgstr "Amount"
+
+#: templates/project/profile.html:26
+msgid "Вийти"
+msgstr "Logout"
+
+#: templates/project/profile.html:33
+msgid "Історія покупок"
+msgstr "Shopping history"
+
+#: templates/project/profile.html:37
+msgid "Програма лояльності"
+msgstr "Loyalty program"
+
+#: templates/project/profile.html:41
+msgid "Налаштування профілю"
+msgstr "Profile settings"
+
+#: templates/project/profile.html:60
+msgid "Фото"
+msgstr "Photo"
+
+#: templates/project/profile.html:63 templates/project/profile.html:113
+msgid "Назва"
+msgstr "Name"
+
+#: templates/project/profile.html:66
+msgid "К-сть"
+msgstr "Amount"
+
+#: templates/project/profile.html:69
+msgid "Дата"
+msgstr "Date"
+
+#: templates/project/profile.html:119
+msgid "Термін дії"
+msgstr "Validity"
+
+#: templates/project/profile.html:122
+msgid "Дія"
+msgstr "Action"
+
+#: templates/project/search.html:33
+msgid "За даним "
+msgstr "There are "
+
+#: templates/project/search.html:35
+msgid "знайдено товарів"
+msgstr "for this request"
+
+#: templates/project/test_drive.html:44
+msgid "E-mail"
+msgstr "E-mail"
+
+#: templates/project/test_drive.html:50
+msgid "Модель велосипеда"
+msgstr "Bicycle model"

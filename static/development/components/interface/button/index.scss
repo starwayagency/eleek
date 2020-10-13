@@ -1,0 +1,257 @@
+.btn {
+    &_standart {
+        display: block;
+        cursor: pointer;
+        font-size: 16px;
+        letter-spacing: 2px;
+        padding: 17px 26px;
+        font-family: 'Oswald', sans-serif;
+        text-transform: uppercase;
+        text-align: center;
+        transition: all .2s;
+        &_black {
+            background-color: #2b2a27;
+            color: #ffffff;
+            border: solid 1px transparent;
+            position: relative;
+            
+            &:hover{
+                
+            }
+        }
+        &_yellow {
+            color: #2b2a27;
+            background-color: #ffd10a; 
+            border: solid 1px transparent;
+            &:hover{
+                
+            }
+        }
+        &_transparent {
+            color: #2b2a27;
+            border: solid 1px #242321;
+            background-color: transparent; 
+            &:hover{
+                
+            }
+        }
+    }
+}
+.btn_standart_black ::before {
+    right: 0;
+}
+
+
+
+.absolute_product_arrow{
+    color:#fff;
+    display: block;
+    background-image: linear-gradient(to left,#2b2a27,#2b2a27 50%,#ffd10a 50%,#ffd10a);
+    background-position: 95% 0;
+    background-size: 220% 100%;
+    transition: all .55s ease-in;
+   }
+   .absolute_product_arrow:hover {
+        background-position: 5% 0;
+   }
+
+   .absolute_product_arrow.out {
+        animation-name: out0;
+        animation-duration:1s;
+        background-image: linear-gradient(to left,#ffd10a,#ffd10a 50%,#2b2a27 50%,#2b2a27);
+        background-position: 5% 0;
+    }
+    .absolute_product_arrow.over {
+        animation-name: in0;
+        animation-duration:1s;
+        background-image: linear-gradient(to left,#2b2a27,#2b2a27 50%,#ffd10a 50%,#ffd10a);
+    }
+ @keyframes out0 {
+    from {
+        background-position: 100% 0;
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+ @keyframes in0 {
+     from {
+        background-position: 100% 0;
+
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+
+
+
+
+
+
+
+
+
+    .btn_standart_black {
+        color:#fff;
+        display: block;
+        background-image: linear-gradient(to left,#2b2a27,#2b2a27 50%,#ffd10a 50%,#ffd10a);
+        background-position: 95% 0;
+        background-size: 220% 100%;
+        transition: all .55s ease-in;
+        
+    }
+   .btn_standart_black:hover {
+                background-position: 5% 0;
+   }
+
+   .btn_standart_black.out {
+        animation-name: out;
+        animation-duration:1s;
+        background-image: linear-gradient(to left,#ffd10a,#ffd10a 50%,#2b2a27 50%,#2b2a27);
+        background-position: 5% 0;
+
+
+    }
+    .btn_standart_black.over {
+        animation-name: in;
+        animation-duration:1s;
+        background-image: linear-gradient(to left,#2b2a27,#2b2a27 50%,#ffd10a 50%,#ffd10a);
+    }
+ @keyframes in {
+    from {
+        background-position: 100% 0;
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+ @keyframes out {
+     from {
+        background-position: 100% 0;
+
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+
+
+
+
+
+
+
+
+
+
+.btn_standart_yellow{
+    color: #2b2a27;
+    display: block;
+    background-image: linear-gradient(to left,#ffd10a,#ffd10a 50%,#2b2a27 50%,#2b2a27);
+    background-position: 95% 0;
+    background-size: 220% 100%;
+    transition: all .55s ease-in;
+   }
+   .btn_standart_yellow:hover {
+        background-position: 5% 0;
+   }
+
+   .btn_standart_yellow.out {
+        animation-name: out3;
+        animation-duration:1s;
+        background-image: linear-gradient(to left,#2b2a27,#2b2a27 50%,#ffd10a 50%,#ffd10a);
+        background-position: 5% 0;
+
+    }
+    .btn_standart_yellow.over {
+        color: #fff;
+        animation-name: in3;
+        animation-duration:1s;
+        background-image: linear-gradient(to left,#ffd10a,#ffd10a 50%,#2b2a27 50%,#2b2a27);
+    }
+ @keyframes in3 {
+    from {
+        background-position: 100% 0;
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+ @keyframes out3 {
+     from {
+        background-position: 100% 0;
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+
+
+
+
+
+
+
+
+.btn_standart_transparent{
+    
+    display: block;
+    background-image: linear-gradient(to left,transparent,transparent 50%,#2b2a27 50%,#2b2a27);
+    background-position: 100% 0;
+    background-size: 220% 100%;
+    transition: all .55s ease-in;
+   }
+   .btn_standart_transparent:hover {
+        background-position: 5% 0;
+   }
+
+   .btn_standart_transparent.out {
+        animation-name: out3;
+        animation-duration:1s;
+        background-image: linear-gradient(to left,#2b2a27,#2b2a27 50%,transparent 50%,transparent);
+        background-position: 5% 0;
+
+    }
+    .btn_standart_transparent.over {
+        animation-name: in3;
+        animation-duration:1s;
+        color:#fff !important;
+        background-image: linear-gradient(to left,transparent,transparent 50%,#2b2a27 50%,#2b2a27);
+    }
+ @keyframes in3 {
+    from {
+        background-position: 100% 0;
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+ @keyframes out3 {
+     from {
+        background-position: 100% 0;
+     }
+     to {
+        background-position: 5% 0;
+     }
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 430px) {
+    .btn {
+        &_standart {
+            font-size: 14px;
+            padding: 14px 15px;
+        }
+    }
+}

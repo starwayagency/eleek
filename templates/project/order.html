@@ -1,0 +1,332 @@
+{% extends 'project/base.html' %}
+{% load i18n sw_content sw_catalog sw_cart %}
+{% block styles %}
+<link rel="stylesheet" href="/static/source/pages/order/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/lib/select2/select2.min.css">
+<link rel="stylesheet" href="/static/source/pages/order/index.css?v=3">
+{% endblock styles %}
+{% block content %}
+{% block main_class %}
+item_section__wrapper
+{% endblock main_class %}
+<section class="section_order padding_sect">
+  <div class="container">
+    {% render 'order_order' as order_order %}
+    <h2 class="main__title main__title_2 color_black db_content" data-admin_url="{{order_order.get_admin_url}}">
+      {{order_order.text}}
+      <!-- Оформлення замовлення -->
+    </h2>
+    <div class="order__wrap">
+      <form action='/api/order_items/' method='POST' class="order_info__block">
+        <div data-step='1' class="step__wrap step__wrap_active">
+          <div class="step_title__wrap">
+            <div class="step_num main__title main__title_5 color_black">
+              1
+            </div>
+            {% render 'step1' as step1 %}
+            <div class="step_title standart_title standart_title_3 color_black db_content" data-admin_url="{{step1.get_admin_url}}">
+              {{step1.text}}
+              <!-- Крок 1. Контактні дані -->
+            </div>
+          </div>
+          <div class="step_content">
+            <div class="footer_input__wrap inp-vak-wrap">
+              {% render 'text116' as text116 %}
+              <label for="order_name" class="db_content order_label label__style color_black" data-admin_url="{{text116.get_admin_url}}">
+                {{text116.text}}
+                <!-- {% trans "Ім'я та прізвище" %} -->
+              </label>
+              <input type="text" id="order_name" name='name' class="order_input input_focus input_requared">
+              <!-- <input value="Андрій" type="text" id="order_name" name='name' class="order_input input_focus input_requared"> -->
+            </div>
+            <div class="footer_input__wrap inp-vak-wrap">
+              <label for="order_email" class="order_label label__style color_black">
+                Email
+              </label>
+              <input type="text" id="order_email" name='email' class="order_input input_focus input_requared">
+              <!-- <input value="jurgeon018@gmail.com" type="text" id="order_email" name='email' class="order_input input_focus input_requared"> -->
+            </div>
+            <div class="footer_input__wrap inp-vak-wrap">
+              {% render 'text117' as text117 %}
+              <label for="order_phone" class="db_content order_label label__style color_black" data-admin_url="{{text117.get_admin_url}}">
+                {{text117.text}}
+                <!-- {% trans 'Телефон' %} -->
+              </label>
+              <input type="text" id="order_phone" name='phone' class="order_input input_focus input_requared mobile">
+              <!-- <input value="+380994506703" type="text" id="order_phone" name='phone' class="order_input input_focus input_requared mobile"> -->
+            </div>
+            <div class="wrap_for_footer_btn">
+              {% render 'text118' as text118 %}
+              <div data-step-btn='1' class="db_content btn_standart btn_standart_yellow next_step_btn" data-admin_url="{{text118.get_admin_url}}">
+                {{text118.text}}
+                <!-- {% trans 'Далі' %} -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-step='2' class="step__wrap">
+          <div class="step_title__wrap">
+            <div class="step_num main__title main__title_5 color_black">
+              2
+            </div>
+            {% render 'step2' as step2 %}
+            <div class="step_title standart_title standart_title_3 color_black db_content" data-admin_url="{{step2.get_admin_url}}">
+              {{step2.text}}
+              <!-- Крок 2. Спосіб доставки -->
+            </div>
+          </div>
+          <div class="step_content step_content_delivery only_two_input">
+            
+            <div data-radio='1' class="radio_block add_one_inp">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
+              </div>
+              {% render 'text119' as text119 %}
+              <div class="db_content radio_title standart_title standart_title_6 color_black" data-admin_url="{{text119.get_admin_url}}">
+                {{text119.text}}
+                <!-- {% trans 'Доставка від Eleek' %} -->
+              </div>
+            </div>
+            <div data-radio='2' class="radio_block add_two_inp">
+              <div class="radio_tchk">
+                <div class="radio_center radio_center_active absolute_center"></div>
+              </div>
+              {% render 'text120' as text120 %}
+              <div class="db_content radio_title standart_title standart_title_6 color_black" data-admin_url="{{text120.get_admin_url}}">
+                {{text120.text}}
+                <!-- {% trans 'Нова пошта' %} -->
+              </div>
+            </div>
+
+            <!-- <div data-radio='3' class="radio_block add_two_inp">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
+              </div>
+              <div class="radio_title standart_title standart_title_6 color_black">
+                Delivery
+              </div>
+            </div> -->
+
+            <!-- <div data-radio='4' class="radio_block add_two_inp">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
+              </div>
+              <div class="radio_title standart_title standart_title_6 color_black">
+                {% trans 'Укр пошта' %}
+              </div>
+            </div> -->
+
+            <!-- <div data-radio="5" class="radio_block add_two_inp">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
+              </div>
+              <div class="radio_title standart_title standart_title_6 color_black">
+                DHL
+              </div>
+            </div> -->
+
+            <!-- <div data-radio="6" class="radio_block add_one_inp">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
+              </div>
+              <div class="radio_title standart_title standart_title_6 color_black">
+                TNT
+              </div>
+            </div> -->
+            
+            <div data-radio='7' class="radio_block remove_input">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
+              </div>
+              {% render 'text121' as text121 %}
+              <div class="db_content radio_title standart_title standart_title_6 color_black" data-admin_url="{{text121.get_admin_url}}">
+                {{text121.text}}
+                <!-- {% trans 'Самовивіз з магазину' %} -->
+              </div>
+            </div>
+            <div class="two_input__wrap">
+              <div class="select-block">
+                <input type="hidden" name="nova_pochta_department" class="nova_city nova_pochta_hidden">
+                {% render 'text122' as text122 %}
+                <div class="db_content select_label sub_title sub_title_3 color_black" data-admin_url="{{text122.get_admin_url}}">
+                  {{text122.text}}
+                  <!-- {% trans 'Місто' %} -->
+                </div>
+                <select name="" id="" style="width: 100%;" class="select_city">
+                </select>
+              </div>
+              <div class="select-block">
+                <input type="hidden" name="nova_pochta_department" class="nova_pochta_hidden">
+                {% render 'text123' as text123 %}
+                <div class="db_content select_label sub_title sub_title_3 color_black" data-admin_url="{{text123.get_admin_url}}">
+                  {{text123.text}}
+                  <!-- {% trans 'Номер відділення' %} -->
+                </div>
+                <select name="" id="" style="width: 100%;" class="select_aria">
+                </select>
+              </div>
+            </div>
+            <div class="one_input__wrap hidden_input__wrap">
+              <div class="footer_input__wrap inp-vak-wrap">
+                {% render 'text124' as text124 %}
+                <label for="order_address" class="db_content order_label label__style color_black" data-admin_url="{{text124.get_admin_url}}">
+                  {{text124.text}}
+                  <!-- Адреса -->
+                </label>
+                <input type="text" id="order_address" name='address' class="order_input input_focus input_requared">
+              </div>
+            </div>
+            <div class="wrap_for_footer_btn">
+              {% render 'text125' as text125 %}
+              <div data-step-btn='2' class="db_content btn_standart btn_standart_yellow next_step_btn" data-admin_url="{{text125.get_admin_url}}">
+                {{text125.text}}
+                <!-- {% trans 'Далі' %} -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-step='3' class="step__wrap">
+          <div class="step_title__wrap">
+            <div class="step_num main__title main__title_5 color_black">
+              3
+            </div>
+            {% render 'step3' as step3 %}
+            <div class="step_title standart_title standart_title_3 color_black db_content" data-admin_url="{{step3.get_admin_url}}">
+              {{step3.text}}
+              <!-- Крок 3. Оплата -->
+            </div>
+          </div>
+          <div class="step_content step_content_payment">
+
+            <div data-radio='7' class="radio_block">
+              <div class="radio_tchk">
+                <div class="radio_center radio_center_active absolute_center"></div>
+              </div>
+              {% render 'text126' as text126 %}
+              <div data-payment="cash" class="db_content radio_title standart_title standart_title_6 color_black" data-admin_url="{{text126.get_admin_url}}">
+                {{text126.text}}
+                <!-- {% trans 'Готівка' %} -->
+              </div>
+            </div>
+
+            <div data-radio='8' class="radio_block">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
+              </div>
+              {% render 'text127' as text127 %}
+              <div data-payment="liqpay" class="db_content radio_title standart_title standart_title_6 color_black" data-admin_url="{{text127.get_admin_url}}">
+                <a class="liqpay">
+                  <img src="/static/source/img/order/512-px-liqpay-svg.png" alt="">
+                </a>
+                {{text127.text}}
+                <!-- {% trans 'Оплата карткою' %} -->
+              </div>
+            </div>
+
+            <!-- <div data-radio='9' class="radio_block">
+              <div class="radio_tchk">
+                <div class="radio_center absolute_center"></div>
+              </div>
+              <div class="radio_title standart_title standart_title_6 color_black">
+                {% trans 'Оплата частинами' %}
+              </div>
+            </div> -->
+<!-- 
+            <a href="#" class="liqpay">
+              <img src="/static/source/img/order/512-px-liqpay-svg.png" alt="">
+            </a> -->
+            <div class="wrap_for_footer_btn">
+              <input type="submit" class="btn_standart btn_standart_yellow submit_order_btn" value="Оплатити">
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="order_item__block">
+        <div class="order_item__wrap">
+          <div class="order_item_content__block">
+            {% for cart_item in cart_items %}
+            <div class="basket_content_profile">
+              <div class="basket_profile_img">
+                <a href="{{cart_item.item.get_absolute_url}}">
+                  <img src="{{cart_item.item.image_url}}" alt="{{cart_item.item.alt}}">
+                </a>
+              </div>
+              <div class="basket_right_content">
+                <div class="basket_title__block">
+                  <div class="basket_title main__title main__title_5">
+                    <a href="{{cart_item.item.get_absolute_url}}" style="color:black">
+                    {{cart_item.item.title|title}}
+                    </a>
+                  </div>
+                </div>
+                <div class="basket_bottom__wrap">
+                  <div class="basket_counter__block">
+                    {% render 'text128' as text128 %}
+                    <div class="db_content basket_text sub_title sub_title_2" data-admin_url="{{text128.get_admin_url}}">
+                      {{text128.text}}
+                      <!-- {% trans 'Кількість' %} -->
+                    </div>
+                    <div class="basket_counter">
+                      <div data-quantity_item_id='{{cart_item.id}}' class="basket_prep_order basket_prep basket_count sub_title sub_title_21">
+                        -
+                      </div>
+                      <input data-quantity_item_id='{{cart_item.id}}' type="number" class="basket_input_order basket_input basket_count main__title main__title_5 cart_counter quan_cart_sum" value="{{cart_item.quantity}}">
+                      <div data-quantity_item_id='{{cart_item.id}}' class="basket_next_order basket_next basket_count sub_title sub_title_21">
+                        +
+                      </div>
+                    </div>
+                  </div>
+                  <div class="basket_sum__block">
+                    {% render 'text129' as text129 %}
+                    <div class="db_content basket_text sub_title sub_title_2" data-admin_url="{{text129.get_admin_url}}">
+                      {{text129.text}}
+                      <!-- {% trans 'Ціна' %} -->
+                    </div>
+                    <div class="basket_summ main__title main__title_5">
+                      <!-- {{cart_item.item.price}} {{cart_item.item.currency}} -->
+                      {% get_cart_item_price cart_item current_currency "total_price_with_discount_with_attributes" as admin_total_price_with_discount_with_attributes %}
+                      {{admin_total_price_with_discount_with_attributes|floatformat}} {{current_currency.code}}
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="order_item_result">
+            {% render 'text130' as text130 %}
+            <div class="db_content order_text main__title main__title_5 color_black" data-admin_url="{{text130.get_admin_url}}">
+              {{text130.text}}
+              <!-- {% trans 'Всього' %} -->
+            </div>
+            <div class="order_sum main__title main__title_5 color_black">
+              <!-- {{cart.total_price}} {{cart.currency}} -->
+              {% get_cart_price cart main_currency "total_price" as main_cart_total_price%}
+              {% get_cart_price cart current_currency "total_price" as current_cart_total_price%}
+              <!-- {{main_cart_total_price}} {{main_currency.code}} -->
+              {{current_cart_total_price}}  {{current_currency.code}}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/lib/select2/select2.full.min.js"></script> 
+<script src="/static/development/components/module/city_select/index.js"></script> 
+<script src="/static/source/pages/order/index.js"></script> 
+{% endblock scripts %}
+
+
+

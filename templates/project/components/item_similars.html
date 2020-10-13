@@ -1,0 +1,44 @@
+{% load i18n sw_content sw_catalog %}
+{% if item.similars.all.exists %}
+<section class="best_sales">
+  <div class="container_sales">
+     <div class="best_title-block">
+         {% render 'text79' as text79 %}
+         <h4 class="db_content best_sale_title" data-admin_url="{{text79.get_admin_url}}">
+            {{text79.text}}
+          <!-- {% trans 'Схожі товари' %} -->
+          </h4>
+         <div class="slick-wrap">
+             <button type="button" class="slick-first">
+                 <img src="/static/source/img/item/arrow-right.svg" alt="">
+             </button>
+             <button type="button" class="slick-second">
+                 <img src="/static/source/img/item/arrow-right.svg" alt="">
+
+             </button>
+         </div>
+     </div>
+      <div class="best-sales-block">
+        {% for similar in item.similars.all %}
+          <div class="best-sales-prof db_content" data-get_admin_url="{{similar.get_admin_url}}">
+              <a href="{{similar.get_absolute_url}}" class="best-sales_link-img">
+                 <img src="{{similar.image_url}}" alt="{{similar.alt}}" class="best-sales_photo">
+              </a>
+             <div class="best-sales_text">
+                <div class="best-sales_info">
+                     <div class="name-product">
+                         {{similar.title}}
+                     </div>
+                     <div class="cost-product">
+                         <!-- {{similar.price}} {{similar.currency.code}} -->
+                         {% get_item_price similar current_currency "price_with_discount" as item_price%}
+                         {{item_price|floatformat}} {{current_currency.code}}
+                     </div>
+                </div>
+             </div>
+         </div>
+         {% endfor %}
+      </div>
+  </div>
+</section>
+{% endif %}

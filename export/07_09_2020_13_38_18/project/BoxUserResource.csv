@@ -1,0 +1,8 @@
+id,is_superuser,is_staff,is_active,first_name,username,last_name,email,phone_number,address,birth_date,gender,password,groups,user_permissions,last_login,date_joined
+1,1,1,1,admin_name,admin,admin_surname,dev@starwayua.com,+88005553535,,,m,pbkdf2_sha256$180000$7oaR6ikjHv5H$6vq64jEULmuLNTlOtFUCLMrmHWBVe+afZvQQXnNePMU=,,,2020-09-07 12:27:37,2020-07-03 16:55:08
+2,1,1,1,Andrew,jurgeon018,Mendela,jurgeon018@gmail.com,+380994507803,,,m,pbkdf2_sha256$180000$4yBRLem1lnm0$dNvQFz3mWnwsy/1UKt/137Pc4ejjiI7z45lI2T3VMs0=,,,,2020-07-03 16:55:11
+3,0,0,1,,1,,123@d,,,,m,pbkdf2_sha256$180000$ZhZVuvEmXMlT$0Pn90m/e5DpYEENlBNdallmvV0+bNZxiJknBtm2wjtk=,,,2020-07-29 10:39:15,2020-07-29 10:39:15
+4,0,0,1,Вадим,NV,,7naspro7@gmail.com,0979818938,Київ,,m,pbkdf2_sha256$180000$v4VWARHQGawk$FZmGq7j3WlSGg5ahIFHs5SneqQas3ihtl8v6XWp2V9o=,,,2020-08-02 13:55:23,2020-08-02 13:42:39
+5,0,0,1,,VadimN,,test123@gmail.com,,,,m,pbkdf2_sha256$180000$SqAh5RMxhKXP$G+2tIKi3B3oOb9soha2jwvCbnQ31GV0ebzswC17+Gv4=,,,2020-08-02 13:43:28,2020-08-02 13:43:28
+6,0,0,1,,NV7,,7naspro77@gmail.com,,,,m,pbkdf2_sha256$180000$g2IinSTltVsg$qE5OjHmo517pixlsoYQb3bAK5j0VO+5hpyOzMZJNjRA=,,,2020-08-02 13:56:08,2020-08-02 13:56:08
+7,0,0,1,,test,,test@com,,,,m,pbkdf2_sha256$180000$yTlOco3TUdGk$FSrTp1xF9GfMgyMmvAzH+bw6sHIMiRgeYB3yI8pfiO8=,,,2020-08-14 12:05:56,2020-08-14 12:05:56

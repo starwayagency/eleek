@@ -1,0 +1,128 @@
+.login_section {
+    min-height: 100vh;
+}
+.registery {
+    &__wrap {
+        display: flex;
+        min-height: 100vh;
+
+    }
+    &_bg {
+        position: relative;
+        width: 50%;
+        background-color: #2b2a27;
+
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+    }
+    &_name {
+        margin-bottom: 50px;
+    }
+    &_content {
+        width: 50%;
+        position: relative;
+        padding-bottom: 30px;
+
+        input:-webkit-autofill {
+            -webkit-box-shadow: inset 0 0 0 50px #fff; /* цвет вашего фона */
+            -webkit-text-fill-color: #2b2a27; /* цвет текста */
+        }
+    }
+    &__block {
+        width: 50%;
+    }
+}
+.login {
+    &_label {
+        position: absolute;
+    }
+    &_input {
+        outline: none;
+        border: none;
+        border-bottom: 1px solid #2b2a27;
+        background: transparent;
+        color: #2b2a27;
+        width: 100%;
+    }
+}
+
+.bottom_registery__block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .btn_standart {
+        padding: 17px 30px;
+        text-transform: uppercase;
+    }
+}
+.last_registery__block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    margin-top: 45px;
+    width: max-content;
+}
+.registery_fix {
+    justify-content: flex-end;
+}
+.last_registery_text {
+    margin-right: 20px;
+}
+@media (max-width: 1530px) {
+    .registery__block {
+        width: 80%;
+    }
+}
+@media (max-width: 992px) {
+    .registery__wrap {
+        flex-direction: column;
+    }
+    .registery_bg {
+        height: 300px;
+        width: 100%;
+        min-height: 30vh;
+    }
+    .registery_content {
+        width: 100%;
+        min-height: 70vh;
+        height: 100%;
+    }
+}
+@media (max-width: 516px) {
+    .registery_bg {
+        height: 200px;
+        width: 100%;
+        min-height: unset;
+        margin-top: 60px;
+    }
+    .registery_content {
+        width: 100%;
+        min-height: unset;
+        height: 100%;
+    }
+    .registery__block {
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: unset;
+
+        width: 90%;
+        margin: 0 auto;
+        margin-top: 30px;
+    }
+}
+@media (max-width: 351px) {
+    .last_registery__block {
+        margin-top: 25px;
+        width: 100%;
+    }
+}

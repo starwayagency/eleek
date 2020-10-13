@@ -1,0 +1,5 @@
+id,code,order,is_active,created,updated,meta_title,meta_title_uk,meta_title_en,meta_title_ru,meta_descr,meta_descr_uk,meta_descr_en,meta_descr_ru,meta_key,meta_key_uk,meta_key_en,meta_key_ru,slug,alt,alt_uk,alt_en,alt_ru,image,title,title_uk,title_en,title_ru,description,description_uk,description_en,description_ru
+1,,0,1,2020-07-03 11:26:39,2020-07-03 11:26:39,Бренд 2,Бренд 2,,,,,,,,,,,brend-2,Бренд 2,Бренд 2,,,,Бренд 2,Бренд 2,,,,,,
+2,,0,1,2020-07-03 11:26:40,2020-07-03 11:26:40,Бренд 3,Бренд 3,,,,,,,,,,,brend-3,Бренд 3,Бренд 3,,,,Бренд 3,Бренд 3,,,,,,
+3,,0,1,2020-07-03 11:26:41,2020-07-03 11:26:41,Бренд 4,Бренд 4,,,,,,,,,,,brend-4,Бренд 4,Бренд 4,,,,Бренд 4,Бренд 4,,,,,,
+4,,0,1,2020-07-03 11:26:42,2020-07-03 11:26:42,Бренд 1,Бренд 1,,,,,,,,,,,brend-1,Бренд 1,Бренд 1,,,,Бренд 1,Бренд 1,,,,,,

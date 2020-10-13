@@ -1,0 +1,58 @@
+.form__radio {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 15px;
+  &_check {
+    position: relative;
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+
+    border: solid 1px #242321;
+    border-radius: 50%;
+    margin-right: 10px;
+    &::before {
+      content: "";
+      transition: all 0.2s;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: transparent;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+  &-active {
+    & .form__radio_check {
+      &::before {
+        background-color: #ffd10a;
+      }
+    }
+  }
+  &-hiden {
+    opacity: 0.5;
+    cursor: default !important;
+  }
+  &_title {
+    font-size: 14px;
+    line-height: 1.71;
+    letter-spacing: 0.5px;
+    color: #302d2d;
+    font-family: "Oswald", sans-serif;
+  }
+  &_price {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #969696;
+  }
+}
+
+@media only screen and (max-width: 445px) {
+  .form__color {
+    min-height: 35px;
+    min-width: 35px;
+  }
+}

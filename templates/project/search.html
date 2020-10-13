@@ -1,0 +1,75 @@
+{% extends 'project/base.html' %}
+{% load i18n sw_content %}
+{% block styles %}
+<link rel="stylesheet" href="/static/source/pages/search/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/pages/search/index.css?v=3">
+<link rel="stylesheet" href="/static/source/pages/items/index.css">
+{% endblock styles %}
+{% block main_class %}
+item_section__wrapper
+{% endblock main_class %}
+{% block content %}
+<section class="search_section padding_sect">
+  <div class="container">
+    {% render 'search_results' as search_results %}
+    <h2 class="main__title main__title_2 color_black db_content" data-admin_url="{{search_results.get_admin_url}}">
+        {{search_results.text}}
+        <!-- Результати пошуку -->
+      </h2>
+    <!-- <div class="search_error">
+      <div class="search_sub_title sub_title sub_title_2 color_black">
+        За даним запитом <b>‘<span class="search_result">Сідло</span>’</b> нічого не знайдено. Спробуйте інший запит.
+      </div>
+      <form action="" class="search_menu__wrap">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+          <path d="M9 .4c4.75 0 8.6 3.85 8.6 8.6 0 2.158-.795 4.131-2.109 5.641l3.933 3.935c.235.234.235.614 0 .848-.234.235-.614.235-.848 0l-3.935-3.933C13.131 16.805 11.158 17.6 9 17.6 4.25 17.6.4 13.75.4 9S4.25.4 9 .4zm0 1.2C4.913 1.6 1.6 4.913 1.6 9s3.313 7.4 7.4 7.4c2.01 0 3.833-.802 5.167-2.103l.059-.071c.022-.023.046-.043.07-.06C15.598 12.832 16.4 11.01 16.4 9c0-4.087-3.313-7.4-7.4-7.4z"></path>
+        </svg>
+        <input type="search" placeholder="Що шукаєте?" class="main_search" name="main_search">
+        <input type="submit" value="Шукати" class="search_main_btn btn_standart btn_standart_black">
+      </form>
+    </div> -->
+    <div class="search_sub_title sub_title sub_title_2 color_black">
+      {% trans 'За запитом' %}
+      <b>‘<span class="search_result">‘{{query}}’</span>’</b> 
+      {% trans 'знайдено товарів' %}: {{search_items.count}} 
+    </div>
+    <div class="main_product-block">
+      {% for search_item in search_items %}
+      <div class="product_card-prof db_content" data-admin_url="{{search_item.get_admin_url}}">
+          <a href="{{search_item.get_absolute_url}}" class="prod_card_link">
+              <img src="{{search_item.image_url}}" alt="" class="prod_card-img">
+          </a>
+          <div class="prod_card_info__wrap">
+            <div class="prod_card-name standart_title standart_title_4 color_black">
+              {{search_item.title}}
+            </div>
+            <div class="prod_card-info">
+                <div class="prod_card-cost main__title main__title_5 color_black">
+                    {{search_item.price}} {{search_item.currency.code}}
+                </div>
+                <a href="{{search_item.get_absolute_url}}" class="prod_card-btn">
+                    <img class="absolute_center" src="/static/source/img/items/okey.svg" alt="">
+                </a>
+            </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+  </div>
+  <!-- /.container -->
+</section>
+{% endblock content %}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/pages/search/index.js"></script> 
+{% endblock scripts %}
+
+
+
+

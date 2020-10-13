@@ -1,0 +1,280 @@
+main {
+  position: relative;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.padding_sect {
+  padding-top: 70px;
+}
+
+.absolute_center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.ultra_link {
+  padding-bottom: 3px;
+  border-bottom: 1px solid #2b2a27;
+}
+
+.main__title {
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.08;
+  letter-spacing: normal;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+}
+
+.main__title_01 {
+  font-size: 220px;
+  font-weight: 700;
+}
+
+.main__title_0 {
+  font-size: 100px;
+}
+
+.main__title_00 {
+  font-size: 75px;
+}
+
+.main__title_1 {
+  font-size: 65px;
+}
+
+.main__title_2 {
+  font-size: 45px;
+}
+
+.main__title_3 {
+  font-size: 36px;
+}
+
+.main__title_4 {
+  font-size: 24px;
+}
+
+.main__title_5 {
+  font-size: 18px;
+}
+
+.main__title_6 {
+  font-size: 14px;
+}
+
+.standart_title {
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.08;
+  letter-spacing: normal;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+}
+
+.standart_title_1 {
+  font-size: 45px;
+}
+
+.standart_title_3 {
+  font-size: 24px;
+}
+
+.standart_title_4 {
+  font-size: 18px;
+}
+
+.standart_title_5 {
+  font-size: 16px;
+}
+
+.standart_title_6 {
+  font-size: 14px;
+}
+
+.sub_title {
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+.sub_title_1 {
+  font-size: 36px;
+}
+
+.sub_title_21 {
+  font-size: 22px;
+}
+
+.sub_title_2 {
+  font-size: 16px;
+}
+
+.sub_title_3 {
+  font-size: 14px;
+}
+
+.main_sub_title {
+  font-weight: 700;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+.main_sub_title_3 {
+  font-size: 18px;
+}
+
+.title_text_regular {
+  font-size: 18px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #3d3c3a;
+  font-family: 'Oswald', sans-serif;
+}
+
+.discount_title {
+  font-size: 14px;
+  color: #b2b2b2;
+  text-align: right;
+}
+
+.basket_btn {
+  text-align: center;
+  text-transform: uppercase;
+  color: #2b2a27;
+  background-color: #ffd10a;
+}
+
+.none_content_send {
+  position: absolute;
+  top: 50%;
+  left: 200%;
+  font-size: 22px;
+  opacity: 0;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  -webkit-transition-delay: .2s;
+          transition-delay: .2s;
+  width: 100%;
+  text-align: center;
+}
+
+.none_content_send_active {
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  opacity: 1;
+}
+
+.color_yellow {
+  color: #ffd10a;
+}
+
+.color_black {
+  color: #3d3c3a;
+}
+
+.color_black_2 {
+  color: #8d8d8d;
+}
+
+.color_white {
+  color: #fff;
+}
+
+.label__style {
+  top: -13px;
+  font-size: 16px;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  position: absolute;
+}
+
+.label__style_active {
+  top: -16px;
+  font-size: 13px;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  background-color: #ffd10a !important;
+}
+
+@media (max-width: 1460px) {
+  .container {
+    max-width: unset;
+    width: 85%;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1309px) {
+  .main__title_1 {
+    font-size: 45px;
+  }
+  .main__title_0 {
+    font-size: 60px;
+  }
+  .main__title_5 {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 631px) {
+  .main__title_0 {
+    font-size: 30px;
+  }
+  .main__title_1 {
+    font-size: 27px;
+  }
+  .main__title_5 {
+    font-size: 13px;
+  }
+  .sub_title_2 {
+    font-size: 13px;
+  }
+  .sub_title_1 {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 602px) {
+  .btn_standart {
+    font-size: 13px;
+  }
+  .main__title_2 {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 533px) {
+  .padding_sect {
+    padding-top: 60px;
+  }
+}
+
+@media (max-width: 470px) {
+  .standart_title_3 {
+    font-size: 16px;
+  }
+  .main__title_1 {
+    font-size: 25px;
+  }
+  .main__title_3 {
+    font-size: 29px;
+  }
+}
+/*# sourceMappingURL=index.css.map */

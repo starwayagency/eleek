@@ -1,0 +1,26 @@
+sudo ln -s /home/jurgeon/projects/eleek/src/config/celery_eleek_worker.conf /etc/supervisor/conf.d/
+sudo ln -s /home/jurgeon/projects/eleek/src/config/celery_eleek_beat.conf   /etc/supervisor/conf.d/
+
+
+sudo mkdir -p /var/log/celery
+
+
+sudo touch /var/log/celery/eleek_worker.log
+sudo touch /var/log/celery/eleek_beat.log
+
+sudo supervisorctl reread
+sudo supervisorctl update
+
+#sudo supervisorctl stop eleekworker
+sudo supervisorctl start eleekworker
+#sudo supervisorctl restart eleekworker
+#sudo supervisorctl status eleekworker
+
+#sudo supervisorctl stop eleekbeat
+sudo supervisorctl start eleekbeat
+#sudo supervisorctl restart eleekbeat
+#sudo supervisorctl status eleekbeat
+
+
+
+

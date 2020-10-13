@@ -1,0 +1,305 @@
+.btn_standart {
+  display: block;
+  cursor: pointer;
+  font-size: 16px;
+  letter-spacing: 2px;
+  padding: 17px 26px;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+}
+
+.btn_standart_black {
+  background-color: #2b2a27;
+  color: #ffffff;
+  border: solid 1px transparent;
+  position: relative;
+}
+
+.btn_standart_yellow {
+  color: #2b2a27;
+  background-color: #ffd10a;
+  border: solid 1px transparent;
+}
+
+.btn_standart_transparent {
+  color: #2b2a27;
+  border: solid 1px #242321;
+  background-color: transparent;
+}
+
+.btn_standart_black ::before {
+  right: 0;
+}
+
+.absolute_product_arrow {
+  color: #fff;
+  display: block;
+  background-image: -webkit-gradient(linear, right top, left top, from(#2b2a27), color-stop(50%, #2b2a27), color-stop(50%, #ffd10a), to(#ffd10a));
+  background-image: linear-gradient(to left, #2b2a27, #2b2a27 50%, #ffd10a 50%, #ffd10a);
+  background-position: 95% 0;
+  background-size: 220% 100%;
+  -webkit-transition: all .55s ease-in;
+  transition: all .55s ease-in;
+}
+
+.absolute_product_arrow:hover {
+  background-position: 5% 0;
+}
+
+.absolute_product_arrow.out {
+  -webkit-animation-name: out0;
+          animation-name: out0;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  background-image: -webkit-gradient(linear, right top, left top, from(#ffd10a), color-stop(50%, #ffd10a), color-stop(50%, #2b2a27), to(#2b2a27));
+  background-image: linear-gradient(to left, #ffd10a, #ffd10a 50%, #2b2a27 50%, #2b2a27);
+  background-position: 5% 0;
+}
+
+.absolute_product_arrow.over {
+  -webkit-animation-name: in0;
+          animation-name: in0;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  background-image: -webkit-gradient(linear, right top, left top, from(#2b2a27), color-stop(50%, #2b2a27), color-stop(50%, #ffd10a), to(#ffd10a));
+  background-image: linear-gradient(to left, #2b2a27, #2b2a27 50%, #ffd10a 50%, #ffd10a);
+}
+
+@-webkit-keyframes out0 {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 5% 0;
+  }
+}
+
+@keyframes out0 {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 5% 0;
+  }
+}
+
+@-webkit-keyframes in0 {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 5% 0;
+  }
+}
+
+@keyframes in0 {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 5% 0;
+  }
+}
+
+.btn_standart_black {
+  color: #fff;
+  display: block;
+  background-image: -webkit-gradient(linear, right top, left top, from(#2b2a27), color-stop(50%, #2b2a27), color-stop(50%, #ffd10a), to(#ffd10a));
+  background-image: linear-gradient(to left, #2b2a27, #2b2a27 50%, #ffd10a 50%, #ffd10a);
+  background-position: 95% 0;
+  background-size: 220% 100%;
+  -webkit-transition: all .55s ease-in;
+  transition: all .55s ease-in;
+}
+
+.btn_standart_black:hover {
+  background-position: 5% 0;
+}
+
+.btn_standart_black.out {
+  -webkit-animation-name: out;
+          animation-name: out;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  background-image: -webkit-gradient(linear, right top, left top, from(#ffd10a), color-stop(50%, #ffd10a), color-stop(50%, #2b2a27), to(#2b2a27));
+  background-image: linear-gradient(to left, #ffd10a, #ffd10a 50%, #2b2a27 50%, #2b2a27);
+  background-position: 5% 0;
+}
+
+.btn_standart_black.over {
+  -webkit-animation-name: in;
+          animation-name: in;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  background-image: -webkit-gradient(linear, right top, left top, from(#2b2a27), color-stop(50%, #2b2a27), color-stop(50%, #ffd10a), to(#ffd10a));
+  background-image: linear-gradient(to left, #2b2a27, #2b2a27 50%, #ffd10a 50%, #ffd10a);
+}
+
+@-webkit-keyframes in {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 5% 0;
+  }
+}
+
+@keyframes in {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 5% 0;
+  }
+}
+
+@-webkit-keyframes out {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 5% 0;
+  }
+}
+
+@keyframes out {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 5% 0;
+  }
+}
+
+.btn_standart_yellow {
+  color: #fff;
+  display: block;
+  background-image: -webkit-gradient(linear, right top, left top, from(#ffd10a), color-stop(50%, #ffd10a), color-stop(50%, #2b2a27), to(#2b2a27));
+  background-image: linear-gradient(to left, #ffd10a, #ffd10a 50%, #2b2a27 50%, #2b2a27);
+  background-position: 95% 0;
+  background-size: 220% 100%;
+  -webkit-transition: all .55s ease-in;
+  transition: all .55s ease-in;
+}
+
+.btn_standart_yellow:hover {
+  background-position: 5% 0;
+}
+
+.btn_standart_yellow.out {
+  -webkit-animation-name: out3;
+          animation-name: out3;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  background-image: -webkit-gradient(linear, right top, left top, from(#2b2a27), color-stop(50%, #2b2a27), color-stop(50%, #ffd10a), to(#ffd10a));
+  background-image: linear-gradient(to left, #2b2a27, #2b2a27 50%, #ffd10a 50%, #ffd10a);
+  background-position: 5% 0;
+}
+
+.btn_standart_yellow.over {
+  -webkit-animation-name: in3;
+          animation-name: in3;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  background-image: -webkit-gradient(linear, right top, left top, from(#ffd10a), color-stop(50%, #ffd10a), color-stop(50%, #2b2a27), to(#2b2a27));
+  background-image: linear-gradient(to left, #ffd10a, #ffd10a 50%, #2b2a27 50%, #2b2a27);
+}
+
+@-webkit-keyframes in3 {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 5% 0;
+  }
+}
+
+@keyframes in3 {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 5% 0;
+  }
+}
+
+@-webkit-keyframes out3 {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 5% 0;
+  }
+}
+
+@keyframes out3 {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 5% 0;
+  }
+}
+
+.btn_standart_transparent {
+  display: block;
+  background-image: -webkit-gradient(linear, right top, left top, from(transparent), color-stop(50%, transparent), color-stop(50%, #2b2a27), to(#2b2a27));
+  background-image: linear-gradient(to left, transparent, transparent 50%, #2b2a27 50%, #2b2a27);
+  background-position: 100% 0;
+  background-size: 220% 100%;
+  -webkit-transition: all .55s ease-in;
+  transition: all .55s ease-in;
+}
+
+.btn_standart_transparent:hover {
+  background-position: 5% 0;
+}
+
+.btn_standart_transparent.out {
+  -webkit-animation-name: out3;
+          animation-name: out3;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  background-image: -webkit-gradient(linear, right top, left top, from(#2b2a27), color-stop(50%, #2b2a27), color-stop(50%, transparent), to(transparent));
+  background-image: linear-gradient(to left, #2b2a27, #2b2a27 50%, transparent 50%, transparent);
+  background-position: 5% 0;
+}
+
+.btn_standart_transparent.over {
+  -webkit-animation-name: in3;
+          animation-name: in3;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  color: #fff !important;
+  background-image: -webkit-gradient(linear, right top, left top, from(transparent), color-stop(50%, transparent), color-stop(50%, #2b2a27), to(#2b2a27));
+  background-image: linear-gradient(to left, transparent, transparent 50%, #2b2a27 50%, #2b2a27);
+}
+
+@keyframes in3 {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 5% 0;
+  }
+}
+
+@keyframes out3 {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 5% 0;
+  }
+}
+
+@media (max-width: 430px) {
+  .btn_standart {
+    font-size: 14px;
+    padding: 14px 15px;
+  }
+}
+/*# sourceMappingURL=index.css.map */

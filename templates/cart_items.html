@@ -1,0 +1,154 @@
+{% extends "project/base.html" %}
+{% load sw_cart  %}
+{% block styles %}
+<link rel="stylesheet" href="/static/source/pages/index/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick.min.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css">
+<link rel="stylesheet" href="/static/source/pages/index/index.css?v=3">
+{% endblock styles %}
+{% block content%}
+<div style="padding:100px 20px;">
+{% get_cart_price cart main_currency "total_price" as main_cart_total_price%}
+{% get_cart_price cart current_currency "total_price" as current_cart_total_price%}
+<br>Вартість корзини: {{main_cart_total_price}} {{main_currency.code}}
+<br>Вартість корзини: {{current_cart_total_price}}  {{current_currency.code}}
+<br>Знижка: {{current_cart_total_price}}  {{current_currency.code}}
+
+{% for cart_item in cart_items %}
+  <div class="cart_item" style="width:1000px">
+
+    <br>
+
+    <a style="color:blue;" href="{{cart_item.item.get_absolute_url}}">
+      {{cart_item.item.title}}
+    </a>
+
+    <!-- currency -> cart_item.item.currency  -->
+    <br>
+    <br> Ціна за 1 шт.(валюта з адмінки)
+    
+    {% get_cart_item_price cart_item cart_item.item.currency "price" as admin_price %}
+    <br>без атрибутів без скидки 
+    <br>{{admin_price}} {{cart_item.item.currency.code}} 
+
+    {% get_cart_item_price cart_item cart_item.item.currency "price_with_discount" as admin_price_with_discount %}
+    <br>без атрибутів з скидкою 
+    <br>{{admin_price_with_discount}} {{cart_item.item.currency.code}} 
+
+    {% get_cart_item_price cart_item cart_item.item.currency "price_with_attributes" as admin_price_with_attributes %}
+    <br>з атрибутами без скидки 
+    <br>{{admin_price_with_attributes}} {{cart_item.item.currency.code}} 
+    
+    {% get_cart_item_price cart_item cart_item.item.currency "price_with_discount_with_attributes" as admin_price_with_discount_with_attributes %}
+    <br>з атрибутами з скидкою 
+    <br>{{admin_price_with_discount_with_attributes}} {{cart_item.item.currency.code}} 
+
+    {% get_cart_item_price cart_item cart_item.item.currency "attributes" as admin_attributes %}
+    <br>атрибути 
+    <br>{{admin_attributes}} {{cart_item.item.currency.code}} 
+
+    <br>
+    <br> Сумарна ціна за {{cart_item.quantity}} шт. (валюта з адмінки)
+
+    {% get_cart_item_price cart_item cart_item.item.currency "total_price" as admin_total_price %}
+    <br>без атрибутів без скидки
+    <br>{{admin_total_price}} {{cart_item.item.currency.code}}
+
+    {% get_cart_item_price cart_item cart_item.item.currency "total_price_with_discount" as admin_total_price_with_discount %}
+    <br>без атрибутів з скидкою
+    <br>{{admin_total_price_with_discount}} {{cart_item.item.currency.code}}
+
+    {% get_cart_item_price cart_item cart_item.item.currency "total_price_with_attributes" as admin_total_price_with_attributes %}
+    <br>з атрибутами без скидки
+    <br>{{admin_total_price_with_attributes}} {{cart_item.item.currency.code}}
+
+    {% get_cart_item_price cart_item cart_item.item.currency "total_price_with_discount_with_attributes" as admin_total_price_with_discount_with_attributes %}
+    <br>з атрибутами з скидкою 
+    <br>{{admin_total_price_with_discount_with_attributes}} {{cart_item.item.currency.code}}
+
+    {% get_cart_item_price cart_item cart_item.item.currency "total_attributes" as admin_total_attributes %}
+    <br>атрибути
+    <br>{{admin_total_attributes}} {{cart_item.item.currency.code}}
+
+
+
+
+
+    <!-- currency -> current_currency -->
+    <br>
+    <br> Ціна за 1 шт.(вибрана валюта)
+    
+    {% get_cart_item_price cart_item current_currency "price" as admin_price %}
+    <br>без атрибутів без скидки 
+    <br>{{admin_price}} {{current_currency.code}} 
+
+    {% get_cart_item_price cart_item current_currency "price_with_discount" as admin_price_with_discount %}
+    <br>без атрибутів з скидкою 
+    <br>{{admin_price_with_discount}} {{current_currency.code}} 
+
+    {% get_cart_item_price cart_item current_currency "price_with_attributes" as admin_price_with_attributes %}
+    <br>з атрибутами без скидки 
+    <br>{{admin_price_with_attributes}} {{current_currency.code}} 
+    
+    {% get_cart_item_price cart_item current_currency "price_with_discount_with_attributes" as admin_price_with_discount_with_attributes %}
+    <br>з атрибутами з скидкою 
+    <br>{{admin_price_with_discount_with_attributes}} {{current_currency.code}} 
+
+    {% get_cart_item_price cart_item current_currency "attributes" as admin_attributes %}
+    <br>атрибути 
+    <br>{{admin_attributes}} {{current_currency.code}} 
+
+    <br>
+    <br> Сумарна ціна за {{cart_item.quantity}} шт. (валюта з адмінки)
+
+    {% get_cart_item_price cart_item current_currency "total_price" as admin_total_price %}
+    <br>без атрибутів без скидки
+    <br>{{admin_total_price}} {{current_currency.code}}
+
+    {% get_cart_item_price cart_item current_currency "total_price_with_discount" as admin_total_price_with_discount %}
+    <br>без атрибутів з скидкою
+    <br>{{admin_total_price_with_discount}} {{current_currency.code}}
+
+    {% get_cart_item_price cart_item current_currency "total_price_with_attributes" as admin_total_price_with_attributes %}
+    <br>з атрибутами без скидки
+    <br>{{admin_total_price_with_attributes}} {{current_currency.code}}
+
+    {% get_cart_item_price cart_item current_currency "total_price_with_discount_with_attributes" as admin_total_price_with_discount_with_attributes %}
+    <br>з атрибутами з скидкою 
+    <br>{{admin_total_price_with_discount_with_attributes}} {{current_currency.code}}
+
+    {% get_cart_item_price cart_item current_currency "total_attributes" as admin_total_attributes %}
+    <br>атрибути
+    <br>{{admin_total_attributes}} {{current_currency.code}}
+
+
+
+
+    <br>
+    <br> атрибути:
+    <br>
+    {% for cart_item_attribute in cart_item.get_attributes %}
+      {{cart_item_attribute.attribute_name.attribute.name}}:
+      {% if not cart_item_attribute.values.all.exists %}
+        {{cart_item_attribute.value.value.value}}<br>
+      {% else %}
+        {% for value in cart_item_attribute.values.all %}{{value.value.value}}, {% endfor %}
+      {% endif %}
+    {% endfor %}
+    <hr>
+  </div>
+{% endfor %}
+</div>
+{% endblock content%}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
+<script src="/static/source/lib/slick/slick.min.js"></script> 
+<script src="/static/source/lib/wow/wow.min.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/pages/index/index.js"></script> 
+{% endblock scripts %}

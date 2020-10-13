@@ -1,0 +1,10 @@
+{% load i18n sw_content %}
+<form method="POST" action="" class="true_form absolute_center" id="modal_form_change_profile" style="display:none;">
+    <img class="form_true_img" src="/static/source/img/index/png-123.png" alt="">
+    {% render 'text74' as text74 %}
+    <div data-admin_url="{{text74.get_admin_url}}" class="db_content usually_modal_text standart_title standart_title_6 color_black">
+        {{text74.text}}
+        <!-- {% trans 'Ваші дані успішно змінені' %} -->
+    </div>
+</form>
+  

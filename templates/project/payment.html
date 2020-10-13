@@ -1,0 +1,27 @@
+{% extends 'project/base.html' %}
+{% block styles %}
+<link rel="stylesheet" href="/static/source/pages/items/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/slick/slick.min.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/pages/item/index.css?v=3">
+{% endblock styles %}
+{% block content%}
+<div class="liqpay_section">
+    {% include 'liqpay.html' %}
+</div>
+{% endblock content%}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/slick/slick.min.js"></script> 
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
+<script src="/static/source/lib/wow/wow.min.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/pages/item/index.js?v=3"></script> 
+{% endblock scripts %}
+
+
+

@@ -1,0 +1,18 @@
+code,meta_title,meta_title_uk,meta_title_en,meta_title_ru,meta_descr,meta_descr_uk,meta_descr_en,meta_descr_ru,meta_key,meta_key_uk,meta_key_en,meta_key_ru
+general,Загальна сторінка,Загальна сторінка,,,,,,,,,,
+about,about,about,,,about,about,,about,about,about,,about
+index,index,index,,,index,index,,index,index,index,,index
+contacts,,,,,,,,,,,,
+faq,faq,faq,,,faq,faq,,faq,faq,faq,,faq
+constructor,constructor,constructor,,,constructor,constructor,,constructor,constructor,constructor,,constructor
+test_drive,test_drive,test_drive,,,test_drive,test_drive,,test_drive,test_drive,test_drive,,test_drive
+delivery,delivery,delivery,,,delivery,delivery,,delivery,delivery,delivery,,delivery
+order,order,order,,,order,order,,order,order,order,,order
+search,search,search,,,search,search,,search,search,search,,search
+profile,profile,profile,,,profile,profile,,profile,profile,profile,,profile
+shop,shop,shop,,,shop,shop,,shop,shop,shop,,shop
+login,login,login,,,login,login,,login,login,login,,login
+register,register,register,,,register,register,,register,register,register,,register
+header,,,,,,,,,,,,
+footer,,,,,,,,,,,,
+page_code,,,,,,,,,,,,

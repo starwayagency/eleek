@@ -1,0 +1,104 @@
+.input{
+    width: 100%;
+    position: relative;
+    margin: 30px 0;
+    &_box{
+       position: relative;
+    }
+    &_label{
+        position: absolute;
+        top: 12px;
+        left: 0;
+        transition: .3s;
+        font-size: 16px;
+        line-height: 1;
+    }
+    &-field{
+        width: 100%;
+        background: inherit;
+        outline: none;
+        border: none;
+        font-size: 18px;
+        line-height: 1;
+        padding: 13px 0;
+    }
+    &-black{
+        .input{
+            &_label{
+                color: #242321;
+            }
+            &-field{
+                color: #242321;
+                border-bottom: 1px solid #242321;
+                &:-webkit-autofill {
+                    -webkit-box-shadow:0 0 0 50px rgba(255,255,255,0) inset; 
+                    -webkit-text-fill-color: #242321;
+                }
+                &:-webkit-autofill:focus {
+                    -webkit-box-shadow:  0 0 0 50px rgba(255,255,255,0) inset;
+                    -webkit-text-fill-color: #242321;
+                }
+            }
+        }
+    }
+    &-white{
+        .input{
+            &_label{
+                color: #fff;
+            }
+            &-field{
+                color: #fff;
+                border-bottom: 1px solid #fff;
+                &:-webkit-autofill {
+                    -webkit-box-shadow:0 0 0 50px rgba(255,255,255,0) inset; 
+                    -webkit-text-fill-color: #fff;
+                }
+                &:-webkit-autofill:focus {
+                    -webkit-box-shadow:  0 0 0 50px rgba(255,255,255,0) inset;
+                    -webkit-text-fill-color: #fff;
+                }
+            }
+        }
+    }
+}
+ 
+.in-focus{
+    & .input_label {
+        top: -10px;
+        transition: .3s;
+        font-size: 14px;
+    }
+}
+ 
+.is-error{
+    &.in-focus {
+        & .input_label {
+             color: #ff4b4b;
+        }
+    }
+    & .input{
+        &-field{
+            border-bottom: 1px solid #ff4b4b;
+            color: #ff4b4b;
+        }
+        &_label {
+            color: #ff4b4b;
+        }
+    }
+
+   
+    & label.error{
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.5;
+        color: #ff4b4b;
+    }
+}
+label.error{
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: #ff4b4b;
+}
+
+

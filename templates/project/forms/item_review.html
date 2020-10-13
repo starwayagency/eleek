@@ -1,0 +1,81 @@
+{% load i18n sw_content sw_catalog %}
+<form method="POST" action="/api/create_review/" class="comment_form" id="comment_form" style="display:none;">
+    <input type="hidden" name='item_id' value="{{item.id}}">
+    <div class="search_menu_title">
+      {% render 'text137' as text137 %}
+      <div class="db_content main__title main__title_4 color_black" data-admin_url="{{text137.get_admin_url}}">
+        {{text137.text}}
+        <!-- Новий відгук -->
+      </div>
+      <img class="modal_comm modal_search_close" src="/static/source/img/index/close.svg" alt="">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      {% render 'text138' as text138 %}
+      <label for="comment_name" class="db_content footer_label label__style color_black" data-admin_url="{{text138.get_admin_url}}">
+        {{text138.text}}
+        <!-- Ім'я -->
+      </label>
+      <input type="text" id="comment_name" name='name' class="comment_name footer_input input_focus">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      {% render 'text139' as text139 %}
+      <label for="comment_phone" class="db_content footer_label label__style color_black" data-admin_url="{{text139.get_admin_url}}">
+        {{text139.text}}
+        <!-- Телефон -->
+      </label>
+      <input type="text" id="comment_phone" name='phone' class="comment_phone footer_input input_focus">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      <label for="comment_email" class="footer_label label__style color_black">
+        Email
+      </label>
+      <input type="text" id="comment_email" name='email' class="comment_email footer_input input_focus">
+    </div>
+    <div class="comment_name__block">
+      {% render 'text140' as text140 %}
+      <div class="db_content comment_name color_black sub_title sub_title_2" data-admin_url="{{text140.get_admin_url}}">
+        {{text140.text}}
+        <!-- Ваша оцінка товару -->
+      </div>
+      <div class="modal-review__rating-order-wrap">
+        <input type="hidden" name="product_rating" class="hidden_rating_review" value="5">
+        <span class="rating_review" data-rating-value="1"></span>
+        <span class="rating_review" data-rating-value="2"></span>
+        <span class="rating_review" data-rating-value="3"></span>
+        <span class="rating_review" data-rating-value="4"></span>
+        <span class="rating_review" data-rating-value="5"></span>
+      </div>
+      <!-- <div class="comment_star">
+        <svg class="rating_item rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+        </svg>
+        <svg class="rating_item rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+        </svg>
+        <svg class="rating_item rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+        </svg>
+        <svg class="rating_item rating_svg rating_svg_active" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+        </svg>
+        <svg class="rating_item rating_svg rating_svg_usually" xmlns="http://www.w3.org/2000/svg" width="18" height="17" viewBox="0 0 18 17">
+          <path fill-rule="evenodd" d="M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z" transform="translate(0 -3)"/>
+        </svg>
+      </div> -->
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      {% render 'text141' as text141 %}
+      <label for="comment_send" class="db_content footer_label label__style color_black" data-admin_url="{{text141.get_admin_url}}">
+        {{text141.text}}
+        <!-- Відгук -->
+      </label>
+      <textarea name='text' id="comment_send" class="comment_send user_send footer_input input_focus"></textarea>
+    </div>
+    <div class="wrap_for_footer_btn">
+      {% render 'text142' as text142 %}
+      <input type="submit" value="{{text142.text}}" class="db_content generate_comment btn_standart btn_standart_black" data-admin_url="{{text142.get_admin_url}}">
+      <!-- <input type="submit" value="Додати відгук" class="generate_comment btn_standart btn_standart_black"> -->
+    </div>
+</form>
+  
+  

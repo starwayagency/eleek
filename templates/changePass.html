@@ -1,0 +1,55 @@
+{% extends 'project/base.html' %}
+{% load i18n sw_content %}
+{% block styles %}
+<link rel="stylesheet" href="/static/source/pages/login/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/pages/login/index.css?v=3">
+{% endblock styles %}
+{% block main_class %}
+item_section__wrapper
+{% endbblock main_class %}
+{% block content %}
+<section class="login_section">
+  <div class="registery__wrap">
+    <div class="registery_bg">
+      <img src="/static/source/img/registery/screenshot-2020-06-04-at-19-33-14.jpg" alt="">
+    </div>
+    <div class="registery_content">
+      <div class="registery__block absolute_center">
+        <h2 class="registery_name main__title main__title_2 color_black">
+          Забули пароль
+        </h2>
+        <form action="" class="registery_form login_form">
+          <div class="footer_input__wrap inp-vak-wrap">
+            <label for="login_mail" class="login_label label__style color_black">
+              E-mail
+            </label>
+            <input type="text" id="login_mail" name="email" class="login_mail login_input input_focus">
+          </div>
+          <div class="bottom_registery__block registery_fix">
+            
+            <input type="submit" value="Відновити" class="btn_standart btn_standart_black">
+          </div>
+          <div class="last_registery__block">
+            <div class="last_registery_text sub_title sub_title_2 color_black">
+              Ще не зареєстровані?
+            </div>
+            <a href="#" class="ultra_link sub_title sub_title_2 color_yellow">
+              Зареєструватись
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+{% block scripts %}
+<script src="/static/source/lib/jquery/index.js"></script> 
+<script src="/static/source/lib/maskinput/maskinput.js"></script> 
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
+<script src="/static/source/lib/validation/validation.min.js"></script> 
+<script src="/static/development/components/module/form_errors/index.js"></script> 
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
+<script src="/static/source/pages/login/index.js"></script> 
+{% endblock scripts %}

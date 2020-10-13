@@ -1,0 +1,58 @@
+{% load i18n sw_content sw_catalog %}
+
+<form method="POST" action="/api/order_request/" class="comment_form" id="form_cons" style="display:none;">
+    <input type="hidden" name='product_id' value="{{item.id}}">
+    <input type="hidden" name='attributes' value="" class="hidden_product_attr">
+    <div class="search_menu_title">
+      {% render 'text143' as text143 %}
+      <div class="db_content main__title main__title_4 color_black" data-admin_url="{{text143.get_admin_url}}">
+        {{text143.text}}
+        <!-- Швидка покупка -->
+      </div>
+      <img class="modal_comm modal_search_close" src="/static/source/img/index/close.svg" alt="">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      {% render 'text144' as text144 %}
+      <label for="comment_name" class="db_content footer_label label__style color_black" data-admin_url="{{text144.get_admin_url}}">
+        {{text144.text}}
+        <!-- Ім'я -->
+      </label>
+      <input type="text" id="comment_name" name='name' class="comment_name footer_input input_focus">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      {% render 'text145' as text145 %}
+      <label for="comment_phone" class="db_content footer_label label__style color_black" data-admin_url="{{text145.get_admin_url}}">
+        {{text145.text}}
+        <!-- Телефон -->
+      </label>
+      <input type="text" id="comment_phone" name='phone' class="comment_phone footer_input input_focus">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      <label for="comment_email" class="footer_label label__style color_black">
+        Email
+      </label>
+      <input type="text" id="comment_email" name='email' class="comment_email footer_input input_focus">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      {% render 'text146' as text146 %}
+      <label for="comment_adress" class="db_content footer_label label__style color_black" data-admin_url="{{text146.get_admin_url}}">
+        {{text146.text}}
+        <!-- Адреса -->
+      </label>
+      <input type="text" id="comment_adress" name='adress' class="comment_adress footer_input input_focus">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      {% render 'text147' as text147 %}
+      <label for="comment_send" class="db_content footer_label label__style color_black" data-admin_url="{{text147.get_admin_url}}">
+        {{text147.text}}
+        <!-- Коментар -->
+      </label>
+      <textarea name='text' id="comment_send" class="comment_send user_send footer_input input_focus"></textarea>
+    </div>
+    <div class="wrap_for_footer_btn">
+      {% render 'text148' as text148 %}
+      <input type="submit" value="{{text148.text}}" class="db_content btn_standart btn_standart_black" data-admin_url="{{text148.get_admin_url}}">
+      <!-- <input type="submit" value="Відправити" class="btn_standart btn_standart_black"> -->
+    </div>
+  </form>
+  

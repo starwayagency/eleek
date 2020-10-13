@@ -1,0 +1,39 @@
+{% load sw_content i18n %}
+<div class="footer_form_constructor">
+  <form action="/api/make_eleek_order/" method="POST" id="order__form_constructor" class="order__form_constructor">
+    <div class="footer_input__wrap inp-vak-wrap">
+      {% render 'text76' as text76 %}
+      <label for="footer_name" data-admin_url="{{text76.get_admin_url}}" class="db_content footer_label label__style color_white">
+        {{text76.text}}
+        <!-- Ім'я -->
+      </label>
+      <input type="text" id="footer_name" name='name' class="footer_input input_focus">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      {% render 'text77' as text77 %}
+      <label for="footer_tell" data-admin_url="{{text77.get_admin_url}}" class="db_content footer_label label__style color_white">
+        {{text77.text}}
+        <!-- Телефон -->
+      </label>
+      <input type="tel" id="footer_tell" name='tel' class="footer_input input_focus">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      <label for="footer_email" class="footer_label label__style color_white">
+        Email
+      </label>
+      <input type="text" id="footer_email" name='email' class="footer_input input_focus">
+    </div>
+    <div class="footer_input__wrap inp-vak-wrap">
+      {% render 'text78' as text78 %}
+      <label for="footer_email" data-admin_url="{{text78.get_admin_url}}" class="db_content footer_label label__style color_white">
+        {{text78.text}}
+        <!-- Коментар -->
+      </label>
+      <textarea name='message' id="user_send" class="user_send footer_input input_focus"></textarea>
+    </div>
+    <div class="wrap_for_footer_btn">
+      <input type="submit" value="Відправити" class="btn_standart btn_standart_yellow">
+    </div>
+  </form>
+</div>  
+
