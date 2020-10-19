@@ -173,6 +173,16 @@
         text-transform: uppercase;
     }
 }
+.block_pay {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.pay-img {
+    width: 40px;
+    margin-right: 20px;
+
+}
 @media (max-width: 992px) {
 
     .wrap_for_footer_btn {
