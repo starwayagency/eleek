@@ -18,7 +18,6 @@ python3 manage.py runserver 127.0.0.1:8000
 
 # основне
 
-
 # додаткове
 python3 manage.py gen_social_app 
 python3 manage.py sw_set_user admin eleek69018 dev@starwayua.com +88005553535 admin_name admin_surname  
