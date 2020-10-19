@@ -364,6 +364,10 @@ def page_404(request):
     return render(request, 'page_404.html', locals())
 
 
+def oferta(request):
+    return render(request, 'project/oferta.html', locals())
+
+
 
 def error_page(request):
     sdfdsa
@@ -388,6 +392,7 @@ urlpatterns = [
     path('shop/',        shop,        name='shop'),
     path('delivery/',    delivery,    name='delivery'),
     path('payment/',     payment,     name='payment'),
+    path('oferta/',     oferta,     name='oferta'),
     
     path('login/',      login,       name='login'),
     path('register/',   register,    name='register'),

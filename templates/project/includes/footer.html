@@ -91,6 +91,11 @@
           {{text15.text}}
           <!-- {% trans 'Доставка і оплата' %} -->
         </a>
+        <a href="{% url 'oferta' %}" class="footer_accordeon_text color_white sub_title sub_title_2">
+          Оферта
+          <!-- {{text15.text}} -->
+          <!-- {% trans 'Доставка і оплата' %} -->
+        </a>
         {% render 'text16' as text16 %}
         <a data-admin_url="{{text16.get_admin_url}}" href="{% url 'test_drive' %}" class="db_content footer_accordeon_text color_white sub_title sub_title_2">
           {{text16.text}}

@@ -18,7 +18,7 @@
             
             var query = {
               per_page: 20,
-              search_query: params.term,
+              title: params.term,
               page_number: params.page || 1,
             };
       
