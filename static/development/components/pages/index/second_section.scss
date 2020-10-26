@@ -91,12 +91,21 @@
 .img_preferens__block {
     position: relative;
     margin: 0 100px;
-    margin-top: -240px;
+    margin-top: -400px;
     text-align: center;
+}
+@media (max-width: 1460px) {
+    .img_preferens__block {
+        text-align: center;
+        margin: 0 auto;
+        margin-top: -400px;
+        img {
+            width: 500px;
+        }
+    }
 }
 @media (max-width: 1406px) {
     .img_preferens__block {
-        margin: 0 50px;
         margin-top: -300px;
 
         img {
