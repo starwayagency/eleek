@@ -126,3 +126,40 @@ PATH_500    = 'page_500.html'
 # ACCOUNT_UNIQUE_EMAIL = False 
 
 
+# SERVER_EMAIL = 'dev@starwayua.com'
+# ADMINS = [
+#     ('jurgeon018', 'jurgeon018@gmail.com'),
+#     ('DEV', 'dev@starwayua.com'),
+# ]
+# MANAGERS = ADMINS 
+
+
+import re 
+IGNORABLE_404_URLS = [
+    re.compile(r'\.(php|cgi)$'),
+    re.compile(r'^/phpmyadmin/'),
+    re.compile(r'^/wp-content/*'),
+    re.compile(r'^/product/*'),
+    re.compile(r'^/product-category/*'),
+    re.compile(r'^/set_lang/*'),
+    re.compile(r'^/favicon.ico'),
+    re.compile(r'^/magazyn/'),
+    re.compile(r'^/contacts/'),
+    re.compile(r'^/wp-admin/'),
+    re.compile(r'^/wp-content/*'),
+    re.compile(r'^/wp-content/'),
+    re.compile(r'^/asset-manifest.json'),
+    re.compile(r'\.(php|cgi)$'),
+    re.compile(r'^/phpmyadmin/'),
+    re.compile(r'^/wp-content/*'),
+    re.compile(r'^/set_lang/*'),
+    re.compile(r'^/favicon.ico'),
+    re.compile(r'^/asset-manifest.json'),
+    re.compile(r'^/wp-content/*'),
+    re.compile(r'^/wp-content/'),
+    re.compile(r'^/wp-admin/'),
+    re.compile(r'^/wordpress/wp-admin/'),
+    re.compile(r'^/android-icon-192x192.png'),
+    re.compile(r'^/components/com_acym/index.html'),
+]
+
