@@ -1,0 +1,13 @@
+# Команди для мінімального стягування змін на сервак фронтендером 
+
+
+ssh jurgeon@starway.agency
+пароль
+cd /home/jurgeon/projects/eleek/
+source ./venv/bin/activate
+cd src 
+git pull origin master 
+python3 manage.py collectstatic --noinput 
+sudo service eleek restart 
+пароль
+
