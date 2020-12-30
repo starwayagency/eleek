@@ -1,0 +1,11 @@
+# синхронізація змін з гітхаба і підгтовка ліб і БД для розробки. 
+
+
+
+git pull origin master 
+pip3 install -r requirements.txt
+pip3 install -r box/core/requirements.txt
+rm db.sqlite3
+cp db_nov19.sqlite3 db.sqlite3
+python3 manage.py makemigrations 
+python3 manage.py runserver 127.0.0.1:8000

@@ -245,6 +245,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/common_componentc/header/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
+$('.scroll_changer_profile').on('click', function () {
+  $(this).find('.scroll_lang_hidden_content').toggleClass('active');
+});
+$(document).mouseup(function (e) {
+  var container = $(".scroll_changer_profile");
+
+  if (container.has(e.target).length === 0) {
+    $('.scroll_lang_hidden_content').removeClass('active');
+  }
+});
 window.addEventListener('DOMContentLoaded', function () {
   var arrow_1 = document.getElementById('arrow_1');
   var button_1 = document.getElementById('button_1');
@@ -1306,6 +1316,15 @@ $('.item_tab_link_3').on('click', function () {
   check_item_comment();
 });
 $('.add_comment_btn').on('click', function () {
+  $('#comment_form').removeClass('answer');
+  $.fancybox.open({
+    src: '#comment_form',
+    touch: false
+  });
+});
+$('.comment_text_manager').on('click', function () {
+  $(this).parents('.comment_profile').addClass('active_answer');
+  $('#comment_form').addClass('answer');
   $.fancybox.open({
     src: '#comment_form',
     touch: false
@@ -1359,8 +1378,14 @@ $('.generate_comment').on('click', function () {
     send: comment_send,
     rating: comment_rating
   };
-  console.log('comment_json: ', comment_json);
-  $('.comment_profile__wrapper')[0].prepend(create_comment(comment_json));
+
+  if ($(wrap).hasClass('answer')) {
+    var answer = $('.active_answer');
+    $(answer).find('.comment_answer__block')[0].prepend(create_answer(comment_json));
+    $(answer).removeClass('active_answer');
+  } else {
+    $('.comment_profile__wrapper')[0].prepend(create_comment(comment_json));
+  }
 });
 
 function create_comment(content) {
@@ -1396,6 +1421,23 @@ function create_comment(content) {
     comment_star.appendChild(svg_wrap);
   }
 
+  comment_profile.appendChild(comment_text);
+  return comment_profile;
+}
+
+function create_answer(content) {
+  var comment_profile = document.createElement('div');
+  comment_profile.classList.add('comment_profile');
+  var comment_name__block = document.createElement('div');
+  comment_name__block.classList.add('comment_name__block');
+  var comment_name = document.createElement('div');
+  comment_name.classList.add('comment_name', 'color_black', 'standart_title', 'standart_title_4');
+  comment_name.textContent = content.name;
+  var comment_text = document.createElement('div');
+  comment_text.classList.add('comment_text', 'color_black', 'sub_title', 'sub_title_2');
+  comment_text.textContent = content.send;
+  comment_profile.appendChild(comment_name__block);
+  comment_name__block.appendChild(comment_name);
   comment_profile.appendChild(comment_text);
   return comment_profile;
 }

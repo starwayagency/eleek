@@ -1,0 +1,7 @@
+# підготовка проекту для початку розробки
+
+git clone https://github.com/jurgeon018/box 
+cp _settings.ini settings.ini
+
+
+

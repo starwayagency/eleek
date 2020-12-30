@@ -518,6 +518,28 @@
             margin-bottom: 5px;
         }
     }
+    &_form {
+        &.answer {
+            .answer_tel, .answer_mail, .answer_star {
+                display: none;
+            }
+        }
+    }
+    &_text_manager {
+        transition: all .2s;
+        display: flex;
+        justify-content: flex-end;
+        cursor: pointer;
+
+        &:hover {
+            color: #d6b212;
+        }
+    }
+    &_answer__block {
+        .comment_profile {
+            padding: 5px 20px;
+        }
+    }
 }
 
 @keyframes anim_comment {

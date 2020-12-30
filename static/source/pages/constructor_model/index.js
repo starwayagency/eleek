@@ -57191,6 +57191,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/common_componentc/header/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
+$('.scroll_changer_profile').on('click', function () {
+  $(this).find('.scroll_lang_hidden_content').toggleClass('active');
+});
+$(document).mouseup(function (e) {
+  var container = $(".scroll_changer_profile");
+
+  if (container.has(e.target).length === 0) {
+    $('.scroll_lang_hidden_content').removeClass('active');
+  }
+});
 window.addEventListener('DOMContentLoaded', function () {
   var arrow_1 = document.getElementById('arrow_1');
   var button_1 = document.getElementById('button_1');

@@ -1777,7 +1777,7 @@ body .dribbble img {
 
 .nav_menu_item__block:after {
   content: '';
-  width: 150px;
+  width: 550px;
   -webkit-transform: skew(-15deg);
   -moz-transform: skew(-15deg);
   -o-transform: skew(-15deg);
@@ -2020,6 +2020,9 @@ body .dribbble img {
     position: relative; }
     .scroll_search__block svg {
       position: absolute; }
+
+.scroll_lang, .scroll_vallute {
+  cursor: pointer; }
 
 .scroll_lang__block {
   display: flex;
@@ -2400,6 +2403,38 @@ body {
 .load_way {
   margin-top: 50px; }
 
+.nav_menu__block .scroll_changer__block {
+  transition: all .7s;
+  position: relative;
+  right: 0;
+  z-index: 9;
+  padding-left: 10px; }
+
+.nav_menu__block_active .scroll_changer__block {
+  right: -500px; }
+
+.scroll_changer_profile {
+  position: relative;
+  margin: 0px 10px; }
+  .scroll_changer_profile .scroll_lang_hidden_content {
+    transition: all .4s;
+    position: absolute;
+    bottom: -85px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    max-height: 0px;
+    overflow: hidden;
+    opacity: 0;
+    max-height: 0px; }
+    .scroll_changer_profile .scroll_lang_hidden_content.active {
+      overflow: visible;
+      opacity: 1;
+      max-height: 10000px; }
+  .scroll_changer_profile .scroll_changer {
+    margin-right: 0;
+    padding: 0 10px; }
+
 @media (max-width: 1440px) {
   .header_title_1 {
     font-size: 40px; }
@@ -2407,6 +2442,10 @@ body {
     margin-top: 40px; }
   .scroll_bottom__block, .scroll_top__block {
     padding: 40px 20px; } }
+
+@media (max-width: 755px) {
+  .nav_menu__block .scroll_changer__block {
+    display: none; } }
 
 @media (max-width: 533px) {
   .basket_menu {
@@ -2577,6 +2616,13 @@ body {
   .footer_starway__block {
     display: flex;
     align-items: center; }
+  .footer_social {
+    display: flex;
+    width: 30px;
+    justify-content: center; }
+    .footer_social__block {
+      display: flex;
+      align-items: center; }
 
 .svg_sw g {
   transition: all .2s; }
