@@ -23,6 +23,7 @@
         {{text81.text}}
         <!-- {% trans 'У даного товару ще немає відруків. Ви можете бути першим. ' %} -->
       </div>
+
       <div class="comment_profile__wrapper">
         {% for review in item.reviews.all %}
         <div class="comment_profile db_content" data-admin_url="{{review.get_admin_url}}">

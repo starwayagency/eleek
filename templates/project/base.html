@@ -1,4 +1,7 @@
 {% extends "core/base.html" %}
+{% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+
 {% block head_top_scripts %}
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -11,6 +14,19 @@
   gtag('config', 'G-K7P4538DPT');
 </script>
 {% endblock head_top_scripts %}
+
+{% block head_bottom_scripts %}
+{{block.super}}
+{% if LANGUAGE_CODE == "ru" %}
+<script src="//code-ya.jivosite.com/widget/SKlcAQnL7u" async></script>
+{% elif LANGUAGE_CODE == "en"%}
+<script src="//code-ya.jivosite.com/widget/bguqjmRFcu" async></script> 
+{% elif LANGUAGE_CODE == "uk"%}
+<script src="//code-ya.jivosite.com/widget/r7A74v8IGF" async></script>
+{% endif %}
+{% endblock head_bottom_scripts %}
+
+
 
 
 {% block outer_content %}
