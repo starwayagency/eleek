@@ -1,6 +1,7 @@
 .prod_header {
     padding-top: 120px;
     min-height: 100vh;
+    padding-bottom: 30px;
     position: relative;
 }
 
@@ -252,7 +253,7 @@
     height: unset;
    
     .filter-content { 
-        padding: 16px 14px;
+        padding: 0;
         border: 1px solid #3d3c3a;
         margin-top: 14px;
         // position: relative;
@@ -284,7 +285,7 @@
     visibility: visible;
     top: 0;
     height: 100%;
-    padding: 16px 14px !important;
+    padding: 16px 14px;
 
    }
 }
@@ -618,9 +619,11 @@
     }
 }
 @media (max-width: 710px) {
-
+    .product_title {
+        margin-left: 0;
+    }
     .prod_header {
-        padding-top: 110px;
+        padding-top: 90px;
     }
    
     .product_card-prof:nth-child(2n+1) {
@@ -634,6 +637,9 @@
     }
 }
 @media (max-width: 520px) {
+    .main_product-block {
+        min-width: unset;
+    }
     .color_filter-block {
         display: flex;
         flex-wrap: wrap;

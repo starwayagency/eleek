@@ -166,6 +166,7 @@ $('.item_tab_link_3').on('click', function () {
 });
 $('.add_comment_btn').on('click', function () {
   $('#comment_form').removeClass('answer');
+  $('.comment_name').val('');
 
   $.fancybox.open({
     src: '#comment_form',
@@ -175,6 +176,7 @@ $('.add_comment_btn').on('click', function () {
 $('.comment_text_manager').on('click', function () {
   $(this).parents('.comment_profile').addClass('active_answer');
   $('#comment_form').addClass('answer');
+  $('.comment_name').val('Eleek');
   $.fancybox.open({
     src: '#comment_form',
     touch: false
@@ -240,7 +242,6 @@ $('.generate_comment').on('click', function () {
     $(answer).removeClass('active_answer');
   } else {
     $('.form_parent_id').val(null);
-
     $('.comment_profile__wrapper')[0].prepend(create_comment(comment_json));
   }
 
