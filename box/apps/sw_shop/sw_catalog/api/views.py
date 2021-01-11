@@ -209,6 +209,7 @@ class ItemAttributeValueRetrieve(generics.RetrieveAPIView):
 
 @csrf_exempt
 def create_review(request):
+    print(request.POST)
     item_id = request.POST['item_id']
     rating  = request.POST['product_rating']
     text    = request.POST.get('text', '---')
