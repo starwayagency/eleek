@@ -8,7 +8,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K7P4538DPT"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
 
   gtag('config', 'G-K7P4538DPT');
@@ -18,11 +18,12 @@
 {% block head_bottom_scripts %}
 {{block.super}}
 {% if LANGUAGE_CODE == "ru" %}
-<script src="//code-ya.jivosite.com/widget/SKlcAQnL7u" async></script>
+<script src="//code.jivosite.com/widget/ueWUhdiuAB" async></script>
 {% elif LANGUAGE_CODE == "en"%}
-<script src="//code-ya.jivosite.com/widget/bguqjmRFcu" async></script> 
+<script src="//code.jivosite.com/widget/hRgo04kG9Z" async></script>
 {% elif LANGUAGE_CODE == "uk"%}
-<script src="//code-ya.jivosite.com/widget/r7A74v8IGF" async></script>
+<script src="//code.jivosite.com/widget/nufdyzvj6V" async></script>
+
 {% endif %}
 {% endblock head_bottom_scripts %}
 
@@ -32,9 +33,8 @@
 {% block outer_content %}
 {% include 'project/includes/header.html' %}
 <main class="{% block main_class %}{% endblock main_class %}">
-    {% block content %}
-    {% endblock content %}
-    {% include 'project/includes/footer.html' %}
+  {% block content %}
+  {% endblock content %}
+  {% include 'project/includes/footer.html' %}
 </main>
 {% endblock outer_content %}
-
