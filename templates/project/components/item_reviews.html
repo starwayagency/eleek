@@ -86,9 +86,11 @@
           <div class="comment_text color_black sub_title sub_title_2">
             {{review.text}}
           </div>
+          {% if request.user.is_authenticated%}
           <div class="comment_text_manager color_yellow sub_title sub_title_2">
             Відповісти
           </div>
+          {% endif %}
           <div class="comment_answer__block">
             {% for answer in review.reviews.all %}
             <div class="comment_profile">
