@@ -82,34 +82,30 @@
     <div class="scroll_changer__block">
       <div class="scroll_lang__block scroll_changer_profile">
         <span class="scroll_lang scroll_changer sub_title sub_title_2 color_black scroll_changer_active">
-          ua
+          {{LANGUAGE_CODE}}
         </span>
         <div class="scroll_lang_hidden_content">
-          <a href="#" class="scroll_lang scroll_changer sub_title sub_title_2 color_black">
+          {% for language in languages %}
+          <a href="{% url 'set_lang' language.code %}" class="scroll_lang scroll_changer sub_title sub_title_2 color_black">
+            {% if language.code == 'uk' %}
             ua
+            {% else %}
+            {{language.code}}
+            {% endif %}
           </a>
-          <a href="#" class="scroll_lang scroll_changer sub_title sub_title_2 color_black">
-            en
-          </a>
-          <a href="#" class="scroll_lang scroll_changer sub_title sub_title_2 color_black">
-            ru
-          </a>
+          {% endfor %}
         </div>
       </div>
       <div class="scroll_vallute__block scroll_changer_profile">
         <span class="scroll_vallute scroll_changer sub_title sub_title_2 color_black scroll_changer_active">
-          uah
+          {{current_currency_code}}
         </span>
         <div class="scroll_lang_hidden_content">
-          <a href="#" class="scroll_vallute scroll_changer sub_title sub_title_2 color_black">
-            uah
+          {% for currency in currencies %}
+          <a href="{% url 'set_currency' currency.code %}" class="scroll_vallute scroll_changer sub_title sub_title_2 color_black">
+            {{currency.code}}
           </a>
-          <a href="#" class="scroll_vallute scroll_changer sub_title sub_title_2 color_black">
-            usd
-          </a>
-          <a href="#" class="scroll_vallute scroll_changer sub_title sub_title_2 color_black">
-            eur
-          </a>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -239,13 +235,12 @@
               {% for currency in currencies %}
               {% if currency.code == current_currency_code %}
               <a class="scroll_vallute scroll_changer sub_title sub_title_2 color_white scroll_changer_active">
-                {% else %}
-                <a href="{% url 'set_currency' currency.code %}"
-                  class="scroll_vallute scroll_changer sub_title sub_title_2 color_white">
-                  {% endif %}
+              {% else %}
+              <a href="{% url 'set_currency' currency.code %}" class="scroll_vallute scroll_changer sub_title sub_title_2 color_white">
+              {% endif %}
                   {{currency.code}}
-                </a>
-                {% endfor %}
+              </a>
+              {% endfor %}
             </div>
           </div>
         </div>
