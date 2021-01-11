@@ -233,9 +233,14 @@ $('.generate_comment').on('click', function () {
 
   if ($(wrap).hasClass('answer')) {
     let answer = $('.active_answer');
+    let parent_val = $(answer).find('.review_id').val();
+    $('.form_parent_id').val(parent_val);
+
     $(answer).find('.comment_answer__block')[0].prepend(create_answer(comment_json));
     $(answer).removeClass('active_answer');
   } else {
+    $('.form_parent_id').val(null);
+
     $('.comment_profile__wrapper')[0].prepend(create_comment(comment_json));
   }
 

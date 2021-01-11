@@ -1,6 +1,8 @@
 {% load i18n sw_content sw_catalog %}
 <form method="POST" action="/api/create_review/" class="comment_form" id="comment_form" style="display:none;">
   <input type="hidden" name='item_id' value="{{item.id}}">
+  <input type="hidden" name='parent_id' class="form_parent_id">
+
   <div class="search_menu_title">
     {% render 'text137' as text137 %}
     <div class="db_content main__title main__title_4 color_black" data-admin_url="{{text137.get_admin_url}}">

@@ -26,6 +26,7 @@
       <div class="comment_profile__wrapper">
         {% for review in item.reviews.all %}
         <div class="comment_profile db_content" data-admin_url="{{review.get_admin_url}}">
+          <input type="hidden" class="review_id" name='review_id' value="{{review.id}}">
           <div class="comment_name__block">
             <div class="comment_name color_black standart_title standart_title_4">
               {{review.name}}

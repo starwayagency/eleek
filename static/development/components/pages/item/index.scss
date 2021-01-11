@@ -641,6 +641,13 @@ div.modal-review__rating-order-wrap[class] > span:hover ~ span {
 
 .info_item__block {
     margin-top: 20px;
+
+
+
+    iframe {
+        width: 100%;
+        height: auto;
+    }
 }
 
 
@@ -820,7 +827,7 @@ div.modal-review__rating-order-wrap[class] > span:hover ~ span {
         top: 95px;
     }
     .item_slider__block {
-        margin-top: 65px;
+        margin-top: 85px;
     }
 }
 @media (max-width: 470px) {

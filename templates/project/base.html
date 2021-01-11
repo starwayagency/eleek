@@ -1,5 +1,16 @@
 {% extends "core/base.html" %}
+{% block head_top_scripts %}
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K7P4538DPT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K7P4538DPT');
+</script>
+{% endblock head_top_scripts %}
 
 
 {% block outer_content %}
