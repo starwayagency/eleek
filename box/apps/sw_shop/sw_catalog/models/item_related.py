@@ -184,6 +184,7 @@ class ItemReview(BaseMixin):
     email   = models.CharField(verbose_name=_("E-mail"),  blank=True, null=True, max_length=255)
     name    = models.CharField(verbose_name=_("Ім'я"),    blank=True, null=True, max_length=255)
     rating  = models.CharField(verbose_name=_("Оцінка"),  blank=True, null=True, max_length=255)
+    parent  = models.ForeignKey(verbose_name="Батьківський відгук", to="self", related_name='reviews', blank=True, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return f"{self.text}{self.rating}"
@@ -191,7 +192,8 @@ class ItemReview(BaseMixin):
     class Meta:
         verbose_name = _('Відгук')
         verbose_name_plural = _('Відгуки')
-        ordering = ['order']
+        # ordering = ['order', 'created']
+        ordering = ['-created']
 
 
 class ItemStock(models.Model):

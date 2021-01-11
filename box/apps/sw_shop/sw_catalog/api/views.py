@@ -210,21 +210,32 @@ class ItemAttributeValueRetrieve(generics.RetrieveAPIView):
 @csrf_exempt
 def create_review(request):
     print(request.POST)
-    item_id = request.POST['item_id']
-    rating  = request.POST['product_rating']
-    text    = request.POST.get('text', '---')
-    name    = request.POST.get('name', '---')
-    phone   = request.POST.get('phone', '---')
-    email   = request.POST.get('email', '---')
-    item    = Item.objects.get(id=item_id)
-    review  = ItemReview.objects.create(
-      item=item,
-      text=text,
-      phone=phone,
-      email=email,
-      name=name,
-      rating=rating,
-    )
+    item_id    = request.POST['item_id']
+    rating     = request.POST['product_rating']
+    text       = request.POST.get('text', '---')
+    name       = request.POST.get('name', '---')
+    phone      = request.POST.get('phone', '---')
+    email      = request.POST.get('email', '---')
+    parent_id  = request.POST.get('parent_id')
+    item       = Item.objects.get(id=item_id)
+    if parent_id:
+      review     = ItemReview.objects.create(
+        parent = ItemReview.objects.get(id=parent_id),
+        text=text,
+        phone=phone,
+        email=email,
+        name=name,
+        rating=rating,
+      )
+    else:
+      review     = ItemReview.objects.create(
+        item=item,
+        text=text,
+        phone=phone,
+        email=email,
+        name=name,
+        rating=rating,
+      )
     # if GlobalConfig.get_solo().auto_review_approval:
     #   review.is_active = True 
     #   review.save()
