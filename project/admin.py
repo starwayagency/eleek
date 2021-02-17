@@ -75,3 +75,7 @@ class TestDriveAdmin(admin.ModelAdmin):
     pass 
 
 
+@admin.register(Faq)
+class FaqAdmin(TabbedTranslationAdmin):
+    pass
+

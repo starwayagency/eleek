@@ -38,8 +38,8 @@ def item_category(request, slug):
     descentant_ids    = list(category.get_descendants().values_list('id', flat=True))
     descentant_ids.append(category.id)
     # items             = Item.objects.filter(category__id__in=descentant_ids).order_by('-order')[0:24]
-    items             = Item.objects.filter(category__id__in=descentant_ids).order_by('order')[0:100]
-    all_items         = Item.objects.filter(category__id__in=descentant_ids).order_by('order')
+    items             = Item.objects.filter(is_active=True, category__id__in=descentant_ids).order_by('order')[0:100]
+    all_items         = Item.objects.filter(is_active=True, category__id__in=descentant_ids).order_by('order')
     show_more         = all_items.count() > 100
     # show_more         = all_items.count() > 24
     discount_filter   = all_items.filter(discount__isnull=False).exists()
