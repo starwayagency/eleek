@@ -27,19 +27,24 @@ item_section__wrapper
           {% endfor %}
         </div>
 
-       <!-- data-quantity-slider - показує кількість фотографій які показуються в слайдері
+        <!-- data-quantity-slider - показує кількість фотографій які показуються в слайдері
         bottom_slider__wrap_with_three_de - добавляти цей класс якщо є блочок з 3D -->
         <div class="bottom_slider__wrap">
           {% if item.category.code == 'velo' %}
           <div class="three_de__block">
             <svg class="hvr-bob" xmlns="http://www.w3.org/2000/svg" width="49" height="56" viewBox="0 0 49 56">
-              <g class="three_svg" fill="none" fill-rule="evenodd" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                  <path d="M24.684 1.093l18.133 9.714c1.54.82 2.515 2.504 2.516 4.347V38.3c0 1.843-.975 3.527-2.516 4.347L24.684 52.36c-1.277.685-2.78.685-4.057 0L2.493 42.646C.954 41.815-.012 40.12 0 38.274v-23.12c0-1.843.975-3.527 2.516-4.347l18.133-9.714c1.271-.677 2.764-.677 4.035 0z" transform="translate(1.167 1.857)"/>
-                  <path d="M.725 12.531L22.667 24.286 44.608 12.531M22.667 52.846L22.667 24.286" transform="translate(1.167 1.857)"/>
+              <g class="three_svg" fill="none" fill-rule="evenodd" stroke="#000" stroke-linecap="round"
+                stroke-linejoin="round" stroke-width="2">
+                <path
+                  d="M24.684 1.093l18.133 9.714c1.54.82 2.515 2.504 2.516 4.347V38.3c0 1.843-.975 3.527-2.516 4.347L24.684 52.36c-1.277.685-2.78.685-4.057 0L2.493 42.646C.954 41.815-.012 40.12 0 38.274v-23.12c0-1.843.975-3.527 2.516-4.347l18.133-9.714c1.271-.677 2.764-.677 4.035 0z"
+                  transform="translate(1.167 1.857)" />
+                <path d="M.725 12.531L22.667 24.286 44.608 12.531M22.667 52.846L22.667 24.286"
+                  transform="translate(1.167 1.857)" />
               </g>
             </svg>
             {% render 'text51' as text51 %}
-            <div class="db_content three_title standart_title standart_title_5 color_black" data-admin_url="{{text51.get_admin_url}}">
+            <div class="db_content three_title standart_title standart_title_5 color_black"
+              data-admin_url="{{text51.get_admin_url}}">
               {{text51.text}}
               <!-- {% trans 'Показати в 3Д' %} -->
             </div>
@@ -47,149 +52,158 @@ item_section__wrapper
           {% endif %}
           {% if item.category.code == 'velo' %}
           <div data-quantity-slider='3' class="mini_slider mini_slider_with_three_de">
-          {% else %}
-          <div data-quantity-slider='4' class="mini_slider">
-          {% endif %}
-            {% for image in item.images.all %}
-            <div class="img-wrap">
-              <img src="{{image.image_url}}" alt="{{image.alt}}">
+            {% else %}
+            <div data-quantity-slider='4' class="mini_slider">
+              {% endif %}
+              {% for image in item.images.all %}
+              <div class="img-wrap">
+                <img src="{{image.image_url}}" alt="{{image.alt}}">
+              </div>
+              {% endfor %}
             </div>
-            {% endfor %}
           </div>
-        </div>
 
 
-      </div>
-    </div>
-    <div class="item_select__block">
-      <a href="{{item.category.get_absolute_url}}">
-      <div class="item_category_name sub_title sub_title_2 color_black db_content" data-admin_url="{{item.category.get_admin_url}}">
-        {{item.category.title|title}}
-      </div>
-      </a>
-      <div class="item_name__block">
-        <div data-id-name='{{item.id}}' class="item_name main__title main__title_2 color_black">
-          {{item.title|title}} 
         </div>
-        {% include "project/components/item_rating.html" %}
       </div>
-      <div class="item_price__block">
-        <div class="item_price main__title main__title_3 color_black">
-          <!-- {{item.price}} {{item.currency.code}} -->
-          <!-- {{item.converted_price}} {{item.main_currency.symbol}} -->
-          {% get_item_price item current_currency "price_with_discount" as chosen_price %} 
-          {{chosen_price|floatformat}} {{current_currency.code}}
+      <div class="item_select__block">
+        <a href="{{item.category.get_absolute_url}}">
+          <div class="item_category_name sub_title sub_title_2 color_black db_content"
+            data-admin_url="{{item.category.get_admin_url}}">
+            {{item.category.title|title}}
+          </div>
+        </a>
+        <div class="item_name__block">
+          <div data-id-name='{{item.id}}' class="item_name main__title main__title_2 color_black">
+            {{item.title|title}}
+          </div>
+          {% include "project/components/item_rating.html" %}
         </div>
-        <div class="item_btn_wrapper">
-          {% if item.in_stock and not item.in_stock.availability or item.amount == 0 %}
-          {% render 'text52' as text52 %}
-          <div data-src='#form_qustion' class="db_content fast_btn sale_one_click btn_standart btn_standart_black color_white" data-admin_url="{{text52.get_admin_url}}">
-            {{text52.text}}
-            <!-- {% trans 'Інфорація про товар' %} -->
+        <div class="item_price__block">
+          <div class="item_price main__title main__title_3 color_black">
+            <!-- {{item.price}} {{item.currency.code}} -->
+            <!-- {{item.converted_price}} {{item.main_currency.symbol}} -->
+            {% get_item_price item current_currency "price_with_discount" as chosen_price %}
+            {{chosen_price|floatformat}} {{current_currency.code}}
           </div>
-          {% else %}
-          {% render 'text54' as text54 %}
-          <div data-src='#form_cons' class="db_content fast_btn sale_one_click btn_standart btn_standart_black color_white" data-admin_url="{{text54.get_admin_url}}">
-            {{text54.text}}
-            <!-- {% trans 'Швидка покупка' %} -->
+          <div class="item_btn_wrapper">
+            {% if item.in_stock and not item.in_stock.availability or item.amount == 0 %}
+            {% render 'text52' as text52 %}
+            <div data-src='#form_qustion'
+              class="db_content fast_btn sale_one_click btn_standart btn_standart_black color_white"
+              data-admin_url="{{text52.get_admin_url}}">
+              {{text52.text}}
+              <!-- {% trans 'Інфорація про товар' %} -->
+            </div>
+            {% else %}
+            {% render 'text54' as text54 %}
+            <div data-src='#form_cons'
+              class="db_content fast_btn sale_one_click btn_standart btn_standart_black color_white"
+              data-admin_url="{{text54.get_admin_url}}">
+              {{text54.text}}
+              <!-- {% trans 'Швидка покупка' %} -->
+            </div>
+            {% render 'text53' as text53 %}
+            <div class="db_content main_item_btn item_btn_price btn_standart btn_standart_black color_white"
+              data-admin_url="{{text53.get_admin_url}}">
+              {{text53.text}}
+              <!-- {% trans 'Купити' %} -->
+            </div>
+            {% endif %}
           </div>
-          {% render 'text53' as text53 %}
-          <div class="db_content main_item_btn item_btn_price btn_standart btn_standart_black color_white" data-admin_url="{{text53.get_admin_url}}">
-            {{text53.text}}
-            <!-- {% trans 'Купити' %} -->
-          </div>
-          {% endif %}
-        </div>
-        <!-- <div class="main_item_btn btn_standart color_white NoActiveBtn">
+          <!-- <div class="main_item_btn btn_standart color_white NoActiveBtn">
           {% trans 'Куплено' %}
         </div> -->
-      </div>
-      {% include "project/components/item_prices.html" %}
-      {% if item.manufacturer %}
-      <div class="additional__block">
-        {% render 'text55' as text55 %}
-        <div class="db_content addit_name sub_title sub_title_3 color_black" data-admin_url="{{text55.get_admin_url}}">
-          {{text55.text}}
-          <!-- {% trans 'Виробник' %}: -->
         </div>
-        <div class="addit_price main__title main__title_5 color_black">
-          {{item.manufacturer.name}}
+        {% include "project/components/item_prices.html" %}
+        {% if item.manufacturer %}
+        <div class="additional__block">
+          {% render 'text55' as text55 %}
+          <div class="db_content addit_name sub_title sub_title_3 color_black"
+            data-admin_url="{{text55.get_admin_url}}">
+            {{text55.text}}
+            <!-- {% trans 'Виробник' %}: -->
+          </div>
+          <div class="addit_price main__title main__title_5 color_black">
+            {{item.manufacturer.name}}
+          </div>
         </div>
-      </div>
-      {% endif %}
-      {% if item.brand %}
-      <div class="additional__block">
-        {% render 'text56' as text56 %}
-        <div class="db_content addit_name sub_title sub_title_3 color_black" data-admin_url="{{text56.get_admin_url}}">
-          {{text56.text}}
-          <!-- {% trans 'Бренд' %}: -->
+        {% endif %}
+        {% if item.brand %}
+        <div class="additional__block">
+          {% render 'text56' as text56 %}
+          <div class="db_content addit_name sub_title sub_title_3 color_black"
+            data-admin_url="{{text56.get_admin_url}}">
+            {{text56.text}}
+            <!-- {% trans 'Бренд' %}: -->
+          </div>
+          <div class="addit_price main__title main__title_5 color_black">
+            {{item.brand.title}}
+          </div>
         </div>
-        <div class="addit_price main__title main__title_5 color_black">
-          {{item.brand.title}}
+        {% endif %}
+        {% if item.in_stock %}
+        <div class="additional__block">
+          <div class="addit_name sub_title sub_title_3 color_black">
+            {% trans 'Наявність' %}:
+          </div>
+          <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
+            {{item.in_stock.text}}
+          </div>
         </div>
-      </div>
-      {% endif %}
-      {% if item.in_stock %}
-      <div class="additional__block">
-        <div class="addit_name sub_title sub_title_3 color_black">
-          {% trans 'Наявність' %}:
-        </div>
-      <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
-          {{item.in_stock.text}}
-        </div>
-      </div>
-      {% endif %}
-      {% if item.amount != 0 and item.amount != None %}
+        {% endif %}
+        {% if item.amount != 0 and item.amount != None %}
         <div class="additional__block">
           <div class="addit_name sub_title sub_title_3 color_black">
             {% trans 'Hа складі' %}:
           </div>
-        <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
+          <div class="addit_price main__title main__title_5 color_black" style="colour:#{{item.in_stock.colour}}">
             {{item.amount}} {{item.unit.name}}
             ₴ <span class="additional_price main__title_5 main__title_5 color_black">0</span>
           </div>
         </div>
-      {% endif %}
+        {% endif %}
         {% if item.description %}
         <div class="info_item__block color_black sub_title sub_title_2">
-         {{item.description|safe}}
+          {{item.description|safe}}
         </div>
         {% endif %}
 
 
 
-      {% if odd_features or even_features %}
-      <div class="item_char_title main__title main__title_4">
-        {% trans 'Характеристики' %}
-      </div>
-      <div class="characteristick__wrap">
-        <div class="char__block">
-          {% for feature in odd_features %}
-          <div class="char_prof db_content" data-admin_url="{{feature.get_admin_url}}">
-            <div class="char_text standart_title standart_title_5 color_black">
-              {{feature.name}}
-            </div>
-            <div class="char_result main__title main__title_5 color_black">
-              {{feature.value}}
-            </div>
-          </div>
-          {% endfor %}
+        {% if odd_features or even_features %}
+        <div class="item_char_title main__title main__title_4">
+          {% trans 'Характеристики' %}
         </div>
-        <div class="char__block">
-          {% for feature in even_features %}
-          <div class="char_prof db_content" data-admin_url="{{feature.get_admin_url}}">
-            <div class="char_text standart_title standart_title_5 color_black">
-              {{feature.name}}
+        <div class="characteristick__wrap">
+          <div class="char__block">
+            {% for feature in odd_features %}
+            <div class="char_prof db_content" data-admin_url="{{feature.get_admin_url}}">
+              <div class="char_text standart_title standart_title_5 color_black">
+                {{feature.name}}
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                {{feature.value}}
+              </div>
             </div>
-            <div class="char_result main__title main__title_5 color_black">
-              {{feature.value}}
-            </div>
+            {% endfor %}
           </div>
-          {% endfor %}
+          <div class="char__block">
+            {% for feature in even_features %}
+            <div class="char_prof db_content" data-admin_url="{{feature.get_admin_url}}">
+              <div class="char_text standart_title standart_title_5 color_black">
+                {{feature.name}}
+              </div>
+              <div class="char_result main__title main__title_5 color_black">
+                {{feature.value}}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
         </div>
+        {% endif %}
+        {% include "project/components/item_attributes.html" %}
       </div>
-      {% endif %}
-      {% include "project/components/item_attributes.html" %}
     </div>
   </div>
 </section>
@@ -199,13 +213,16 @@ item_section__wrapper
   <div class="tab_container">
     <div class="item_link__wrapper">
       <div class="item_tab_link__block">
-        {% for feature_category in item.get_feature_categories %} 
-        <div data-tab="{{forloop.counter|add:'1'}}" class="db_content item_tab_link standart_title standart_title_3 color_black {% if forloop.counter == 1 %} item_tab_link_active {% endif %}" data-admin_url="{{feature_category.get_admin_url}}">
+        {% for feature_category in item.get_feature_categories %}
+        <div data-tab="{{forloop.counter|add:'1'}}"
+          class="db_content item_tab_link standart_title standart_title_3 color_black {% if forloop.counter == 1 %} item_tab_link_active {% endif %}"
+          data-admin_url="{{feature_category.get_admin_url}}">
           {{feature_category.name}}
         </div>
         {% endfor %}
         {% render 'text57' as text57 %}
-        <div data-tab="1" class="db_content item_tab_link item_tab_link_3 standart_title standart_title_3 color_black" data-admin_url="{{text57.get_admin_url}}">
+        <div data-tab="1" class="db_content item_tab_link item_tab_link_3 standart_title standart_title_3 color_black"
+          data-admin_url="{{text57.get_admin_url}}">
           {{text57.text}}
           <!-- {% trans 'Відгуки' %} -->
         </div>
@@ -222,13 +239,13 @@ item_section__wrapper
 {% include "project/forms/item_info.html" %}
 {% endblock content %}
 {% block scripts %}
-<script src="/static/source/lib/jquery/index.js"></script> 
-<script src="/static/source/lib/maskinput/maskinput.js"></script> 
-<script src="/static/source/lib/slick/slick.min.js"></script> 
-<script src="/static/source/lib/wow/wow.min.js"></script> 
-<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script> 
-<script src="/static/source/lib/validation/validation.min.js"></script> 
-<script src="/static/development/components/module/form_errors/index.js"></script> 
-<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script> 
-<script src="/static/source/pages/item/index.js?v=3"></script> 
+<script src="/static/source/lib/jquery/index.js"></script>
+<script src="/static/source/lib/maskinput/maskinput.js"></script>
+<script src="/static/source/lib/slick/slick.min.js"></script>
+<script src="/static/source/lib/wow/wow.min.js"></script>
+<script src="/static/source/lib/lazyload/lazyloadxt.extra.js"></script>
+<script src="/static/source/lib/validation/validation.min.js"></script>
+<script src="/static/development/components/module/form_errors/index.js"></script>
+<script src="/static/source/lib/fancybox/jquery.fancybox.min.js"></script>
+<script src="/static/source/pages/item/index.js?v=3"></script>
 {% endblock scripts %}
