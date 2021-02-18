@@ -526,6 +526,10 @@
 .filter {
     position: sticky;
     top: 105px;
+
+    &-content {
+        padding-left: 10px !important;
+    }
 }
 
 .product_filter {
