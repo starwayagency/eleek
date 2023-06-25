@@ -79,7 +79,9 @@ def testmail(request):
       subject='123123123',
       message='123123123',
       from_email=settings.DEFAULT_FROM_EMAIL,
-      recipient_list=['jurgeon018@gmail.com'],
+      recipient_list=[
+        # 'jurgeon018@gmail.com'
+        ],
       fail_silently=False,
     )
 

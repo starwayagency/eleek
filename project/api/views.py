@@ -23,7 +23,7 @@ def test_drive_contact(request):
         message  = message,
     )
     recipient_list = [
-        'jurgeon018@gmail.com',
+        # 'jurgeon018@gmail.com',
         settings.DEFAULT_FROM_EMAIL,
     ]
     send_mail(

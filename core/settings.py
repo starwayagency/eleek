@@ -87,17 +87,31 @@ LOGIN_URL = 'login'
 
 
 
-EMAIL_BACKEND          = 'box.core.sw_global_config.backends.ConfiguredEmailBackend'
+# EMAIL_BACKEND          = 'box.core.sw_global_config.backends.ConfiguredEmailBackend'
+# EMAIL_USE_TLS          = True
+# EMAIL_USE_SSL          = False
+# EMAIL_PORT             = 587
+# EMAIL_HOST             = "mail.starwayua.com"
+# EMAIL_HOST_USER        = "dev@starwayua.com"
+# EMAIL_HOST_PASSWORD    = 'dev69018'#config('EMAIL_HOST_PASSWORD')
+# DEFAULT_FROM_EMAIL     = EMAIL_HOST_USER
+EMAIL_BACKEND          = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS          = True
 EMAIL_USE_SSL          = False
 EMAIL_PORT             = 587
-EMAIL_HOST             = "mail.starwayua.com"
-EMAIL_HOST_USER        = "dev@starwayua.com"
-EMAIL_HOST_PASSWORD    = 'dev69018'#config('EMAIL_HOST_PASSWORD')
+EMAIL_HOST             = "smtp.gmail.com"
+SERVER_EMAIL           = 'starway.notifier@gmail.com'
+EMAIL_HOST_USER        = "starway.notifier@gmail.com"
+EMAIL_HOST_PASSWORD    = "starway69018"
 DEFAULT_FROM_EMAIL     = EMAIL_HOST_USER
+ADMINS = [
+    "starway.notifier@gmail.com"
+]
+MANAGERS = ADMINS
+
 
 DEFAULT_RECIPIENT_LIST = [
-    "jurgeon018@gmail.com",
+    # "jurgeon018@gmail.com",
     "dev@starwayua.com",
     'eleekbikes@gmail.com',
 ]

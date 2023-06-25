@@ -2,13 +2,6 @@ settings.ini
 
 db.sqlite3
 
-# migrations
-# migrations/
-# **/migrations/
-# **/migrations/*
-# **/migrations/**
-# !**/migrations
-# !**/migrations/__init__.py
 
 __pycache__
 __pycache__/
@@ -25,7 +18,7 @@ env/
 
 /media/shop/item
 **/media/shop/item/**
-media/
+media/*
 
 
 static_root/

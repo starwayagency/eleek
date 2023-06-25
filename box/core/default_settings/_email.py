@@ -20,7 +20,7 @@ DEFAULT_FROM_EMAIL     = EMAIL_HOST_USER
 
 SERVER_EMAIL = 'dev@starwayua.com'
 ADMINS = [
-    ('jurgeon018', 'jurgeon018@gmail.com'),
+    # ('jurgeon018', 'jurgeon018@gmail.com'),
     ('DEV', 'dev@starwayua.com'),
 ]
 MANAGERS = ADMINS 

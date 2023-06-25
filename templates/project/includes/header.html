@@ -82,7 +82,11 @@
     <div class="scroll_changer__block">
       <div class="scroll_lang__block scroll_changer_profile">
         <span class="scroll_lang scroll_changer sub_title sub_title_2 color_black scroll_changer_active">
+          {% if LANGUAGE_CODE == 'uk'%}
+          ua
+          {% else %}
           {{LANGUAGE_CODE}}
+          {% endif %}
         </span>
         <div class="scroll_lang_hidden_content">
           {% for language in languages %}
