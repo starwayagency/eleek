@@ -177,3 +177,4 @@ IGNORABLE_404_URLS = [
     re.compile(r'^/components/com_acym/index.html'),
 ]
 
+DEBUG=True
