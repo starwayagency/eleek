@@ -2,7 +2,6 @@ from box.core.default_settings import *
 
 INSTALLED_APPS +=[
     'project',
-    'project.constructor',
 ]
 
 

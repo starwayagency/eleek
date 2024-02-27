@@ -10,7 +10,6 @@ from box.apps.sw_shop.sw_order.models import Order
 from box.apps.sw_shop.sw_order.utils import get_order_liqpay_context
 
 from .models import * 
-from .constructor.models import * 
 
 
 def index(request):
@@ -165,121 +164,7 @@ def parse_request(request):
     } 
 
 
-def constructor_middleware(request):
-    try:
-      formed_attrs = {}
-      query = json.loads(request.body.decode('utf-8'))
-      item = Item.objects.get(id=query['item_id'])
-      features = ItemFeature.objects.filter(item__id=query['item_id'])
-      attributes = json.loads(query['attributes'])
-      # Получає раму 
-      item_feature_iframe_type = ItemFeature.objects.get(
-          item=item,
-          name__code="iframe_type"
-      ).value.code
-      if item_feature_iframe_type not in ['neo','pozitiff','ekross','lite']: 
-          item_feature_iframe_type = 'neo'
-      frame = FrameType.objects.get(code=item_feature_iframe_type)
-      formed_attrs['iframe_type']  = item_feature_iframe_type
-      # Парсить атрибути і характеристики товара які прилетіли з фронту, і поміщає їх у 4 массиви 
-      attribute_ids = []
-      attribute_value_ids = []
-      feature_ids = []
-      feature_value_ids = []
-      for item_feature in features:
-          feature_ids.append(item_feature.name.id)
-          feature_value_ids.append(item_feature.value.id)
-      for attribute in attributes:
-          if attribute['item_attribute_id'] != '':
-              item_attribute = ItemAttribute.objects.get(id=attribute['item_attribute_id'])
-              if 'item_attribute_value_id' in attribute:
-                  item_attribute_value = ItemAttributeValue.objects.get(id=attribute['item_attribute_value_id'])
-                  attribute_ids.append(item_attribute.attribute.id)
-                  attribute_value_ids.append(item_attribute_value.value.id)
-              elif 'item_attribute_value_ids' in attribute:
-                  for item_attribute_value in ItemAttributeValue.objects.filter(id__in=attribute['item_attribute_value_ids']):
-                      attribute_ids.append(item_attribute.attribute.id)
-                      attribute_value_ids.append(item_attribute_value.value.id)
-      # Всі елементи конструктора у рамі 
-      values = Value.objects.filter(parameter__tab_group__tab__frame=frame)
-      for value in values:
-        # Параметр поточного елемента
-        parameter = value.parameter
-        # Якшо атрибут у параметра є у тих атрибутах які прийшли з фронту, або характеристика у параметра є у тих характеристиках які прийшли з фронту, 
-        if (parameter.attr and parameter.attr.id in attribute_ids) or (parameter.feature and parameter.feature.id in feature_ids):
-          # Якшо значення атрибуту у елемента є у тих значеннях атрибута які прийшли з фронту, або значення характеристики у елемента є у тих значеннях характеристик які прийшли з фронту 
-          if (value.attr_value and value.attr_value.id in attribute_value_ids) or (value.value and value.value.id in feature_value_ids):
-            # Коду параметра присвоюється код значення 
-            value_code = value.code
-          # Якщо ні значення характеристики ні значення атрибуту у елемента немає у тих значеннях характеристик і атрибутів які прийшли з фронту
-          else:
-            # Коду параметра присвоюється перший код значення який попадеться 
-            value_code = Value.objects.filter(parameter=parameter).first().code
-          if parameter.type == Parameter.checkbox_options:
-            formed_attrs[value_code] = "true"
-          else:
-            formed_attrs[parameter.code] = value_code 
-          print(f'value_code:{value_code}')
-        # Якщо ні атрибута ні характеристики товара у параметра немає у тих атрибутах і характеристиках які прийшли з фронту,
-        # Тобто якшо на карточці товару немає потрібних елементів
-        else:
-          # Дістається просто перший елемент у параметрі
-          value = Value.objects.filter(parameter=parameter).first().code
-          print(f'value:{value}')
-          print(f'parameter: {parameter}')
-          print(f'v {Value.objects.filter(parameter=parameter).first()}')
-          formed_attrs[parameter.code] = value 
-        print()
-      # color
-      # Для того щоб працювало правильне присвоювання кольорів, то потрібно вручну звязати кольори рам з конструктора і кольори рам з товара 
-      if not formed_attrs.get('iframe_color'):
-          item_feature_frame_color = ItemAttributeValue.objects.filter(
-              item_attribute__item=item,
-              item_attribute__attribute__code="iframe_color",
-              # value__id__in=attribute_value_ids,
-          )
-          # Якщо у товара існує атрибут "колір рами", то береться перше значення кольору рами з товара 
-          if item_feature_frame_color.exists():
-              item_feature_frame_color = item_feature_frame_color.first().value.code
-          # Якщо у товара не існує атрибуту "колір рами", то береться перше значення кольору рами з конструктора
-          else:
-              item_feature_frame_color = FrameColor.objects.filter(frame=frame).first().color
-          formed_attrs['iframe_color'] = f'%23{item_feature_frame_color}'
-      # url
-      uri = '?'
-      for k, v in formed_attrs.items():
-          if v in ['#None','None', None]:
-              raise Exception('!')
-          uri += f'{k}={v}&'
-      uri = uri[:-1]
-      return JsonResponse({
-          'url':reverse("bike") + uri,
-      })
-    except:
-      return JsonResponse({
-          'url':reverse("constructor"),
-      })
-
-
-def constructor(request):
-    frames          = FrameType.objects.filter(is_active=True)
-    frame_colors    = FrameColor.objects.filter(is_active=True)
-    query           = request.GET 
-    iframe_type     = query.get('iframe_type')
-    iframe_color    = query.get('iframe_color')
-    if iframe_type:
-        frame = FrameType.objects.get(code=iframe_type)
-    else:
-        frame = frames.first()
-    current_frame = frame
-    initial_price = frame.get_initial_price()
-    result = parse_request(request)
-    colors = result['colors']
-    codes  = result['codes']
-    return render(request, 'project/constructor/constructor.html', locals())
-
-
-def common_member(a, b): 
+def common_member(a, b):
     if (set(a)  & set(b)): 
         return True 
     else: 
@@ -404,7 +289,6 @@ urlpatterns = [
     path('register/',   register,    name='register'),
     path('thank_you/',  thank_you,   name='thank_you'),
     path('page1/',      constructor, name='constructor'),
-    path('constructor_middleware/', constructor_middleware, name='constructor_middleware'),
     path('page2/',      bike,        name='bike'),
     path('page_404/',   page_404,    name='page_404'),
 

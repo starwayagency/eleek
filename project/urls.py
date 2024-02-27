@@ -13,7 +13,6 @@ def set_currency(request, currency):
 
 urlpatterns = [
     path('api/', include('project.api.urls')),
-    path('api/', include('project.constructor.urls')),
     # path('api/dj-rest-auth/', include('dj_rest_auth.urls')),
     # path('api/dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')),
     path('set_currency/<currency>/', set_currency, name='set_currency'),
