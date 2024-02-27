@@ -73,6 +73,7 @@ def item(request, slug):
     even_features = ItemFeature.objects.filter(item=item)[1:10:2]
     page = item
     item_has_options = ItemAttribute.objects.filter(is_option=True, item=item).exists()
+    reviews = ItemReview.objects.filter(item=item, is_active=True)
     return render(request, 'project/item.html', locals())
 
 

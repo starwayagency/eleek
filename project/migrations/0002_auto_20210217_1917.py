@@ -9,9 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('sw_catalog', '0001_initial'),
-        ('auth', '0012_alter_user_first_name_max_length'),
-        ('project', '0001_initial'),
+        ('project', '0004_remove_certificate_sdf'),
     ]
 
     operations = [
@@ -29,15 +27,5 @@ class Migration(migrations.Migration):
             model_name='testdrivemodel',
             name='item',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='sw_catalog.item', verbose_name='Товар'),
-        ),
-        migrations.AddField(
-            model_name='projectuser',
-            name='groups',
-            field=models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.Group', verbose_name='groups'),
-        ),
-        migrations.AddField(
-            model_name='projectuser',
-            name='user_permissions',
-            field=models.ManyToManyField(blank=True, help_text='Specific permissions for this user.', related_name='user_set', related_query_name='user', to='auth.Permission', verbose_name='user permissions'),
         ),
     ]

@@ -34,6 +34,7 @@ TEMPLATES[0]['OPTIONS']['context_processors'].extend([
 DJANGO_DEBUG_TOOLBAR_ON = False 
 MIDDLEWARE.extend([
     # 'project.middlewares.Middleware',
+    'allauth.account.middleware.AccountMiddleware',
 ])
 AUTH_USER_MODEL = 'project.ProjectUser'
 STATIC_SITEMAP_PAGES = [

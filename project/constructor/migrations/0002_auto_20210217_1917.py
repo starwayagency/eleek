@@ -9,8 +9,7 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('sw_catalog', '0001_initial'),
-        ('constructor', '0001_initial'),
+        ('constructor', '0002_auto_20200914_1444'),
     ]
 
     operations = [
@@ -65,11 +64,6 @@ class Migration(migrations.Migration):
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='constructor.tabgroup', verbose_name='Група'),
         ),
         migrations.AddField(
-            model_name='frametype',
-            name='items',
-            field=models.ManyToManyField(blank=True, null=True, to='sw_catalog.Item', verbose_name='Товар'),
-        ),
-        migrations.AddField(
             model_name='framecolor',
             name='attribute_value',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='sw_catalog.attributevalue', verbose_name='Значення атрибута товара'),
@@ -78,11 +72,6 @@ class Migration(migrations.Migration):
             model_name='framecolor',
             name='frame',
             field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='constructor.frametype', verbose_name='Рама'),
-        ),
-        migrations.AddField(
-            model_name='constructorform',
-            name='values',
-            field=models.ManyToManyField(blank=True, to='constructor.Value', verbose_name='Вибрані елементи'),
         ),
         migrations.AlterUniqueTogether(
             name='value',
