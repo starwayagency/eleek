@@ -1,6 +1,14 @@
 {% extends 'project/base.html' %}
 {% load i18n sw_content sw_catalog %}
 {% block styles %}
+<link rel="stylesheet" href="/static/source/pages/items/index.css.map">
+<link rel="stylesheet" href="/static/source/lib/slick/slick.min.css">
+<link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css">
+<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
+<link rel="stylesheet" href="/static/source/pages/item/index.css?v=3">
+{% endblock styles %}
+
+{% block ogimage %}
 <meta property="og:type" content="product">
 <meta property="og:title" content="{{ item.title }}">
 <meta property="og:description" content="{{ item.description|striptags|truncatechars:300 }}">
@@ -10,13 +18,8 @@
 <meta name="twitter:title" content="{{ item.title }}">
 <meta name="twitter:description" content="{{ item.description|striptags|truncatechars:350 }}">
 <meta name="twitter:image" content="{{ item.get_site_image_url }}">
+{% endblock ogimage %}
 
-<link rel="stylesheet" href="/static/source/pages/items/index.css.map">
-<link rel="stylesheet" href="/static/source/lib/slick/slick.min.css">
-<link rel="stylesheet" href="/static/source/lib/slick/slick-theme.css">
-<link rel="stylesheet" href="/static/source/lib/fancybox/jquery.fancybox.min.css">
-<link rel="stylesheet" href="/static/source/pages/item/index.css?v=3">
-{% endblock styles %}
 {% block main_class %}
 item_section__wrapper
 {% endblock main_class %}
