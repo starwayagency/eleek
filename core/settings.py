@@ -178,8 +178,4 @@ IGNORABLE_404_URLS = [
     re.compile(r'^/components/com_acym/index.html'),
 ]
 
-<<<<<<< Updated upstream
 DEBUG=True
-=======
-DEBUG=True
->>>>>>> Stashed changes
