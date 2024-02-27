@@ -158,7 +158,8 @@
   <div class="footer_bottom_info">
     {% render 'footer_all_rights' as footer_all_rights %}
     <div class="footer_data color_white db_content" data-admin_url="{{footer_all_rights.get_admin_url}}">
-      eleek.com.ua © 2020.
+        {% now "Y" as current_year %}
+      eleek.com.ua © {{ current_year }}.
       {{footer_all_rights.text}}
       <!-- Всі права захищено  -->
     </div>
