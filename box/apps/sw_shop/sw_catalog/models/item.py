@@ -203,6 +203,10 @@ class Item(AbstractPage, GoogleFieldsMixin, ItemPricesMixin):
         upload_to=item_settings.ITEM_UPLOAD_TO,
         # storage=OverwriteStorage(),
     )
+    three_dimensional_link = models.CharField(
+        verbose_name=_("Посилання 3D"), max_length=512,
+        blank=True, null=True
+    )
 
     def __str__(self):
         return f"{self.title}"#, {self.slug}"

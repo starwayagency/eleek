@@ -7,7 +7,7 @@ INSTALLED_APPS +=[
 
 
 
-
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
@@ -102,7 +102,7 @@ EMAIL_PORT             = 587
 EMAIL_HOST             = "smtp.gmail.com"
 SERVER_EMAIL           = 'starway.notifier@gmail.com'
 EMAIL_HOST_USER        = "starway.notifier@gmail.com"
-EMAIL_HOST_PASSWORD    = "starway69018"
+EMAIL_HOST_PASSWORD    = "ipbqvhxkublskmkp"
 DEFAULT_FROM_EMAIL     = EMAIL_HOST_USER
 ADMINS = [
     "starway.notifier@gmail.com"
@@ -116,6 +116,7 @@ DEFAULT_RECIPIENT_LIST = [
     'eleekbikes@gmail.com',
 ]
 
+DEFAULT_RECIPIENT_LIST = ['kleikoks.py@gmail.com']
 
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

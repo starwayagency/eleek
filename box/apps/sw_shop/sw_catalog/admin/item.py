@@ -134,6 +134,7 @@ class ItemAdmin(
         'is_active',
         'image',
         'order',
+        'three_dimensional_link',
     ]
     if item_settings .MULTIPLE_CATEGORY:
         item_fields.insert(2 ,'categories')
