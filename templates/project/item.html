@@ -44,7 +44,7 @@ item_section__wrapper
             </svg>
             {% render 'text51' as text51 %}
             <div class="db_content three_title standart_title standart_title_5 color_black"
-              data-admin_url="{{text51.get_admin_url}}">
+              data-admin_url="{{text51.get_admin_url}}" data-href="{{ item.three_dimensional_link }}">
               {{text51.text}}
               <!-- {% trans 'Показати в 3Д' %} -->
             </div>

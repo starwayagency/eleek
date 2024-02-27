@@ -18,7 +18,7 @@ from modeltranslation.admin import TabbedTranslationAdmin, TranslationStackedInl
 if 'jet' in settings.INSTALLED_APPS:
   from jet.filters import DateRangeFilter, DateTimeRangeFilter
 else:
-  from rangefilter.filter import DateRangeFilter, DateTimeRangeFilter
+  from rangefilter.filters import DateRangeFilter, DateTimeRangeFilter
 import nested_admin
 from import_export.admin import ImportExportModelAdmin
 from .resources import * 

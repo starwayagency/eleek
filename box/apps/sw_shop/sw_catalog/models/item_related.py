@@ -185,6 +185,7 @@ class ItemReview(BaseMixin):
     name    = models.CharField(verbose_name=_("Ім'я"),    blank=True, null=True, max_length=255)
     rating  = models.CharField(verbose_name=_("Оцінка"),  blank=True, null=True, max_length=255)
     parent  = models.ForeignKey(verbose_name="Батьківський відгук", to="self", related_name='reviews', blank=True, null=True, on_delete=models.SET_NULL)
+    is_active = models.BooleanField(verbose_name=_("Відображення на сайті"), default=False)
 
     def __str__(self):
         return f"{self.text}{self.rating}"

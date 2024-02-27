@@ -2,13 +2,12 @@ from box.core.default_settings import *
 
 INSTALLED_APPS +=[
     'project',
-    'project.constructor',
 ]
 
 
 
 
-
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
@@ -34,6 +33,7 @@ TEMPLATES[0]['OPTIONS']['context_processors'].extend([
 DJANGO_DEBUG_TOOLBAR_ON = False 
 MIDDLEWARE.extend([
     # 'project.middlewares.Middleware',
+    'allauth.account.middleware.AccountMiddleware',
 ])
 AUTH_USER_MODEL = 'project.ProjectUser'
 STATIC_SITEMAP_PAGES = [
@@ -102,7 +102,7 @@ EMAIL_PORT             = 587
 EMAIL_HOST             = "smtp.gmail.com"
 SERVER_EMAIL           = 'starway.notifier@gmail.com'
 EMAIL_HOST_USER        = "starway.notifier@gmail.com"
-EMAIL_HOST_PASSWORD    = "starway69018"
+EMAIL_HOST_PASSWORD    = "ipbqvhxkublskmkp"
 DEFAULT_FROM_EMAIL     = EMAIL_HOST_USER
 ADMINS = [
     "starway.notifier@gmail.com"
@@ -116,6 +116,7 @@ DEFAULT_RECIPIENT_LIST = [
     'eleekbikes@gmail.com',
 ]
 
+DEFAULT_RECIPIENT_LIST = ['kleikoks.py@gmail.com']
 
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -177,3 +178,4 @@ IGNORABLE_404_URLS = [
     re.compile(r'^/components/com_acym/index.html'),
 ]
 
+DEBUG=True

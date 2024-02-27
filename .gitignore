@@ -24,3 +24,4 @@ media/*
 static_root/
 node_modules
 .vscode
+*.sqlite3
