@@ -1,3 +1,4 @@
+from django.contrib.sites.models import Site
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
@@ -223,6 +224,11 @@ class Item(AbstractPage, GoogleFieldsMixin, ItemPricesMixin):
                 raise ValidationError('Знижка мусить бути меншою за ціну')
         if self.discount_type == 'p' and not (self.discount < 100):
             raise ValidationError('Знижка мусить бути мешною за 100%')
+
+    def get_site_image_url(self):
+        if self.image:
+            site = Site.objects.first()
+            return "https://" + site.name + self.image.url
 
     def views(self):
         return ItemView.objects.filter(item=self).count()
