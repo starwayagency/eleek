@@ -29,6 +29,5 @@ selenium
 beautifulsoup4
 XlsxWriter
 jsmin
-psycopg2
 xmltodict
 social-auth-app-django
