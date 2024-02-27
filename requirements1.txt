@@ -1,6 +1,6 @@
 django==3.2.8
 djangorestframework
-django-modeltranslation
+django-modeltranslation==0.15.1
 django-import-export==2.9
 lxml
 django-admin-sortable2==1.0
