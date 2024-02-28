@@ -165,8 +165,91 @@ class Faq(models.Model):
         verbose_name_plural = 'Питання та відповіді'
 
 
+class Site(models.Model):
+    favico = models.ImageField(
+        verbose_name="Favico", max_length=512, blank=True, null=True, upload_to="site/"
+    )
+    schedule = models.CharField(verbose_name="Schedule", max_length=256, blank=True, null=True)
+
+    created = models.DateTimeField(
+        verbose_name="Created", auto_now_add=True, blank=True, null=True
+    )
+    updated = models.DateTimeField(
+        verbose_name="Updated", auto_now=True, blank=True, null=True
+    )
+
+    def favico_url(self):
+        if self.favico:
+            return self.favico.url
+        return ""
+
+    class Meta:
+        verbose_name = 'Налаштування сайту'
+        verbose_name_plural = 'Налаштування сайту'
+
+    @classmethod
+    def modeltranslation_fields(self):
+        return ['schedule']
 
 
+class SiteSocial(models.Model):
+    site = models.ForeignKey(
+        "project.Site",
+        related_name="socials",
+        verbose_name="Налаштування",
+        on_delete=models.CASCADE,
+    )
+    title = models.CharField(verbose_name="Текст", max_length=256, blank=True, null=True)
+    link = models.CharField(verbose_name="Посилання", max_length=512, blank=True, null=True)
+    svg_content = models.TextField(verbose_name="SVG контент", blank=True)
+
+    class Meta:
+        verbose_name = 'Соціальна мережа'
+        verbose_name_plural = 'Соціальні мережі'
 
 
+class SiteAddress(models.Model):
+    site = models.ForeignKey(
+        "project.Site",
+        related_name="addresses",
+        verbose_name="Налаштування",
+        on_delete=models.CASCADE,
+    )
+    title = models.CharField(verbose_name="Адреса", max_length=256)
+    link = models.CharField(verbose_name="Посилання", max_length=512, blank=True, null=True)
 
+    class Meta:
+        verbose_name = 'Адреса'
+        verbose_name_plural = 'Адреси'
+
+    @classmethod
+    def modeltranslation_fields(self):
+        return ['title']
+
+
+class SitePhone(models.Model):
+    site = models.ForeignKey(
+        "project.Site",
+        related_name="phones",
+        verbose_name="Налаштування",
+        on_delete=models.CASCADE,
+    )
+    title = models.CharField(verbose_name="Телефон", max_length=256)
+
+    class Meta:
+        verbose_name = 'Телефон'
+        verbose_name_plural = 'Телефони'
+
+
+class SiteEmail(models.Model):
+    site = models.ForeignKey(
+        "project.Site",
+        related_name="emails",
+        verbose_name="Налаштування",
+        on_delete=models.CASCADE,
+    )
+    title = models.CharField(verbose_name="Email", max_length=512)
+
+    class Meta:
+        verbose_name = 'Email'
+        verbose_name_plural = 'Emails'

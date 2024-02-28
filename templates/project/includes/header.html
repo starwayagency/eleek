@@ -4,6 +4,10 @@
 {% get_language_info_list for LANGUAGES as languages %}
 
 
+{% block favicon %}
+    <link rel="icon" href="{{site.favicon_url}}" />
+{% endblock favicon %}
+
 <div style="opacity: 0;" class="site_loader__block">
   <div class="icon_center">
     <div class="icon__wrap">

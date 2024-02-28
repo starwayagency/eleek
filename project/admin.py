@@ -1,10 +1,13 @@
 from django.contrib import admin
+from django.contrib.admin.widgets import AdminFileWidget
+from django.utils.safestring import mark_safe
+
 from box.core.sw_auth.admin import BoxUserAdmin
 from django.contrib.auth import get_user_model
 from .models import * 
 from .resources import * 
 from import_export.admin import ImportExportModelAdmin
-from modeltranslation.admin import TabbedTranslationAdmin
+from modeltranslation.admin import TabbedTranslationAdmin, TranslationStackedInline
 from box.core.utils import AdminImageWidget
 admin.site.register(get_user_model(), BoxUserAdmin)
 
@@ -79,3 +82,59 @@ class TestDriveAdmin(admin.ModelAdmin):
 class FaqAdmin(TabbedTranslationAdmin):
     pass
 
+
+class SitePhoneInlineAdmin(admin.StackedInline):
+    model = SitePhone
+    extra = 0
+
+
+class SiteAddressInlineAdmin(TranslationStackedInline):
+    model = SiteAddress
+    extra = 0
+
+
+class SiteSocialInlineAdmin(admin.StackedInline):
+    model = SiteSocial
+    extra = 0
+
+
+class SiteEmailInlineAdmin(admin.StackedInline):
+    model = SiteEmail
+    extra = 0
+
+
+@admin.register(SitePhone)
+class SitePhoneAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(SiteAddress)
+class SiteAddressAdmin(TabbedTranslationAdmin):
+    pass
+
+
+@admin.register(SiteSocial)
+class SiteSocialAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(SiteEmail)
+class SiteEmailAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Site)
+class SiteAdmin(TabbedTranslationAdmin):
+    inlines = [SitePhoneInlineAdmin, SiteAddressInlineAdmin, SiteSocialInlineAdmin, SiteEmailInlineAdmin]
+
+    formfield_overrides = {
+        models.ImageField:{'widget': AdminImageWidget},
+    }
+
+    def has_add_permission(self, request):
+        if self.model.objects.exists():
+            return False
+        return super().has_add_permission(request)
+
+    def has_delete_permission(self, request, obj=None):
+        return False
