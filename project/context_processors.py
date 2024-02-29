@@ -6,15 +6,14 @@ from project.models import Site as SiteSettings
 
 def context(request):
     site = SiteSettings.objects.first()
-    current_currency_code = request.session['current_currency_code']
     context = {
         "site": site,
-        "current_currency_code": current_currency_code
     }
     if not request.session.get('current_currency_code'):
         request.session['current_currency_code'] = 'UAH'
+    context['current_currency_code'] = request.session['current_currency_code']
+
     try:
-        context['current_currency'] = Currency.objects.get(code=current_currency_code)
         context['main_currency'] = Currency.objects.get(is_main=True)
         context['velo'] = ItemCategory.objects.get(code='velo')
         context['ramy'] = ItemCategory.objects.get(code='ramy')
