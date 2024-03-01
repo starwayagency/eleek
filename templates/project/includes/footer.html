@@ -58,7 +58,7 @@
 
       <div class="footer_social__block">
         {% for social in site.socials.all %}
-        <a href="https://www.facebook.com/eleekbikes" class="footer_social">
+        <a href="{{ social.link }}" class="footer_social">
               {{ social.svg_content|safe }}
         </a>
         {% endfor %}
