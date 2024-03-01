@@ -23,7 +23,8 @@ def context(request):
         context['galm'] = ItemCategory.objects.get(code='galm')
         context['moto'] = ItemCategory.objects.get(code='moto')
         context['kole'] = ItemCategory.objects.get(code='kole')
-        context['cart'] = get_cart(request)
+        cart = get_cart(request)
+        context['cart'] = cart
         context['cart_items'] = CartItem.objects.filter(cart=cart)
         context['currencies'] = Currency.objects.all()
     except Exception as e:
