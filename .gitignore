@@ -19,7 +19,7 @@ env/
 /media/shop/item
 **/media/shop/item/**
 media/*
-
+data/
 
 static_root/
 node_modules
