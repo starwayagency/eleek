@@ -116,7 +116,7 @@ urlpatterns = [
 
   path('set_lang/<new_lang>/', set_lang,     name="set_lang"),
   # path('setlang/',             set_language, name="set_lang"),
-  path('jsi18n/',          js_cat.as_view(), name='javascript-catalog'),
+  # path('jsi18n/',          js_cat.as_view(), name='javascript-catalog'),
   # path('admin_tools/',     include('admin_tools.urls')),
   # path('grappelli/',       include('grappelli.urls')),
   path('tinymce/',         include('tinymce.urls')),

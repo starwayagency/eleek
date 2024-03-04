@@ -1,6 +1,7 @@
 from django.utils.translation import gettext_lazy as _
 from django.db import models 
 from box.core.models import AbstractPage, BaseMixin
+from project.utils import handle_slug
 # from adminsortable.admin import SortableAdmin, NonSortableParentAdmin, SortableStackedInline
 # from adminsortable.fields import SortableForeignKey
 from ..utils import generate_unique_slug, item_image_folder
@@ -175,6 +176,10 @@ class ItemManufacturer(BaseMixin):
         verbose_name_plural = _('виробники товарів')
         ordering = ['order']
 
+    def save(self, *args, **kwargs):
+        handle_slug(self, "code")
+        super().save()
+
 
 class ItemReview(BaseMixin):
     item    = models.ForeignKey(verbose_name=_("Товар"),  blank=True, null=True, to="sw_catalog.Item", on_delete=models.SET_NULL, related_name="reviews",)
@@ -189,6 +194,9 @@ class ItemReview(BaseMixin):
 
     def __str__(self):
         return f"{self.text}{self.rating}"
+
+    def sub_reviews(self):
+        return ItemReview.objects.filter(is_active=True, parent=self.id)
 
     class Meta:
         verbose_name = _('Відгук')

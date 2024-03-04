@@ -1,5 +1,7 @@
 import os
 import ast
+from pathlib import Path
+
 from decouple import config
 
 INTERNAL_IPS = [
@@ -7,7 +9,7 @@ INTERNAL_IPS = [
 ]
 ROOT_URLCONF       = 'box.core.urls'
 WSGI_APPLICATION   = 'box.core.wsgi.application'
-BASE_DIR           = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+BASE_DIR           = Path(__file__).resolve().parent.parent.parent.parent
 ALLOWED_HOSTS      = ['*']
 SECRET_KEY         = config('SECRET_KEY') # = ast.literal_eval(config('DEBUG') or "True")  #python manage.py runserver --insecure # for 404 page
 DEBUG              = config('DEBUG', cast=bool) # = ast.literal_eval(config('DEBUG') or "True")  #python manage.py runserver --insecure # for 404 page
