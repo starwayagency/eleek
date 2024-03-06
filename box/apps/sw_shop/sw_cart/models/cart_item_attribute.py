@@ -34,9 +34,9 @@ class CartItemAttribute(models.Model):
   def __str__(self):
     # return f'{self.cart_item.item.title}, {self.attribute_name.name}:{self.value.value}'
     if self.attribute_name.is_option:
-      return f'{self.cart_item.item.title}, {self.attribute_name.attribute.name}:{self.values.all()}'
+      return f'{self.cart_item.item.title}, {self.attribute_name.attribute.name}'
     else:
-      return f'{self.cart_item.item.title}, {self.attribute_name.attribute.name}:{self.value.value.value}'
+      return f'{self.cart_item.item.title}, {self.attribute_name.attribute.name}'
 
 
 '''
