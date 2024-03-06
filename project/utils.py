@@ -1,5 +1,6 @@
 from django.utils.text import slugify
 from transliterate import translit
+from unidecode import unidecode
 
 
 def generate_unique_slug(instance, slug_field, slug_field_value):
@@ -8,18 +9,23 @@ def generate_unique_slug(instance, slug_field, slug_field_value):
 	slug = slugify(slug_field_value)
 
 	while items.filter(
-			**{f"{slug_field}": slug_field_value}
+			**{f"{slug_field}": slug}
 	).exclude(pk=instance.pk).exists():
 
 		slug = f'{slug_field_value}-{numb}'
 		numb += 1
-
 	return slug
 
 
-def handle_slug(instance, slug_field, *args, **kwargs):
+def handle_slug(instance, slug_field, translate_field=None, *args, **kwargs):
 	slug_field_value = getattr(instance, slug_field)
 	if not slug_field_value:
-		slug_field_value = ""
-	setattr(instance, slug_field, generate_unique_slug(instance, slug_field, slug_field_value))
-	return instance
+		if translate_field:
+			translate_field_value = getattr(instance, translate_field)
+			if translate_field_value:
+				slug_field_value = slugify(unidecode(translate_field_value))
+			else:
+				slug_field_value = ""
+		else:
+			slug_field_value = ""
+		setattr(instance, slug_field, generate_unique_slug(instance, slug_field, slug_field_value))

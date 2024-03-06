@@ -144,6 +144,8 @@ def imp(path: str):
 class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         path = "data/export/"
-        exp(path)
+        # exp(path)
         [x.save() for x in ItemManufacturer.objects.all()]
+        print(ItemManufacturer.objects.all().values_list('name', flat=True))
+        print(ItemManufacturer.objects.all().values_list('code', flat=True))
         # imp(path)

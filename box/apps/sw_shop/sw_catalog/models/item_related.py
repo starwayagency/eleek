@@ -177,8 +177,8 @@ class ItemManufacturer(BaseMixin):
         ordering = ['order']
 
     def save(self, *args, **kwargs):
-        handle_slug(self, "code")
-        super().save()
+        handle_slug(self, "code", "name")
+        super().save(*args, **kwargs)
 
 
 class ItemReview(BaseMixin):
