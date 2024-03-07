@@ -134,7 +134,6 @@ class Cart(models.Model):
         self.create_cart_items_with_attributes(item, quantity, attributes)
       else:
         cart_item = self.get_cart_item(item, attributes)
-        print(cart_item)
         if cart_item:
           cart_item.quantity += quantity
           cart_item.save()

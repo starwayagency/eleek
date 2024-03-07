@@ -100,14 +100,12 @@ class CartItemPriceMixin(models.Model):
   def get_price_of_attributes(self, currency, request):
     price = 0
     for cart_item_attribute in CartItemAttribute.objects.filter(cart_item=self):
-      for value in cart_item_attribute.values.all():
-        # attr_price = float(value.price)
-        attr_price = float(value.get_price(currency, request))
       if cart_item_attribute.value:
-        # attr_price = float(cart_item_attribute.value.price)
         attr_price = float(cart_item_attribute.value.get_price(currency, request))
-      if attr_price:
-        price += attr_price * currency.convert(curr_from=self.item.currency, curr_to=currency)
+      for value in cart_item_attribute.values.all():
+          attr_price = float(value.get_price(currency, request))
+          if attr_price:
+            price += attr_price * currency.convert(curr_from=self.item.currency, curr_to=currency)
     return price 
 
   # old 
