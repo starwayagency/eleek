@@ -12,17 +12,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 
-try:
-    import sys
-    import socket
-    x = socket.gethostbyname(socket.gethostname())+"----"+sys.argv[-1]
-    if sys.argv[-1] in ['0.0.0.0:8000','127.0.0.1:8000']:
-        DEBUG = True 
-    else:
-        DEBUG = False 
-except Exception as e:
-    print('try failed', e)
-    DEBUG = False 
+
+DEBUG = True
+
 
 
 
