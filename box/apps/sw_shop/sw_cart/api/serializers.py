@@ -10,13 +10,11 @@ class CartItemAttributeSerializer(serializers.ModelSerializer):
     exclude = []
 
 
-def get_ml_fields(field):
-  from django.conf import settings
-
 class CartItemItemSerializer(serializers.ModelSerializer):
   class Meta:
     model = Item
     fields = ['image', 'title']
+
 
 class CartItemSerializer(serializers.ModelSerializer):
   item        = CartItemItemSerializer(read_only=True)
