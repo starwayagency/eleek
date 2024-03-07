@@ -2,18 +2,15 @@ import './index.scss'
 
 
 if ($('input[type="tel"]').length > 0) {
-
   $('input[type="tel"]').mask("+38(999) 99 99 999");
 }
 
-
-
-
-
 let lang_site;
 let curr_lang;
-let curr_lang_length;;
+let curr_lang_length;
+
 lang_site = location_leng();
+
 switch (lang_site) {
   case 'uk':
     curr_lang = "Поле повинно містити лише букви";
@@ -32,14 +29,11 @@ switch (lang_site) {
   default:
     curr_lang = "Поле повинно містити лише букви.";
     curr_lang_length = "Поле повинно містити більше 6 символів";
-
 }
-
 
 jQuery.validator.addMethod("lettersonly", function (value, element) {
   return this.optional(element) || /[^0-9]+$/i.test(value);
 }, curr_lang);
-
 
 jQuery.validator.addMethod("minLength", function (value, element) {
   if (value.length < 6) {
@@ -48,8 +42,6 @@ jQuery.validator.addMethod("minLength", function (value, element) {
     return true
   }
 }, curr_lang_length);
-
-
 
 $(function () {
   Onload();
@@ -62,7 +54,6 @@ $(function () {
 //  *
 //  **/
 function Onload() {
-
   // var more_form = $('.mini-user-form');
 
   // for (var testz = 0; testz < more_form.length; testz++) {
@@ -82,13 +73,12 @@ function Onload() {
   valide_form('#form_qustion', '.inp-vak-wrap', true);
   valide_form('#form_cons', '.inp-vak-wrap', true);
   valide_form('#order__form_constructor', '.inp-vak-wrap', true);
-
-
 }
 
 function location_leng() {
   return location.pathname.split('/')[1];
 }
+
 function valide_form(id_form, error_inp_wrap, check_request) {
   var modal = false;
   var check_request = check_request;
@@ -105,6 +95,7 @@ function valide_form(id_form, error_inp_wrap, check_request) {
     var error_text = {};
 
     lang_site = location_leng();
+
     switch (lang_site) {
       case 'uk':
         error_text.required = 'Поле обов\'язково для заповнення';
@@ -122,13 +113,13 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         error_text.required = 'Поле обов\'язково для заповнення.';
         error_text.email = 'Поле має містити email.';
     }
+
     $(id_form).validate({
       errorPlacement: function (event, validator) {
         console.log(validator);
         $(validator).parents(error_inp_wrap).append($(event));
       },
       rules: {
-
         email: {
           required: true,
           email: true,
@@ -238,9 +229,7 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         var form_json = {};
         $(form_input).each(function (index, obj) {
           form_json[obj.name] = obj.value;
-
         });
-
 
         var pass_checked = true;
         var pass_finder = $('.login_pass2').length;
@@ -258,7 +247,7 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                 event.preventDefault();
                 $('.load_spin').removeClass('load_spin_active');
                 $.fancybox.close();
-                $('.pass_checked_error').text('ваш пароль повинен містити не меньше 6 симовлів');
+                $('.pass_checked_error').text('ваш пароль повинен містити не менше 6 симовлів');
               } else {
                 $('.pass_checked_error').text('');
                 pass_checked = true;
@@ -276,8 +265,8 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           }
         }
 
-
         console.log(form_json);
+
         if (url_form != '' && pass_checked == true) {
           console.log('url_form: ', url_form);
 
@@ -327,15 +316,10 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                 //   sayHi();
                 location.href = data.url;
               }
-
-
-
             })
-
         } else {
           console.log("forn_not_actions");
         }
-
 
         function explode() {
           if (id_form == '#modal-form_user') {
@@ -343,15 +327,15 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           } else {
             // sayHi();
           }
-
         }
-        explode()
+
+        explode();
+
         function sayHi() {
           console.log(133313);
           console.log('modal: ', modal);
 
           $('.load_spin').removeClass('load_spin_active');
-
 
           if (modal == true) {
             console.log('tut');
@@ -367,9 +351,6 @@ function valide_form(id_form, error_inp_wrap, check_request) {
             $.fancybox.close();
           }
           if (check_request === true) {
-
-
-
             $.fancybox.open({
               src: '#modal-form_true',
             });
@@ -378,7 +359,9 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                 src: '#modal-form_true',
               });
             }, 1500);
+
             var form_inputs = $(form)[0].querySelectorAll('input');
+
             if (form_inputs.length > 0) {
               for (var key in form_inputs) {
                 if (form_inputs.hasOwnProperty(key) && /^0$|^[1-9]\d*$/.test(key) && key <= 4294967294) {
@@ -387,16 +370,16 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                   }
                 }
               }
+
               var form_textaria = $(form)[0].querySelectorAll('textarea');
+
               if (form_textaria.length > 0) {
                 form_textaria[0].value = '';
               }
             }
           }
         }
-
       }
     });
   }
 }
-

@@ -105,8 +105,8 @@ MANAGERS = ADMINS
 DEFAULT_RECIPIENT_LIST = [
     # "jurgeon018@gmail.com",
     # "kleikoks.py@gmail.com",
-    "dev@starwayua.com",
-    'eleekbikes@gmail.com',
+    # "dev@starwayua.com",
+    # 'eleekbikes@gmail.com',
 ]
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
