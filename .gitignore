@@ -19,6 +19,7 @@ env/
 /media/shop/item
 **/media/shop/item/**
 media/*
+.idea/**
 data/
 
 static_root/
