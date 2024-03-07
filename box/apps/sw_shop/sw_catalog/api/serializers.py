@@ -100,7 +100,6 @@ class ItemDetailSerializer(serializers.ModelSerializer):
     category = ItemCategorySerializer()
 
   price    = serializers.ReadOnlyField()
-  reviews  = ItemReviewSerializer(many=True)
   currency = CurrencySerializer()
   in_stock = ItemStockSerializer()
 
@@ -108,6 +107,10 @@ class ItemDetailSerializer(serializers.ModelSerializer):
     model = Item
     exclude = [
       'similars',
+      'description',
+      'description_uk',
+      'description_ru',
+      'description_en',
       # 'images',
     ]
 
