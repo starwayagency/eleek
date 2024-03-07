@@ -767,7 +767,6 @@ if ($('input[type="tel"]').length > 0) {
 var lang_site;
 var curr_lang;
 var curr_lang_length;
-;
 lang_site = location_leng();
 
 switch (lang_site) {
@@ -1007,7 +1006,7 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                 event.preventDefault();
                 $('.load_spin').removeClass('load_spin_active');
                 $.fancybox.close();
-                $('.pass_checked_error').text('ваш пароль повинен містити не меньше 6 симовлів');
+                $('.pass_checked_error').text('ваш пароль повинен містити не менше 6 симовлів');
               } else {
                 $('.pass_checked_error').text('');
                 pass_checked = true;

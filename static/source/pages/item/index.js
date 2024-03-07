@@ -767,7 +767,6 @@ if ($('input[type="tel"]').length > 0) {
 var lang_site;
 var curr_lang;
 var curr_lang_length;
-;
 lang_site = location_leng();
 
 switch (lang_site) {
@@ -1007,7 +1006,7 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                 event.preventDefault();
                 $('.load_spin').removeClass('load_spin_active');
                 $.fancybox.close();
-                $('.pass_checked_error').text('ваш пароль повинен містити не меньше 6 симовлів');
+                $('.pass_checked_error').text('ваш пароль повинен містити не менше 6 симовлів');
               } else {
                 $('.pass_checked_error').text('');
                 pass_checked = true;
@@ -1176,6 +1175,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _best_sales_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./best_sales.scss */ "../components/pages/item/best_sales.scss");
 /* harmony import */ var _best_sales_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_best_sales_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _utils_customMask__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../utils/customMask */ "../utils/customMask.js");
+/* harmony import */ var _utils_customMask__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_utils_customMask__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 $('.main_item_btn').on('click', function () {
@@ -1368,12 +1370,26 @@ $('.rating_review').on('click', function () {
   var current_rating = $(this).attr('data-rating-value');
   $('.hidden_rating_review').val(current_rating);
 });
+$('#comment_name').on('input', function (_ref) {
+  var target = _ref.target;
+
+  if (target.name = 'name') {
+    var value = target.value;
+    target.value = value.trimStart().replace(/[0-9]/g, '');
+  }
+});
 $('.generate_comment').on('click', function () {
   var wrap = $(this).parents('.comment_form');
   var comment_name = $(wrap).find('.comment_name').val();
   var comment_email = $(wrap).find('.comment_email').val();
   var comment_send = $(wrap).find('.comment_send').val();
+  var comment_phone = $(wrap).find('.comment_phone').val();
   var comment_rating = $(wrap).find('.hidden_rating_review').val();
+
+  if (!comment_name.length || !comment_email.length || !comment_phone.length) {
+    return;
+  }
+
   var comment_json = {
     name: comment_name,
     email: comment_email,
@@ -1394,38 +1410,17 @@ $('.generate_comment').on('click', function () {
 });
 
 function create_comment(content) {
+  var noneCommentText = document.querySelector('.none_comments_text');
+
+  if (noneCommentText) {
+    noneCommentText.classList.add('none_comments_text_hidden');
+  }
+
   var comment_profile = document.createElement('div');
   comment_profile.classList.add('comment_profile');
-  var comment_name__block = document.createElement('div');
-  comment_name__block.classList.add('comment_name__block');
-  var comment_name = document.createElement('div');
-  comment_name.classList.add('comment_name', 'color_black', 'standart_title', 'standart_title_4');
-  comment_name.textContent = content.name;
-  var comment_star = document.createElement('div');
-  comment_star.classList.add('comment_star');
   var comment_text = document.createElement('div');
   comment_text.classList.add('comment_text', 'color_black', 'sub_title', 'sub_title_2');
-  comment_text.textContent = content.send;
-  comment_profile.appendChild(comment_name__block);
-  comment_name__block.appendChild(comment_name);
-  comment_name__block.appendChild(comment_star);
-  var active_star = content.rating;
-  var passive_star = 5 - content.rating;
-
-  for (var index = 0; index < active_star; index++) {
-    var svg_wrap = document.createElement('div');
-    svg_wrap.classList.add('svg_rating__wrap');
-    svg_wrap.innerHTML = "\n            <svg class=\"rating_svg rating_svg_active\" xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"17\" viewBox=\"0 0 18 17\">\n                <path fill-rule=\"evenodd\" d=\"M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z\" transform=\"translate(0 -3)\"/>\n            </svg>                    \n            ";
-    comment_star.appendChild(svg_wrap);
-  }
-
-  for (var _index = 0; _index < passive_star; _index++) {
-    var svg_wrap = document.createElement('div');
-    svg_wrap.classList.add('svg_rating__wrap');
-    svg_wrap.innerHTML = "\n            <svg class=\"rating_svg\" xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"17\" viewBox=\"0 0 18 17\">\n                <path fill-rule=\"evenodd\" d=\"M9 16.5L3.71 19.281 4.72 13.391 0.44 9.219 6.355 8.359 9 3 11.645 8.359 17.56 9.219 13.28 13.391 14.29 19.281z\" transform=\"translate(0 -3)\"/>\n            </svg>                    \n            ";
-    comment_star.appendChild(svg_wrap);
-  }
-
+  comment_text.textContent = 'A comment will be published soon';
   comment_profile.appendChild(comment_text);
   return comment_profile;
 }
@@ -1625,6 +1620,13 @@ if (slickFinder2 >= 1) {
   });
 }
 
+var threeDeBlockLink = $('.three_title').data('href');
+$(document).ready(function () {
+  $('.three_de__block').click(function () {
+    window.location.href = threeDeBlockLink;
+  });
+});
+
 /***/ }),
 
 /***/ "../components/pages/item/index.scss":
@@ -1637,6 +1639,28 @@ if (slickFinder2 >= 1) {
 // extracted by mini-css-extract-plugin
     if(false) { var cssReload; }
   
+
+/***/ }),
+
+/***/ "../utils/customMask.js":
+/*!******************************!*\
+  !*** ../utils/customMask.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var phoneInputs = document.querySelectorAll('[data-type="phone"]');
+phoneInputs.forEach(function (element) {
+  element.addEventListener("input", handleInput, false);
+});
+
+function handleInput(e) {
+  e.target.value = phoneMask(e.target.value);
+}
+
+function phoneMask(phone) {
+  return phone.replace(/\D/g, "").replace(/^(\d)/, "($1").replace(/^(\(\d{3})(\d)/, "$1) $2").replace(/(\d{2})(\d{2})/, "$1-$2").replace(/(-\d{7})\d+?$/, "$1");
+}
 
 /***/ }),
 
