@@ -1,3 +1,5 @@
+from django.template.defaultfilters import floatformat
+
 from box.apps.sw_shop.sw_cart.api.serializers import CartItemSerializer
 from box.apps.sw_shop.sw_cart.models import Cart, CartItem
 from box.core.sw_currency.models import Currency 
@@ -23,7 +25,8 @@ def get_cart_info(request):
   currency_code = request.session.get('current_currency_code', cart.currency)
   cart_currency = currency_code
   currency = Currency.objects.get(code=currency_code)
-  cart_total_price = cart.get_price(currency, price_type='total_price')
+  cart_total_price = floatformat(cart.get_price(currency, price_type='total_price'), 1)
+
   # cart_total_price = cart.total_price
   return {
     'cart_items':CartItemSerializer(cart_items, many=True, context={'request':request}).data,
