@@ -102,7 +102,7 @@ item_section__wrapper
             <!-- {{item.price}} {{item.currency.code}} -->
             <!-- {{item.converted_price}} {{item.main_currency.symbol}} -->
             {% get_item_price item current_currency "price_with_discount" as chosen_price %}
-            {{chosen_price|floatformat}} {{current_currency.code}}
+            {{chosen_price|floatformat:1}} {{current_currency.code}}
           </div>
           <div class="item_btn_wrapper">
             {% if item.in_stock and not item.in_stock.availability or item.amount == 0 %}
