@@ -821,7 +821,7 @@ function Onload() {
   //     valide_form(dinamic_main_id, '.inp-mini-wrap', false);
   // }
   valide_form('.footer_form', '.inp-vak-wrap', true);
-  valide_form('#comment_form', '.inp-vak-wrap', false);
+  valide_form('.comment_form', '.inp-vak-wrap', false);
   valide_form('.registery_form', '.inp-vak-wrap', false);
   valide_form('.drive__form_last', '.inp-vak-wrap', true);
   valide_form('.drive__form', '.inp-vak-wrap', true);
@@ -1071,7 +1071,7 @@ function valide_form(id_form, error_inp_wrap, check_request) {
             }
           });
         } else {
-          console.log("forn_not_actions");
+          console.log("form_not_actions");
         }
 
         function explode() {
