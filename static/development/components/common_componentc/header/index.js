@@ -123,7 +123,7 @@ $('.modal_basket').on('click', function () {
     })
     .then(data => {
       console.log('data: ', data);
-      $('.basket_all_result').text(`₴ ${Math.round(data.cart_total_price)}`)
+      $('.basket_all_result').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`)
       console.log('data: ', data.cart_items.length);
       let card_json = {
         img_src: '/static/source/img/index/lite.png',
@@ -265,6 +265,8 @@ function number_to(id, from, to, duration) {
 
 function create_basket_card(content, data) {
   console.log('data: ', data);
+  console.log(data.item.image);
+
   let basket_content_profile = document.createElement('div');
   basket_content_profile.classList.add('basket_content_profile');
 
@@ -273,8 +275,7 @@ function create_basket_card(content, data) {
 
   let profile_img = document.createElement('img');
   profile_img.classList.add('basket_profile_img');
-  profile_img.setAttribute(`src`, data.item.image_url);
-
+  profile_img.src = data.item.image;
   let basket_right_content = document.createElement('div');
   basket_right_content.classList.add('basket_right_content');
 
@@ -342,7 +343,7 @@ function create_basket_card(content, data) {
 
   let basket_summ = document.createElement('div');
   basket_summ.classList.add('basket_summ', 'main__title', 'main__title_5');
-  basket_summ.textContent = data.prices.price_with_coupons_with_attributes_with_discount + '' + data.chosen_currency;
+  basket_summ.textContent = data.prices.price_with_coupons_with_attributes_with_discount.toFixed(1).replace('.', ',') + ' ' + data.chosen_currency;
   // basket_summ.textContent = data.item.price + ' ' + data.item.currency.code;
 
   console.log("data::", data)
