@@ -123,7 +123,7 @@ $('.modal_basket').on('click', function () {
     })
     .then(data => {
       console.log('data: ', data);
-      $('.basket_all_result').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`)
+      $('.basket_all_result').text(`${data.cart_currency} ${data.cart_total_price}`)
       console.log('data: ', data.cart_items.length);
       let card_json = {
         img_src: '/static/source/img/index/lite.png',
@@ -191,7 +191,7 @@ function basket_blur() {
     .then(data => {
       console.log('data: ', data);
       $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
-      $('.basket_all_result').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`);
+      $('.basket_all_result').text(`${data.cart_currency} ${data.cart_total_price}`);
     });
 }
 
@@ -233,7 +233,7 @@ function basket_delete() {
     .then(data => {
       console.log('data: ', data);
       $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
-      $('.basket_all_result').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`);
+      $('.basket_all_result').text(`${data.cart_currency} ${data.cart_total_price}`);
     });
 
 }
@@ -421,11 +421,12 @@ function basket_minus() {
       .then(data => {
         let currency = data.cart_currency;
         let cart_total_price = data.cart_total_price;
+        console.log(cart_total_price);
         let cart_item_total_price = data.cart_item_total_price;
         let cart_currency = data.cart_currency
         console.log('data patch minus: ', data);
         $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(cart_item_total_price)} ${cart_currency}`)
-        $('.basket_all_result').text(`${currency} ${Math.round(cart_total_price)}`);
+        $('.basket_all_result').text(`${currency} ${cart_total_price}`);
       });
   }
 }
@@ -458,7 +459,7 @@ function basket_plus() {
       .then(data => {
         console.log('data patch plus: ', data);
         $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
-        $('.basket_all_result').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`);
+        $('.basket_all_result').text(`${data.cart_currency} ${data.cart_total_price}`);
       });
   }
 }

@@ -57272,7 +57272,7 @@ $('.modal_basket').on('click', function () {
     return data.json();
   }).then(function (data) {
     console.log('data: ', data);
-    $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(Math.round(data.cart_total_price)));
+    $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(data.cart_total_price));
     console.log('data: ', data.cart_items.length);
     var card_json = {
       img_src: '/static/source/img/index/lite.png',
@@ -57333,7 +57333,7 @@ function basket_blur() {
   }).then(function (data) {
     console.log('data: ', data);
     $(_this).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price), " ").concat(data.cart_currency));
-    $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(Math.round(data.cart_total_price)));
+    $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(data.cart_total_price));
   });
 }
 
@@ -57370,7 +57370,7 @@ function basket_delete() {
   }).then(function (data) {
     console.log('data: ', data);
     $(_this2).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price), " ").concat(data.cart_currency));
-    $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(Math.round(data.cart_total_price)));
+    $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(data.cart_total_price));
   });
 }
 
@@ -57527,11 +57527,12 @@ function basket_minus() {
     }).then(function (data) {
       var currency = data.cart_currency;
       var cart_total_price = data.cart_total_price;
+      console.log(cart_total_price);
       var cart_item_total_price = data.cart_item_total_price;
       var cart_currency = data.cart_currency;
       console.log('data patch minus: ', data);
       $(_this3).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(cart_item_total_price), " ").concat(cart_currency));
-      $('.basket_all_result').text("".concat(currency, " ").concat(Math.round(cart_total_price)));
+      $('.basket_all_result').text("".concat(currency, " ").concat(cart_total_price));
     });
   }
 }
@@ -57562,7 +57563,7 @@ function basket_plus() {
     }).then(function (data) {
       console.log('data patch plus: ', data);
       $(_this4).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price), " ").concat(data.cart_currency));
-      $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(Math.round(data.cart_total_price)));
+      $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(data.cart_total_price));
     });
   }
 }
