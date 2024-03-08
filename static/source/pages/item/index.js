@@ -821,7 +821,7 @@ function Onload() {
   //     valide_form(dinamic_main_id, '.inp-mini-wrap', false);
   // }
   valide_form('.footer_form', '.inp-vak-wrap', true);
-  valide_form('#comment_form', '.inp-vak-wrap', false);
+  valide_form('.comment_form', '.inp-vak-wrap', false);
   valide_form('.registery_form', '.inp-vak-wrap', false);
   valide_form('.drive__form_last', '.inp-vak-wrap', true);
   valide_form('.drive__form', '.inp-vak-wrap', true);
@@ -1071,7 +1071,7 @@ function valide_form(id_form, error_inp_wrap, check_request) {
             }
           });
         } else {
-          console.log("forn_not_actions");
+          console.log("form_not_actions");
         }
 
         function explode() {
@@ -1324,6 +1324,11 @@ $('.add_comment_btn').on('click', function () {
     src: '#comment_form',
     touch: false
   });
+  var inputErrors = document.querySelectorAll('label.error');
+  inputErrors.forEach(function (error) {
+    error.remove();
+  });
+  resetCommentFormInputs();
 });
 $('.comment_text_manager').on('click', function () {
   $(this).parents('.comment_profile').addClass('active_answer');
@@ -1378,6 +1383,14 @@ $('#comment_name').on('input', function (_ref) {
     target.value = value.trimStart().replace(/[0-9]/g, '');
   }
 });
+
+var resetCommentFormInputs = function resetCommentFormInputs() {
+  $('.comment_name').val('');
+  $('.comment_email').val('');
+  $('.comment_send').val('');
+  $('.comment_phone').val('');
+};
+
 $('.generate_comment').on('click', function () {
   var wrap = $(this).parents('.comment_form');
   var comment_name = $(wrap).find('.comment_name').val();
@@ -1386,7 +1399,7 @@ $('.generate_comment').on('click', function () {
   var comment_phone = $(wrap).find('.comment_phone').val();
   var comment_rating = $(wrap).find('.hidden_rating_review').val();
 
-  if (!comment_name.length || !comment_email.length || !comment_phone.length) {
+  if (!comment_name.length || !comment_email.length || !comment_phone.length || comment_phone.length < 10) {
     return;
   }
 

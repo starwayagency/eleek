@@ -156,6 +156,7 @@ $('.item_tab_link_3').on('click', function () {
 });
 
 $('.add_comment_btn').on('click', function () {
+
   $('#comment_form').removeClass('answer');
   $('.comment_name').val('');
 
@@ -163,6 +164,14 @@ $('.add_comment_btn').on('click', function () {
     src: '#comment_form',
     touch: false
   });
+
+  const inputErrors = document.querySelectorAll('label.error');
+
+  inputErrors.forEach(error => {
+    error.remove();
+  });
+
+  resetCommentFormInputs();
 });
 
 $('.comment_text_manager').on('click', function () {
@@ -222,6 +231,14 @@ $('#comment_name').on('input', function ({ target }) {
   }
 });
 
+
+const resetCommentFormInputs = () => {
+  $('.comment_name').val('');
+  $('.comment_email').val('');
+  $('.comment_send').val('');
+  $('.comment_phone').val('');
+};
+
 $('.generate_comment').on('click', function () {
   let wrap = $(this).parents('.comment_form');
   let comment_name = $(wrap).find('.comment_name').val();
@@ -230,7 +247,7 @@ $('.generate_comment').on('click', function () {
   let comment_phone = $(wrap).find('.comment_phone').val();
   let comment_rating = $(wrap).find('.hidden_rating_review').val();
 
-  if (!comment_name.length || !comment_email.length || !comment_phone.length) {
+  if (!comment_name.length || !comment_email.length || !comment_phone.length || comment_phone.length < 10) {
     return;
   }
 
@@ -314,12 +331,12 @@ $('.price_option').on('click', function () {
 
 $('.price_multiple_option').on('click', function () {
   $(this).toggleClass('option_content_prof_active');
-
-
 })
 
 $('.price_simple_option').on('click', function () {
+
   show_addit_option();
+
   let active_sum;
   let all_price__block = $('.additional_price');
   let absolute_additional_price = $('.absolute_additional_price');
@@ -361,6 +378,7 @@ $('.item_btn_price').on('click', function () {
     "attributes": JSON.stringify(fetch_json),
     // "options": JSON.stringify(option_mass)
   }
+
   fetch('/api/cart_items/', {
     method: 'POST',
     body: JSON.stringify(body),
