@@ -343,7 +343,7 @@ function create_basket_card(content, data) {
 
   let basket_summ = document.createElement('div');
   basket_summ.classList.add('basket_summ', 'main__title', 'main__title_5');
-  basket_summ.textContent = data.prices.price_with_coupons_with_attributes_with_discount.toFixed(1).replace('.', ',') + ' ' + data.chosen_currency;
+  basket_summ.textContent = data.prices.price_with_coupons_with_attributes_with_discount + ' ' + data.chosen_currency;
   // basket_summ.textContent = data.item.price + ' ' + data.item.currency.code;
 
   console.log("data::", data)
