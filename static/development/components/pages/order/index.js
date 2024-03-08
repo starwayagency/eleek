@@ -1,7 +1,5 @@
 import './index.scss';
 
-
-
 let ua = 'Поле обов\'язково для заповнення';
 let ru = 'Поле обязательно для заполнения';
 let en = 'The field is required';
@@ -272,8 +270,6 @@ $('.submit_order_btn').on('click', function() {
 });
 
 
-
-
 $('.basket_prep_order').on('click', function() {
     console.log(123);
     var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val();
@@ -300,8 +296,8 @@ $('.basket_prep_order').on('click', function() {
         })
         .then(data => {
           console.log('data: ', data);
-          $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
-          $('.order_sum').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`);
+          $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price).toFixed(1).replace('.', ',')} ${data.cart_currency}`)
+          $('.order_sum').text(`${Math.round(data.cart_total_price).toFixed(1).replace('.', ',')} ${data.cart_currency}`);
         });
     } 
 })
@@ -332,10 +328,11 @@ $('.basket_input_order').on('blur', function() {
         })
         .then(data => {
           console.log('data: ', data);
-          $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
-          $('.order_sum').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`);
+          $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price).toFixed(1).replace('.', ',')} ${data.cart_currency}`)
+          $('.order_sum').text(`${Math.round(data.cart_total_price).toFixed(1).replace('.', ',')} ${data.cart_currency}`);
         });
 })
+
 $('.basket_next_order').on('click', function() {
     var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val();
   console.log('current_quan_sum: ', current_quan_sum);
@@ -364,8 +361,8 @@ $('.basket_next_order').on('click', function() {
       })
       .then(data => {
         console.log('data: ', data);
-        $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
-        $('.order_sum').text(`${data.cart_currency} ${Math.round(data.cart_total_price)}`);
+        $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price).toFixed(1).replace('.', ',')} ${data.cart_currency}`);
+        $('.order_sum').text(`${Math.round(data.cart_total_price).toFixed(1).replace('.', ',')} ${data.cart_currency}`);
       });
   } 
 })

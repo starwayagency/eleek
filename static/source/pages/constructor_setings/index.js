@@ -51581,7 +51581,7 @@ $('.modal_basket').on('click', function () {
     return data.json();
   }).then(function (data) {
     console.log('data: ', data);
-    $('.basket_all_result').text("\u20B4 ".concat(Math.round(data.cart_total_price)));
+    $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(data.cart_total_price));
     console.log('data: ', data.cart_items.length);
     var card_json = {
       img_src: '/static/source/img/index/lite.png',
@@ -51642,7 +51642,7 @@ function basket_blur() {
   }).then(function (data) {
     console.log('data: ', data);
     $(_this).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price), " ").concat(data.cart_currency));
-    $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(Math.round(data.cart_total_price)));
+    $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(data.cart_total_price));
   });
 }
 
@@ -51679,7 +51679,7 @@ function basket_delete() {
   }).then(function (data) {
     console.log('data: ', data);
     $(_this2).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price), " ").concat(data.cart_currency));
-    $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(Math.round(data.cart_total_price)));
+    $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(data.cart_total_price));
   });
 }
 
@@ -51705,13 +51705,14 @@ function number_to(id, from, to, duration) {
 
 function create_basket_card(content, data) {
   console.log('data: ', data);
+  console.log(data.item.image);
   var basket_content_profile = document.createElement('div');
   basket_content_profile.classList.add('basket_content_profile');
   var basket_profile_img = document.createElement('div');
   basket_profile_img.classList.add('basket_profile_img');
   var profile_img = document.createElement('img');
   profile_img.classList.add('basket_profile_img');
-  profile_img.setAttribute("src", data.item.image_url);
+  profile_img.src = data.item.image;
   var basket_right_content = document.createElement('div');
   basket_right_content.classList.add('basket_right_content');
   var basket_title__block = document.createElement('div');
@@ -51763,7 +51764,7 @@ function create_basket_card(content, data) {
   basket_price_title.textContent = 'Ціна';
   var basket_summ = document.createElement('div');
   basket_summ.classList.add('basket_summ', 'main__title', 'main__title_5');
-  basket_summ.textContent = data.prices.price_with_coupons_with_attributes_with_discount + '' + data.chosen_currency; // basket_summ.textContent = data.item.price + ' ' + data.item.currency.code;
+  basket_summ.textContent = data.prices.price_with_coupons_with_attributes_with_discount + ' ' + data.chosen_currency; // basket_summ.textContent = data.item.price + ' ' + data.item.currency.code;
 
   console.log("data::", data);
   basket_content_profile.appendChild(basket_profile_img);
@@ -51835,11 +51836,12 @@ function basket_minus() {
     }).then(function (data) {
       var currency = data.cart_currency;
       var cart_total_price = data.cart_total_price;
+      console.log(cart_total_price);
       var cart_item_total_price = data.cart_item_total_price;
       var cart_currency = data.cart_currency;
       console.log('data patch minus: ', data);
       $(_this3).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(cart_item_total_price), " ").concat(cart_currency));
-      $('.basket_all_result').text("".concat(currency, " ").concat(Math.round(cart_total_price)));
+      $('.basket_all_result').text("".concat(currency, " ").concat(cart_total_price));
     });
   }
 }
@@ -51870,7 +51872,7 @@ function basket_plus() {
     }).then(function (data) {
       console.log('data patch plus: ', data);
       $(_this4).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price), " ").concat(data.cart_currency));
-      $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(Math.round(data.cart_total_price)));
+      $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(data.cart_total_price));
     });
   }
 }

@@ -64,6 +64,7 @@ function Onload() {
   //     console.log(dinamic_main_id);
   //     valide_form(dinamic_main_id, '.inp-mini-wrap', false);
   // }
+
   valide_form('.footer_form', '.inp-vak-wrap', true);
   valide_form('.comment_form', '.inp-vak-wrap', false);
   valide_form('.registery_form', '.inp-vak-wrap', false);
@@ -227,6 +228,7 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         var form_input = $(form).serializeArray();
         var url_form = form.action;
         var form_json = {};
+        
         $(form_input).each(function (index, obj) {
           form_json[obj.name] = obj.value;
         });
