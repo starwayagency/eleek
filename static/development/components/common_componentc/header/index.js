@@ -190,7 +190,12 @@ function basket_blur() {
     })
     .then(data => {
       console.log('data: ', data);
-      $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
+      
+      $(this).parents('.basket_content_profile').find('.basket_summ')
+        .text(`${Math.round(data.cart_item_total_price)
+        .toFixed(1)
+        .replace('.', ',')} ${data.cart_currency}`);
+
       $('.basket_all_result').text(`${data.cart_currency} ${data.cart_total_price}`);
     });
 }
@@ -425,7 +430,12 @@ function basket_minus() {
         let cart_item_total_price = data.cart_item_total_price;
         let cart_currency = data.cart_currency
         console.log('data patch minus: ', data);
-        $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(cart_item_total_price)} ${cart_currency}`)
+
+        $(this).parents('.basket_content_profile').find('.basket_summ')
+          .text(`${Math.round(data.cart_item_total_price)
+          .toFixed(1)
+          .replace('.', ',')} ${data.cart_currency}`);
+        
         $('.basket_all_result').text(`${currency} ${cart_total_price}`);
       });
   }
@@ -458,7 +468,12 @@ function basket_plus() {
       })
       .then(data => {
         console.log('data patch plus: ', data);
-        $(this).parents('.basket_content_profile').find('.basket_summ').text(`${Math.round(data.cart_item_total_price)} ${data.cart_currency}`)
+
+        $(this).parents('.basket_content_profile').find('.basket_summ')
+          .text(`${Math.round(data.cart_item_total_price)
+          .toFixed(1)
+          .replace('.', ',')} ${data.cart_currency}`);
+
         $('.basket_all_result').text(`${data.cart_currency} ${data.cart_total_price}`);
       });
   }

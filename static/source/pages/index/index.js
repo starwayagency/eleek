@@ -386,7 +386,7 @@ function basket_blur() {
     return data.json();
   }).then(function (data) {
     console.log('data: ', data);
-    $(_this).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price), " ").concat(data.cart_currency));
+    $(_this).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price).toFixed(1).replace('.', ','), " ").concat(data.cart_currency));
     $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(data.cart_total_price));
   });
 }
@@ -585,7 +585,7 @@ function basket_minus() {
       var cart_item_total_price = data.cart_item_total_price;
       var cart_currency = data.cart_currency;
       console.log('data patch minus: ', data);
-      $(_this3).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(cart_item_total_price), " ").concat(cart_currency));
+      $(_this3).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price).toFixed(1).replace('.', ','), " ").concat(data.cart_currency));
       $('.basket_all_result').text("".concat(currency, " ").concat(cart_total_price));
     });
   }
@@ -616,7 +616,7 @@ function basket_plus() {
       return data.json();
     }).then(function (data) {
       console.log('data patch plus: ', data);
-      $(_this4).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price), " ").concat(data.cart_currency));
+      $(_this4).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price).toFixed(1).replace('.', ','), " ").concat(data.cart_currency));
       $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(data.cart_total_price));
     });
   }
@@ -881,60 +881,6 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         console.log(validator);
         $(validator).parents(error_inp_wrap).append($(event));
       },
-      rules: {
-        email: {
-          required: true,
-          email: true
-        },
-        name: {
-          required: true,
-          lettersonly: true
-        },
-        first_name: {
-          required: true,
-          lettersonly: true
-        },
-        contact_name: {
-          required: true,
-          lettersonly: true
-        },
-        username: {
-          required: true
-        },
-        adress: {
-          required: true
-        },
-        old_password: {
-          required: true
-        },
-        pass1: {
-          required: check_pass,
-          minLength: check_pass
-        },
-        password2: {
-          required: check_pass,
-          minLength: check_pass
-        },
-        address: {
-          required: true,
-          lettersonly: true
-        },
-        phone_number: {
-          required: true
-        },
-        phone: {
-          required: true
-        },
-        password: {
-          required: true
-        },
-        pas1: {
-          required: true
-        },
-        pas2: {
-          required: true
-        }
-      },
       messages: {
         email: {
           required: error_text.required,
@@ -1031,6 +977,7 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         if (url_form != '' && pass_checked == true) {
           console.log('url_form: ', url_form);
           var current_method = 'POST';
+          var captchaResponse = grecaptcha.getResponse();
 
           if ($(form).hasClass('PATCH')) {
             current_method = 'PATCH';
@@ -1038,6 +985,13 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           } else {
             current_method = 'POST';
             modal = false;
+          }
+
+          if (form.classList.contains('comment_form')) {
+            if (!captchaResponse.length) {
+              modal = true;
+              return;
+            }
           }
 
           fetch(url_form, {

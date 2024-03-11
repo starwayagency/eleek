@@ -306,7 +306,7 @@ item_section__wrapper
               {% get_cart_price cart main_currency "total_price" as main_cart_total_price%}
               {% get_cart_price cart current_currency "total_price" as current_cart_total_price%}
               <!-- {{main_cart_total_price}} {{main_currency.code}} -->
-              {{current_currency.code}} {{current_cart_total_price}}
+              {{current_cart_total_price}} {{current_currency.code}}
 
             </div>
           </div>

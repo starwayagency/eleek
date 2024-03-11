@@ -246,7 +246,7 @@ $('.generate_comment').on('click', function () {
   let comment_send = $(wrap).find('.comment_send').val();
   let comment_phone = $(wrap).find('.comment_phone').val();
   let comment_rating = $(wrap).find('.hidden_rating_review').val();
-
+  
   if (!comment_name.length || !comment_email.length || !comment_phone.length || comment_phone.length < 10) {
     return;
   }
@@ -277,7 +277,7 @@ function create_comment(content) {
   if (noneCommentText) {
     noneCommentText.classList.add('none_comments_text_hidden');
   }
-  
+
   let comment_profile = document.createElement('div');
   comment_profile.classList.add('comment_profile');
 
@@ -519,7 +519,8 @@ if (slickFinder2 >= 1) {
 const threeDeBlockLink = $('.three_title').data('href');
 
 $(document).ready(function () {
-  $('.three_de__block').click(function() {
+  $('.three_de__block').click(function () {
     window.location.href = threeDeBlockLink;
   });
-})
+});
+

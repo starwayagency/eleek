@@ -13,6 +13,19 @@
 
   gtag('config', 'G-K7P4538DPT');
 </script>
+
+<script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+  function onClick(e) {
+    e.preventDefault();
+    grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute('6Lf415QpAAAAAA8vNs5__Btb5qP1qwxFS0PI2Ffe', {action: 'LOGIN'});
+    });
+  }
+</script>
+
 {% endblock head_top_scripts %}
 
 {% block head_bottom_scripts %}
