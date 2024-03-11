@@ -51,11 +51,6 @@ class ItemCategoryAdmin(
     # changelist
     # TODO: Проміжна дія : встановити всім товарам в вибраних категоріях валюту категорії.
     # TODO: Проміжна дія: встановити всім товарам в вибраних категоріях характеристику категорії.
-    def delete_queryset(self, request, queryset):
-        queryset.filter(code__isnull=True).delete()
-    
-    def has_delete_permission(self, request, obj=None):
-        return False if obj and obj.code else True 
 
     def tree_title(self, obj):
         lvl = obj._mpttfield('level') * self.mptt_level_indent
