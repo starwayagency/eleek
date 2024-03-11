@@ -509,7 +509,7 @@ function create_basket_card(content, data) {
   basket_price_title.textContent = 'Ціна';
   var basket_summ = document.createElement('div');
   basket_summ.classList.add('basket_summ', 'main__title', 'main__title_5');
-  basket_summ.textContent = data.prices.price_with_coupons_with_attributes_with_discount + ' ' + data.chosen_currency; // basket_summ.textContent = data.item.price + ' ' + data.item.currency.code;
+  basket_summ.textContent = data.prices.total_price_with_coupons_with_attributes_with_discount + ' ' + data.chosen_currency; // basket_summ.textContent = data.item.price + ' ' + data.item.currency.code;
 
   console.log("data::", data);
   basket_content_profile.appendChild(basket_profile_img);
@@ -881,6 +881,60 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         console.log(validator);
         $(validator).parents(error_inp_wrap).append($(event));
       },
+      rules: {
+        email: {
+          required: true,
+          email: true
+        },
+        name: {
+          required: true,
+          lettersonly: true
+        },
+        first_name: {
+          required: true,
+          lettersonly: true
+        },
+        contact_name: {
+          required: true,
+          lettersonly: true
+        },
+        username: {
+          required: true
+        },
+        adress: {
+          required: true
+        },
+        old_password: {
+          required: true
+        },
+        pass1: {
+          required: check_pass,
+          minLength: check_pass
+        },
+        password2: {
+          required: check_pass,
+          minLength: check_pass
+        },
+        address: {
+          required: true,
+          lettersonly: true
+        },
+        phone_number: {
+          required: true
+        },
+        phone: {
+          required: true
+        },
+        password: {
+          required: true
+        },
+        pas1: {
+          required: true
+        },
+        pas2: {
+          required: true
+        }
+      },
       messages: {
         email: {
           required: error_text.required,
@@ -977,7 +1031,6 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         if (url_form != '' && pass_checked == true) {
           console.log('url_form: ', url_form);
           var current_method = 'POST';
-          var captchaResponse = grecaptcha.getResponse();
 
           if ($(form).hasClass('PATCH')) {
             current_method = 'PATCH';
@@ -985,13 +1038,6 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           } else {
             current_method = 'POST';
             modal = false;
-          }
-
-          if (form.classList.contains('comment_form')) {
-            if (!captchaResponse.length) {
-              modal = true;
-              return;
-            }
           }
 
           fetch(url_form, {
@@ -1114,8 +1160,11 @@ function valide_form(id_form, error_inp_wrap, check_request) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/pages/order/index.scss");
-/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _utils_customMask__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../utils/customMask */ "../utils/customMask.js");
+/* harmony import */ var _utils_customMask__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_utils_customMask__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.scss */ "../components/pages/order/index.scss");
+/* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_1__);
+
 
 var ua = 'Поле обов\'язково для заповнення';
 var ru = 'Поле обязательно для заполнения';
@@ -1316,7 +1365,7 @@ $('.submit_order_btn').on('click', function () {
   var body = {
     "name": $('#order_name').val(),
     "email": $('#order_email').val(),
-    "phone": $('#order_phone').val(),
+    "phone": $('#order_phone').val().replace(/[\(\)\- ]/),
     "delivery_opt": current_adress,
     "payment_opt": current_payment.trim()
   };
@@ -1439,6 +1488,28 @@ $('.basket_next_order').on('click', function () {
 // extracted by mini-css-extract-plugin
     if(false) { var cssReload; }
   
+
+/***/ }),
+
+/***/ "../utils/customMask.js":
+/*!******************************!*\
+  !*** ../utils/customMask.js ***!
+  \******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var phoneInputs = document.querySelectorAll('[data-type="phone"]');
+phoneInputs.forEach(function (element) {
+  element.addEventListener("input", handleInput, false);
+});
+
+function handleInput(e) {
+  e.target.value = phoneMask(e.target.value);
+}
+
+function phoneMask(phone) {
+  return phone.replace(/\D/g, "").replace(/^(\d)/, "($1").replace(/^(\(\d{3})(\d)/, "$1) $2").replace(/(\d{2})(\d{2})/, "$1-$2").replace(/(-\d{7})\d+?$/, "$1");
+}
 
 /***/ }),
 

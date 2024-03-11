@@ -1093,3 +1093,10 @@ div.modal-review__rating-order-wrap[class]>span:hover~span {
     margin-top: 10px;
   }
 }
+
+.generate_comment {
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
+}

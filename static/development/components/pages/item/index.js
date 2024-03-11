@@ -2,7 +2,6 @@ import './index.scss';
 import './best_sales.scss';
 import '../../../utils/customMask';
 
-
 $('.main_item_btn').on('click', function () {
 
   if ($(this).hasClass('NoActiveBtn')) {
@@ -156,6 +155,10 @@ $('.item_tab_link_3').on('click', function () {
 });
 
 $('.add_comment_btn').on('click', function () {
+  const generateCommentButton = document.querySelector('.generate_comment');
+
+  generateCommentButton.disabled = true;
+  generateCommentButton.style.cursor = 'not-allowed';
 
   $('#comment_form').removeClass('answer');
   $('.comment_name').val('');
@@ -230,7 +233,6 @@ $('#comment_name').on('input', function ({ target }) {
     target.value = value.trimStart().replace(/[0-9]/g, '');
   }
 });
-
 
 const resetCommentFormInputs = () => {
   $('.comment_name').val('');
@@ -524,3 +526,11 @@ $(document).ready(function () {
   });
 });
 
+const handleRecaptchaClick = () => {
+  const generateCommentButton = document.querySelector('.generate_comment');
+
+  generateCommentButton.disabled = false;
+  generateCommentButton.style.cursor = 'pointer';
+};
+
+window.handleRecaptchaClick = handleRecaptchaClick;

@@ -84,7 +84,6 @@ function valide_form(id_form, error_inp_wrap, check_request) {
   var modal = false;
   var check_request = check_request;
   let check_pass = true;
-
   if ($(id_form).hasClass('change_profile')) {
     check_pass = false;
   } else {
@@ -120,6 +119,62 @@ function valide_form(id_form, error_inp_wrap, check_request) {
       errorPlacement: function (event, validator) {
         console.log(validator);
         $(validator).parents(error_inp_wrap).append($(event));
+      },
+      rules: {
+        email: {
+          required: true,
+          email: true,
+        },
+        name: {
+          required: true,
+          lettersonly: true
+        },
+        first_name: {
+          required: true,
+          lettersonly: true
+        },
+        contact_name: {
+          required: true,
+          lettersonly: true
+        },
+        username: {
+          required: true,
+        },
+        adress: {
+          required: true,
+        },
+        old_password: {
+          required: true,
+        },
+        pass1: {
+          required: check_pass,
+          minLength: check_pass
+        },
+        password2: {
+          required: check_pass,
+          minLength: check_pass
+        },
+        address: {
+          required: true,
+          lettersonly: true
+
+        },
+        phone_number: {
+          required: true,
+        },
+        phone: {
+          required: true,
+        },
+        password: {
+          required: true,
+        },
+
+        pas1: {
+          required: true,
+        },
+        pas2: {
+          required: true,
+        },
       },
       messages: {
         email: {
@@ -170,7 +225,6 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         console.log('form: ', form);
         event.preventDefault();
         $('.load_spin').addClass('load_spin_active');
-
         var form_input = $(form).serializeArray();
         var url_form = form.action;
         var form_json = {};
@@ -219,7 +273,6 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           console.log('url_form: ', url_form);
 
           let current_method = 'POST';
-          const captchaResponse = grecaptcha.getResponse();
 
           if ($(form).hasClass('PATCH')) {
             current_method = 'PATCH';
@@ -227,14 +280,6 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           } else {
             current_method = 'POST';
             modal = false;
-          }
-
-          if (form.classList.contains('comment_form')) {
-            if (!captchaResponse.length) {
-              modal = true;
-
-              return;
-            }
           }
 
           fetch(url_form, {
@@ -307,7 +352,6 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           } else {
             $.fancybox.close();
           }
-
           if (check_request === true) {
             $.fancybox.open({
               src: '#modal-form_true',
