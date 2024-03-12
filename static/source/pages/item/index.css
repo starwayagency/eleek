@@ -2214,6 +2214,9 @@ body {
   width: 40px;
   margin-right: 20px; }
 
+.footer_social__block--mobile {
+  display: none; }
+
 @media (max-width: 992px) {
   .wrap_for_footer_btn .btn_standart_yellow {
     margin: 0 auto; }
@@ -2228,7 +2231,12 @@ body {
   .footer_btn {
     display: block; }
   .footer_social__block {
-    margin-bottom: 30px; }
+    margin-bottom: 30px;
+    display: none; }
+    .footer_social__block--mobile {
+      display: flex;
+      align-items: center;
+      justify-content: start; }
   .footer_accordeon__block {
     margin-bottom: 20px; }
   .footer_bottom_info {
@@ -2975,7 +2983,7 @@ div.modal-review__rating-order-wrap[class] > span:hover ~ span {
 
 .generate_comment:disabled {
   cursor: not-allowed;
-  opacity: 0.8; }
+  opacity: 0.5; }
 
 .best_sales {
   padding-bottom: 30px; }

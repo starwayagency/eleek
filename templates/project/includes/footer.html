@@ -56,7 +56,7 @@
         </div>
       </div>
 
-      <div class="footer_social__block">
+      <div class="footer_social__block footer_social__block--mobile">
         {% for social in site.socials.all %}
         <a href="{{ social.link }}" class="footer_social">
               {{ social.svg_content|safe }}
@@ -64,6 +64,7 @@
         {% endfor %}
       </div>
     </div>
+
     <div class="footer_accordeon__block footer_part">
       {% render 'text12' as text12 %}
       <div class="db_content footer_accordeon_name color_white main__title main__title_3"
@@ -135,6 +136,15 @@
 
     </div>
   </div>
+
+  <div class="footer_social__block">
+    {% for social in site.socials.all %}
+    <a href="{{ social.link }}" class="footer_social">
+          {{ social.svg_content|safe }}
+    </a>
+    {% endfor %}
+  </div>
+
   <div class="footer_bottom_info">
     {% render 'footer_all_rights' as footer_all_rights %}
     <div class="footer_data color_white db_content" data-admin_url="{{footer_all_rights.get_admin_url}}">
