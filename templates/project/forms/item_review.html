@@ -78,15 +78,14 @@
     <textarea name='text' id="comment_send" class="comment_send user_send footer_input input_focus"></textarea>
   </div>
 
-  <div class="g-recaptcha" data-sitekey="6Ldb4pQpAAAAANOUii-f5RSEOO4DyPyLNiGsPzTZ" data-action="LOGIN"></div>
+  <div class="g-recaptcha" data-sitekey="6Ldb4pQpAAAAANOUii-f5RSEOO4DyPyLNiGsPzTZ" data-action="LOGIN"
+    data-callback="handleRecaptchaClick">
+  </div>
 
   <div class="wrap_for_footer_btn">
     {% render 'text142' as text142 %}
-    <input
-      type="submit"
-      value="{{text142.text}}"
-      class="db_content generate_comment btn_standart btn_standart_black"
-      data-admin_url="{{text142.get_admin_url}}">
+    <input type="submit" value="{{text142.text}}" disabled
+      class="db_content generate_comment btn_standart btn_standart_black" data-admin_url="{{text142.get_admin_url}}">
     <!-- <input type="submit" value="Додати відгук" class="generate_comment btn_standart btn_standart_black"> -->
   </div>
 </form>

@@ -21,7 +21,7 @@
   function onClick(e) {
     e.preventDefault();
     grecaptcha.enterprise.ready(async () => {
-      const token = await grecaptcha.enterprise.execute('6Lf415QpAAAAAA8vNs5__Btb5qP1qwxFS0PI2Ffe', {action: 'LOGIN'});
+      const token = await grecaptcha.enterprise.execute('6Lf415QpAAAAAA8vNs5__Btb5qP1qwxFS0PI2Ffe', { action: 'LOGIN' });
     });
   }
 </script>
@@ -31,20 +31,20 @@
 {% block head_bottom_scripts %}
 
 
-  {{block.super}}
-    {% if LANGUAGE_CODE == "ru" %}
-    <script type="text/javascript">
-        HelpCrunch('setPhraseList', 'ru');
-    </script>
-    {% elif LANGUAGE_CODE == "en"%}
-    <script type="text/javascript">
-      HelpCrunch('setPhraseList', 'en');
-    </script>
-    {% elif LANGUAGE_CODE == "uk"%}
-    <script type="text/javascript">
-      HelpCrunch('setPhraseList', 'uk');
-    </script>
-  {% endif %}
+{{block.super}}
+{% if LANGUAGE_CODE == "ru" %}
+<script type="text/javascript">
+  HelpCrunch('setPhraseList', 'ru');
+</script>
+{% elif LANGUAGE_CODE == "en"%}
+<script type="text/javascript">
+  HelpCrunch('setPhraseList', 'en');
+</script>
+{% elif LANGUAGE_CODE == "uk"%}
+<script type="text/javascript">
+  HelpCrunch('setPhraseList', 'uk');
+</script>
+{% endif %}
 {% endblock head_bottom_scripts %}
 
 

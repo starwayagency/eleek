@@ -1,3 +1,5 @@
+import '../../../utils/customMask';
+
 import './index.scss';
 
 let ua = 'Поле обов\'язково для заповнення';
@@ -184,11 +186,6 @@ $('.order_info__block').on('submit', function (evt) {
       'additional_information': $('.additional_information').val(),
       'another_parts': another_array,
     }
-
-
-
-
-
   }
 });
 
@@ -221,7 +218,7 @@ $('.submit_order_btn').on('click', function () {
   let body = {
     "name": $('#order_name').val(),
     "email": $('#order_email').val(),
-    "phone": $('#order_phone').val(),
+    "phone": $('#order_phone').val().replace(/[\(\)\- ]/),
     "delivery_opt": current_adress,
     "payment_opt": current_payment.trim(),
   }

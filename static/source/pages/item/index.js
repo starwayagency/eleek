@@ -509,7 +509,7 @@ function create_basket_card(content, data) {
   basket_price_title.textContent = 'Ціна';
   var basket_summ = document.createElement('div');
   basket_summ.classList.add('basket_summ', 'main__title', 'main__title_5');
-  basket_summ.textContent = data.prices.price_with_coupons_with_attributes_with_discount + ' ' + data.chosen_currency; // basket_summ.textContent = data.item.price + ' ' + data.item.currency.code;
+  basket_summ.textContent = data.prices.total_price_with_coupons_with_attributes_with_discount + ' ' + data.chosen_currency; // basket_summ.textContent = data.item.price + ' ' + data.item.currency.code;
 
   console.log("data::", data);
   basket_content_profile.appendChild(basket_profile_img);
@@ -881,6 +881,60 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         console.log(validator);
         $(validator).parents(error_inp_wrap).append($(event));
       },
+      rules: {
+        email: {
+          required: true,
+          email: true
+        },
+        name: {
+          required: true,
+          lettersonly: true
+        },
+        first_name: {
+          required: true,
+          lettersonly: true
+        },
+        contact_name: {
+          required: true,
+          lettersonly: true
+        },
+        username: {
+          required: true
+        },
+        adress: {
+          required: true
+        },
+        old_password: {
+          required: true
+        },
+        pass1: {
+          required: check_pass,
+          minLength: check_pass
+        },
+        password2: {
+          required: check_pass,
+          minLength: check_pass
+        },
+        address: {
+          required: true,
+          lettersonly: true
+        },
+        phone_number: {
+          required: true
+        },
+        phone: {
+          required: true
+        },
+        password: {
+          required: true
+        },
+        pas1: {
+          required: true
+        },
+        pas2: {
+          required: true
+        }
+      },
       messages: {
         email: {
           required: error_text.required,
@@ -977,7 +1031,6 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         if (url_form != '' && pass_checked == true) {
           console.log('url_form: ', url_form);
           var current_method = 'POST';
-          var captchaResponse = grecaptcha.getResponse();
 
           if ($(form).hasClass('PATCH')) {
             current_method = 'PATCH';
@@ -985,13 +1038,6 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           } else {
             current_method = 'POST';
             modal = false;
-          }
-
-          if (form.classList.contains('comment_form')) {
-            if (!captchaResponse.length) {
-              modal = true;
-              return;
-            }
           }
 
           fetch(url_form, {
@@ -1274,6 +1320,9 @@ $('.item_tab_link_3').on('click', function () {
   check_item_comment();
 });
 $('.add_comment_btn').on('click', function () {
+  var generateCommentButton = document.querySelector('.generate_comment');
+  generateCommentButton.disabled = true;
+  generateCommentButton.style.cursor = 'not-allowed';
   $('#comment_form').removeClass('answer');
   $('.comment_name').val('');
   $.fancybox.open({
@@ -1595,6 +1644,14 @@ $(document).ready(function () {
     window.location.href = threeDeBlockLink;
   });
 });
+
+var handleRecaptchaClick = function handleRecaptchaClick() {
+  var generateCommentButton = document.querySelector('.generate_comment');
+  generateCommentButton.disabled = false;
+  generateCommentButton.style.cursor = 'pointer';
+};
+
+window.handleRecaptchaClick = handleRecaptchaClick;
 
 /***/ }),
 
