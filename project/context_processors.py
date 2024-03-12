@@ -16,8 +16,8 @@ def context(request):
     try:
         context['main_currency'] = Currency.objects.get(is_main=True)
 
-        static_categories_slugs = ["velo", "ramy", "comp", "amor", "vilk", "galm", "moto", "kole"]
-        static_categories = Item.objects.filter(category__in=static_categories_slugs)
+        other_category = ItemCategory.objects.get(id=3)
+        static_categories = ItemCategory.objects.filter(parent=other_category)
         cart = get_cart(request)
         context['cart'] = cart
         context['static_categories'] = static_categories
