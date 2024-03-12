@@ -342,97 +342,24 @@ section__wrapper
 <section class="five_section">
   <div class="five_bg"></div>
   <div class="absolute_product__block">
-    <div class="absolute_product_profile absolute_product_profile_1">
-      <div class="absolute_product_img">
-        <picture>
-          <source media="(max-width: 1130px)" data-lazy="/static/source/img/index/koleso.png">
-          <img data-src="/static/source/img/index/koleso.png" alt="">
-        </picture>
-          <!-- <img data-lazy="/static/source/img/index/koleso.png" alt=""> -->
-      </div>
-      <a href="{{kole.get_absolute_url}}" class="main__title main__title_5 color_white">
-        {{kole.title|title}}
-        <div class="absolute_product_arrow">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-            <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
-          </svg>
+      {% for category in static_categories|slice:5 %}
+        <div class="absolute_product_profile absolute_product_profile_{{ forloop.counter }}">
+          <div class="absolute_product_img">
+              <img data-src="{% if category.image %}{{ category.image.url }}{% endif %}" alt="">
+          </div>
+          <a href="{{category.get_absolute_url}}" class="main__title main__title_5 color_white">
+            {{category.title|title}}
+            <div class="absolute_product_arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
+                <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
+              </svg>
+            </div>
+          </a>
         </div>
-      </a>
-    </div>
-    <div class="absolute_product_profile absolute_product_profile_2">
-      <div class="absolute_product_img">
-        <picture>
-          <source media="(max-width: 1130px)" data-lazy="/static/source/img/index/stop.png">
-          <img data-src="/static/source/img/index/stop.png" alt="">
-        </picture>
-          <!-- <img data-lazy="/static/source/img/index/stop.png" alt=""> -->
-      </div>
-      <a href="{{galm.get_absolute_url}}" class="main__title main__title_5 color_white">
-        {{galm.title|title}}
-        <div class="absolute_product_arrow">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-            <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
-          </svg>
-        </div>
-      </a>
-    </div>
-    <div class="absolute_product_profile absolute_product_profile_3">
-      <a href="{{vilk.get_absolute_url}}" class="main__title main__title_5 color_white">
-        <div class="absolute_product_img">
-          <picture>
-            <source media="(max-width: 1130px)" data-lazy="/static/source/img/index/vylka.png">
-            <img data-src="/static/source/img/index/vylka.png" alt="">
-          </picture>
-            <!-- <img data-lazy="/static/source/img/index/vylka.png" alt=""> -->
-        </div>
-        {{vilk.title|title}}
-        <div class="absolute_product_arrow">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-            <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
-          </svg>
-        </div>
-      </a>
-    </div>
-    <div class="absolute_product_profile absolute_product_profile_4">
-      <a href="{{moto.get_absolute_url}}" class="main__title main__title_5 color_white">
-      <div class="absolute_product_img">
-        <picture>
-          <source media="(max-width: 1130px)" data-lazy="/static/source/img/index/motor.png">
-          <img data-src="/static/source/img/index/motor.png" alt="">
-        </picture>
-          <!-- <img data-lazy="/static/source/img/index/motor.png" alt=""> -->
-      </div>
-        {{moto.title|title}}
-        <div class="absolute_product_arrow">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-            <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
-          </svg>
-        </div>
-      </a>
-    </div>
-    <div class="absolute_product_profile absolute_product_profile_5">
-      <div class="absolute_product_img">
-        <picture>
-          <source media="(max-width: 1130px)" data-lazy="/static/source/img/index/amort.png">
-          <img data-src="/static/source/img/index/amort.png" alt="">
-        </picture>
-          <!-- <img data-lazy="/static/source/img/index/amort.png" alt=""> -->
-      </div>
-      <a href="{{amor.get_absolute_url}}" class="main__title main__title_5 color_white">
-        {{amor.title|title}}
-        <div class="absolute_product_arrow">
-          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-            <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
-          </svg>
-        </div>
-      </a>
-    </div>
+      {% endfor %}
 </div>
   <div class="five_wrapp">
       <div class="five_title__block paroller" >
-        <h1 class="color_white five_title main__title main__title_1">
-          {{comp.title|title}}
-        </h1>
         {% render 'index_assort' as index_assort %}
         <div class="color_white sub_title sub_title_2 db_content" data-admin_url="{{index_assort.get_admin_url}}">
           {{index_assort.text}}
@@ -445,119 +372,21 @@ section__wrapper
         </a>
       </div>
       <div class="complect__wrap">
+      {% for category in static_categories %}
+
         <div class="complect_slide">
-            <img data-src="/static/source/img/index/koleso.png" alt="" class="complect_img">
+            <img data-src="{% if category.image %}{{ category.image.url }}{% endif %}" alt="" class="complect_img">
             <div class="main__title main__title_5 color_white">
-              {{kole.title|title}}
+              {{category.title|title}}
             </div>
-            <a href="{{kole.get_absolute_url}}" class="absolute_product_arrow">
+            <a href="{{category.get_absolute_url}}" class="absolute_product_arrow">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
                 <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
               </svg>
             </a>
         </div>
-        <div class="complect_slide">
-          <img data-src="/static/source/img/index/stop.png" alt="" class="complect_img">
-          <div class="main__title main__title_5 color_white">
-            {{galm.title|title}}
-          </div>
-          <a href="{{kole.get_absolute_url}}" class="absolute_product_arrow">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
-            </svg>
-          </a>
-        </div>
-        <div class="complect_slide">
-          <img data-src="/static/source/img/index/vylka.png" alt="" class="complect_img">
-          <div class="main__title main__title_5 color_white">
-            {{vilk.title|title}}
-          </div>
-          <a href="{{vilk.get_absolute_url}}" class="absolute_product_arrow">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
-            </svg>
-          </a>
-        </div>
-        <div class="complect_slide">
-          <img data-src="/static/source/img/index/motor.png" alt="" class="complect_img">
-          <div class="main__title main__title_5 color_white">
-            {{moto.title|title}}
-          </div>
-          <a href="{{moto.get_absolute_url}}" class="absolute_product_arrow">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
-            </svg>
-          </a>
-        </div>
-        <div class="complect_slide">
-          <img data-src="/static/source/img/index/amort.png" alt="" class="complect_img">
-          <div class="main__title main__title_5 color_white">
-            {{amor.title|title}}
-          </div>
-          <a href="{{amor.get_absolute_url}}" class="absolute_product_arrow">
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-              <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
-            </svg>
-          </a>
-        </div>
+      {% endfor %}
     </div>
-      <!-- <div class="complect__wrap">
-          <div class="complect_slide">
-            <a href="{{kole.get_absolute_url}}" class="absolute_product_arrow">
-              <img src="/static/source/img/index/koleso.png" alt="" class="complect_img">
-              <div class="main__title main__title_5 color_white">
-                {{kole.title|title}}
-              </div>
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-                  <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
-                </svg>
-            </a>
-          </div>
-          <div class="complect_slide">
-            <a href="{{galm.get_absolute_url}}" class="absolute_product_arrow">
-            <img src="/static/source/img/index/stop.png" alt="" class="complect_img">
-            <div class="main__title main__title_5 color_white">
-            {{galm.title|title}}
-            </div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-                <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
-              </svg>
-            </a>
-          </div>
-          <div class="complect_slide">
-            <a href="{{vilk.get_absolute_url}}" class="absolute_product_arrow">
-            <img src="/static/source/img/index/vylka.png" alt="" class="complect_img">
-            <div class="main__title main__title_5 color_white">
-              {{vilk.title|title}}
-            </div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-                <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
-              </svg>
-            </a>
-          </div>
-          <div class="complect_slide">
-            <a href="{{moto.get_absolute_url}}" class="absolute_product_arrow">
-            <img src="/static/source/img/index/motor.png" alt="" class="complect_img">
-            <div class="main__title main__title_5 color_white">
-              {{moto.title|title}}
-            </div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-                <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
-              </svg>
-            </a>
-          </div>
-          <div class="complect_slide">
-            <a href="{{amor.get_absolute_url}}" class="absolute_product_arrow">
-            <img src="/static/source/img/index/amort.png" alt="" class="complect_img">
-            <div class="main__title main__title_5 color_white">
-              {{amor.title|title}}
-            </div>
-              <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
-                <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
-              </svg>
-            </a>
-          </div>
-      </div> -->
       
   </div>
 </section>

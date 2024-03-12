@@ -15,16 +15,12 @@ def context(request):
 
     try:
         context['main_currency'] = Currency.objects.get(is_main=True)
-        context['velo'] = ItemCategory.objects.get(code='velo')
-        context['ramy'] = ItemCategory.objects.get(code='ramy')
-        context['comp'] = ItemCategory.objects.get(code='comp')
-        context['amor'] = ItemCategory.objects.get(code='amor')
-        context['vilk'] = ItemCategory.objects.get(code='vilk')
-        context['galm'] = ItemCategory.objects.get(code='galm')
-        context['moto'] = ItemCategory.objects.get(code='moto')
-        context['kole'] = ItemCategory.objects.get(code='kole')
+
+        static_categories_slugs = ["velo", "ramy", "comp", "amor", "vilk", "galm", "moto", "kole"]
+        static_categories = Item.objects.filter(category__in=static_categories_slugs)
         cart = get_cart(request)
         context['cart'] = cart
+        context['static_categories'] = static_categories
         context['cart_items'] = CartItem.objects.filter(cart=cart)
         context['currencies'] = Currency.objects.all()
     except Exception as e:
