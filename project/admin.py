@@ -138,3 +138,16 @@ class SiteAdmin(TabbedTranslationAdmin):
 
     def has_delete_permission(self, request, obj=None):
         return False
+
+
+@admin.register(IndexBlockOne)
+class IndexBlockOne(TabbedTranslationAdmin):
+
+    formfield_overrides = {
+        models.ImageField:{'widget': AdminImageWidget},
+    }
+
+    def has_add_permission(self, request):
+        if self.model.objects.exists():
+            return False
+        return super().has_add_permission(request)

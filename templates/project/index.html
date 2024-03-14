@@ -312,32 +312,29 @@ section__wrapper
     </div>
 </section>
 <!-- /.three_section -->
+{% for block_one in block_ones %}
 <section class="four_section">
   
-  <img data-src="/static/source/img/index/rrama-png.png" alt="" style="animation-delay: 0.5s" class="absolute_rams_1 hvr-bob">
-  <img data-src="/static/source/img/index/lite.png" alt="" style="animation-delay: 1s" class="absolute_rams_2 hvr-bob">
-  <img data-src="/static/source/img/index/ekross-copy.png" style="animation-delay: 1.5s" alt="" class="absolute_rams_3 hvr-bob">
+  <img data-src="{{ block_one.image1_url }}" alt="" style="animation-delay: 0.5s" class="absolute_rams_1 hvr-bob">
+  <img data-src="{{ block_one.image2_url }}" alt="" style="animation-delay: 1s" class="absolute_rams_2 hvr-bob">
+  <img data-src="{{ block_one.image3_url }}" style="animation-delay: 1.5s" alt="" class="absolute_rams_3 hvr-bob">
   <div class="four_bg"></div>
   <div class="four_wrapp down_wrap">
     <h1 class="color_black four_title main__title main__title_1">
-      {{ramy.title|title}}
+        {{ block_one.title }}
     </h1>
     {% render 'index_choose' as index_choose %}
-    <div class="sub_title sub_title_2 db_content" data-admin_url="{{index_choose.get_admin_url}}">
-      {{index_choose.text}}
-      <!-- При виборі електро велосипеда можна не обмежувати себе в побажаннях. Ми можемо підібрати велосипед який підійде саме Вам. Починаючи з велосипеда для неспішних прогулянок по парку, закінчуючи зарядженим брутальним мотоциклом для агресивної їзди всюди. -->
+    <div class="sub_title sub_title_2">
+        {{ block_one.description }}
     </div>
     {% render 'text95' as text95 %}
-    <a href="{{ramy.get_absolute_url}}" class="db_content btn_standart btn_standart_black" data-admin_url="{{text95.get_admin_url}}">
-      {{text95.text}}
-      <!-- {% trans 'Детальніше' %} -->
-    </a>
-    <a href="#" class="glo">
-      Кнопка с анимацией загрузки
+    <a href="{{ block_one.button_link }}" class="btn_standart btn_standart_black">
+      {{ block_one.button }}
     </a>
   </div>
   <!-- /.four_wrapp -->
 </section>
+{% endfor %}
 <!-- /.four_section -->
 <section class="five_section">
   <div class="five_bg"></div>

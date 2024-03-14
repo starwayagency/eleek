@@ -253,3 +253,31 @@ class SiteEmail(models.Model):
     class Meta:
         verbose_name = 'Email'
         verbose_name_plural = 'Emails'
+
+
+class IndexBlockOne(models.Model):
+    title = models.CharField(verbose_name="Заголовок", max_length=512)
+    description = models.TextField(verbose_name="Опис", max_length=512)
+    button = models.CharField(verbose_name="Кнопка", max_length=512)
+    button_link = models.CharField(verbose_name="Посилання", max_length=512)
+    image1 = models.ImageField(verbose_name='Картинка 1', max_length=512)
+    image2 = models.ImageField(verbose_name='Картинка 2', max_length=512)
+    image3 = models.ImageField(verbose_name='Картинка 3', max_length=512)
+
+    @classmethod
+    def modeltranslation_fields(self):
+        return ['title', 'description', 'button']
+
+    def image1_url(self):
+        return self.image1.url if self.image1 else ""
+
+    def image2_url(self):
+        return self.image2.url if self.image2 else ""
+
+    def image3_url(self):
+        return self.image3.url if self.image3 else ""
+
+
+    class Meta:
+        verbose_name = 'Головна - перший блок'
+        verbose_name_plural = 'Головна - перший блок'

@@ -16,6 +16,7 @@ def index(request):
     page = Page.objects.get(code='index')
     test_drive_sliders = TestDriveSlider.objects.all()
     velo_sliders = VeloSlider.objects.all()
+    block_ones = IndexBlockOne.objects.all()
     return render(request, 'project/index.html', locals())
 
 
