@@ -9,7 +9,6 @@ USE_TZ = True
 LANGUAGES = [
     ('uk', _('Українська')),
     ('en', _('Англійська')),
-    ('ru', _('Російська')),
     # ('en-us', ('en')),
 ]
 LANGUAGE_CODE = 'uk' 
