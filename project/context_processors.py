@@ -15,8 +15,9 @@ def context(request):
 
     try:
         context['main_currency'] = Currency.objects.get(is_main=True)
+        context['burger_categories'] = ItemCategory.objects.filter(is_displayed_on_main=True)
 
-        other_category = ItemCategory.objects.get(id=3)
+        other_category = ItemCategory.objects.filter(id=3).first()
         static_categories = ItemCategory.objects.filter(parent=other_category)
         cart = get_cart(request)
         context['cart'] = cart

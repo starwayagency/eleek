@@ -161,36 +161,18 @@
     <div class="scroll_content__block">
       <div class="scroll_left__block">
         <div class="scroll_main__block">
-          <div class="scroll_category">
-            <a id="button_1" href="{{velo.get_absolute_url}}"
-              class="db_content scroll__category_text header_title header_title_1"
-              data-admin_url="{{velo.get_admin_url}}">
-              {{velo.title|title}}
-            </a>
-            <div class="scroll_category_img">
-              <img class="anim_arrow" id="arrow_1" src="/static/source/img/index/header-1.jpg" alt="">
-            </div>
-          </div>
-          <div class="scroll_category">
-            <a id="button_2" href="{{ramy.get_absolute_url}}"
-              class="db_content scroll__category_text header_title header_title_1"
-              data-admin_url="{{ramy.get_admin_url}}">
-              {{ramy.title|title}}
-            </a>
-            <div class="scroll_category_img">
-              <img class="anim_arrow" id="arrow_2" src="/static/source/img/index/header-2.jpg" alt="">
-            </div>
-          </div>
-          <div class="scroll_category">
-            <a id="button_3" href="{{comp.get_absolute_url}}"
-              class="db_content scroll__category_text header_title header_title_1"
-              data-admin_url="{{comp.get_admin_url}}">
-              {{comp.title|title}}
-            </a>
-            <div class="scroll_category_img">
-              <img class="anim_arrow" id="arrow_3" src="/static/source/img/index/header-3.jpg" alt="">
-            </div>
-          </div>
+            {% for category in burger_categories %}
+              <div class="scroll_category">
+                <a id="button_1" href="{{category.get_absolute_url}}"
+                  class="db_content scroll__category_text header_title header_title_1"
+                  data-admin_url="{{category.get_admin_url}}">
+                  {{category.title|title}}
+                </a>
+                <div class="scroll_category_img">
+                  <img class="anim_arrow" id="arrow_1" src="{% if category.image %}{{category.image.url}}{% endif %}" alt="">
+                </div>
+              </div>
+            {% endfor %}
           <div class="scroll_category">
             {% render 'header_about' as header_about %}
             <a id="button_4" href="{% url 'about' %}"

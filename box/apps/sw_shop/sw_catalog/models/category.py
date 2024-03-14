@@ -15,6 +15,7 @@ class ItemCategory(AbstractPage, MPTTModel):
   parent     = models.ForeignKey(verbose_name=_("Батьківська категорія"), to='self', blank=True, null=True, on_delete=models.SET_NULL, related_name='subcategories')
   # parent     = TreeForeignKey(verbose_name=_("Батьківська категорія"), to='self', blank=True, null=True, on_delete=models.SET_NULL, related_name='subcategories')
   currency   = models.ForeignKey(verbose_name=_("Валюта"), to="sw_currency.Currency", blank=True, null=True, related_name="categories",  on_delete=models.SET_NULL)
+  is_displayed_on_main = models.BooleanField(verbose_name=_("Відображення в бургер-меню"), default=False)
 
   class Meta: 
     verbose_name = _('категорія'); 

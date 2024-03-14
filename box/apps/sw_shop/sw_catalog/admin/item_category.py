@@ -75,6 +75,7 @@ class ItemCategoryAdmin(
         'tree_title',
         # 'title',
         'is_active',
+        'is_displayed_on_main',
         'show_site_link',
         'show_delete_link',
     ]
@@ -88,6 +89,7 @@ class ItemCategoryAdmin(
     ]
     list_editable = [
         'is_active',
+        'is_displayed_on_main',
     ]
     list_filter = (
         # ('title', TreeRelatedFieldListFilter),
@@ -113,6 +115,7 @@ class ItemCategoryAdmin(
                 "image",
                 'description',
                 'is_active',
+                'is_displayed_on_main',
                 "created",
                 'updated',
                 'code',
