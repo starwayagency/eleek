@@ -2,6 +2,7 @@ from box.core.default_settings import *
 
 INSTALLED_APPS +=[
     'project',
+    'nova_poshta',
 ]
 
 

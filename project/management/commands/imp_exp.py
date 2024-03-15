@@ -14,20 +14,32 @@ from import_export.resources import modelresource_factory
 from box.apps.sw_shop.sw_catalog.models import Item, ItemCategory, ItemManufacturer, ItemBrand, ItemStock, ItemUnit
 from box.core.sw_currency.models import Currency
 from box.core.sw_global_config.models import GlobalMarker, GlobalLabel
+from nova_poshta.models import (
+    SettlementType,
+    WarehouseType,
+    Area,
+    Settlement,
+    Warehouse
+)
 
 # Keep models in order!!!
 models = [
-    GlobalMarker,
-    GlobalLabel,
-    Currency,
-    ItemManufacturer,
-    ItemBrand,
-    ItemStock,
-    ItemUnit,
+    # GlobalMarker,
+    # GlobalLabel,
+    # Currency,
+    # ItemManufacturer,
+    # ItemBrand,
+    # ItemStock,
+    # ItemUnit,
+    #
+    # ItemCategory,
+    # Item,
 
-    ItemCategory,
-    Item,
-
+    SettlementType,
+    WarehouseType,
+    Area,
+    Settlement,
+    Warehouse,
 ]
 
 
@@ -145,7 +157,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         path = "data/export/"
         # exp(path)
-        [x.save() for x in ItemManufacturer.objects.all()]
-        print(ItemManufacturer.objects.all().values_list('name', flat=True))
-        print(ItemManufacturer.objects.all().values_list('code', flat=True))
-        # imp(path)
+        # [x.save() for x in ItemManufacturer.objects.all()]
+        # print(ItemManufacturer.objects.all().values_list('name', flat=True))
+        # print(ItemManufacturer.objects.all().values_list('code', flat=True))
+        imp(path)
