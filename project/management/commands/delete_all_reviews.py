@@ -4,6 +4,6 @@ from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):
     def handle(self, *args, **kwargs):
-        ItemReview.objects.filter(text__contains="http").delete()
+        ItemReview.objects.all().delete()
 
 
