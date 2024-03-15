@@ -2979,7 +2979,7 @@ body {
   width: 400px;
   height: 300px; }
   .absolute_product_img img {
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
     height: 100%; }
 
