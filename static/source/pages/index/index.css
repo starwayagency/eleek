@@ -2740,15 +2740,19 @@ body {
     text-align: center; }
   .eleek_slide_img {
     position: relative;
+    padding-bottom: 70%;
     max-width: 450px;
+    width: 100%;
     margin: 0 auto;
     margin-top: 30px; }
     .eleek_slide_img img {
+      position: absolute;
       width: 100%;
-      height: auto; }
+      height: 100%;
+      object-fit: contain; }
     .eleek_slide_img .oval_slide {
       position: absolute;
-      bottom: -27px; }
+      bottom: -100px; }
   .eleek_slide_info__wrapp {
     max-width: 400px;
     margin: 0 auto;
