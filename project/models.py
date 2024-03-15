@@ -257,7 +257,7 @@ class SiteEmail(models.Model):
 
 class IndexBlockOne(models.Model):
     title = models.CharField(verbose_name="Заголовок", max_length=512)
-    description = models.TextField(verbose_name="Опис", max_length=512)
+    description = models.TextField(verbose_name="Опис", max_length=1024)
     button = models.CharField(verbose_name="Кнопка", max_length=512)
     button_link = models.CharField(verbose_name="Посилання", max_length=512)
     image1 = models.ImageField(verbose_name='Картинка 1', max_length=512)
@@ -281,3 +281,47 @@ class IndexBlockOne(models.Model):
     class Meta:
         verbose_name = 'Головна - перший блок'
         verbose_name_plural = 'Головна - перший блок'
+
+
+class IndexBlockTwo(models.Model):
+    title = models.CharField(verbose_name="Заголовок", max_length=512)
+    description = models.TextField(verbose_name="Опис", max_length=1024)
+    text1 = models.CharField(verbose_name="Текст 1", max_length=512)
+    text2 = models.CharField(verbose_name="Цифра 1", max_length=512)
+    text3 = models.CharField(verbose_name="Од. вимірювання 1", max_length=512)
+    text4 = models.CharField(verbose_name="Текст 2", max_length=512)
+    text5 = models.CharField(verbose_name="Цифра 2", max_length=512)
+    text6 = models.CharField(verbose_name="Од. вимірювання 2", max_length=512)
+    text7 = models.CharField(verbose_name="Текст 3", max_length=512)
+    text8 = models.CharField(verbose_name="Цифра 3", max_length=512)
+    text9 = models.CharField(verbose_name="Од. вимірювання 3", max_length=512)
+    text10 = models.CharField(verbose_name="Текст 4", max_length=512)
+    text11 = models.CharField(verbose_name="Цифра 4", max_length=512)
+    text12 = models.CharField(verbose_name="Од. вимірювання 4", max_length=512)
+    image = models.ImageField(verbose_name='Картинка', max_length=512)
+
+    @classmethod
+    def modeltranslation_fields(self):
+        return [
+            'title',
+            'description',
+            'text1',
+            'text2',
+            'text3',
+            'text4',
+            'text5',
+            'text6',
+            'text7',
+            'text8',
+            'text9',
+            'text10',
+            'text11',
+            'text12',
+        ]
+
+    def image_url(self):
+        return self.image.url if self.image else ""
+
+    class Meta:
+        verbose_name = 'Головна - другий блок'
+        verbose_name_plural = 'Головна - другий блок'

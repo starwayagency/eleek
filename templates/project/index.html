@@ -107,19 +107,16 @@ section__wrapper
     </div>
   </div>
 </section>
+{% for block_two in block_twos %}
 <!-- /.first_section -->
 <section class="second_section">
   
   <div class="container">
-    {% render 'index_feel' as index_feel %}
-    <h1 class="second_title main__title main__title_1 color_white db_content down_wrap" data-wow-duration="2s" data-admin_url="{{index_feel.get_admin_url}}">
-      {{index_feel.text}}
-      <!-- Відчуй переваги професіоналів -->
+    <h1 class="second_title main__title main__title_1 color_white down_wrap" data-wow-duration="2s"">
+      {{block_two.text}}
     </h1>
-    {% render 'index_our_velek' as index_our_velek %}
-    <div class="second_sub_title sub_title sub_title_2 color_white text_center db_content down_wrap" data-wow-duration="2.2s" data-admin_url="{{index_our_velek.get_admin_url}}">
-      {{index_our_velek.text}}
-      <!-- Наші велосипеди одні з найпотужніших та найякісніших на ринку -->
+    <div class="second_sub_title sub_title sub_title_2 color_white text_center down_wrap" data-wow-duration="2.2s">
+      {{block_two.description}}
     </div>
     <div class="preferens__wrap">
         <img data-src="/static/source/img/index/grid-eleek.png" alt="" class="hidden_preferens__bg">
@@ -131,20 +128,17 @@ section__wrapper
                       01
                     </span>
                     <span class="pref_line"></span>
-                    {% render 'text84' as text84 %}
-                    <span class="db_content pref_text main__title main__title_5 color_white" data-admin_url="{{text84.get_admin_url}}">
-                      {{text84.text}}
-                      <!-- {% trans 'Дистанція' %} -->
+                    <span class="pref_text main__title main__title_5 color_white">
+                      {{block_two.text1}}
                     </span>
                 </div>
                 <div class="preferens_counter__block">
-                    <span data-count="150" id="preferens_counter_1" class="lines preferens_counter_1 color_yellow main__title main__title_0">
+                    <span data-count="{{block_two.text2}}" id="preferens_counter_1" class="lines preferens_counter_1 color_yellow main__title main__title_0">
                       0
                     </span>
                     {% render 'text85' as text85 %}
-                    <span class="db_content sub_title sub_title_1 color_white" data-admin_url="{{text85.get_admin_url}}">
-                      {{text85.text}}
-                      <!-- {% trans 'км' %} -->
+                    <span class="sub_title sub_title_1 color_white"">
+                      {{block_two.text3}}
                     </span>
                 </div>
           </div>
@@ -157,19 +151,17 @@ section__wrapper
 
                   </span>
                   {% render 'text86' as text86 %}
-                  <span class="db_content pref_text main__title main__title_5 color_white" data-admin_url="{{text86.get_admin_url}}">
-                    {{text86.text}}
-                    <!-- {% trans 'Швидкість' %} -->
+                  <span class="pref_text main__title main__title_5 color_white">
+                    {{block_two.text4}}
                   </span>
               </div>
               <div class="preferens_counter__block">
-                  <span data-count="100" id="preferens_counter_2" class="lines preferens_counter_2 color_yellow main__title main__title_0">
+                  <span data-count="{{block_two.text5}}" id="preferens_counter_2" class="lines preferens_counter_2 color_yellow main__title main__title_0">
                     0
                   </span>
                   {% render 'text87' as text87 %}
-                  <span class="db_content sub_title sub_title_1 color_white" data-admin_url="{{text87.get_admin_url}}">
-                    {{text87.text}}
-                    <!-- {% trans 'км/год' %} -->
+                  <span class="sub_title sub_title_1 color_white">
+                    {{block_two.text6}}
                   </span>
               </div>
           </div>
@@ -184,17 +176,16 @@ section__wrapper
 
                 </span>
                 {% render 'text88' as text88 %}
-                <span class="db_content pref_text main__title main__title_5 color_white" data-admin_url="{{text88.get_admin_url}}">
-                  {{text88.text}}
-                  <!-- {% trans 'Потужність' %} -->
+                <span class="pref_text main__title main__title_5 color_white">
+                  {{block_two.text7}}
                 </span>
             </div>
             <div class="preferens_counter__block">
-                <span data-count="3954" id="preferens_counter_3" class="lines preferens_counter_3 color_yellow main__title main__title_0">
+                <span data-count="{{block_two.text8}}" id="preferens_counter_3" class="lines preferens_counter_3 color_yellow main__title main__title_0">
                   0
                 </span>
                 <span class="sub_title sub_title_1 color_white">
-                  вт
+                  {{block_two.text9}}
                 </span>
             </div>
           </div>
@@ -207,19 +198,16 @@ section__wrapper
 
               </span>
               {% render 'text89' as text89 %}
-              <span class="db_content pref_text main__title main__title_5 color_white"  data-admin_url="{{text89.get_admin_url}}">
-                {{text89.text}}
-                <!-- {% trans 'Тривалість заряду' %} -->
+              <span class="pref_text main__title main__title_5 color_white">
+                {{block_two.text10}}
               </span>
           </div>
           <div class="preferens_counter__block">
-              <span data-count="4" id="preferens_counter_4" class="lines preferens_counter_4 color_yellow main__title main__title_0">
+              <span data-count="{{block_two.text11}}" id="preferens_counter_4" class="lines preferens_counter_4 color_yellow main__title main__title_0">
                 0
               </span>
-              {% render 'text90' as text90 %}
-              <span class="db_content sub_title sub_title_1 color_white" data-admin_url="{{text90.get_admin_url}}">
-                {{text90.text}}
-                <!-- {% trans 'год' %} -->
+              <span class="sub_title sub_title_1 color_white">
+                {{block_two.text12}}
               </span>
           </div>
           </div>
@@ -232,6 +220,7 @@ section__wrapper
   </div>
   <!-- /.container -->
 </section>
+{% endfor %}
 <!-- /.second_section -->
 <section class="three_section">
     <div class="eleek_title__wrap down_wrap">

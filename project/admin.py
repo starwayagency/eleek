@@ -141,7 +141,20 @@ class SiteAdmin(TabbedTranslationAdmin):
 
 
 @admin.register(IndexBlockOne)
-class IndexBlockOne(TabbedTranslationAdmin):
+class IndexBlockOneAdmin(TabbedTranslationAdmin):
+
+    formfield_overrides = {
+        models.ImageField:{'widget': AdminImageWidget},
+    }
+
+    def has_add_permission(self, request):
+        if self.model.objects.exists():
+            return False
+        return super().has_add_permission(request)
+
+
+@admin.register(IndexBlockTwo)
+class IndexBlockTwoAdmin(TabbedTranslationAdmin):
 
     formfield_overrides = {
         models.ImageField:{'widget': AdminImageWidget},
