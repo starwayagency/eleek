@@ -94,7 +94,8 @@
 
       .oval_slide {
         position: absolute;
-        bottom: -100px;
+        bottom: 0;
+        transform: translateY(50%);
       }
     }
 

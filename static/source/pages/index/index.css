@@ -2752,7 +2752,8 @@ body {
       object-fit: contain; }
     .eleek_slide_img .oval_slide {
       position: absolute;
-      bottom: -100px; }
+      bottom: 0;
+      transform: translateY(50%); }
   .eleek_slide_info__wrapp {
     max-width: 400px;
     margin: 0 auto;
