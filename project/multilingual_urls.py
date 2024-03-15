@@ -296,7 +296,9 @@ urlpatterns = [
 
     path('cart_items/', cart_items,  name='cart_items'),
     path('error_page/', error_page,  name='error_page'),
-    
+
+    path('', include('nova_poshta.api.urls')),
+
 ]
 
 
