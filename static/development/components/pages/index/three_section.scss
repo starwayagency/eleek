@@ -60,7 +60,6 @@
 
   &_slide {
     position: relative;
-    cursor: pointer;
     // width: 80% !important;
     // margin: 0px -150px;
     // padding: 0px 150px;
@@ -75,6 +74,22 @@
     &_name {
       position: relative;
       text-align: center;
+
+      @media (max-width: 924px) {
+        font-size: 30px;
+      }
+
+      @media (max-width: 815px) {
+        font-size: 25px;
+      }
+
+      @media (max-width: 725px) {
+        font-size: 20px;
+      }
+
+      @media (max-width: 649px) {
+        font-size: 38px;
+      }
     }
 
     &_img {
@@ -131,6 +146,14 @@
   .eleek_arrow__block {
     margin-right: 0;
     width: 140px;
+  }
+
+  .eleek {
+    &_slide {
+      &-name {
+        font-size: 36px;
+      }
+    }
   }
 
   .three_section {

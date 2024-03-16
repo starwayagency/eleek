@@ -2729,7 +2729,6 @@ body {
 
 .eleek_slide {
   position: relative;
-  cursor: pointer;
   padding: 30px; }
   .eleek_slide_btn {
     width: 160px;
@@ -2738,6 +2737,18 @@ body {
   .eleek_slide_name {
     position: relative;
     text-align: center; }
+    @media (max-width: 924px) {
+      .eleek_slide_name {
+        font-size: 30px; } }
+    @media (max-width: 815px) {
+      .eleek_slide_name {
+        font-size: 25px; } }
+    @media (max-width: 725px) {
+      .eleek_slide_name {
+        font-size: 20px; } }
+    @media (max-width: 649px) {
+      .eleek_slide_name {
+        font-size: 38px; } }
   .eleek_slide_img {
     position: relative;
     padding-bottom: 70%;
@@ -2778,6 +2789,8 @@ body {
   .eleek_arrow__block {
     margin-right: 0;
     width: 140px; }
+  .eleek_slide-name {
+    font-size: 36px; }
   .three_section {
     padding-bottom: 150px; } }
 
