@@ -579,7 +579,4 @@ $(".btn_standart_transparent").hover(
   }
 );
 
-$('.eleek_slide').on('click', function () {
-  let link = $(this).find('.eleek_slide_btn').attr('href');
-  window.location = link;
-});
+

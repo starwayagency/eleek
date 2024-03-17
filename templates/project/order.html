@@ -147,24 +147,31 @@ item_section__wrapper
             </div>
             <div class="two_input__wrap">
               <div class="select-block">
-                <input type="hidden" name="nova_pochta_department" class="nova_city nova_pochta_hidden">
                 {% render 'text122' as text122 %}
                 <div class="db_content select_label sub_title sub_title_3 color_black" data-admin_url="{{text122.get_admin_url}}">
                   {{text122.text}}
                   <!-- {% trans 'Місто' %} -->
                 </div>
-                <select name="" id="" style="width: 100%;" class="select_city">
-                </select>
+
+                <input class="select-block__input select-block__settlement" type="text" id="settlement" name="settlement">
+
+                <div class="select-block__dropdown">
+                    <ul class="select-block__list">
+                    </ul>
+                </div>
               </div>
               <div class="select-block">
-                <input type="hidden" name="nova_pochta_department" class="nova_pochta_hidden">
                 {% render 'text123' as text123 %}
                 <div class="db_content select_label sub_title sub_title_3 color_black" data-admin_url="{{text123.get_admin_url}}">
                   {{text123.text}}
                   <!-- {% trans 'Номер відділення' %} -->
                 </div>
-                <select name="" id="" style="width: 100%;" class="select_aria">
-                </select>
+                <input class="select-block__input select-block__warehouse" type="text" id="warehouse" name="warehouse">
+
+                <div class="select-block__dropdown">
+                  <ul class="select-block__list">
+                  </ul>
+              </div>
               </div>
             </div>
             <div class="one_input__wrap hidden_input__wrap">

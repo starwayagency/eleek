@@ -57045,14 +57045,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
 sessionStorage.setItem('admin_panell', 1);
-console.log('finish'); // admin panel ============================>
+console.log('finish');
+// admin panel ============================>
 // сторінка повина починатись по стандарту з admin_check = 1
-
 var only_on_click = true;
 var admin_panels = document.querySelectorAll('.db_content');
 var admin_check = sessionStorage.getItem('admin_panell');
 console.log('admin_check: ', admin_check);
-
 if (admin_check == 0) {
   only_on_click = false;
   $('.admin_button').attr('data-title', 'Виключити редагування');
@@ -57064,24 +57063,22 @@ if (admin_check == 0) {
     var hidden_panel = document.createElement('div');
     hidden_panel.classList.add('db_hidden_content');
     var hidden_link = document.createElement('span');
-    hidden_link.classList.add('db_hidden_link'); // hidden_link.setAttribute(`href`, link_adress);
-
+    hidden_link.classList.add('db_hidden_link');
+    // hidden_link.setAttribute(`href`, link_adress);
     hidden_link.textContent = 'Редагувати';
     hidden_panel.appendChild(hidden_link);
     item.appendChild(hidden_panel);
   });
 }
-
 $('.svg_power').on('click', function () {
   admin_func();
 });
 $('.db_content').on('click', function () {
   if ($(this).hasClass('db_content_active')) {
-    var current_url = $(this).attr('data-admin_url');
+    let current_url = $(this).attr('data-admin_url');
     window.open(current_url);
   }
 });
-
 function admin_func() {
   if (only_on_click) {
     only_on_click = false;
@@ -57094,8 +57091,8 @@ function admin_func() {
       var hidden_panel = document.createElement('div');
       hidden_panel.classList.add('db_hidden_content');
       var hidden_link = document.createElement('span');
-      hidden_link.classList.add('db_hidden_link'); // hidden_link.setAttribute(`href`, link_adress);
-
+      hidden_link.classList.add('db_hidden_link');
+      // hidden_link.setAttribute(`href`, link_adress);
       hidden_link.textContent = 'Редагувати';
       hidden_panel.appendChild(hidden_link);
       item.appendChild(hidden_panel);
@@ -57110,7 +57107,9 @@ function admin_func() {
       $('.db_hidden_content').remove();
     });
   }
-} // admin panel ============================>
+}
+
+// admin panel ============================>
 
 /***/ }),
 
@@ -57140,8 +57139,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
 $('.footer_btn').on('click', function () {
-  var wrap = $(this).parents('.footer_accordeon__block');
-
+  let wrap = $(this).parents('.footer_accordeon__block');
   if ($(this).hasClass('footer_btn_active')) {
     console.log(1);
     $(this).removeClass('footer_btn_active');
@@ -57154,12 +57152,12 @@ $('.footer_btn').on('click', function () {
 });
 var inputHasFocus = $('.input_focus');
 inputHasFocus.on('focus', function () {
-  var focusFinder = $(this).parents('.inp-vak-wrap').find('.label__style');
+  let focusFinder = $(this).parents('.inp-vak-wrap').find('.label__style');
   focusFinder.addClass('label__style_active');
 });
 inputHasFocus.on('blur', function () {
   if ($(this).val().length < 1 || $(this).val() == '+38(___) __ __ ___') {
-    var blurFinder = $(this).parents('.inp-vak-wrap').find('.label__style');
+    let blurFinder = $(this).parents('.inp-vak-wrap').find('.label__style');
     blurFinder.removeClass('label__style_active');
   }
 });
@@ -57196,46 +57194,45 @@ $('.scroll_changer_profile').on('click', function () {
 });
 $(document).mouseup(function (e) {
   var container = $(".scroll_changer_profile");
-
   if (container.has(e.target).length === 0) {
     $('.scroll_lang_hidden_content').removeClass('active');
   }
 });
-window.addEventListener('DOMContentLoaded', function () {
-  var arrow_1 = document.getElementById('arrow_1');
-  var button_1 = document.getElementById('button_1');
-  var arrow_2 = document.getElementById('arrow_2');
-  var button_2 = document.getElementById('button_2');
-  var arrow_3 = document.getElementById('arrow_3');
-  var button_3 = document.getElementById('button_3');
-  var arrow_4 = document.getElementById('arrow_4');
-  var button_4 = document.getElementById('button_4');
-  var arrow_5 = document.getElementById('arrow_5');
-  var button_5 = document.getElementById('button_5');
+window.addEventListener('DOMContentLoaded', () => {
+  const arrow_1 = document.getElementById('arrow_1');
+  const button_1 = document.getElementById('button_1');
+  const arrow_2 = document.getElementById('arrow_2');
+  const button_2 = document.getElementById('button_2');
+  const arrow_3 = document.getElementById('arrow_3');
+  const button_3 = document.getElementById('button_3');
+  const arrow_4 = document.getElementById('arrow_4');
+  const button_4 = document.getElementById('button_4');
+  const arrow_5 = document.getElementById('arrow_5');
+  const button_5 = document.getElementById('button_5');
   create_animation(arrow_1, button_1);
   create_animation(arrow_2, button_2);
   create_animation(arrow_3, button_3);
   create_animation(arrow_4, button_4);
   create_animation(arrow_5, button_5);
 });
-
 function create_animation(arrow, button) {
-  var x;
-  var y;
-  document.addEventListener('mousemove', function (e) {
+  let x;
+  let y;
+  document.addEventListener('mousemove', e => {
     x = e.clientX / 10;
     y = e.clientY / 10;
-    arrow.setAttribute("style", "margin-top: ".concat(y, "px; margin-right: ").concat(x, "px;")); // arrow.style.top = y + 'px';
+    arrow.setAttribute("style", "margin-top: ".concat(y, "px; margin-right: ").concat(x, "px;"));
+
+    // arrow.style.top = y + 'px';
     // arrow.style.right = x + 'px';
   });
-  button.addEventListener('mouseenter', function () {
+  button.addEventListener('mouseenter', () => {
     arrow.style.opacity = 1;
   });
-  button.addEventListener('mouseleave', function () {
+  button.addEventListener('mouseleave', () => {
     arrow.style.opacity = 0;
   });
 }
-
 $('#menu-toggle').click(function () {
   $(this).toggleClass('open');
   $('.scroll_menu').toggleClass('scroll_menu_active');
@@ -57244,7 +57241,6 @@ $('#menu-toggle').click(function () {
   $('.header_logos').toggleClass('header_logos_active');
   $('.scroll_top__block').toggleClass('scroll_top__block_active');
   $('.scroll_bottom__block').toggleClass('scroll_bottom__block_active');
-
   if ($('.logo__wrap').hasClass('logo_wrap_active')) {
     $('.logo__wrap').removeClass('logo_wrap_active');
     $('.logo__wrap').addClass('logo_wrap_native');
@@ -57268,26 +57264,23 @@ $('.modal_basket').on('click', function () {
       "Content-Type": "application/json",
       "Accept": "application/json"
     }
-  }).then(function (data) {
+  }).then(data => {
     return data.json();
-  }).then(function (data) {
+  }).then(data => {
     console.log('data: ', data);
     $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(data.cart_total_price));
     console.log('data: ', data.cart_items.length);
-    var card_json = {
+    let card_json = {
       img_src: '/static/source/img/index/lite.png',
       name_basket: 'Вилка VEPR-H123',
       quantity: '1',
       price: '2500'
     };
-
-    for (var index = 0; index < data.cart_items.length; index++) {
+    for (let index = 0; index < data.cart_items.length; index++) {
       $('.basket_content__block')[0].appendChild(create_basket_card(card_json, data.cart_items[index]));
     }
-
-    var checked = $('.basket_content__block').find('.basket_content_profile').length;
+    let checked = $('.basket_content__block').find('.basket_content_profile').length;
     console.log('checked: ', checked);
-
     if (checked == 0) {
       $('.none_content_send').text('Ваша корзина порожня');
       $('.none_content_send').addClass('none_content_send_active');
@@ -57302,21 +57295,18 @@ $('.modal_basket').on('click', function () {
       $('.basket_btn_wrap').css('display', 'block');
     }
   });
-}); // корзина ===========+>
+});
+
+// корзина ===========+>
 
 $('.basket_input').on('blur', basket_blur);
-
 function basket_blur() {
-  var _this = this;
-
-  var curr_user_num = $(this);
-  var quantity_id;
-
+  let curr_user_num = $(this);
+  let quantity_id;
   if (curr_user_num.val() > 0) {} else if (curr_user_num.val() <= 0 || curr_user_num.val() == '') {
     $(curr_user_num).val(1);
   }
-
-  var item_id = $(this).attr('data-quantity_item_id');
+  let item_id = $(this).attr('data-quantity_item_id');
   quantity_id = $(this).val();
   console.log('quantity_id: ', quantity_id);
   fetch("/api/cart_item/".concat(Number(item_id), "/"), {
@@ -57328,26 +57318,21 @@ function basket_blur() {
       "Content-Type": "application/json",
       "Accept": "application/json"
     }
-  }).then(function (data) {
+  }).then(data => {
     return data.json();
-  }).then(function (data) {
+  }).then(data => {
     console.log('data: ', data);
-    $(_this).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price).toFixed(1).replace('.', ','), " ").concat(data.cart_currency));
+    $(this).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price).toFixed(1).replace('.', ','), " ").concat(data.cart_currency));
     $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(data.cart_total_price));
   });
 }
-
 $('.basket_del').on('click', basket_delete);
-
 function basket_delete() {
-  var _this2 = this;
-
-  var wrap = $(this).parents('.basket_content_profile');
+  let wrap = $(this).parents('.basket_content_profile');
   $(wrap).css("right", '-100vw');
   $(wrap).css("max-height", '0px');
-  setTimeout(function () {
+  setTimeout(() => {
     $(wrap).remove();
-
     if ($('.basket_content__block').find('.basket_content_profile').length == 0) {
       $('.none_content_send').text('Ваша корзина порожня');
       $('.none_content_send').addClass('none_content_send_active');
@@ -57362,18 +57347,17 @@ function basket_delete() {
       $('.basket_btn_wrap').css('display', 'block');
     }
   }, 300);
-  var item_id = $(this).attr('data-quantity_item_id');
+  let item_id = $(this).attr('data-quantity_item_id');
   fetch("/api/cart_item/".concat(item_id), {
     method: 'DELETE'
-  }).then(function (data) {
+  }).then(data => {
     return data.json();
-  }).then(function (data) {
+  }).then(data => {
     console.log('data: ', data);
-    $(_this2).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price), " ").concat(data.cart_currency));
+    $(this).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price), " ").concat(data.cart_currency));
     $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(data.cart_total_price));
   });
 }
-
 function number_to(id, from, to, duration) {
   var element = id;
   var start = new Date().getTime();
@@ -57383,79 +57367,81 @@ function number_to(id, from, to, duration) {
     var result = Math.floor((to - from) * progress + from);
     var test = from;
     test = progress < 1 ? result : to;
-
     if (test == 'NaN') {
       element.text(Math.floor((to - from) * progress + from));
     } else {
       element.text(test);
     }
-
     if (progress < 1) setTimeout(arguments.callee, 10);
   }, 10);
 }
-
 function create_basket_card(content, data) {
   console.log('data: ', data);
   console.log(data.item.image);
-  var basket_content_profile = document.createElement('div');
+  let basket_content_profile = document.createElement('div');
   basket_content_profile.classList.add('basket_content_profile');
-  var basket_profile_img = document.createElement('div');
+  let basket_profile_img = document.createElement('div');
   basket_profile_img.classList.add('basket_profile_img');
-  var profile_img = document.createElement('img');
+  let profile_img = document.createElement('img');
   profile_img.classList.add('basket_profile_img');
   profile_img.src = data.item.image;
-  var basket_right_content = document.createElement('div');
+  let basket_right_content = document.createElement('div');
   basket_right_content.classList.add('basket_right_content');
-  var basket_title__block = document.createElement('div');
+  let basket_title__block = document.createElement('div');
   basket_title__block.classList.add('basket_title__block');
-  var basket_title = document.createElement('div');
+  let basket_title = document.createElement('div');
   basket_title.classList.add('basket_title', 'main__title', 'main__title_5');
-  basket_title.textContent = data.item.title; // початок доробок
+  basket_title.textContent = data.item.title;
+
+  // початок доробок
   // let x = document.createElement('div');
   // x.classList.add('basket_title', 'main__title', 'main__title_5');
   // x.textContent = data.item.title;
+
   // let y = document.createElement('div');
   // y.classList.add('basket_title', 'main__title', 'main__title_5');
   // y.textContent = data.item.title;
+
   // let z = document.createElement('div');
   // z.classList.add('basket_title', 'main__title', 'main__title_5');
   // z.textContent = data.item.title;
   // кінець доробок
 
-  var basket_del = document.createElement('img');
+  let basket_del = document.createElement('img');
   basket_del.classList.add('basket_del', 'remove_prod_card');
   basket_del.setAttribute("data-quantity_item_id", data.id);
   basket_del.setAttribute("src", '/static/source/img/index/trash.svg');
-  var basket_bottom__wrap = document.createElement('div');
+  let basket_bottom__wrap = document.createElement('div');
   basket_bottom__wrap.classList.add('basket_bottom__wrap');
-  var basket_counter__block = document.createElement('div');
+  let basket_counter__block = document.createElement('div');
   basket_counter__block.classList.add('basket_counter__block');
-  var basket_text = document.createElement('div');
+  let basket_text = document.createElement('div');
   basket_text.classList.add('basket_text', 'sub_title', 'sub_title_2');
   basket_text.textContent = 'Кількість';
-  var basket_counter = document.createElement('div');
+  let basket_counter = document.createElement('div');
   basket_counter.classList.add('basket_counter');
-  var basket_prep = document.createElement('div');
+  let basket_prep = document.createElement('div');
   basket_prep.setAttribute("data-quantity_item_id", data.id);
   basket_prep.classList.add('basket_prep', 'basket_count', 'sub_title', 'sub_title_21');
   basket_prep.textContent = '-';
-  var basket_input = document.createElement('input');
+  let basket_input = document.createElement('input');
   basket_input.setAttribute("type", 'number');
   basket_input.setAttribute("value", data.quantity);
   basket_input.setAttribute("data-quantity_item_id", data.id);
   basket_input.classList.add('basket_input', 'basket_count', 'main__title', 'main__title_5', 'cart_counter', 'quan_cart_sum');
-  var basket_next = document.createElement('div');
+  let basket_next = document.createElement('div');
   basket_next.setAttribute("data-quantity_item_id", data.id);
   basket_next.classList.add('basket_next', 'basket_count', 'sub_title', 'sub_title_21');
   basket_next.textContent = '+';
-  var basket_sum__block = document.createElement('div');
+  let basket_sum__block = document.createElement('div');
   basket_sum__block.classList.add('basket_sum__block');
-  var basket_price_title = document.createElement('div');
+  let basket_price_title = document.createElement('div');
   basket_price_title.classList.add('basket_text', 'sub_title', 'sub_title_2');
   basket_price_title.textContent = 'Ціна';
-  var basket_summ = document.createElement('div');
+  let basket_summ = document.createElement('div');
   basket_summ.classList.add('basket_summ', 'main__title', 'main__title_5');
-  basket_summ.textContent = data.prices.total_price_with_coupons_with_attributes_with_discount + ' ' + data.chosen_currency; // basket_summ.textContent = data.item.price + ' ' + data.item.currency.code;
+  basket_summ.textContent = data.prices.total_price_with_coupons_with_attributes_with_discount + ' ' + data.chosen_currency;
+  // basket_summ.textContent = data.item.price + ' ' + data.item.currency.code;
 
   console.log("data::", data);
   basket_content_profile.appendChild(basket_profile_img);
@@ -57464,12 +57450,12 @@ function create_basket_card(content, data) {
   basket_right_content.appendChild(basket_title__block);
   basket_title__block.appendChild(basket_title);
   basket_title__block.appendChild(basket_del);
-  basket_right_content.appendChild(basket_bottom__wrap); // початок доробок
+  basket_right_content.appendChild(basket_bottom__wrap);
+  // початок доробок
   // basket_right_content.appendChild(x);
   // basket_right_content.appendChild(y);
   // basket_right_content.appendChild(z);
   // кінець доробок
-
   basket_bottom__wrap.appendChild(basket_counter__block);
   basket_counter__block.appendChild(basket_text);
   basket_counter__block.appendChild(basket_counter);
@@ -57485,33 +57471,28 @@ function create_basket_card(content, data) {
   $(basket_input).on('blur', basket_blur);
   return basket_content_profile;
 }
-
 function counter_plus(name) {
-  var count_var = $(name).text();
+  let count_var = $(name).text();
   count_num = Number(count_var);
   count_num++;
   $(name).text(count_num);
 }
-
 function counter_minus(name) {
-  var count_var = $(name).text();
+  let count_var = $(name).text();
   count_num = Number(count_var);
   count_num--;
   $(name).text(count_num);
 }
-
 function basket_minus() {
-  var _this3 = this;
-
   // console.log(123);
   var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val();
-
   if (current_quan_sum == 1) {
     console.log('меньше не може бути');
   } else {
     $(this).parents('.basket_counter').find('.cart_counter').val(Number(current_quan_sum) - 1);
-    var item_id = $(this).attr('data-quantity_item_id');
-    var quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val(); // console.log('quantity_id: ', quantity_id);
+    let item_id = $(this).attr('data-quantity_item_id');
+    let quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val();
+    // console.log('quantity_id: ', quantity_id);
 
     fetch("/api/cart_item/".concat(Number(item_id), "/"), {
       method: 'PATCH',
@@ -57522,32 +57503,31 @@ function basket_minus() {
         "Content-Type": "application/json",
         "Accept": "application/json"
       }
-    }).then(function (data) {
+    }).then(data => {
       return data.json();
-    }).then(function (data) {
-      var currency = data.cart_currency;
-      var cart_total_price = data.cart_total_price;
+    }).then(data => {
+      let currency = data.cart_currency;
+      let cart_total_price = data.cart_total_price;
       console.log(cart_total_price);
-      var cart_item_total_price = data.cart_item_total_price;
-      var cart_currency = data.cart_currency;
+      let cart_item_total_price = data.cart_item_total_price;
+      let cart_currency = data.cart_currency;
       console.log('data patch minus: ', data);
-      $(_this3).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price).toFixed(1).replace('.', ','), " ").concat(data.cart_currency));
+      $(this).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price).toFixed(1).replace('.', ','), " ").concat(data.cart_currency));
       $('.basket_all_result').text("".concat(currency, " ").concat(cart_total_price));
     });
   }
 }
-
 function basket_plus() {
-  var _this4 = this;
-
-  var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val(); // console.log('current_quan_sum: ', current_quan_sum);
+  var current_quan_sum = $(this).parents('.basket_counter').find('.cart_counter').val();
+  // console.log('current_quan_sum: ', current_quan_sum);
 
   if (current_quan_sum == 99999) {
     console.log('більше не може бути');
   } else {
     $(this).parents('.basket_counter').find('.cart_counter').val(Number(current_quan_sum) + 1);
-    var item_id = $(this).attr('data-quantity_item_id');
-    var quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val(); // console.log('quantity_id: ', quantity_id);
+    let item_id = $(this).attr('data-quantity_item_id');
+    let quantity_id = $(this).parents('.basket_counter').find('.quan_cart_sum').val();
+    // console.log('quantity_id: ', quantity_id);
 
     fetch("/api/cart_item/".concat(Number(item_id), "/"), {
       method: 'PATCH',
@@ -57558,11 +57538,11 @@ function basket_plus() {
         "Content-Type": "application/json",
         "Accept": "application/json"
       }
-    }).then(function (data) {
+    }).then(data => {
       return data.json();
-    }).then(function (data) {
+    }).then(data => {
       console.log('data patch plus: ', data);
-      $(_this4).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price).toFixed(1).replace('.', ','), " ").concat(data.cart_currency));
+      $(this).parents('.basket_content_profile').find('.basket_summ').text("".concat(Math.round(data.cart_item_total_price).toFixed(1).replace('.', ','), " ").concat(data.cart_currency));
       $('.basket_all_result').text("".concat(data.cart_currency, " ").concat(data.cart_total_price));
     });
   }
@@ -57604,31 +57584,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "chengePriseModel", function() { return chengePriseModel; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "creteInputHiden", function() { return creteInputHiden; });
 /* harmony import */ var three__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! three */ "../../node_modules/three/build/three.module.js");
- // import { childrensСonnections } from "../../pages/constructor_setings/helpersEvent";
 
-var HelperCordinates = function HelperCordinates(scene, width_helper_line) {
+// import { childrensСonnections } from "../../pages/constructor_setings/helpersEvent";
+
+const HelperCordinates = (scene, width_helper_line) => {
   var axesHelper = new three__WEBPACK_IMPORTED_MODULE_0__["AxesHelper"](width_helper_line);
   scene.add(axesHelper);
 };
-var HelperShadowCamera = function HelperShadowCamera(scene, shadow) {
+const HelperShadowCamera = (scene, shadow) => {
   // Create a helper for the shadow camera (optional)
   var helper = new three__WEBPACK_IMPORTED_MODULE_0__["CameraHelper"](shadow);
   scene.add(helper);
 };
-var HelperSphereShadows = function HelperSphereShadows(scene) {
+const HelperSphereShadows = scene => {
   //Create a sphere that cast shadows (but does not receive them)
+
   var sphereGeometry = new three__WEBPACK_IMPORTED_MODULE_0__["SphereBufferGeometry"](5, 32, 32);
   var sphereMaterial = new three__WEBPACK_IMPORTED_MODULE_0__["MeshStandardMaterial"]({
     color: 0xff0000
   });
   var sphere = new three__WEBPACK_IMPORTED_MODULE_0__["Mesh"](sphereGeometry, sphereMaterial);
   sphere.castShadow = true; //default is false
-
   sphere.receiveShadow = false; //default
-
   scene.add(sphere);
 };
-var HelperPlaneShadows = function HelperPlaneShadows(scene, light) {
+const HelperPlaneShadows = (scene, light) => {
   //Create a plane that receives shadows (but does not cast them)
   var planeGeometry = new three__WEBPACK_IMPORTED_MODULE_0__["PlaneBufferGeometry"](20, 20, 32, 32);
   var planeMaterial = new three__WEBPACK_IMPORTED_MODULE_0__["MeshStandardMaterial"]({
@@ -57637,10 +57617,10 @@ var HelperPlaneShadows = function HelperPlaneShadows(scene, light) {
   var plane = new three__WEBPACK_IMPORTED_MODULE_0__["Mesh"](planeGeometry, planeMaterial);
   plane.receiveShadow = true;
   scene.add(plane);
-  var dirLightHeper = new three__WEBPACK_IMPORTED_MODULE_0__["DirectionalLightHelper"](light, 90);
+  let dirLightHeper = new three__WEBPACK_IMPORTED_MODULE_0__["DirectionalLightHelper"](light, 90);
   scene.add(dirLightHeper);
 };
-var addCircleToBacground = function addCircleToBacground(inner_radius, outer_radius, number_particles) {
+const addCircleToBacground = (inner_radius, outer_radius, number_particles) => {
   // // create circle to begraund
   var geometry = new three__WEBPACK_IMPORTED_MODULE_0__["RingGeometry"](inner_radius, outer_radius, number_particles);
   var material = new three__WEBPACK_IMPORTED_MODULE_0__["MeshBasicMaterial"]({
@@ -57654,20 +57634,18 @@ var addCircleToBacground = function addCircleToBacground(inner_radius, outer_rad
   mesh.rotateX(Math.PI / 2);
   return mesh;
 };
-var params = function params(data) {
+const params = data => {
   // convert array => url
-  return Object.keys(data).map(function (key) {
-    return "".concat(data[key].name, "=").concat(encodeURIComponent(data[key].value));
-  }).join("&");
+  return Object.keys(data).map(key => "".concat(data[key].name, "=").concat(encodeURIComponent(data[key].value))).join("&");
 };
-var colorBike = function colorBike(model, config_model) {
-  var bike = model;
+const colorBike = (model, config_model) => {
+  let bike = model;
   console.log(config_model);
-  bike.traverse(function (o) {
+  bike.traverse(o => {
     if (o.isMesh) {
-      o.castShadow = true; // o.receiveShadow = true;
+      o.castShadow = true;
+      // o.receiveShadow = true;
       // console.log(o.material.name );
-
       if (o.material.name.indexOf("Rama_1") !== -1) {
         console.log(config_model.iframe_color);
         o.material.color.setHex("0x".concat(config_model.iframe_color));
@@ -57687,6 +57665,7 @@ var colorBike = function colorBike(model, config_model) {
         o.material.metalness = 0.8;
       } else if (o.material.name.indexOf("Seat_velo_1") !== -1 || o.material.name.indexOf("Seat_moto_1") !== -1) {
         // Колір Сидіння
+
         o.material.color.setHex("0x".concat(config_model.seat_color));
         o.material.metalness = 0.1;
       } else if (o.material.name.indexOf("Rama_2") !== -1) {
@@ -57694,7 +57673,6 @@ var colorBike = function colorBike(model, config_model) {
         o.material.color.setHex("0x".concat(config_model.panel_color));
         o.material.metalness = 0.3;
       } else {}
-
       if (o.material.name.indexOf("Seat_moto_1") !== -1 || o.material.name.indexOf("Seat_moto_2") !== -1) {
         if (!!config_model.seat_type) {
           if (config_model.seat_type === "moto") {
@@ -57726,6 +57704,7 @@ var colorBike = function colorBike(model, config_model) {
         }
       } else if (o.material.name.indexOf("Bat") !== -1) {
         // console.log('Mud',o.name );
+
         if (config_model.mud !== "undefined" && config_model.battery == 'true') {
           o.visible = true;
         } else {
@@ -57738,22 +57717,23 @@ var colorBike = function colorBike(model, config_model) {
         } else {
           o.visible = false;
         }
-      } //  console.log(o.material.name );
-
+      }
+      //  console.log(o.material.name );
     }
   });
   return bike;
 };
-var getFormatUrl = function getFormatUrl(config_model) {
-  var URL = Object.keys(config_model).map(function (key) {
+const getFormatUrl = config_model => {
+  let URL = Object.keys(config_model).map(key => {
     // // console.log('key_old',key );
+
     return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
   }).join("&");
   return URL;
 };
-var filterObject = function filterObject(config_model) {
-  var tempObject = {};
-  Object.keys(config_model).map(function (key) {
+const filterObject = config_model => {
+  let tempObject = {};
+  Object.keys(config_model).map(key => {
     if (key != "not_url" && config_model["not_url"].indexOf(key) === -1) {
       if (key.indexOf("_color") != -1) {
         tempObject[key] = "#".concat(config_model[key]);
@@ -57764,20 +57744,19 @@ var filterObject = function filterObject(config_model) {
   });
   return tempObject;
 };
-var chengePriseModel = function chengePriseModel(objectParameter) {
-  fetch("/api/get_price/?".concat(getFormatUrl(objectParameter))).then(function (response) {
+const chengePriseModel = objectParameter => {
+  fetch("/api/get_price/?".concat(getFormatUrl(objectParameter))).then(response => {
     return response.json();
-  }).then(function (response) {
+  }).then(response => {
     function triplets(str) {
       // \u202f — неразрывный узкий пробел
-      return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202F");
+      return str.toString().replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, "$1\u202f");
     }
-
     $(".views__parameter_footer").find(".price").children(".value").text("".concat(triplets(response.price), " \u0433\u0440\u043D"));
   });
 };
-var creteInputHiden = function creteInputHiden(name, value) {
-  var product_item = document.createElement("input");
+const creteInputHiden = (name, value) => {
+  let product_item = document.createElement("input");
   product_item.setAttribute('type', 'hidden');
   product_item.setAttribute('name', name);
   product_item.setAttribute('value', value);
@@ -57803,25 +57782,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_constructor_setings_helpersEvent__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../pages/constructor_setings/helpersEvent */ "../components/pages/constructor_setings/helpersEvent.js");
 
 
- // import * as TWEEN from '@tweenjs/tween.js'
+
+// import * as TWEEN from '@tweenjs/tween.js'
 
 
 
-
-var params_search = window.location.search.split("?")[1].split("&");
-var config_model = {
+let params_search = window.location.search.split("?")[1].split("&");
+let config_model = {
   not_url: ["url"]
 };
-params_search.map(function (item) {
-  var param = item.split("=");
-
+params_search.map(item => {
+  let param = item.split("=");
   if (!!param[0]) {
     param[1] = param[1].replace("%23", "");
     param[1] = param[1].replace("%20", "");
     config_model[param[0]] = param[1];
   }
 });
-
 if (config_model.iframe_type === "pozitiff") {
   config_model["url"] = "/static/source/model/Pozitif.gltf";
 } else if (config_model.iframe_type === "neo") {
@@ -57865,14 +57842,12 @@ if (config_model.iframe_type === "pozitiff") {
     config_model["url"] = "/static/source/model/lite/lite_dnmFat_26Fat.gltf";
   }
 }
-
 $(".views__back").on("click", function () {
-  var back_url = createUrl(config_model);
+  let back_url = createUrl(config_model);
   window.location.href = "/page1/?".concat(back_url);
 });
-
 function createUrl(config_model) {
-  var back_url = Object.keys(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model)).map(function (key) {
+  let back_url = Object.keys(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model)).map(key => {
     if (key.indexOf("_color") != -1) {
       return "".concat(key, "=").concat(encodeURIComponent("#".concat(config_model[key])));
     } else {
@@ -57881,38 +57856,32 @@ function createUrl(config_model) {
   }).join("&");
   return back_url;
 }
-
 $(".form__radio").on("click", function () {
   if (!$(this).hasClass("form__radio-hiden")) {
-    var value = $(this).data("value");
-    var parametr = $(this).parents(".settings__box_main-radio").children("input[type=hidden]")[0];
-    var parametr_name = parametr.name;
-
+    let value = $(this).data("value");
+    let parametr = $(this).parents(".settings__box_main-radio").children("input[type=hidden]")[0];
+    let parametr_name = parametr.name;
     if (parametr_name.indexOf("_color") != -1) {
       config_model[parametr_name] = value.replace("#", "");
     } else {
       config_model[parametr_name] = value;
     }
-
     parametr.value = value;
-
     if (!!$(this).data("childrens")) {
-      var children_element = $(this).data("childrens");
+      let children_element = $(this).data("childrens");
       console.log(children_element);
       Object(_pages_constructor_setings_helpersEvent__WEBPACK_IMPORTED_MODULE_5__["childrensСonnections"])(children_element);
     }
-
-    var tempObject = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model);
+    let tempObject = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model);
     Object(_helper__WEBPACK_IMPORTED_MODULE_4__["chengePriseModel"])(tempObject);
-    var back_url = createUrl(config_model);
+    let back_url = createUrl(config_model);
     history.pushState(null, null, "/page2/?".concat(back_url));
   }
 });
 $(".form_box__item").on("click", function () {
   if (!$(this).hasClass("form_box__item-hidden")) {
     $(this).toggleClass("form_box__item-active");
-    var item_input = $(this).find("input");
-
+    let item_input = $(this).find("input");
     if (item_input.prop("checked") == true) {
       item_input.prop("checked", false);
       delete config_model[item_input[0].name];
@@ -57920,13 +57889,14 @@ $(".form_box__item").on("click", function () {
       item_input.prop("checked", true);
       config_model[item_input[0].name] = "true";
     }
-
-    var tempObject = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model);
+    let tempObject = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model);
     Object(_helper__WEBPACK_IMPORTED_MODULE_4__["chengePriseModel"])(tempObject);
-    var back_url = createUrl(config_model);
+    let back_url = createUrl(config_model);
     history.pushState(null, null, "/page2/?".concat(back_url));
   }
-}); /////||||///////
+});
+
+/////||||///////
 /////||||///////
 /////||||///////
 /////||||///////
@@ -57943,23 +57913,22 @@ $(".form_box__item").on("click", function () {
 // RENDER 3D
 
 var container;
-var rotateSpeed = 0;
-var views__visual_right = false;
-var views__visual_left = false;
+let rotateSpeed = 0;
+let views__visual_right = false;
+let views__visual_left = false;
 var camera, scene, renderer, hemiLightHelper, dirLightHeper, theModel;
 var mouseX = 0,
-    mouseY = 0;
-var views__visula_3d = document.getElementsByClassName("views__visula_3d")[0];
+  mouseY = 0;
+let views__visula_3d = document.getElementsByClassName("views__visula_3d")[0];
 var windowHalfX = views__visula_3d.offsetWidth / 2;
 var windowHalfY = window.innerHeight / 2;
-var INITIAL_MTL = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+const INITIAL_MTL = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
   color: 0xb4b4b4,
   shininess: 10
 });
 var object;
 init();
 animate();
-
 function init() {
   container = document.createElement("div");
   document.getElementsByClassName("views__visula_3d")[0].appendChild(container);
@@ -57970,20 +57939,18 @@ function init() {
   scene.background = new three__WEBPACK_IMPORTED_MODULE_0__["Color"]("0xffffff");
   scene.fog = new three__WEBPACK_IMPORTED_MODULE_0__["Fog"](0xb4b4b4, 100, 1200);
   var manager = new three__WEBPACK_IMPORTED_MODULE_0__["LoadingManager"]();
-
   manager.onStart = function (url, itemsLoaded, itemsTotal) {
     if ($(".visula__loading_wrap").length > 0) {
       $(".visula__loading_wrap").addClass("visula__loading_wrap-active");
     }
   };
-
   manager.onLoad = function () {
     if ($(".visula__loading_wrap").length > 0) {
       $(".visula__loading_wrap").removeClass("visula__loading_wrap-active");
     }
   };
-
-  manager.onProgress = function (url, itemsLoaded, itemsTotal) {// console.log(
+  manager.onProgress = function (url, itemsLoaded, itemsTotal) {
+    // console.log(
     //   "Loading file: " +
     //     url +
     //     ".\nLoaded " +
@@ -57993,79 +57960,73 @@ function init() {
     //     " files."
     // );
   };
+  manager.onError = function (url) {
+    // console.log("There was an error loading " + url);
+  };
 
-  manager.onError = function (url) {// console.log("There was an error loading " + url);
-  }; // Init the object loader
-
-
+  // Init the object loader
   var loader = new three_examples_jsm_loaders_GLTFLoader_js__WEBPACK_IMPORTED_MODULE_2__["GLTFLoader"](manager);
   loader.load(config_model.url, function (gltf) {
     theModel = gltf.scene;
-    var flag = 0; // Set the models initial scale
-
+    let flag = 0;
+    // Set the models initial scale
     theModel.scale.set(0.05, 0.05, 0.05);
     theModel.children[0].visible = false;
-    var theModelColor = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["colorBike"])(theModel, config_model);
+    let theModelColor = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["colorBike"])(theModel, config_model);
     scene.add(theModelColor);
   }, onProgress, function (error) {
     console.error(error);
   });
-
   function onProgress(xhr) {
     if (xhr.lengthComputable) {
       var percentComplete = xhr.loaded / xhr.total * 100;
-
       if ($(".visula__loading-line").length > 0) {
         $(".visula__loading-line")[0].style.maxWidth = Math.round(percentComplete, 2) + "%";
       }
-
       if ($(".visula__loading-text").length > 0) {
         $(".visula__loading-text").text(Math.round(percentComplete, 1) + "%");
       }
     }
   }
-
-  var cubeSize = 4;
-  var cubeGeo = new three__WEBPACK_IMPORTED_MODULE_0__["BoxBufferGeometry"](cubeSize, cubeSize, cubeSize);
-  var cubeMat = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
+  const cubeSize = 4;
+  const cubeGeo = new three__WEBPACK_IMPORTED_MODULE_0__["BoxBufferGeometry"](cubeSize, cubeSize, cubeSize);
+  const cubeMat = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
     color: "#8AC"
   });
-  var mesh12 = new three__WEBPACK_IMPORTED_MODULE_0__["Mesh"](cubeGeo, cubeMat);
-  mesh12.castShadow = true; // mesh12.receiveShadow = true;
-
-  mesh12.position.set(0, 25, 0); // scene.add(mesh12);
+  const mesh12 = new three__WEBPACK_IMPORTED_MODULE_0__["Mesh"](cubeGeo, cubeMat);
+  mesh12.castShadow = true;
+  // mesh12.receiveShadow = true;
+  mesh12.position.set(0, 25, 0);
+  // scene.add(mesh12);
 
   scene.add(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["addCircleToBacground"])(64.8, 65, 120));
-  scene.add(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["addCircleToBacground"])(69.8, 70, 120)); // // Add lights
+  scene.add(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["addCircleToBacground"])(69.8, 70, 120));
 
+  // // Add lights
   var hemiLight = new three__WEBPACK_IMPORTED_MODULE_0__["HemisphereLight"](0xffffff, 0xffffff, 0.61);
-  hemiLight.position.set(0, 50, 0); // Add hemisphere light to scene
+  hemiLight.position.set(0, 50, 0);
+  // Add hemisphere light to scene
+  scene.add(hemiLight);
 
-  scene.add(hemiLight); //Create a DirectionalLight and turn on shadows for the light
-
+  //Create a DirectionalLight and turn on shadows for the light
   var light = new three__WEBPACK_IMPORTED_MODULE_0__["DirectionalLight"](0xffffff, 1, 100);
   light.position.set(-100, 100, 100); //default; light shining from top
-
   light.intensity = 600; // default false
-
   light.castShadow = true; // default false
-
   scene.add(light);
   light.shadow.camera.top = 120;
   light.shadow.camera.bottom = -50;
   light.shadow.camera.left = -70;
   light.shadow.camera.right = 70;
-  light.intensity = 1; //Set up shadow properties for the light
+  light.intensity = 1;
 
+  //Set up shadow properties for the light
   light.shadow.mapSize.width = 1212; // default
-
   light.shadow.mapSize.height = 1212; // default
-
   light.shadow.camera.near = 0.5; // default
-
   light.shadow.camera.far = 700; // default
-  // Floor
 
+  // Floor
   var floorGeometry = new three__WEBPACK_IMPORTED_MODULE_0__["PlaneGeometry"](9000, 9000, 1, 1);
   var floorMaterial = new three__WEBPACK_IMPORTED_MODULE_0__["MeshPhongMaterial"]({
     color: 0xf1f1f1,
@@ -58077,11 +58038,11 @@ function init() {
   floor.position.y = -1;
   scene.add(floor);
   renderer = new three__WEBPACK_IMPORTED_MODULE_0__["WebGLRenderer"]({
-    container: container,
+    container,
     antialias: true
   });
-  renderer.shadowMap.enabled = true; // renderer.shadowMap.enabled = true;
-
+  renderer.shadowMap.enabled = true;
+  // renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = three__WEBPACK_IMPORTED_MODULE_0__["PCFSoftShadowMap"]; // default THREE.PCFShadowMap
 
   renderer.setPixelRatio(window.devicePixelRatio);
@@ -58097,18 +58058,24 @@ function init() {
   controls.enablePan = false;
   controls.dampingFactor = 0.1;
   controls.autoRotate = false; // Toggle this if you'd like the chair to automatically rotate
+  controls.autoRotateSpeed = 0.2;
 
-  controls.autoRotateSpeed = 0.2; // // Щар що відкидає тінь
+  // // Щар що відкидає тінь
   // HelperSphereShadows(scene);
+
   // //   Площина яка невідеидає тінь
   // HelperPlaneShadows(scene,light);
+
   // Помічник показує камеру для того зоб бачити куди буде падати тінь
   // HelperShadowCamera(scene, light.shadow.camera);
   // HelperShadowCamera(scene, scene.shadow.camera);
+
   // // // Додає до сцени вісі кординат
   // HelperCordinates(scene, 40);
 
-  window.addEventListener("resize", onWindowResize, false); //   var geometry123 = new THREE.RingGeometry( 1, 5, 32 );
+  window.addEventListener("resize", onWindowResize, false);
+
+  //   var geometry123 = new THREE.RingGeometry( 1, 5, 32 );
   // var material123 = new THREE.MeshBasicMaterial( { color: 0x12ff00, side: THREE.DoubleSide } );
   // var mesh123 = new THREE.Mesh( geometry123, mesh123 );
 
@@ -58116,20 +58083,18 @@ function init() {
     event.preventDefault();
     $(".views__parameter_wrap").addClass("views__parameter_wrap-active");
     $(".views__order").addClass("views__order-hidden");
-
     if ($(window).width() > 992) {
       $(".views__visual").addClass("views__visual-compress");
       setTimeout(function () {
         onWindowResize();
       }, 300);
-    } // resizeRendererToDisplaySize();
-
+    }
+    // resizeRendererToDisplaySize();
   });
   $(".views__parameter_close").on("click", function () {
     $(".views__order").removeClass("views__order-hidden");
     $(".views__parameter_wrap").removeClass("views__parameter_wrap-active");
     $(".views__visual").removeClass("views__visual-compress");
-
     if ($(window).width() > 992) {
       setTimeout(function () {
         onWindowResize();
@@ -58140,15 +58105,15 @@ function init() {
     $(".views__order").removeClass("views__order-hidden");
     $(".views__parameter_wrap").removeClass("views__parameter_wrap-active");
     $(".views__visual").removeClass("views__visual-compress");
-
     if ($(window).width() > 992) {
       setTimeout(function () {
         onWindowResize();
       }, 300);
     }
-  }); // scene.add( mesh123 );
-}
+  });
 
+  // scene.add( mesh123 );
+}
 function onWindowResize() {
   windowHalfX = views__visula_3d.offsetWidth / 2;
   windowHalfY = window.innerHeight / 2;
@@ -58156,111 +58121,90 @@ function onWindowResize() {
   camera.updateProjectionMatrix();
   renderer.setSize(views__visula_3d.offsetWidth, window.innerHeight);
 }
-
 function resizeRendererToDisplaySize(renderer) {
-  var canvas = renderer.domElement;
+  const canvas = renderer.domElement;
   var width = views__visula_3d.offsetWidth;
   var height = window.innerHeight;
   var canvasPixelWidth = canvas.width / window.devicePixelRatio;
-  var canvasPixelHeight = canvas.height / window.devicePixelRatio; // canvas.css({transition:'.3s'})
+  var canvasPixelHeight = canvas.height / window.devicePixelRatio;
 
-  var needResize = canvasPixelWidth !== width || canvasPixelHeight !== height;
+  // canvas.css({transition:'.3s'})
 
+  const needResize = canvasPixelWidth !== width || canvasPixelHeight !== height;
   if (needResize) {
     renderer.setSize(width, height, false);
   }
-
   return needResize;
 }
-
 function animate() {
   requestAnimationFrame(animate);
-
   if (resizeRendererToDisplaySize(renderer)) {
-    var canvas = renderer.domElement;
+    const canvas = renderer.domElement;
     camera.aspect = canvas.clientWidth / canvas.clientHeight;
     camera.updateProjectionMatrix();
   }
-
   if (views__visual_left) {
     theModel.children[2].rotation.z += Math.PI / 180;
   }
-
   if (views__visual_right) {
     theModel.children[2].rotation.z -= Math.PI / 180;
   }
-
   renderer.render(scene, camera);
 }
+$(".views__visual_left")[0].addEventListener("mousedown", () => views__visual_left = true, false);
+$(".views__visual_right")[0].addEventListener("mousedown", () => views__visual_right = true, false);
+$(".views__visual_left")[0].addEventListener("mouseup", () => views__visual_left = false, false);
+$(".views__visual_right")[0].addEventListener("mouseup", () => views__visual_right = false, false);
 
-$(".views__visual_left")[0].addEventListener("mousedown", function () {
-  return views__visual_left = true;
-}, false);
-$(".views__visual_right")[0].addEventListener("mousedown", function () {
-  return views__visual_right = true;
-}, false);
-$(".views__visual_left")[0].addEventListener("mouseup", function () {
-  return views__visual_left = false;
-}, false);
-$(".views__visual_right")[0].addEventListener("mouseup", function () {
-  return views__visual_right = false;
-}, false); // touch event
+// touch event
 
-$(".views__visual_left")[0].addEventListener("touchstart", function () {
-  return views__visual_left = true;
-}, false);
-$(".views__visual_right")[0].addEventListener("touchstart", function () {
-  return views__visual_right = true;
-}, false);
-$(".views__visual_left")[0].addEventListener("touchend", function () {
-  return views__visual_left = false;
-}, false);
-$(".views__visual_right")[0].addEventListener("touchend", function () {
-  return views__visual_right = false;
-}, false);
+$(".views__visual_left")[0].addEventListener("touchstart", () => views__visual_left = true, false);
+$(".views__visual_right")[0].addEventListener("touchstart", () => views__visual_right = true, false);
+$(".views__visual_left")[0].addEventListener("touchend", () => views__visual_left = false, false);
+$(".views__visual_right")[0].addEventListener("touchend", () => views__visual_right = false, false);
 window.addEventListener("touchend", function (event) {
   views__visual_left = false;
   views__visual_right = false;
 });
 $(".form_box__item").on("click", function () {
   if ($(this).find('input[type="checkbox"]')[0].name === "mirrors") {
-    var valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
-    theModel.children[2].children.map(function (item) {
+    let valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
+    theModel.children[2].children.map(item => {
       // багажник
       if (item.material.name.indexOf("Mirror_1") !== -1 || item.material.name.indexOf("Mirror_2") !== -1) {
         item.visible = valueChecked;
       }
     });
   } else if ($(this).find('input[type="checkbox"]')[0].name === "mud") {
-    var _valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
-    theModel.children[2].children.map(function (item) {
+    let valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
+    theModel.children[2].children.map(item => {
       // багажник
       if (item.material.name.indexOf("Mud") !== -1) {
-        item.visible = _valueChecked;
+        item.visible = valueChecked;
       }
     });
   } else if ($(this).find('input[type="checkbox"]')[0].name === "trunk") {
-    var _valueChecked2 = $(this).find('input[type="checkbox"]')[0].checked;
-    theModel.children[2].children.map(function (item) {
+    let valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
+    theModel.children[2].children.map(item => {
       // багажник
       if (item.material.name.indexOf("Bag") !== -1) {
-        item.visible = _valueChecked2;
+        item.visible = valueChecked;
       }
     });
   } else if ($(this).find('input[type="checkbox"]')[0].name === "seatKind") {
-    var _valueChecked3 = $(this).find('input[type="checkbox"]')[0].checked;
-    theModel.children[2].children.map(function (item) {
+    let valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
+    theModel.children[2].children.map(item => {
       // багажник
       if (item.material.name.indexOf("Seat_kind_1") !== -1 || item.material.name.indexOf("Seat_kind_2") !== -1) {
-        item.visible = _valueChecked3;
+        item.visible = valueChecked;
       }
     });
   } else if ($(this).find('input[type="checkbox"]')[0].name === "battery") {
-    var _valueChecked4 = $(this).find('input[type="checkbox"]')[0].checked;
-    theModel.children[2].children.map(function (item) {
+    let valueChecked = $(this).find('input[type="checkbox"]')[0].checked;
+    theModel.children[2].children.map(item => {
       // багажник
       if (item.material.name.indexOf("Bat") !== -1) {
-        item.visible = _valueChecked4;
+        item.visible = valueChecked;
       }
     });
   }
@@ -58270,13 +58214,13 @@ $(".order_constructor").on("click", function () {
   $.fancybox.open({
     src: "#order__form_constructor",
     touch: false,
-    afterShow: function afterShow() {
-      var params_order = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model);
-      Object.keys(params_order).map(function (item, key) {
+    afterShow: function () {
+      let params_order = Object(_helper__WEBPACK_IMPORTED_MODULE_4__["filterObject"])(config_model);
+      Object.keys(params_order).map((item, key) => {
         $(".fancybox-content").append(Object(_helper__WEBPACK_IMPORTED_MODULE_4__["creteInputHiden"])(item, params_order[item]));
       });
     },
-    beforeClose: function beforeClose() {
+    beforeClose: function () {
       $(".fancybox-content").find("input[type=hidden]").remove();
     }
   });
@@ -58394,6 +58338,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+
 /***/ }),
 
 /***/ "../components/interface/form/elements/color/index.js":
@@ -58408,19 +58353,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "form_color", function() { return form_color; });
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/interface/form/elements/color/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+// let form__color = [...$(".form__color")];
 
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
- // let form__color = [...$(".form__color")];
 // form__color.map((item) => {
 //   const color = $(item).data("color");
 //   switch (color) {
@@ -58434,11 +58370,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 // });
 
 function form_color(class_name) {
-  var form__color = _toConsumableArray($(class_name));
-
-  form__color.map(function (item) {
-    var color = $(item).data("color");
-
+  let form__color = [...$(class_name)];
+  form__color.map(item => {
+    const color = $(item).data("color");
     switch (color) {
       case "#ffffff":
         $(item).css({
@@ -58446,7 +58380,6 @@ function form_color(class_name) {
           border: "1px solid #979797"
         });
         break;
-
       default:
         $(item).css({
           background: color
@@ -58483,11 +58416,8 @@ form_color('.form__color');
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/interface/form/elements/input/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-
-var field_inputs = $('.input-field');
-
+let field_inputs = $('.input-field');
 if (field_inputs.length > 0) {
   field_inputs.on('focus', function () {
     $(this).parents('.input').addClass('in-focus');
@@ -58502,12 +58432,10 @@ if (field_inputs.length > 0) {
     $(this).parents('.input').toggleClass('in-focus');
   });
   console.log(field_inputs);
-
-  for (var key in field_inputs) {
-    if (field_inputs.hasOwnProperty(key) && _typeof(field_inputs[key]) == 'object') {
-      var input = field_inputs[key];
+  for (const key in field_inputs) {
+    if (field_inputs.hasOwnProperty(key) && typeof field_inputs[key] == 'object') {
+      let input = field_inputs[key];
       console.log($(input).val().length);
-
       if ($(input).val().length > 1) {
         $(input).parents('.input').addClass('in-focus');
       } else {
@@ -58543,18 +58471,25 @@ if (field_inputs.length > 0) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/interface/form/elements/list/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
- // $(".form_box__item").on("click", function () {
+
+
+// $(".form_box__item").on("click", function () {
 //   $(this).toggleClass("form_box__item-active");
 //   let item_input = $(this).find("input");
+
 //   if (item_input.prop("checked") == true) {
 //     item_input.prop("checked", false);
 //   } else {
 //     item_input.prop("checked", true);
 //   }
+
 //   let form_box__header = $(this).parents(".form_box").find(".form_box__header");
+
 //   let box_item = $(this).parents(".form_box__main").find(".form_box__item");
+
 //   if (box_item.length > 0) {
 //     let count_item_active = 0;
+
 //     for (const key in box_item) {
 //       if (box_item.hasOwnProperty(key)) {
 //         if (
@@ -58565,6 +58500,7 @@ __webpack_require__.r(__webpack_exports__);
 //         }
 //       }
 //     }
+
 //     if (count_item_active == box_item.length) {
 //       form_box__header.addClass("form_box__header-active");
 //     } else {
@@ -58574,43 +58510,34 @@ __webpack_require__.r(__webpack_exports__);
 // });
 
 $(".form_box__header").on("click", function () {
-  var this_box = $(this);
+  let this_box = $(this);
   $(this).toggleClass("form_box__header-active");
-  var item_input = $(this).find(".form_box__header-input");
-
+  let item_input = $(this).find(".form_box__header-input");
   if (item_input.length > 0) {
     if (item_input.prop("checked") == true) {
       item_input.prop("checked", false);
     } else {
       item_input.prop("checked", true);
     }
-
-    var box_item = $(this).parents(".form_box").find(".form_box__main").find(".form_box__item");
-
+    let box_item = $(this).parents(".form_box").find(".form_box__main").find(".form_box__item");
     if (box_item.length > 0) {
       Object.values(box_item).reduce(function (previousValue, currentItem, index, arr) {
         if ($(currentItem).hasClass("form_box__item")) {
           if (this_box.hasClass("form_box__header-active")) {
             console.log("step1");
-
             if (!$(currentItem).hasClass("form_box__item-active")) {
               console.log("step1");
               $(currentItem).addClass("form_box__item-active");
-
-              var _item_input = $(currentItem).find("input");
-
-              _item_input.prop("checked", true);
+              let item_input = $(currentItem).find("input");
+              item_input.prop("checked", true);
             }
           } else {
             console.log("step2");
-
             if ($(currentItem).hasClass("form_box__item-active")) {
               console.log($(currentItem));
               $(currentItem).removeClass("form_box__item-active");
-
-              var _item_input2 = $(currentItem).find("input");
-
-              _item_input2.prop("checked", false);
+              let item_input = $(currentItem).find("input");
+              item_input.prop("checked", false);
             }
           }
         }
@@ -58648,9 +58575,8 @@ __webpack_require__.r(__webpack_exports__);
 
 $('.radio_group__header').on('click', function () {
   delete_load_file();
-
   if (!$(this).parent('.radio_group-check').hasClass('is-active')) {
-    var change_chack = $(this).parent('.radio_group-check').data('chenge');
+    let change_chack = $(this).parent('.radio_group-check').data('chenge');
     $('.change_chack').val(change_chack);
     $(this).parents('.form_container__main').find('.radio_group-check').removeClass('is-active');
     $(this).parent('.radio_group-check').addClass('is-active');
@@ -58659,56 +58585,49 @@ $('.radio_group__header').on('click', function () {
 $('.form_file_load').on('click', function () {
   event.preventDefault();
   $('#file_logo__life').trigger('click');
-  var dropArea = event.target;
+  let dropArea = event.target;
   ;
-  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(function (eventName) {
+  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
     dropArea.addEventListener(eventName, preventDefaults, false);
   });
-
   function preventDefaults(e) {
     e.preventDefault();
     e.stopPropagation();
-  } // начало перетаскивания
+  }
 
-
+  // начало перетаскивания
   ;
-  ['dragenter', 'dragover'].forEach(function (eventName) {
+  ['dragenter', 'dragover'].forEach(eventName => {
     dropArea.addEventListener(eventName, highlight, false);
   });
-  ['dragleave', 'drop'].forEach(function (eventName) {
+  ['dragleave', 'drop'].forEach(eventName => {
     dropArea.addEventListener(eventName, unhighlight, false);
   });
-
   function highlight(e) {
     dropArea.classList.add('highlight');
   }
-
   function unhighlight(e) {
     dropArea.classList.remove('highlight');
-  } // конец перетаскивания
+  }
+  // конец перетаскивания
+
   // Загрузка файла
-
-
   dropArea.addEventListener('drop', handleDrop, false);
-
   function handleDrop(e) {
-    var dt = e.dataTransfer;
-    var files = dt.files;
+    let dt = e.dataTransfer;
+    let files = dt.files;
     document.getElementById("file_logo__life").files = files;
-
     for (var i = 0; i < files.length; i++) {
       var file = files.item(i);
       var reader = new FileReader();
       reader.readAsDataURL(file);
-
       reader.onload = function (e) {
         load_file(file.name);
       };
     }
-  } // Кінець загрузки файла
-
+  }
+  // Кінець загрузки файла
 });
-
 if (document.getElementById('file_logo__life') != null) {
   document.getElementById('file_logo__life').addEventListener('change', function () {
     if (this.value) {
@@ -58716,13 +58635,12 @@ if (document.getElementById('file_logo__life') != null) {
     }
   });
 }
-
 function load_file(fail_name) {
-  var cout_cahr = 15;
-  var checbox = document.getElementsByClassName('radio_group-check is-active');
-  var form_file_load = checbox[0].querySelectorAll('.form_file_load');
-  var form_file_downloads = checbox[0].querySelectorAll('.form_file_downloads');
-  var name__file = form_file_downloads[0].querySelectorAll('.text');
+  let cout_cahr = 15;
+  let checbox = document.getElementsByClassName('radio_group-check is-active');
+  let form_file_load = checbox[0].querySelectorAll('.form_file_load');
+  let form_file_downloads = checbox[0].querySelectorAll('.form_file_downloads');
+  let name__file = form_file_downloads[0].querySelectorAll('.text');
   form_file_load[0].classList.add('hidden');
   fail_name = fail_name.length > cout_cahr ? "".concat(fail_name.slice(0, cout_cahr), "...") : fail_name;
   name__file[0].textContent = fail_name;
@@ -58731,13 +58649,11 @@ function load_file(fail_name) {
     delete_load_file();
   });
 }
-
 function delete_load_file() {
   $('#file_logo__life').val('');
-  var checbox = document.getElementsByClassName('radio_group-check is-active');
-  var form_file_load = checbox[0].querySelectorAll('.form_file_load');
-  var form_file_downloads = checbox[0].querySelectorAll('.form_file_downloads');
-
+  let checbox = document.getElementsByClassName('radio_group-check is-active');
+  let form_file_load = checbox[0].querySelectorAll('.form_file_load');
+  let form_file_downloads = checbox[0].querySelectorAll('.form_file_downloads');
   if (form_file_downloads.length > 0) {
     form_file_downloads[0].classList.add('hidden');
     form_file_load[0].classList.remove('hidden');
@@ -58779,10 +58695,9 @@ function onClickRadio_v1() {
     if (!$(this).hasClass('form__radio-hiden')) {
       $(this).parents('.settings__box_main_content').find('.form__radio').removeClass("form__radio-active");
       $(this).addClass("form__radio-active");
-      var cardFormRadio = $(this);
-
+      let cardFormRadio = $(this);
       if (!!cardFormRadio.data("childrens")) {
-        var children_element = cardFormRadio.data("childrens");
+        let children_element = cardFormRadio.data("childrens");
         Object(_pages_constructor_setings_helpersEvent__WEBPACK_IMPORTED_MODULE_1__["childrensСonnections"])(children_element);
       }
     }
@@ -58816,11 +58731,8 @@ onClickRadio_v1();
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/interface/form/elements/textarea/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
-function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-
-var field_inputs = $('.textarea-field');
-
+let field_inputs = $('.textarea-field');
 if (field_inputs.length > 0) {
   field_inputs.on('focus', function () {
     $(this).parents('.textarea').addClass('in-focus');
@@ -58835,12 +58747,10 @@ if (field_inputs.length > 0) {
     $(this).parents('.textarea').toggleClass('in-focus');
   });
   console.log(field_inputs);
-
-  for (var key in field_inputs) {
-    if (field_inputs.hasOwnProperty(key) && _typeof(field_inputs[key]) == 'object') {
-      var input = field_inputs[key];
+  for (const key in field_inputs) {
+    if (field_inputs.hasOwnProperty(key) && typeof field_inputs[key] == 'object') {
+      let input = field_inputs[key];
       console.log($(input).val().length);
-
       if ($(input).val().length > 1) {
         $(input).parents('.textarea').addClass('in-focus');
       } else {
@@ -58892,7 +58802,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _elements_all_elements__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./elements/all_elements */ "../components/interface/form/elements/all_elements.js");
 /* harmony import */ var _form_grid_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./form_grid.scss */ "../components/interface/form/form_grid.scss");
 /* harmony import */ var _form_grid_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_form_grid_scss__WEBPACK_IMPORTED_MODULE_2__);
-
 
 
 
@@ -58955,37 +58864,30 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.scss */ "../components/module/form_errors/index.scss");
 /* harmony import */ var _index_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_index_scss__WEBPACK_IMPORTED_MODULE_0__);
 
-
 if ($('input[type="tel"]').length > 0) {
   $('input[type="tel"]').mask("+38(999) 99 99 999");
 }
-
-var lang_site;
-var curr_lang;
-var curr_lang_length;
+let lang_site;
+let curr_lang;
+let curr_lang_length;
 lang_site = location_leng();
-
 switch (lang_site) {
   case 'uk':
     curr_lang = "Поле повинно містити лише букви";
     curr_lang_length = "Поле повинно містити більше 6 символів";
     break;
-
   case 'ru':
     curr_lang = 'Поле должно содержать только буквы';
     curr_lang_length = "Поле должно содержать более 6 символов";
     break;
-
   case 'en':
     curr_lang = 'The field must contain only letters';
     curr_lang_length = "Field must contain more than 6 characters";
     break;
-
   default:
     curr_lang = "Поле повинно містити лише букви.";
     curr_lang_length = "Поле повинно містити більше 6 символів";
 }
-
 jQuery.validator.addMethod("lettersonly", function (value, element) {
   return this.optional(element) || /[^0-9]+$/i.test(value);
 }, curr_lang);
@@ -58998,16 +58900,17 @@ jQuery.validator.addMethod("minLength", function (value, element) {
 }, curr_lang_length);
 $(function () {
   Onload();
-}); // /**
+});
+// /**
 //  * valide_form - Валідація форм
 //  * @param {selector form} ID Форми на яку підвішують валідацію
 //  * @param {class name} class групи куди виводять помилки
 //  * @param {bull} true Чи виводи вспливайку пісял відповіді ajax
 //  *
 //  **/
-
 function Onload() {
   // var more_form = $('.mini-user-form');
+
   // for (var testz = 0; testz < more_form.length; testz++) {
   //     var tehas = more_form[testz];
   //     var dinamic_id = 'active_form' + testz;
@@ -59016,6 +58919,7 @@ function Onload() {
   //     console.log(dinamic_main_id);
   //     valide_form(dinamic_main_id, '.inp-mini-wrap', false);
   // }
+
   valide_form('.footer_form', '.inp-vak-wrap', true);
   valide_form('.comment_form', '.inp-vak-wrap', false);
   valide_form('.registery_form', '.inp-vak-wrap', false);
@@ -59026,52 +58930,42 @@ function Onload() {
   valide_form('#form_cons', '.inp-vak-wrap', true);
   valide_form('#order__form_constructor', '.inp-vak-wrap', true);
 }
-
 function location_leng() {
   return location.pathname.split('/')[1];
 }
-
 function valide_form(id_form, error_inp_wrap, check_request) {
   var modal = false;
   var check_request = check_request;
-  var check_pass = true;
-
+  let check_pass = true;
   if ($(id_form).hasClass('change_profile')) {
     check_pass = false;
   } else {
     check_pass = true;
   }
-
   console.log('check_pass: ', check_pass);
-
   if ($(id_form).length > 0) {
     var lang_site;
     var error_text = {};
     lang_site = location_leng();
-
     switch (lang_site) {
       case 'uk':
         error_text.required = 'Поле обов\'язково для заповнення';
         error_text.email = 'Поле має містити email';
         break;
-
       case 'ru':
         error_text.required = 'Поле обязательно для заполнения';
         error_text.email = 'Поле должно содержать email';
         break;
-
       case 'en':
         error_text.required = 'The field is required';
         error_text.email = 'The field must contain an email';
         break;
-
       default:
         error_text.required = 'Поле обов\'язково для заповнення.';
         error_text.email = 'Поле має містити email.';
     }
-
     $(id_form).validate({
-      errorPlacement: function errorPlacement(event, validator) {
+      errorPlacement: function (event, validator) {
         console.log(validator);
         $(validator).parents(error_inp_wrap).append($(event));
       },
@@ -59174,7 +59068,7 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           required: error_text.required
         }
       },
-      submitHandler: function submitHandler(form) {
+      submitHandler: function (form) {
         console.log('form: ', form);
         event.preventDefault();
         $('.load_spin').addClass('load_spin_active');
@@ -59186,16 +59080,13 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         });
         var pass_checked = true;
         var pass_finder = $('.login_pass2').length;
-
         if (pass_finder == 1) {
           console.log('(1', $('.login_pass').val().length);
           console.log('(2', $('.login_pass2').val().length);
-
           if ($('.login_pass').val().length >= 1) {
             var pass_1 = $('.login_pass').val();
             var pass_2 = $('.login_pass2').val();
             pass_checked = false;
-
             if (pass_1 == pass_2) {
               if ($('.login_pass').val().length < 6 && $('.login_pass2').val().length < 6) {
                 pass_checked = false;
@@ -59219,13 +59110,10 @@ function valide_form(id_form, error_inp_wrap, check_request) {
             pass_checked = true;
           }
         }
-
         console.log(form_json);
-
         if (url_form != '' && pass_checked == true) {
           console.log('url_form: ', url_form);
-          var current_method = 'POST';
-
+          let current_method = 'POST';
           if ($(form).hasClass('PATCH')) {
             current_method = 'PATCH';
             modal = true;
@@ -59233,34 +59121,32 @@ function valide_form(id_form, error_inp_wrap, check_request) {
             current_method = 'POST';
             modal = false;
           }
-
           fetch(url_form, {
             method: current_method,
-            body: new URLSearchParams($.param(form_json)) // headers: {
+            body: new URLSearchParams($.param(form_json))
+            // headers: {
             //   "Content-Type": "application/json",
             //   "Accept": "application/json"
             // },
-
-          }).then(function (data) {
+          }).then(data => {
             return data.json();
-          }).then(function (data) {
+          }).then(data => {
             console.log('data: ', data);
             console.log('tut?');
-
             if (data.status == 'OK' && typeof data['status'] !== "undefined") {
               sayHi();
             }
-
             if (data.status == 'BAD' && typeof data['status'] !== "undefined") {
               $('.load_spin').removeClass('load_spin_active');
               $(".error_block_false").text("Невірний логін або пароль");
               $('.login_checked_error').text(data.error_fields.username);
               $('.login_checked_error').text(data.error_fields.email);
-              console.log('$(): ', $('.login_checked_error')); // if (typeof data['error_field'] == "undefined") {
+              console.log('$(): ', $('.login_checked_error'));
+              // if (typeof data['error_field'] == "undefined") {
+
               //   console.log('tuta');
               // }
             }
-
             if (typeof data['url'] !== "undefined" && data.url != '') {
               //   sayHi();
               location.href = data.url;
@@ -59269,26 +59155,24 @@ function valide_form(id_form, error_inp_wrap, check_request) {
         } else {
           console.log("form_not_actions");
         }
-
         function explode() {
-          if (id_form == '#modal-form_user') {// window.location.pathname = '/'
-          } else {// sayHi();
-            }
+          if (id_form == '#modal-form_user') {
+            // window.location.pathname = '/'
+          } else {
+            // sayHi();
+          }
         }
-
         explode();
-
         function sayHi() {
           console.log(133313);
           console.log('modal: ', modal);
           $('.load_spin').removeClass('load_spin_active');
-
           if (modal == true) {
             console.log('tut');
             $.fancybox.open({
               src: '#modal_form_change_profile'
             });
-            setTimeout(function () {
+            setTimeout(() => {
               $.fancybox.close({
                 src: '#modal_form_change_profile'
               });
@@ -59296,18 +59180,16 @@ function valide_form(id_form, error_inp_wrap, check_request) {
           } else {
             $.fancybox.close();
           }
-
           if (check_request === true) {
             $.fancybox.open({
               src: '#modal-form_true'
             });
-            setTimeout(function () {
+            setTimeout(() => {
               $.fancybox.close({
                 src: '#modal-form_true'
               });
             }, 1500);
             var form_inputs = $(form)[0].querySelectorAll('input');
-
             if (form_inputs.length > 0) {
               for (var key in form_inputs) {
                 if (form_inputs.hasOwnProperty(key) && /^0$|^[1-9]\d*$/.test(key) && key <= 4294967294) {
@@ -59316,9 +59198,7 @@ function valide_form(id_form, error_inp_wrap, check_request) {
                   }
                 }
               }
-
               var form_textaria = $(form)[0].querySelectorAll('textarea');
-
               if (form_textaria.length > 0) {
                 form_textaria[0].value = '';
               }
@@ -59397,72 +59277,59 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onSelectFirstItem", function() { return onSelectFirstItem; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onBackMobile", function() { return onBackMobile; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "onChengeSetingsHeight", function() { return onChengeSetingsHeight; });
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-var onLoadInfoActive = function onLoadInfoActive() {
+const onLoadInfoActive = () => {
   $(".settings__box_main").addClass("settings__box_main-hidden");
   $(".settings__box_main").addClass("settings__box_main-loader");
 };
-var onLoadInfoRemote = function onLoadInfoRemote() {
+const onLoadInfoRemote = () => {
   $(".settings__box_main").removeClass("settings__box_main-hidden");
   $(".settings__box_main").removeClass("settings__box_main-loader");
 };
-var chengeURL = function chengeURL(data) {
-  var objectParameter = {};
-  data.map(function (item) {
+const chengeURL = data => {
+  let objectParameter = {};
+  data.map(item => {
     if (item.name != "undefined") {
       objectParameter[item.name] = item.value;
     }
   });
-  var back_url = createUrl(objectParameter); // let back_url = createUrl(config_model).slice(1);
+  let back_url = createUrl(objectParameter);
+
+  // let back_url = createUrl(config_model).slice(1);
 
   history.pushState(null, null, "/page1/?".concat(back_url));
 };
-var onClickSettingsCardImg = function onClickSettingsCardImg(parent_box) {
+const onClickSettingsCardImg = parent_box => {
   // Переключення карточок з фото
   $(".settings__card_img").on("click", function () {
-    var paretnConteiner = $(this).parents(parent_box);
-    var neighboringElements = $(this).parents(parent_box).find(".form__radio");
-    var cardFormRadio = $(this).parent().children(".form__radio");
-    var value = cardFormRadio.data("value");
+    let paretnConteiner = $(this).parents(parent_box);
+    let neighboringElements = $(this).parents(parent_box).find(".form__radio");
+    let cardFormRadio = $(this).parent().children(".form__radio");
+    let value = cardFormRadio.data("value");
     console.log(cardFormRadio);
-
     if (!!cardFormRadio.data("childrens")) {
-      var children_element = cardFormRadio.data("childrens");
+      let children_element = cardFormRadio.data("childrens");
       childrensСonnections(children_element);
     } else {}
-
     neighboringElements.removeClass("form__radio-active");
     cardFormRadio.addClass("form__radio-active");
     paretnConteiner.children("input[type=hidden]").val(value);
-    var input_name = paretnConteiner.children("input[type=hidden]")[0];
-
+    let input_name = paretnConteiner.children("input[type=hidden]")[0];
     if (!!input_name && input_name.name != "iframe_type") {
-      var _string_params = $(".constructor_setings").serializeArray();
-
-      chengePrice(_string_params);
+      let string_params = $(".constructor_setings").serializeArray();
+      chengePrice(string_params);
     }
-
-    var string_params = $(".constructor_setings").serializeArray();
+    let string_params = $(".constructor_setings").serializeArray();
     chengeURL(string_params);
   });
 };
-var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
+const onChengeRadioV1 = parent_box => {
   $(".form__radio").on("click", function () {
     if (!$(this).hasClass("form__radio-hiden")) {
-      var value = $(this).data("value");
+      let value = $(this).data("value");
       $(this).parents(parent_box).children("input[type=hidden]").val(value);
-      var setingsName = $(this).parents(parent_box).children("input[type=hidden]")[0].name; // if (setingsName === "seat_type") {
+      const setingsName = $(this).parents(parent_box).children("input[type=hidden]")[0].name;
+
+      // if (setingsName === "seat_type") {
       //   $(`input[name='trunk']`)
       //     .parents(".form_box__item")
       //     .addClass("form_box__item-hidden");
@@ -59478,35 +59345,34 @@ var onChengeRadioV1 = function onChengeRadioV1(parent_box) {
       //   });
       // }
     }
-
-    var string_params = $(".constructor_setings").serializeArray();
+    let string_params = $(".constructor_setings").serializeArray();
     chengePrice(string_params);
     chengeURL(string_params);
   });
 };
-var clearGroup = function clearGroup(className) {
+const clearGroup = className => {
   // Очистка груп конструктора перед вставкою нових елементів
-  _toConsumableArray($(className).children()).map(function (item) {
+  [...$(className).children()].map(item => {
     if (!item.classList.contains("settings__group-start")) {
       item.remove();
     }
   });
 };
-
 function createUrl(config_model) {
-  var back_url = Object.keys(config_model).map(function (key) {
+  let back_url = Object.keys(config_model).map(key => {
     return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
   }).join("&");
   return back_url;
 }
-
 function chengePrice(data) {
-  var objectParameter = {};
-  data.map(function (item) {
+  let objectParameter = {};
+  data.map(item => {
     if (item.name != "undefined") {
       objectParameter[item.name] = item.value;
     }
-  }); // fetch(`/api/get_price/?${getFormatUrl(objectParameter)}`)
+  });
+
+  // fetch(`/api/get_price/?${getFormatUrl(objectParameter)}`)
   //   .then((response) => {
   //     if (response.status >= 400 && response.status < 600) {
   //       throw new Error("Bad response from server fond price");
@@ -59533,67 +59399,54 @@ function onClickCheckboxOptions() {
   $(".form_box__item").on("click", function () {
     if (!$(this).hasClass("form_box__item-hidden")) {
       $(this).toggleClass("form_box__item-active");
-      var item_input = $(this).find("input");
-
+      let item_input = $(this).find("input");
       if (item_input.prop("checked") == true) {
         item_input.prop("checked", false);
       } else {
         item_input.prop("checked", true);
       }
-
-      var string_params = $(".constructor_setings").serializeArray();
+      let string_params = $(".constructor_setings").serializeArray();
       chengePrice(string_params);
       chengeURL(string_params);
     }
   });
 }
-var childrensСonnections = function childrensСonnections(children_element) {
+const childrensСonnections = children_element => {
   $("input[name='protection']").parents(".form_box__item").addClass("form_box__item-hidden");
   $("input[name='trunk']").parents(".form_box__item").addClass("form_box__item-hidden");
-
-  for (var key in children_element) {
+  for (const key in children_element) {
     if (children_element.hasOwnProperty(key)) {
       if (key != "checkbox_options") {
-        (function () {
-          var element = children_element[key];
-          var data_element = $("[data-input_value=\"".concat(key, "\"]"));
-
-          if (data_element.hasClass("settings__box_main-radio")) {
-            var all_elements = _toConsumableArray(data_element.find(".form__radio").removeClass("form__radio-active"));
-
-            console.log(all_elements);
-            var flag = true;
-            all_elements.map(function (item) {
-              var inputValue = $(item).data("value");
-
-              if (element.indexOf(inputValue) != -1) {
-                $(item).removeClass("form__radio-hiden");
-
-                if (!!flag) {
-                  flag = false;
-                  $(item).addClass("form__radio-active");
-                  $(item).parents(".settings__box_main").children("input[type=hidden]").val(inputValue);
-
-                  if (!!$(item).data("childrens")) {
-                    var _children_element = $(item).data("childrens");
-
-                    childrensСonnections(_children_element);
-                  }
+        const element = children_element[key];
+        let data_element = $("[data-input_value=\"".concat(key, "\"]"));
+        if (data_element.hasClass("settings__box_main-radio")) {
+          let all_elements = [...data_element.find(".form__radio").removeClass("form__radio-active")];
+          console.log(all_elements);
+          let flag = true;
+          all_elements.map(item => {
+            let inputValue = $(item).data("value");
+            if (element.indexOf(inputValue) != -1) {
+              $(item).removeClass("form__radio-hiden");
+              if (!!flag) {
+                flag = false;
+                $(item).addClass("form__radio-active");
+                $(item).parents(".settings__box_main").children("input[type=hidden]").val(inputValue);
+                if (!!$(item).data("childrens")) {
+                  let children_element = $(item).data("childrens");
+                  childrensСonnections(children_element);
                 }
-              } else {
-                $(item).addClass("form__radio-hiden");
-                $(item).removeClass("form__radio-active");
               }
-            });
-          } else {}
-        })();
+            } else {
+              $(item).addClass("form__radio-hiden");
+              $(item).removeClass("form__radio-active");
+            }
+          });
+        } else {}
       } else {
-        var element = children_element[key];
-
+        const element = children_element[key];
         if (element.indexOf("protection") != -1) {
           $("input[name='protection']").parents(".form_box__item").removeClass("form_box__item-hidden");
         }
-
         if (element.indexOf("trunk") != -1) {
           $("input[name='trunk']").parents(".form_box__item").removeClass("form_box__item-hidden");
         }
@@ -59601,15 +59454,14 @@ var childrensСonnections = function childrensСonnections(children_element) {
     }
   }
 };
-var resizeTringleCategories = function resizeTringleCategories() {
+const resizeTringleCategories = () => {
   $(".settings__category_hover_triangl").removeAttr("style");
   $(".settings__category_hover").removeAttr("style");
   $(".settings__category_hover_sqar").removeAttr("style");
-
-  _toConsumableArray($(".settings__category")).map(function (item) {
+  [...$(".settings__category")].map(item => {
     if (!!$(item).hasClass("settings__category-active")) {
-      var width_triangle = item.offsetHeight * 0.7;
-      var width_setingts = $(item)[0].offsetWidth;
+      let width_triangle = item.offsetHeight * 0.7;
+      let width_setingts = $(item)[0].offsetWidth;
       $(item).find(".settings__category_hover_triangl").width(width_triangle);
       $(item).find(".settings__category_hover_triangl").height(width_triangle);
       $(item).find(".settings__category_hover").width(width_triangle + width_setingts);
@@ -59617,78 +59469,63 @@ var resizeTringleCategories = function resizeTringleCategories() {
     }
   });
 };
-
 function getFormatUrl(config_model) {
-  var URL = Object.keys(config_model).map(function (key) {
+  let URL = Object.keys(config_model).map(key => {
     return "".concat(key, "=").concat(encodeURIComponent(config_model[key]));
   }).join("&");
   return URL;
 }
-
-var onSelectFirstItem = function onSelectFirstItem() {
-  var settingsBox = _toConsumableArray($(".settings__box_main"));
-
-  settingsBox.map(function (item) {
-    var flag = false;
-
+const onSelectFirstItem = () => {
+  let settingsBox = [...$(".settings__box_main")];
+  settingsBox.map(item => {
+    let flag = false;
     if ($(item).hasClass("settings__box_main-card")) {
       if (!flag) {
-        var flagActiveElement = true;
-
-        _toConsumableArray($(item).find(".form__radio")).map(function (item) {
+        let flagActiveElement = true;
+        [...$(item).find(".form__radio")].map(item => {
           if ($(item).hasClass("form__radio-active")) {
             flagActiveElement = false;
           }
         });
-
         if (!!flagActiveElement) {
           $($(item).find(".form__radio")[0]).addClass("form__radio-active");
-          var element = $($(item).find(".form__radio")[0]);
-          var children_element = element.data("childrens");
-          var elementValue = element.data("value");
+          let element = $($(item).find(".form__radio")[0]);
+          let children_element = element.data("childrens");
+          let elementValue = element.data("value");
           $(element).parents(".settings__box_main").children("input[type=hidden]").val(elementValue);
           childrensСonnections(children_element);
         }
       }
     } else if ($(item).hasClass("settings__box_main-color")) {
       if (!flag) {
-        var _element = $($(item).find(".form__color")[0]);
-
-        var _elementValue = _element.data("color");
-
-        _element.addClass("form__color-active");
-
-        $(_element).parents(".settings__box_main").children("input[type=hidden]").val(_elementValue);
+        let element = $($(item).find(".form__color")[0]);
+        let elementValue = element.data("color");
+        element.addClass("form__color-active");
+        $(element).parents(".settings__box_main").children("input[type=hidden]").val(elementValue);
       }
     } else if ($(item).hasClass("settings__box_main-radio")) {
       if (!flag) {
-        var _flagActiveElement = true;
-
-        _toConsumableArray($(item).find(".form__radio")).map(function (item) {
+        let flagActiveElement = true;
+        [...$(item).find(".form__radio")].map(item => {
           if ($(item).hasClass("form__radio-active")) {
-            _flagActiveElement = false;
+            flagActiveElement = false;
           }
         });
-
-        if (!!_flagActiveElement) {
+        if (!!flagActiveElement) {
           $($(item).find(".form__radio")[0]).addClass("form__radio-active");
-
-          var _element2 = $($(item).find(".form__radio")[0]);
-
-          var _children_element2 = _element2.data("childrens");
-
-          var _elementValue2 = _element2.data("value");
-
-          $(_element2).parents(".settings__box_main").children("input[type=hidden]").val(_elementValue2);
-          childrensСonnections(_children_element2);
+          let element = $($(item).find(".form__radio")[0]);
+          let children_element = element.data("childrens");
+          let elementValue = element.data("value");
+          $(element).parents(".settings__box_main").children("input[type=hidden]").val(elementValue);
+          childrensСonnections(children_element);
         }
       }
     }
   });
-  var string_params = $(".constructor_setings").serializeArray();
+  let string_params = $(".constructor_setings").serializeArray();
   chengePrice(string_params);
 };
-var onBackMobile = function onBackMobile() {
+const onBackMobile = () => {
   if ($(window).width() <= 800) {
     $(".settings__group_back").on("click", function () {
       $(".settings")[0].style.minHeight = 25 + "px";
@@ -59696,9 +59533,9 @@ var onBackMobile = function onBackMobile() {
     });
   }
 };
-var onChengeSetingsHeight = function onChengeSetingsHeight() {
+const onChengeSetingsHeight = () => {
   if ($(window).width() <= 800) {
-    var settings_heights = $(".settings__parameters_wrap").find(".settings__parameters-active").outerHeight();
+    let settings_heights = $(".settings__parameters_wrap").find(".settings__parameters-active").outerHeight();
     $(".settings")[0].style.minHeight = settings_heights + 25 + "px";
   }
 };
@@ -59727,11 +59564,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // script common elements
 
 
- // script pages
+// script common elements
 
+
+
+// script pages
 
 
 
