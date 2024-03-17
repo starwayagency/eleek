@@ -278,35 +278,9 @@ class Item(AbstractPage, GoogleFieldsMixin, ItemPricesMixin):
     
     def save(self, *args, **kwargs):
         self.handle_in_stock(*args, **kwargs)
-        self.handle_image(*args, **kwargs)
         super().save(*args, **kwargs)
-        self.resize_image(*args, **kwargs)
-        
-    def handle_image(self, *args, **kwargs):
-        images = ItemImage.objects.filter(item=self)
-        if images.exists():
-            image = images.first().image 
-            if image and self.slug and not self.image:
-                # print('!!!!', self.slug, image.name, image.name.split('/'))
-                name = self.slug + image.name.split("/")[-1]
-                try:
-                    self.image.save(name, image, save=False)
-                except Exception as e:
-                    print(e)
 
-    def resize_image(self, *args, **kwargs):
-        if self.image:
-            image  = self.image 
-            width  = 400
-            # height = 400
-            try:
-                img    = Image.open(image.path)
-                height = int((float(img.size[1])*float((width/float(img.size[0])))))
-                img    = img.resize((width,height), Image.ANTIALIAS)
-                img.save(image.path) 
-            except Exception as e:
-                print(e)
-            
+
     def get_feature_categories(self):
         feature_categories = self.get_item_features().values_list('category__id', flat=True).distinct()
         feature_categories = FeatureCategory.objects.filter(id__in=feature_categories)
