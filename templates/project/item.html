@@ -49,6 +49,7 @@ item_section__wrapper
         bottom_slider__wrap_with_three_de - добавляти цей класс якщо є блочок з 3D -->
         <div class="bottom_slider__wrap">
           {% if item.category.code == 'velo' %}
+          {% if item.three_dimensional_link %}
           <div class="three_de__block">
             <svg class="hvr-bob" xmlns="http://www.w3.org/2000/svg" width="49" height="56" viewBox="0 0 49 56">
               <g class="three_svg" fill="none" fill-rule="evenodd" stroke="#000" stroke-linecap="round"
@@ -62,11 +63,12 @@ item_section__wrapper
             </svg>
             {% render 'text51' as text51 %}
             <div class="db_content three_title standart_title standart_title_5 color_black"
-              data-admin_url="{{text51.get_admin_url}}" data-href="{{ item.three_dimensional_link }}">
+              data-href="https://{{ item.three_dimensional_link }}">
               {{text51.text}}
               <!-- {% trans 'Показати в 3Д' %} -->
             </div>
           </div>
+          {% endif %}
           {% endif %}
           {% if item.category.code == 'velo' %}
           <div data-quantity-slider='3' class="mini_slider mini_slider_with_three_de">
