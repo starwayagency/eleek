@@ -1551,9 +1551,15 @@ if (slickFinder2 >= 1) {
   });
 }
 const threeDeBlockLink = $(".three_title").data("href");
-$(".three_de__block").click(function () {
-  window.location.href = threeDeBlockLink;
-});
+const threeDeBlock = document.querySelector('.three_de__block');
+const miniSlider = document.querySelector('.mini_slider');
+if (threeDeBlock) {
+  threeDeBlock.addEventListener('click', () => {
+    window.location.href = threeDeBlockLink;
+  });
+} else {
+  miniSlider.classList.remove('mini_slider_with_three_de');
+}
 const handleRecaptchaClick = () => {
   const generateCommentButton = document.querySelector(".generate_comment");
   generateCommentButton.disabled = false;
