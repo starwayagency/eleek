@@ -1,15 +1,26 @@
 import requests
+import os
 
 from django.http import HttpResponseRedirect, JsonResponse
+from .api.serializers import UserGoogleSerializer
+from django.contrib.auth import get_user_model
+from django.contrib.auth import authenticate, login
+from rest_framework.response import Response
+from rest_framework import status
 
+
+DOMAIN = os.getenv('DOMAIN')
+GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID')
+GOOGLE_CLIENT_SECRET = os.getenv('GOOGLE_CLIENT_SECRET')
+User = get_user_model()
 
 def google_authorization(request):
-    client_id = ""
+    client_id = f"{GOOGLE_CLIENT_ID}" 
     scope = ' '.join([
         'https://www.googleapis.com/auth/userinfo.email',
         'https://www.googleapis.com/auth/userinfo.profile'
     ])
-    redirect_uri = "http://127.0.0.1:8000/google_callback/"
+    redirect_uri = f"{DOMAIN}/google_callback/"
 
     authorization_params = {
         'client_id': client_id,
@@ -30,11 +41,11 @@ def google_authorization(request):
 def get_google_access_token(code: str) -> str:
     token_url = 'https://oauth2.googleapis.com/token'
 
-    redirect_uri =  "http://127.0.0.1:8000/google_callback/"
+    redirect_uri =  f"{DOMAIN}/google_callback/"
     data = {
         'code': code,
-        'client_id': "",
-        'client_secret': "",
+        'client_id': f"{GOOGLE_CLIENT_ID}",
+        'client_secret': f"{GOOGLE_CLIENT_SECRET}",
         'redirect_uri': redirect_uri,
         'grant_type': 'authorization_code'
     }
@@ -44,10 +55,25 @@ def get_google_access_token(code: str) -> str:
     return access_token
 
 
+def register_user_from_oauth(request, user_data):
+    # Реєстрація користувача по даних від гугла
+    serializer = UserGoogleSerializer(data=user_data)
+    if serializer.is_valid():
+        user = serializer.save()
+        # print("Зареєстровано")
+        # Авторизуємо користувача
+        if user is not None:
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            # print("Залогінено")
+        return HttpResponseRedirect(f"{DOMAIN}")  
+    return HttpResponseRedirect(f"{DOMAIN}")  
+
+
 def google_callback(request):
     code = request.GET.get('code')
+    
     if not code:
-        return HttpResponseRedirect("http://127.0.0.1:8000/")
+        return HttpResponseRedirect(f"{DOMAIN}")
 
     access_token = get_google_access_token(code=code)
 
@@ -57,8 +83,24 @@ def google_callback(request):
     )
 
     if not response.ok:
-        return HttpResponseRedirect("http://127.0.0.1:8000/")
+        return HttpResponseRedirect(f"{DOMAIN}")
 
-    # todo create user here or authenticate when exists
+    user_data = response.json()
+    email = user_data.get('email')
 
-    return JsonResponse(response.json(), safe=False)
+    # Перевірка чи існує такий юзер
+    try:
+        user = User.objects.get(email=email)
+        login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+        # print("Залогінено")
+        return HttpResponseRedirect(f"{DOMAIN}")  
+    except User.DoesNotExist:
+        # print("Не зареєстрований")
+        register_user_from_oauth(request, user_data)
+
+    return HttpResponseRedirect(f"{DOMAIN}")
+
+
+
+
+

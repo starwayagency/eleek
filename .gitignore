@@ -25,3 +25,4 @@ static_root/
 node_modules
 .vscode
 *.sqlite3
+MyVenv
