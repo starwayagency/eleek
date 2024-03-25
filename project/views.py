@@ -66,7 +66,7 @@ def register_user_from_oauth(request, user_data):
             login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             # print("Залогінено")
         return HttpResponseRedirect(f"{DOMAIN}")  
-    return HttpResponseRedirect(f"{DOMAIN}")  
+      
 
 
 def google_callback(request):
@@ -89,16 +89,15 @@ def google_callback(request):
     email = user_data.get('email')
 
     # Перевірка чи існує такий юзер
-    try:
+    if User.objects.filter(email=email).exists():
         user = User.objects.get(email=email)
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-        # print("Залогінено")
-        return HttpResponseRedirect(f"{DOMAIN}")  
-    except User.DoesNotExist:
-        # print("Не зареєстрований")
+        return HttpResponseRedirect(f"{DOMAIN}")
+    else:
         register_user_from_oauth(request, user_data)
+        return HttpResponseRedirect(f"{DOMAIN}")
 
-    return HttpResponseRedirect(f"{DOMAIN}")
+
 
 
 
