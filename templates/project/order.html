@@ -205,7 +205,6 @@ item_section__wrapper
             </div>
           </div>
           <div class="step_content step_content_payment">
-
             <div data-radio='7' class="radio_block">
               <div class="radio_tchk">
                 <div class="radio_center radio_center_active absolute_center"></div>
@@ -229,6 +228,26 @@ item_section__wrapper
                 {{text127.text}}
                 <!-- {% trans 'Оплата карткою' %} -->
               </div>
+            </div>
+
+            <div data-radio='9' class="radio_block">
+              <div class="radio_tchk">
+                <div class="radio_center radio_center_active absolute_center"></div>
+              </div>
+              {% render 'text126' as text126 %}
+              <div data-payment="installments" class="db_content radio_title standart_title standart_title_6 color_black" data-admin_url="{{text_installments.get_admin_url}}">
+                {{text_installments.text}}
+                <!-- Тут можуть бути додаткові дані для оплати частинами -->
+                <label for="installmentsNumber">Number of installments:</label>
+                <select id="installmentsNumber" name="installments_number" required>
+                <option value="">Оберіть кількість платежів</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <!-- Додайте інші варіанти від 3 до 25 -->
+                <option value="25">25</option>
+                </select>
+            </div>
+
             </div>
 
             <!-- <div data-radio='9' class="radio_block">

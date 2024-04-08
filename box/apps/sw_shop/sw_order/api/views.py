@@ -58,6 +58,11 @@ def order_items(request):
     order.save()
     url = reverse('payment')
     return JsonResponse({"url":url})
+  elif payment_opt == 'installments':
+    order.payment_opt = _("З передоплатою")
+    order.save()
+    url = reverse('payment_installments')
+    return JsonResponse({"url":url})
   else:
     order.payment_opt = _("Без предоплати")
     order.make_order(request)

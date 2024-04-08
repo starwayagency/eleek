@@ -134,6 +134,7 @@ urlpatterns = [
   # path('auth/',            include('djoser.urls.jwt')),
   path('_nested_admin/',   include('nested_admin.urls')),
   path('filebrowser/',     site.urls),
+  path('',                 include('part_payments.urls')),
   *box,
   *PROJECT_CORE,
   *multilingual,

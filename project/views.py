@@ -96,10 +96,3 @@ def google_callback(request):
     else:
         register_user_from_oauth(request, user_data)
         return HttpResponseRedirect(f"{DOMAIN}")
-
-
-
-
-
-
-

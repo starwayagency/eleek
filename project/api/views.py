@@ -71,4 +71,3 @@ def update_project_user(request):
     user.save()
     response["status"] = "OK"
     return JsonResponse(response)
-
