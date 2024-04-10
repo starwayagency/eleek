@@ -21,6 +21,11 @@ class OrderViewSet(ModelViewSet):
   serializer_class = OrderSerializer 
   queryset = Order.objects.all()
 
+  def get_queryset(self):
+    if self.request.user.is_anonymous:
+      return Order.objects.none()
+    queryset = Order.objects.filter(user=self.request.user)
+    return queryset
 
 
 @csrf_exempt

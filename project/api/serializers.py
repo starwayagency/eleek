@@ -17,7 +17,7 @@ class UserGoogleSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         user = User.objects.create(
-            username=validated_data['email'],  # Використовуємо email як ім'я користувача
+            username=validated_data['email'],
             email=validated_data['email'],
         )
         return user

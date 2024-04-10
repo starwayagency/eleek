@@ -22,6 +22,12 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
 
+    def get_queryset(self):
+        if self.request.user.is_anonymous:
+            return get_user_model().objects.none()
+        queryset = get_user_model().objects.filter(user=self.request.user)
+        return queryset
+
     def update(self, request, *args, **kwargs):
         user     = self.get_object()
         if 'password' in request.data \
