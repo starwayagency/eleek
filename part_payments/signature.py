@@ -3,11 +3,6 @@ import base64
 from .models import PrivatBankPaymentSettings
 
 
-payment_settings = PrivatBankPaymentSettings.objects.first()
-password = str(payment_settings.password)
-storeId = str(payment_settings.store_id)
-
-
 def withoutFloatingPoint(number):
     return number.replace('.', '')
 
@@ -20,6 +15,9 @@ def generate_products_string(products):
 
 
 def generate_signature(orderId, products, amount, partsCount, merchantType, responseUrl, redirectUrl):     
+    payment_settings = PrivatBankPaymentSettings.objects.first()
+    password = str(payment_settings.password)
+    storeId = str(payment_settings.store_id)
     pt1 = password + storeId + orderId + withoutFloatingPoint(amount) + str(partsCount) + merchantType + responseUrl + redirectUrl
     prod = generate_products_string(products)
     to_code = pt1 + prod + password 
