@@ -2417,7 +2417,8 @@ body {
     padding-inline: 10px;
     border: 1px solid #000;
     border-radius: 5px;
-    transition: all .3s; }
+    transition: all .3s;
+    outline: none; }
     .select-block__input:focus {
       border-color: #ffd10a; }
   .select-block__dropdown {
@@ -2431,7 +2432,7 @@ body {
     transform: translateY(100%);
     z-index: 2;
     background-color: #fff;
-    transition: grid-template-rows .3s; }
+    transition: all .3s; }
     .select-block__dropdown--active {
       grid-template-rows: 1fr;
       padding: 10px;

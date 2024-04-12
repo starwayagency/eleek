@@ -209,6 +209,7 @@
     border: 1px solid #000;
     border-radius: 5px;
     transition: all .3s;
+    outline: none;
 
     &:focus {
       border-color: #ffd10a;
@@ -226,7 +227,7 @@
     transform: translateY(100%);
     z-index: 2;
     background-color: #fff;
-    transition: grid-template-rows .3s;
+    transition: all .3s;
 
     &--active {
       grid-template-rows: 1fr;

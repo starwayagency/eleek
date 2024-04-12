@@ -214,6 +214,7 @@ $(".submit_order_btn").on("click", function () {
   // $.each(all_attr,function(index,value){
   //     let current_sum = $(value).find('.option_content_prof_active').attr('data-price-option');
   // })
+  const partPaymentCount = document.querySelector('.select-block__part-payment').value;
   let current_adress;
 
   if ($(".step_content_delivery").hasClass("only_one_input")) {
@@ -235,6 +236,7 @@ $(".submit_order_btn").on("click", function () {
       .replace(/[\(\)\- ]/g, ''),
     delivery_opt: current_adress,
     payment_opt: current_payment.trim(),
+    part_payment_count: partPaymentCount ? partPaymentCount : '',
   };
 
   fetch(action, {
@@ -413,10 +415,9 @@ async function getWarehouses(value) {
 }
 
 const deliveryStepWrapper = document.querySelector('.step_content_delivery');
-const deliveryStepInputs = deliveryStepWrapper.querySelectorAll('input');
 
 const getInputWrapper = (input) => {
-  const inputWrapper = input?.closest('.select-block');
+  const inputWrapper = input?.closest('.select-block') || input?.closest('.radio_block');
 
   return inputWrapper;
 };
@@ -435,12 +436,22 @@ const getListFromArray = (array) => {
   )).join('');
 };
 
+let partPaymentNumbersList = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+
 const settlement = deliveryStepWrapper.querySelector('.select-block__settlement');
 const warehouse = deliveryStepWrapper.querySelector('.select-block__warehouse');
+const partPayment = document.querySelector('.select-block__part-payment');
 const settlementList = getInputWrapper(settlement).querySelector('.select-block__list');
 const warehouseList = getInputWrapper(warehouse).querySelector('.select-block__list');
+const partPaymentList = getInputWrapper(partPayment).querySelector('.select-block__list');
 const settlementDropdown = getInputDropdown(settlement);
 const warehouseDropdown = getInputDropdown(warehouse);
+
+partPaymentList.innerHTML = partPaymentNumbersList.map(number => (
+  `
+    <li class="select-block__list-item" data-id='${number}'>${number}</li>
+  `
+)).join('');
 
 settlementDropdown.style.zIndex = '2';
 warehouseDropdown.style.zIndex = '1';
@@ -454,16 +465,19 @@ const removeExtraSymbols = (value) => {
   return value.replace(warehouseRegex, '').replace('вул', '').replace('буд', '');
 };
 
-deliveryStepWrapper.addEventListener('click', async ({ target }) => {
+document.addEventListener('click', async ({ target }) => {
   const listItem = target.closest('.select-block__list-item');
   const input = target.closest('.select-block__input');
   const itemListDropdown = target.closest('.select-block__dropdown');
   const dropdown = getInputDropdown(input);
 
-  const settlementInput = listItem?.closest('.select-block').querySelector('.select-block__settlement');
-  const warehouseInput = listItem?.closest('.select-block').querySelector('.select-block__warehouse');
+  const settlementInput = listItem?.closest('.select-block')?.querySelector('.select-block__settlement');
+  const warehouseInput = listItem?.closest('.select-block')?.querySelector('.select-block__warehouse');
+  const partPaymentInput = listItem?.closest('.radio_block')?.querySelector('.select-block__part-payment');
   const settlementId = listItem?.dataset.id;
-  
+
+  console.log(listItem);
+
   if (settlementId && settlementInput) {
     const warehouseArray = await getWarehouses(settlementId);
     itemListDropdown.classList.remove('select-block__dropdown--active');
@@ -472,7 +486,7 @@ deliveryStepWrapper.addEventListener('click', async ({ target }) => {
     const preparedList = getListFromArray(warehouseArray);
 
     settlement.value = listItem.innerText;
-    warehouseList.innerHTML = preparedList.length ? preparedList : `<p>Введіть відділення</p>`; 
+    warehouseList.innerHTML = preparedList.length ? preparedList : `<p>Введіть відділення</p>`;
   }
 
   if (warehouseInput) {
@@ -481,12 +495,20 @@ deliveryStepWrapper.addEventListener('click', async ({ target }) => {
     warehouse.value = listItem.innerText;
   }
 
+  console.log(partPaymentInput);
+
+  if (partPaymentInput) {
+    itemListDropdown.classList.remove('select-block__dropdown--active');
+
+    partPayment.value = listItem.innerText;
+  }
+
   if (dropdown) {
     dropdown.classList.toggle('select-block__dropdown--active');
   }
 });
 
-deliveryStepWrapper.addEventListener('input', async ({ target }) => {
+document.addEventListener('input', async ({ target }) => {
   const input = target.closest('.select-block__input');
   const warehouseInput = target.closest('.select-block__warehouse');
   const dropdown = getInputDropdown(input);

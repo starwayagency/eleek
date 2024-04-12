@@ -7727,6 +7727,7 @@ $(".submit_order_btn").on("click", function () {
   // $.each(all_attr,function(index,value){
   //     let current_sum = $(value).find('.option_content_prof_active').attr('data-price-option');
   // })
+  const partPaymentCount = document.querySelector('.select-block__part-payment').value;
   let current_adress;
   if ($(".step_content_delivery").hasClass("only_one_input")) {
     current_adress = $("#order_address").val();
@@ -7742,7 +7743,8 @@ $(".submit_order_btn").on("click", function () {
     email: $("#order_email").val(),
     phone: $("#order_phone").val().replace(/[\(\)\- ]/g, ''),
     delivery_opt: current_adress,
-    payment_opt: current_payment.trim()
+    payment_opt: current_payment.trim(),
+    part_payment_count: partPaymentCount ? partPaymentCount : ''
   };
   fetch(action, {
     method: "POST",
@@ -7863,9 +7865,8 @@ async function getWarehouses(value) {
   }
 }
 const deliveryStepWrapper = document.querySelector('.step_content_delivery');
-const deliveryStepInputs = deliveryStepWrapper.querySelectorAll('input');
 const getInputWrapper = input => {
-  const inputWrapper = input === null || input === void 0 ? void 0 : input.closest('.select-block');
+  const inputWrapper = (input === null || input === void 0 ? void 0 : input.closest('.select-block')) || (input === null || input === void 0 ? void 0 : input.closest('.radio_block'));
   return inputWrapper;
 };
 const getInputDropdown = input => {
@@ -7876,12 +7877,16 @@ const getInputDropdown = input => {
 const getListFromArray = array => {
   return array.map(item => "<li class=\"select-block__list-item\" data-id='".concat(item.id, "'>").concat(item.title, "</li>")).join('');
 };
+let partPaymentNumbersList = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
 const settlement = deliveryStepWrapper.querySelector('.select-block__settlement');
 const warehouse = deliveryStepWrapper.querySelector('.select-block__warehouse');
+const partPayment = document.querySelector('.select-block__part-payment');
 const settlementList = getInputWrapper(settlement).querySelector('.select-block__list');
 const warehouseList = getInputWrapper(warehouse).querySelector('.select-block__list');
+const partPaymentList = getInputWrapper(partPayment).querySelector('.select-block__list');
 const settlementDropdown = getInputDropdown(settlement);
 const warehouseDropdown = getInputDropdown(warehouse);
+partPaymentList.innerHTML = partPaymentNumbersList.map(number => "\n    <li class=\"select-block__list-item\" data-id='".concat(number, "'>").concat(number, "</li>\n  ")).join('');
 settlementDropdown.style.zIndex = '2';
 warehouseDropdown.style.zIndex = '1';
 settlementList.innerHTML = '<p>Введіть населений пункт</p>';
@@ -7890,7 +7895,8 @@ const warehouseRegex = /[\-\(\)\.\,№ ]/g;
 const removeExtraSymbols = value => {
   return value.replace(warehouseRegex, '').replace('вул', '').replace('буд', '');
 };
-deliveryStepWrapper.addEventListener('click', async _ref => {
+document.addEventListener('click', async _ref => {
+  var _listItem$closest, _listItem$closest2, _listItem$closest3;
   let {
     target
   } = _ref;
@@ -7898,9 +7904,11 @@ deliveryStepWrapper.addEventListener('click', async _ref => {
   const input = target.closest('.select-block__input');
   const itemListDropdown = target.closest('.select-block__dropdown');
   const dropdown = getInputDropdown(input);
-  const settlementInput = listItem === null || listItem === void 0 ? void 0 : listItem.closest('.select-block').querySelector('.select-block__settlement');
-  const warehouseInput = listItem === null || listItem === void 0 ? void 0 : listItem.closest('.select-block').querySelector('.select-block__warehouse');
+  const settlementInput = listItem === null || listItem === void 0 || (_listItem$closest = listItem.closest('.select-block')) === null || _listItem$closest === void 0 ? void 0 : _listItem$closest.querySelector('.select-block__settlement');
+  const warehouseInput = listItem === null || listItem === void 0 || (_listItem$closest2 = listItem.closest('.select-block')) === null || _listItem$closest2 === void 0 ? void 0 : _listItem$closest2.querySelector('.select-block__warehouse');
+  const partPaymentInput = listItem === null || listItem === void 0 || (_listItem$closest3 = listItem.closest('.radio_block')) === null || _listItem$closest3 === void 0 ? void 0 : _listItem$closest3.querySelector('.select-block__part-payment');
   const settlementId = listItem === null || listItem === void 0 ? void 0 : listItem.dataset.id;
+  console.log(listItem);
   if (settlementId && settlementInput) {
     const warehouseArray = await getWarehouses(settlementId);
     itemListDropdown.classList.remove('select-block__dropdown--active');
@@ -7913,11 +7921,16 @@ deliveryStepWrapper.addEventListener('click', async _ref => {
     itemListDropdown.classList.remove('select-block__dropdown--active');
     warehouse.value = listItem.innerText;
   }
+  console.log(partPaymentInput);
+  if (partPaymentInput) {
+    itemListDropdown.classList.remove('select-block__dropdown--active');
+    partPayment.value = listItem.innerText;
+  }
   if (dropdown) {
     dropdown.classList.toggle('select-block__dropdown--active');
   }
 });
-deliveryStepWrapper.addEventListener('input', async _ref2 => {
+document.addEventListener('input', async _ref2 => {
   let {
     target
   } = _ref2;
