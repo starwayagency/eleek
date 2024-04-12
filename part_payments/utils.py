@@ -12,20 +12,22 @@ from datetime import datetime
 from .signature import generate_signature
 from .models import PrivatBankPaymentSettings
 from django.http import HttpResponseBadRequest
+from .models import PrivateBankPartPayments
 
 
 DOMAIN = os.getenv('DOMAIN')
 responseUrl = str(f"{DOMAIN}/payment/installments/callback/")
-# responseUrl = "https://82fc0994666c4e4587af19c959c80e46.api.mockbin.io/"
+# responseUrl = "https://34dd14c627024ffba4f50631d3f5af03.api.mockbin.io/"
 redirectUrl = str(f"{DOMAIN}/payment/installments/redirect/")
 
 
 def get_order_context(request):
 	cart  = get_cart(request)
-	# order = Order.objects.get(
-	# 	cart=cart,
-	# 	ordered=False,
-	# )
+	order = Order.objects.get(
+		cart=cart,
+		ordered=False,
+	)
+	print(order)
 	  
 	amount = 0 
 	products = []
@@ -41,9 +43,7 @@ def get_order_context(request):
 		}
 		products.append(product_data)
 		 
-	# order_id = str(order.id)
-	order_id = "axlcnkRT" 
-	order_id += str(datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+	order_id = str(order.id)
 	print(amount)
 	print(products)
 	return amount, products, order_id 
@@ -62,8 +62,8 @@ def create_payment(request, partsCount):
 		return HttpResponseBadRequest("Сума товарів перевищує максимально допустиму")
 	
 	products = order_data[1]
-	# order_id = order_data[2]
-	order_id = generate_random_string(10)
+	order_id_ordinary = order_data[2]
+	order_id = f"ORDER-{order_id_ordinary}.{generate_random_string(15)}"
 	merchantType = str("PP")
 
 	signature = generate_signature(order_id, products, amount, partsCount, merchantType, responseUrl, redirectUrl)
@@ -108,3 +108,13 @@ def create_payment(request, partsCount):
 	else:
 		print(response.text)
 		return None
+
+
+def create_payment_record(order, payment_state, message):
+	private_bank_payment = PrivateBankPartPayments.objects.create(
+        order=order,
+        payment_amount=order.total_price, 
+        payment_state=payment_state,
+        message=message
+    )
+	print(f"Payment record for {order.id} created")

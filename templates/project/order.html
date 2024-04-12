@@ -337,8 +337,7 @@ item_section__wrapper
                     </div>
                     <div class="basket_summ main__title main__title_5">
                       <!-- {{cart_item.item.price|floatformat:"1"}} {{cart_item.item.currency}} -->
-                      {% get_cart_item_price cart_item current_currency "total_price_with_discount_with_attributes" as
-                      admin_total_price_with_discount_with_attributes %}
+                      {% get_cart_item_price cart_item current_currency "total_price_with_discount_with_attributes" as admin_total_price_with_discount_with_attributes %}
                       {{admin_total_price_with_discount_with_attributes|floatformat:1}} {{current_currency.code}}
 
                     </div>

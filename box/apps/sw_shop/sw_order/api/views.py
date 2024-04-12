@@ -18,61 +18,67 @@ from .serializers import *
 import json 
 
 class OrderViewSet(ModelViewSet):
-  serializer_class = OrderSerializer 
-  queryset = Order.objects.all()
+    serializer_class = OrderSerializer 
+    queryset = Order.objects.all()
 
-  def get_queryset(self):
-    if self.request.user.is_anonymous:
-      return Order.objects.none()
-    queryset = Order.objects.filter(user=self.request.user)
-    return queryset
+    def get_queryset(self):
+        if self.request.user.is_anonymous:
+            return Order.objects.none()
+        queryset = Order.objects.filter(user=self.request.user)
+        return queryset
 
 
 @csrf_exempt
 @api_view(['GET','POST'])
 def order_items(request):
-  query        = request.POST or request.GET
-  if not query and request.body:
-    query = request.body.decode('utf-8')
-    query = json.loads(query)
-  print("query!!!")
-  print(query)
-  # print()
-  name         = query.get('name', "---")
-  email        = query.get('email', "---")
-  phone        = query.get('phone', "---")
-  address      = query.get('address', "---")
-  comments     = query.get('comments', "---")
-  payment_opt  = query.get('payment_opt', "---")
-  delivery_opt = query.get('delivery_opt', "---")
+    query = request.POST or request.GET
+    if not query and request.body:
+        query = request.body.decode('utf-8')
+        query = json.loads(query)
+        print("query!!!")
+        print(query)
+        name         = query.get('name', "---")
+        email        = query.get('email', "---")
+        phone        = query.get('phone', "---")
+        address      = query.get('address', "---")
+        comments     = query.get('comments', "---")
+        payment_opt  = query.get('payment_opt', "---")
+        delivery_opt = query.get('delivery_opt', "---")
+        part_payment_count = query.get('part_payment_count')
 
-  order        = Order.objects.create(
-    name         = name,
-    email        = email,
-    phone        = phone,
-    address      = address,
-    comments     = comments,
-    payment_opt  = payment_opt,
-    delivery_opt = delivery_opt,
-  )
-  cart        = get_cart(request)
-  cart.order  = order
-  cart.save()
-  if payment_opt == 'liqpay':
-    order.payment_opt = _("З передоплатою")
-    order.save()
-    url = reverse('payment')
-    return JsonResponse({"url":url})
-  elif payment_opt == 'installments':
-    order.payment_opt = _("З передоплатою")
-    order.save()
-    url = reverse('payment_installments')
-    return JsonResponse({"url":url})
-  else:
-    order.payment_opt = _("Без предоплати")
-    order.make_order(request)
-    url = reverse('thank_you')
-    return JsonResponse({"url":url})
+        order        = Order.objects.create(
+            name         = name,
+            email        = email,
+            phone        = phone,
+            address      = address,
+            comments     = comments,
+            payment_opt  = payment_opt,
+            delivery_opt = delivery_opt,
+        )
+        cart        = get_cart(request)
+        cart.order  = order
+        cart.save()
+
+        if payment_opt == 'liqpay':
+            order.payment_opt = _("З передоплатою")
+            order.save()
+            url = reverse('payment')
+            return JsonResponse({"url":url})
+        elif payment_opt == 'installments':
+            if part_payment_count is not None:
+                order.payment_opt = _("З передоплатою")
+                order.save()
+                url = reverse('payment_installments')
+                url += f"?count={part_payment_count}" 
+                return JsonResponse({"url":url})
+            else:
+                return JsonResponse({"error": _("part_payment_count is None")}, 
+                                    status=400)
+        else:
+            order.payment_opt = _("Без предоплати")
+            order.make_order(request)
+            url = reverse('thank_you')
+            return JsonResponse({"url":url})
   
 
 
@@ -87,31 +93,31 @@ def order_request(request):
     comments   = query.get('comments', '---')
     attributes = query.get('attributes')
     if attributes:
-      attributes = json.loads(attributes)
+        attributes = json.loads(attributes)
     item_id  = query.get('product_id')
     if not item_id:
-      item_id = query.get('item_id')
+        item_id = query.get('item_id')
     payment  = _('Покупка в 1 клік')
     delivery = _('Покупка в 1 клік')
     print(query)
     cart = get_cart(request)
     if attributes:
-      cart.add_item(item_id=item_id, quantity=1, attributes=attributes)
+        cart.add_item(item_id=item_id, quantity=1, attributes=attributes)
     else:
-      cart.add_item(item_id=item_id, quantity=1)
+        cart.add_item(item_id=item_id, quantity=1)
     order = Order.objects.create(
-      name    = name,    
-      email   = email,   
-      phone   = phone,   
-      address = address,
-      delivery_opt = delivery,
-      payment_opt = payment,
-      cart = cart,
+        name    = name,    
+        email   = email,   
+        phone   = phone,   
+        address = address,
+        delivery_opt = delivery,
+        payment_opt = payment,
+        cart = cart,
     )
     order.make_order(request)
     return JsonResponse({
-      'status':'OK',
-      'url':reverse('thank_you'),
+        'status':'OK',
+        'url':reverse('thank_you'),
     })
 
 from ..models import OrderRecipientEmail
