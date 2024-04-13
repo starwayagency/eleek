@@ -1,11 +1,11 @@
 import datetime
 import requests
 
-from decouple import config
+
 
 
 url = "https://api.novaposhta.ua/v2.0/json/"
-api_key = config("NP_API_KEY", None)
+
 
 
 def get_full_response(model: str, method: str, properties: dict = None):

@@ -6,7 +6,7 @@ import requests
 import random
 import string
 
-from decouple import config
+from core.settings import config
 
 from box.apps.sw_shop.sw_cart.utils import get_cart
 from box.apps.sw_shop.sw_order.models import Order 

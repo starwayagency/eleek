@@ -5,8 +5,7 @@ INSTALLED_APPS +=[
     'nova_poshta',
     'part_payments',
 ]
-from decouple import AutoConfig
-config = AutoConfig(search_path=str(BASE_DIR))
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -64,9 +63,11 @@ LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'login'
 
 
+from decouple import AutoConfig
+config = AutoConfig(search_path=str(BASE_DIR))
 
-
-
+SECRET_KEY         = config('SECRET_KEY') # = ast.literal_eval(config('DEBUG') or "True")  #python manage.py runserver --insecure # for 404 page
+DEBUG              = config('DEBUG', cast=bool) # = ast.literal_eval(config('DEBUG') or "True")  #python manage.py runserver --insecure # for 404 page
 # EMAIL_BACKEND          = 'box.core.sw_global_config.backends.ConfiguredEmailBackend'
 # EMAIL_USE_TLS          = True
 # EMAIL_USE_SSL          = False

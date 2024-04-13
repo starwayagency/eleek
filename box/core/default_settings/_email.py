@@ -1,4 +1,4 @@
-from decouple import config 
+
 import re 
 IGNORABLE_404_URLS = [
     re.compile(r'\.(php|cgi)$'),
