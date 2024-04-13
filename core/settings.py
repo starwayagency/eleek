@@ -5,12 +5,10 @@ INSTALLED_APPS +=[
     'nova_poshta',
     'part_payments',
 ]
-from decouple import config, AutoConfig
-# config.search_path = AutoConfig(search_path=BASE_DIR)
-# print(config.search_path)
+from decouple import AutoConfig
+config = AutoConfig(search_path=str(BASE_DIR))
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-config.LANGUAGE_CODE = str(BASE_DIR / ".env")
 
 
 
