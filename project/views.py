@@ -2,7 +2,7 @@ import requests
 
 from urllib.parse import urljoin
 
-from core.settings import config
+from decouple import config
 from django.http import HttpResponseRedirect
 from .api.serializers import UserGoogleSerializer
 from django.contrib.auth import get_user_model

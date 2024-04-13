@@ -1,4 +1,5 @@
 from box.core.default_settings import * 
+from decouple import config
 
 INSTALLED_APPS +=[
     'project',
@@ -61,10 +62,6 @@ LIQPAY_SANDBOX_MODE = True
 
 LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'login'
-
-
-from decouple import AutoConfig
-config = AutoConfig(search_path=str(BASE_DIR))
 
 SECRET_KEY         = config('SECRET_KEY') # = ast.literal_eval(config('DEBUG') or "True")  #python manage.py runserver --insecure # for 404 page
 DEBUG              = config('DEBUG', cast=bool) # = ast.literal_eval(config('DEBUG') or "True")  #python manage.py runserver --insecure # for 404 page
