@@ -19,7 +19,7 @@ from django.http import HttpResponseBadRequest
 from .models import PrivateBankPartPayments
 
 
-DOMAIN = config('DOMAIN')
+DOMAIN = config('DOMAIN', default='f')
 responseUrl = str(urljoin(DOMAIN, "/payment/installments/callback/"))
 # responseUrl = "https://34dd14c627024ffba4f50631d3f5af03.api.mockbin.io/"
 redirectUrl = str(urljoin(DOMAIN, "/payment/installments/redirect/"))
