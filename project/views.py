@@ -9,7 +9,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth import login
 
 
-DOMAIN = config('DOMAIN', default="fsd")
+DOMAIN = config('DOMAIN')
 GOOGLE_CLIENT_ID = config('GOOGLE_CLIENT_ID')
 GOOGLE_CLIENT_SECRET = config('GOOGLE_CLIENT_SECRET')
 
