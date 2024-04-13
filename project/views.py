@@ -1,26 +1,25 @@
 import requests
-import os
 
-from django.http import HttpResponseRedirect, JsonResponse
+from urllib.parse import urljoin
+
+from decouple import config
+from django.http import HttpResponseRedirect
 from .api.serializers import UserGoogleSerializer
 from django.contrib.auth import get_user_model
-from django.contrib.auth import authenticate, login
-from rest_framework.response import Response
-from rest_framework import status
+from django.contrib.auth import login
 
 
-DOMAIN = os.getenv('DOMAIN')
-GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID')
-GOOGLE_CLIENT_SECRET = os.getenv('GOOGLE_CLIENT_SECRET')
-User = get_user_model()
+DOMAIN = config('DOMAIN')
+GOOGLE_CLIENT_ID = config('GOOGLE_CLIENT_ID')
+GOOGLE_CLIENT_SECRET = config('GOOGLE_CLIENT_SECRET')
 
 def google_authorization(request):
-    client_id = f"{GOOGLE_CLIENT_ID}" 
+    client_id = GOOGLE_CLIENT_ID
     scope = ' '.join([
         'https://www.googleapis.com/auth/userinfo.email',
         'https://www.googleapis.com/auth/userinfo.profile'
     ])
-    redirect_uri = f"{DOMAIN}/google_callback/"
+    redirect_uri = str(urljoin(DOMAIN, '/google_callback/'))
 
     authorization_params = {
         'client_id': client_id,
@@ -41,7 +40,7 @@ def google_authorization(request):
 def get_google_access_token(code: str) -> str:
     token_url = 'https://oauth2.googleapis.com/token'
 
-    redirect_uri =  f"{DOMAIN}/google_callback/"
+    redirect_uri = str(urljoin(DOMAIN, '/google_callback/'))
     data = {
         'code': code,
         'client_id': f"{GOOGLE_CLIENT_ID}",
@@ -89,6 +88,7 @@ def google_callback(request):
     email = user_data.get('email')
 
     # Перевірка чи існує такий юзер
+    User = get_user_model()
     if User.objects.filter(email=email).exists():
         user = User.objects.get(email=email)
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')

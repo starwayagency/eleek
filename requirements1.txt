@@ -27,6 +27,7 @@ django-autocomplete-light
 django-filebrowser-no-grappelli
 selenium
 beautifulsoup4
+python-decouple
 XlsxWriter
 jsmin
 xmltodict

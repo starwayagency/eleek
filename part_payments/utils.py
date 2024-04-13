@@ -1,8 +1,12 @@
 import os
 import json
+from urllib.parse import urljoin
+
 import requests
 import random
 import string
+
+from decouple import config
 
 from box.apps.sw_shop.sw_cart.utils import get_cart
 from box.apps.sw_shop.sw_order.models import Order 
@@ -15,10 +19,10 @@ from django.http import HttpResponseBadRequest
 from .models import PrivateBankPartPayments
 
 
-DOMAIN = os.getenv('DOMAIN')
-responseUrl = str(f"{DOMAIN}/payment/installments/callback/")
+DOMAIN = config('DOMAIN')
+responseUrl = str(urljoin(DOMAIN, "/payment/installments/callback/"))
 # responseUrl = "https://34dd14c627024ffba4f50631d3f5af03.api.mockbin.io/"
-redirectUrl = str(f"{DOMAIN}/payment/installments/redirect/")
+redirectUrl = str(urljoin(DOMAIN, "/payment/installments/redirect/"))
 
 
 def get_order_context(request):
