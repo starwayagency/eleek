@@ -44,24 +44,12 @@ PROJECT_CORE_URLS = [
 ]
 ROOT_URLCONF     = 'box.core.urls'
 WSGI_APPLICATION = 'core.wsgi.application'
-SQLITE = {
-    'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-}
-POSTGRES = {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': 'eleek',
-    'USER' : 'jurgeon',
-    'PASSWORD' : '69018',
-    'HOST' : '127.0.0.1',
-    'PORT' : '5432',
-}
-if config('DB') == 'postgres':
-    default = POSTGRES
-else:
-    default = SQLITE
+
 DATABASES = {
-    'default': default,
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
 
 
