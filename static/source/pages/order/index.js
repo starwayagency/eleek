@@ -7877,7 +7877,7 @@ const getInputDropdown = input => {
 const getListFromArray = array => {
   return array.map(item => "<li class=\"select-block__list-item\" data-id='".concat(item.id, "'>").concat(item.title, "</li>")).join('');
 };
-let partPaymentNumbersList = [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+let partPaymentNumbersList = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
 const settlement = deliveryStepWrapper.querySelector('.select-block__settlement');
 const warehouse = deliveryStepWrapper.querySelector('.select-block__warehouse');
 const partPayment = document.querySelector('.select-block__part-payment');
