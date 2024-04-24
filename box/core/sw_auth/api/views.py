@@ -25,7 +25,7 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         if self.request.user.is_anonymous:
             return get_user_model().objects.none()
-        queryset = get_user_model().objects.filter(user=self.request.user)
+        queryset = get_user_model().objects.filter(id=self.request.user.id)
         return queryset
 
     def update(self, request, *args, **kwargs):
@@ -61,38 +61,17 @@ class UserViewSet(viewsets.ModelViewSet):
         return result
 
     def create(self, request, *args, **kwargs):
-        # https://stackoverflow.com/questions/16857450/how-to-register-users-in-django-rest-framework
-        # TODO: розібратись як зробити нормально, так шоб видавались поля які мають бути заповнені, і з валідацією, **validated_data
-
-        # serializer = self.get_serializer(data=request.data)
-        # serializer.is_valid(raise_exception=True)
-        # self.perform_create(serializer)
-        # headers = self.get_success_headers(serializer.data)
-        # return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
         query       = request.data
-        print(query)
-        # TODO: різні обовязкові поля для різних проектів. 
-        # настройки. auth_settings.IS_EMAIL_REQUIRED, IS_USERNAME_REQUIRED
-
-        # username    = query['username']
-        # email       = query.get('email','')
-        # email2      = query.get('email2','')
         email       = query['email']
         username    = query.get('username') or email.split('@')[0]
         password    = query['password']
         password2   = query['password2']
-        # old_password= query.get('old_password')
         first_name  = query.get('first_name','')
         last_name   = query.get('last_name','')
         phone_number= query.get('phone_number', '')
         email_qs    = get_user_model().objects.filter(email=email)
         username_qs = get_user_model().objects.filter(username=username)
-        
-        # if email and email2 and email != email2:
-        #     return JsonResponse({
-        #         'status':'BAD',
-        #         'message':_('Email must match'),
-        #     })
+
         if password and password2 and password != password2:
             return JsonResponse({
                 'status':'BAD',
@@ -132,20 +111,12 @@ class UserViewSet(viewsets.ModelViewSet):
             last_name    = last_name, 
             phone_number = phone_number,
         )
-        # if old_password and not user.check_password(old_password):
-        #     return JsonResponse({
-        #         'error_fields':{
-        #             'old_password':_('Неправильний старий пароль'),
-        #         },
-        #         'status':'BAD',
-        #     })
+
         user.set_password(password)
         user.is_active = True 
-        # user.is_active = False 
-        # TODO: custom email confirmation 
-        user.save() 
+        user.save()
         new_user = authenticate(username=user.username, password=password)
-        login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+        login(request, new_user, backend='django.contrib.auth.backends.ModelBackend')
         return JsonResponse({
             'status':'OK',
             'url':reverse(auth_settings.REGISTER_REDIRECT_URL),

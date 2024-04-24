@@ -25,20 +25,18 @@ class PermissionSerializer(serializers.ModelSerializer):
 
 
 class UserSerializer(serializers.ModelSerializer):
-    # TODO: permissions
-    # TODO: group
-    is_authenticated = serializers.SerializerMethodField()
-
-    def get_is_authenticated(self, obj):
-        return obj.is_authenticated 
-    
 
     class Meta:
         model = get_user_model()
-        exclude = [
+        fields = [
             'password',
-            'date_joined',
-            'last_login',
+            'phone_number',
+            'birth_date',
+            'gender',
+            'first_name',
+            'last_name',
+            'email',
+            'username',
         ]
 
 
