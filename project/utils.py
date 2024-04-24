@@ -29,3 +29,4 @@ def handle_slug(instance, slug_field, translate_field=None, *args, **kwargs):
 		else:
 			slug_field_value = ""
 		setattr(instance, slug_field, generate_unique_slug(instance, slug_field, slug_field_value))
+

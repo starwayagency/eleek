@@ -17,6 +17,7 @@ from .signature import generate_signature
 from .models import PrivatBankPaymentSettings
 from django.http import HttpResponseBadRequest
 from .models import PrivateBankPartPayments
+from .models import ItemPartPayment
 
 
 DOMAIN = config('DOMAIN')
@@ -122,3 +123,42 @@ def create_payment_record(order, payment_state, message):
         message=message
     )
 	print(f"Payment record for {order.id} created")
+
+
+def get_part_payment_for_cart(cart):
+    min_payments_count = None
+    max_payments_count = None
+    all_available_for_installment = True
+
+    for cart_item in CartItem.objects.filter(cart=cart):
+        try:
+            installment_option = ItemPartPayment.objects.get(item=cart_item.item)
+            if min_payments_count is None or installment_option.min_payments_count > min_payments_count:
+                min_payments_count = installment_option.min_payments_count
+            if max_payments_count is None or installment_option.max_payments_count < max_payments_count:
+                max_payments_count = installment_option.max_payments_count
+            if not installment_option.available:
+                all_available_for_installment = False
+                min_payments_count = None
+                max_payments_count = None
+        except ItemPartPayment.DoesNotExist:
+            all_available_for_installment = False
+            min_payments_count = None
+            max_payments_count = None
+    
+    return min_payments_count, max_payments_count, all_available_for_installment
+
+
+def get_part_payment_context(request):
+    cart = get_cart(request)
+    
+    amount = 0
+    products = []
+
+    for cart_item in CartItem.objects.filter(cart=cart):
+        amount += cart_item.total_price * cart_item.quantity
+    
+    if int(amount) < 500000:
+        return get_part_payment_for_cart(cart)
+    else:
+        return None, None, None

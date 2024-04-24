@@ -246,12 +246,16 @@ item_section__wrapper
                 <!-- {% trans 'Оплата карткою' %} -->
               </div>
             </div>
-
+            
+            {% if all_available_for_installment %}
+            {{min_payments_count}}
+            {{max_payments_count}}
             <div data-radio='9' class="radio_block">
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>
               </div>
-              {% render 'text126' as text126 %}
+              {% render 'text126' as text126 %}              
+
               <div data-payment="installments"
                 class="db_content radio_title standart_title standart_title_6 color_black"
                 data-admin_url="{{text_installments.get_admin_url}}">
@@ -269,6 +273,7 @@ item_section__wrapper
               </div>
 
             </div>
+            {% endif %}
 
             <!-- <div data-radio='9' class="radio_block">
               <div class="radio_tchk">

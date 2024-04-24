@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import PrivatBankPaymentSettings
 from .models import PrivateBankPartPayments
+from .models import ItemPartPayment
 
 # Register your models here.
 class PrivatBankPaymentSettingsAdmin(admin.ModelAdmin):
@@ -29,3 +30,4 @@ class PrivateBankPartPaymentsAdmin(admin.ModelAdmin):
 
 admin.site.register(PrivatBankPaymentSettings, PrivatBankPaymentSettingsAdmin)
 admin.site.register(PrivateBankPartPayments, PrivateBankPartPaymentsAdmin)
+admin.site.register(ItemPartPayment)

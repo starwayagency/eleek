@@ -8,6 +8,7 @@ from box.core.sw_content.models import Page
 from box.apps.sw_shop.sw_cart.decorators import cart_exists
 from box.apps.sw_shop.sw_order.models import Order
 from box.apps.sw_shop.sw_order.utils import get_order_liqpay_context
+from part_payments.utils import get_part_payment_context
 
 from .models import * 
 
@@ -103,7 +104,16 @@ def delivery(request):
 @cart_exists
 def order(request):
     page = Page.objects.get(code='order')
-    return render(request, 'project/order.html', locals())
+    min_payments_count, max_payments_count, all_available_for_installment = get_part_payment_context(request)
+
+    context = {
+        'min_payments_count': min_payments_count,
+        'max_payments_count': max_payments_count,
+        'all_available_for_installment': all_available_for_installment,
+        **locals(),  
+    }
+
+    return render(request, 'project/order.html', context)
 
 
 def search(request):
