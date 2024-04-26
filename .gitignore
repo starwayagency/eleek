@@ -26,3 +26,4 @@ node_modules
 .vscode
 *.sqlite3
 MyVenv
+MyVenv2

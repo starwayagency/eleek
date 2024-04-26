@@ -7,9 +7,13 @@ from django.views.decorators.csrf import csrf_exempt
 from .forms import NumberPaymentsForm
 from .utils import create_payment, create_payment_record
 from django.http import HttpResponseBadRequest
-from box.apps.sw_shop.sw_order.models import Order
+from box.apps.sw_shop.sw_order.models import Order, OrderRecipientEmail
 from box.apps.sw_shop.sw_cart.utils import get_cart
 from .models import PrivateBankPartPayments
+from box.core.mail import box_send_mail 
+from box.core.helpers import get_admin_url
+from django.contrib.sites.models import Site
+from box.apps.sw_shop.sw_cart.models import Cart, CartItem
 
 
 def payment_redirect(request):
@@ -33,9 +37,27 @@ def payment_callback(request):
                 order.paid = True
                 order.ordered = True  
                 order.save()
-
                 create_payment_record(order, data["paymentState"], data["message"])
                 print(f"Order {order_id} is paid")
+         
+                cart = order.cart
+                site = Site.objects.get_current().domain
+                order_admin_url = site + get_admin_url(order)
+                cart_items = CartItem.objects.filter(cart=cart)
+                context = {
+                  'cart_items':cart_items,
+                  'order_admin_url':order_admin_url,
+                }
+
+                box_send_mail(
+                  subject      = f'Отримано замовлення товарів # {order.id}',
+                  template     = 'sw_order/mail.html', 
+                  email_config = OrderRecipientEmail, 
+                  model        = order, 
+                  fail_silently= True,
+                  # fail_silently= False,
+                  context      = context,
+                )  
             else:
                 pass
             

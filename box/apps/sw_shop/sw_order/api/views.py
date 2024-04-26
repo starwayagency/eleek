@@ -8,7 +8,7 @@ from box.apps.sw_shop.sw_order.models import ( Order, ItemRequest )
 from box.apps.sw_shop.sw_catalog.models import Item 
 from box.apps.sw_shop.sw_cart.utils import get_cart
 from box.apps.sw_shop.sw_cart.models import Cart, CartItem
-from box.core.mail import box_send_mail 
+from box.core.mail import box_send_mail
 from box.core.sw_global_config.models import *
 
 from rest_framework.viewsets import ModelViewSet

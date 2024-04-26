@@ -34,6 +34,16 @@ def get_order_context(request):
 	)
 	print(order)
 	  
+	order.handle_user(request)
+	order.handle_amount(request)
+	order.total_price = cart.get_price(price_type='total_price')
+	# self.total_price = total_price 
+	# order.ordered = True
+	order.save()
+	cart.order = order 
+	cart.ordered = True
+	cart.save()
+
 	amount = 0 
 	products = []
 	  
@@ -51,7 +61,7 @@ def get_order_context(request):
 	order_id = str(order.id)
 	print(amount)
 	print(products)
-	return amount, products, order_id 
+	return amount, products, order_id  
 
 
 def generate_random_string(length):
@@ -70,6 +80,7 @@ def create_payment(request, partsCount):
 	order_id_ordinary = order_data[2]
 	order_id = f"ORDER-{order_id_ordinary}.{generate_random_string(15)}"
 	merchantType = str("PP")
+	print(order_id)
 
 	signature = generate_signature(order_id, products, amount, partsCount, merchantType, responseUrl, redirectUrl)
 	print(signature)
