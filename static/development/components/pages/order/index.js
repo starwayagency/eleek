@@ -436,22 +436,22 @@ const getListFromArray = (array) => {
   )).join('');
 };
 
-let partPaymentNumbersList = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
+// let partPaymentNumbersList = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ,13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24];
 
 const settlement = deliveryStepWrapper.querySelector('.select-block__settlement');
 const warehouse = deliveryStepWrapper.querySelector('.select-block__warehouse');
 const partPayment = document.querySelector('.select-block__part-payment');
 const settlementList = getInputWrapper(settlement).querySelector('.select-block__list');
 const warehouseList = getInputWrapper(warehouse).querySelector('.select-block__list');
-const partPaymentList = getInputWrapper(partPayment).querySelector('.select-block__list');
+// const partPaymentList = getInputWrapper(partPayment).querySelector('.select-block__list');
 const settlementDropdown = getInputDropdown(settlement);
 const warehouseDropdown = getInputDropdown(warehouse);
 
-partPaymentList.innerHTML = partPaymentNumbersList.map(number => (
-  `
-    <li class="select-block__list-item" data-id='${number}'>${number}</li>
-  `
-)).join('');
+// partPaymentList.innerHTML = partPaymentNumbersList.map(number => (
+//   `
+//     <li class="select-block__list-item" data-id='${number}'>${number}</li>
+//   `
+// )).join('');
 
 settlementDropdown.style.zIndex = '2';
 warehouseDropdown.style.zIndex = '1';
