@@ -248,8 +248,6 @@ item_section__wrapper
             </div>
             
             {% if all_available_for_installment %}
-            {{min_payments_count}}
-            {{max_payments_count}}
             <div data-radio='9' class="radio_block">
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>
@@ -266,6 +264,9 @@ item_section__wrapper
 
                 <div class="select-block__dropdown">
                   <ul class="select-block__list">
+                    {% for i in payments_count_list %}
+                    <li class="select-block__list-item" data-id='{{i}}'>{{i}}</li>
+                    {% endfor %}
                   </ul>
                 </div>
 

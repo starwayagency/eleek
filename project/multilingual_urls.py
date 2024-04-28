@@ -106,10 +106,16 @@ def order(request):
     page = Page.objects.get(code='order')
     min_payments_count, max_payments_count, all_available_for_installment = get_part_payment_context(request)
 
+    try:
+        payments_count_list = list(range(min_payments_count, max_payments_count + 1))
+    except TypeError:
+        payments_count_list = None
+
     context = {
         'min_payments_count': min_payments_count,
         'max_payments_count': max_payments_count,
         'all_available_for_installment': all_available_for_installment,
+        'payments_count_list' : payments_count_list,
         **locals(),  
     }
 
