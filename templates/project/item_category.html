@@ -155,14 +155,18 @@ item_section__wrapper
                     {{item_price|floatformat:1}} {{current_currency.code}}
                   </div>
 
-                  <div class="prod_card-partial-payment">
-                    <div class="prod_card-partial-payment-img-wrapper">
-                      <img class="prod_card-partial-payment-img" src="/static/source/img/items/partial-payment-icon.svg"
-                        alt="Partial payment icon">
-                    </div>
+                  {% for item_part_payment in item_part_payments %}
+                      {% if item_part_payment.item == item %}
+                      <div class="prod_card-partial-payment">
+                        <div class="prod_card-partial-payment-img-wrapper">
+                          <img class="prod_card-partial-payment-img" src="/static/source/img/items/partial-payment-icon.svg"
+                            alt="Partial payment icon">
+                        </div>
 
-                    <span class="prod_card-partial-payment-count">8</span>
-                  </div>
+                        <span class="prod_card-partial-payment-count">{{item_part_payment.max_payments_count}}</span>
+                      </div>
+                      {% endif %}
+                  {% endfor %}
                 </div>
 
                 <a href="{{item.get_absolute_url}}" class="prod_card-btn">
