@@ -225,6 +225,12 @@ class Item(AbstractPage, GoogleFieldsMixin, ItemPricesMixin):
         if self.discount_type == 'p' and not (self.discount < 100):
             raise ValidationError('Знижка мусить бути мешною за 100%')
 
+    def clean_link(self):
+        super().clean()
+        if self.three_dimensional_link:
+            if not self.three_dimensional_link.startswith('http://') and not self.three_dimensional_link.startswith('https://'):
+                self.three_dimensional_link = 'https://' + self.three_dimensional_link
+
     def get_site_image_url(self):
         if self.image:
             site = Site.objects.first()
@@ -278,6 +284,7 @@ class Item(AbstractPage, GoogleFieldsMixin, ItemPricesMixin):
     
     def save(self, *args, **kwargs):
         self.handle_in_stock(*args, **kwargs)
+        self.clean_link()
         super().save(*args, **kwargs)
 
 
