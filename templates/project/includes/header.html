@@ -264,6 +264,7 @@
           </a>
         </div>
         <div class="scroll_bottom__block">
+          {% if request.user.is_authenticated %}
           <div class="preferens_title__block">
             <span class="pref_num main__title main__title_5 color_black">
               02
@@ -273,22 +274,48 @@
             {% render 'text4' as text4 %}
             <span class="db_content pref_text main__title main__title_5 color_black"
               data-admin_url="{{text4.get_admin_url}}">
-              {{text4.text}}
+              Профіль
               <!-- {% trans 'Конструктор Велосипедів' %} -->
+            </span>
+          </div>
+          <!-- Відображати вміст якщо користувач автентифікований -->
+          {% render 'header_construct' as header_construct %}
+          <div class="scroll_title main__title main__title_3 color_black db_content"
+            data-admin_url="{{header_construct.get_admin_url}}">
+            Перейти в свій профіль на сайті!
+          </div>
+          {% render 'text5' as text5 %}
+          <a href="{% url 'profile' %}" class="db_content btn_standart btn_standart_transparent"
+            data-admin_url="{{text5.get_admin_url}}">
+            {{text5.text}}
+            <!-- {% trans 'Почати' %} -->
+          </a>
+          {% else %}
+          <!-- Відображати вміст, якщо користувач не автентифікований -->
+          <div class="preferens_title__block">
+            <span class="pref_num main__title main__title_5 color_black">
+              02
+            </span>
+            <span class="pref_line">
+            </span>
+            Реєстраціія
+            <span class="db_content pref_text main__title main__title_5 color_black"
+              data-admin_url="{{text4.get_admin_url}}">
             </span>
           </div>
           {% render 'header_construct' as header_construct %}
           <div class="scroll_title main__title main__title_3 color_black db_content"
             data-admin_url="{{header_construct.get_admin_url}}">
-            {{header_construct.text}}
-            <!-- Склади свій власний електро-велосипед онлайн! -->
+            Зареєструватися на нашому сайті
           </div>
           {% render 'text5' as text5 %}
-          <a href="{% url 'constructor' %}" class="db_content btn_standart btn_standart_transparent"
+          <a href="{% url 'register' %}" class="db_content btn_standart btn_standart_transparent"
             data-admin_url="{{text5.get_admin_url}}">
             {{text5.text}}
             <!-- {% trans 'Почати' %} -->
           </a>
+
+          {% endif %}
         </div>
       </div>
       <a href="{% url 'test_drive' %}" class="mobile_bottom__block mobile_bottom__block_1">
@@ -300,7 +327,7 @@
         </div>
         <img src="/static/source/img/index/combined-arrow.svg" alt="">
       </a>
-      <a href="{% url 'constructor' %}" class="mobile_bottom__block mobile_bottom__block_2">
+      <a href="{% url 'profile' %}" class="mobile_bottom__block mobile_bottom__block_2">
         {% render 'text7' as text7 %}
         <div class="db_content mobile_bottom_text color_black main__title main__title_5"
           data-admin_url="{{text7.get_admin_url}}">
