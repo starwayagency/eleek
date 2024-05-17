@@ -108,7 +108,11 @@
                   {{order.created|date:"d.m.Y"}}
                 </div>
                 <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_5">
-                  {{cart_item.item.price}} {{cart_item.item.currency.code}}
+                  {% if current_currency_code == "UAH"%}
+                  {{cart_item.item.converted_price}} {{current_currency_code}}
+                  {% else %}
+                  {{cart_item.item.price}} {{current_currency_code}}
+                  {% endif %}
                 </div>
                 <div class="profile_characteristick standart_title standart_title_4 color_black attr_size_5">
                   {{order.id}}
