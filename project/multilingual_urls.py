@@ -148,6 +148,8 @@ def profile(request):
     # coupons = Coupon.objects.all()
     # coupons = [1,2,3,4,5]
     coupons = Coupon.objects.filter(users__in=[request.user,])
+    current_currency_code = request.session['current_currency_code']
+    current_currency = Currency.objects.get(code=current_currency_code)
     return render(request, 'project/profile.html', locals())
 
 
