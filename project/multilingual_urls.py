@@ -4,6 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from django.db.models import Max, Min 
 
 from box.apps.sw_shop.sw_catalog.models import *
+from box.core.sw_content.models import IndexBannerVideo
 from box.core.sw_content.models import Page 
 from box.apps.sw_shop.sw_cart.decorators import cart_exists
 from box.apps.sw_shop.sw_order.models import Order
@@ -20,6 +21,8 @@ def index(request):
     velo_sliders = VeloSlider.objects.all()
     block_ones = IndexBlockOne.objects.all()
     block_twos = IndexBlockTwo.objects.all()
+    index_banner_video = IndexBannerVideo.objects.first()
+    print(index_banner_video)
     return render(request, 'project/index.html', locals())
 
 

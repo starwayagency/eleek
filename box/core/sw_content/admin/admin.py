@@ -22,9 +22,6 @@ from .abstract_admin import *
 
 
 
-
-
-
 class BaseInline(TranslationStackedInline):
     def has_add_permission(self, request, obj=None):
         return False
@@ -577,3 +574,15 @@ class FaqAdmin(
         'is_active',
     ]
 
+
+class IndexBannerVideoAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        return not IndexBannerVideo.objects.exists()
+    
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return True
+
+admin.site.register(IndexBannerVideo, IndexBannerVideoAdmin)
