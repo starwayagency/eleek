@@ -230,6 +230,9 @@ item_section__wrapper
           <div class="step_content step_content_payment">
 
             {% if cash_available == True %}
+            {% if payment_text.cash_description %}
+              {{payment_text.cash_description}}
+            {% endif %}
             <div data-radio='7' class="radio_block">
               <div class="radio_tchk">
                 <div class="radio_center radio_center_active absolute_center"></div>
@@ -244,6 +247,9 @@ item_section__wrapper
             {% endif %}
             
             {% if liqpay_available == True %}
+            {% if payment_text.liqpay_description %}
+              {{payment_text.liqpay_description}}
+            {% endif %}
             <div data-radio='8' class="radio_block">
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>
@@ -261,6 +267,9 @@ item_section__wrapper
             {% endif %}
             
             {% if all_available_for_installment %}
+            {% if payment_text.installment_description  %}
+              {{payment_text.installment_description }}
+            {% endif %}
             <div data-radio='9' class="radio_block">
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>

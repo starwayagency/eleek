@@ -5,7 +5,7 @@ from django.db.models import Max, Min
 
 from box.apps.sw_shop.sw_catalog.models import *
 from box.core.sw_content.models import IndexBannerVideo
-from box.core.sw_content.models import Page 
+from box.core.sw_content.models import Page, PaymentMethodsText
 from box.apps.sw_shop.sw_cart.decorators import cart_exists
 from box.apps.sw_shop.sw_order.models import Order
 from box.apps.sw_shop.sw_order.utils import get_order_liqpay_context
@@ -121,6 +121,11 @@ def order(request):
 
     liqpay_available, cash_available = get_payment_context(request)
     nova_poshta, pickup_available, eleek_delivery = get_delivery_context(request)
+
+    try:
+        payment_text = PaymentMethodsText.objects.first()
+    except PaymentMethodsText.DoesNotExist:
+        pass
 
     context = {
         'min_payments_count': min_payments_count,

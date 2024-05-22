@@ -279,3 +279,14 @@ class IndexBannerVideo(models.Model):
         verbose_name = 'Банерне відео головної сторінки'
 
 
+class PaymentMethodsText(models.Model):
+    cash_description = models.TextField(verbose_name="Опис оплати готівкою")
+    liqpay_description = models.TextField(verbose_name="Опис оплати LiqPay")
+    installment_description = models.TextField(verbose_name="Опис оплати частинами")
+
+    def __str__(self):
+        return "Описи методів оплати"
+
+    class Meta:
+        verbose_name = 'Описи методів оплати'
+        verbose_name_plural = 'Описи методів оплати'
