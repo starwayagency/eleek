@@ -11,6 +11,7 @@ from box.apps.sw_shop.sw_order.models import Order
 from box.apps.sw_shop.sw_order.utils import get_order_liqpay_context
 from part_payments.utils import get_part_payment_context
 from part_payments.models import ItemPartPayment
+from part_payments.utils import get_payment_context
 
 from .models import * 
 
@@ -117,6 +118,8 @@ def order(request):
         payments_count_list = list(range(min_payments_count, max_payments_count + 1))
     except TypeError:
         payments_count_list = None
+
+    liqpay_available, cash_available = get_payment_context(request)
 
     context = {
         'min_payments_count': min_payments_count,

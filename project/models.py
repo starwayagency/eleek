@@ -325,3 +325,28 @@ class IndexBlockTwo(models.Model):
     class Meta:
         verbose_name = 'Головна - другий блок'
         verbose_name_plural = 'Головна - другий блок'
+
+
+class PaymentSettings(models.Model):
+    item = models.OneToOneField(
+        verbose_name="Товар", 
+        to='sw_catalog.Item',
+        on_delete=models.CASCADE,
+        related_name='payment_option'
+    )
+    liqpay_enabled = models.BooleanField(
+        default=True, 
+        verbose_name="LiqPay Enabled"
+    )
+    cash_enabled = models.BooleanField(
+        default=True, 
+        verbose_name="Cash Payment Enabled"
+    )
+
+    def __str__(self):
+        return f"Payment settings for item {self.item.id}"
+
+    class Meta:
+        verbose_name = 'Налаштування способів оплати для товару'
+        verbose_name_plural = 'Налаштування способів оплат для товарів'
+

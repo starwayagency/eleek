@@ -220,6 +220,8 @@ item_section__wrapper
             </div>
           </div>
           <div class="step_content step_content_payment">
+
+            {% if cash_available == True %}
             <div data-radio='7' class="radio_block">
               <div class="radio_tchk">
                 <div class="radio_center radio_center_active absolute_center"></div>
@@ -231,7 +233,9 @@ item_section__wrapper
                 <!-- {% trans 'Готівка' %} -->
               </div>
             </div>
-
+            {% endif %}
+            
+            {% if liqpay_available == True %}
             <div data-radio='8' class="radio_block">
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>
@@ -246,6 +250,7 @@ item_section__wrapper
                 <!-- {% trans 'Оплата карткою' %} -->
               </div>
             </div>
+            {% endif %}
             
             {% if all_available_for_installment %}
             <div data-radio='9' class="radio_block">

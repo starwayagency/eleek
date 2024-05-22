@@ -3,6 +3,19 @@ from transliterate import translit
 from unidecode import unidecode
 
 
+def get_cart(request):
+	try:
+		cart_id = request.session['cart_id']
+		cart = Cart.objects.get(id=cart_id, ordered=False)
+	except Exception as e:
+		print(e)
+		cart = Cart()
+		cart.save()
+		request.session['cart_id'] = cart.id
+		cart = Cart.objects.get(id=cart.id, ordered=False)
+	return cart
+
+
 def generate_unique_slug(instance, slug_field, slug_field_value):
 	items = instance._meta.model.objects.all()
 	numb = 1

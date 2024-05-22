@@ -18,6 +18,7 @@ from .models import PrivatBankPaymentSettings
 from django.http import HttpResponseBadRequest
 from .models import PrivateBankPartPayments
 from .models import ItemPartPayment
+from project.models import PaymentSettings
 
 
 DOMAIN = config('DOMAIN')
@@ -173,3 +174,25 @@ def get_part_payment_context(request):
         return get_part_payment_for_cart(cart)
     else:
         return None, None, None
+
+
+def get_payment_context(request):
+    cart = get_cart(request)
+    
+    liqpay_available = True
+    cash_available = True
+
+    for cart_item in CartItem.objects.filter(cart=cart):
+        item = cart_item.item
+        try:
+            payment_settings = PaymentSettings.objects.get(item=item)
+           
+            if not payment_settings.liqpay_enabled:
+                liqpay_available = False
+           
+            if not payment_settings.cash_enabled:
+                cash_available = False
+        except PaymentSettings.DoesNotExist:
+            pass
+
+    return liqpay_available, cash_available

@@ -9,6 +9,7 @@ from .resources import *
 from import_export.admin import ImportExportModelAdmin
 from modeltranslation.admin import TabbedTranslationAdmin, TranslationStackedInline
 from box.core.utils import AdminImageWidget
+# from .models import PaymentSettings
 admin.site.register(get_user_model(), BoxUserAdmin)
 
 
@@ -164,3 +165,10 @@ class IndexBlockTwoAdmin(TabbedTranslationAdmin):
         if self.model.objects.exists():
             return False
         return super().has_add_permission(request)
+
+
+class PaymentSettingsAdmin(admin.ModelAdmin):
+    list_display = ('item', 'liqpay_enabled', 'cash_enabled')
+    list_filter = ('liqpay_enabled', 'cash_enabled')
+
+admin.site.register(PaymentSettings, PaymentSettingsAdmin)
