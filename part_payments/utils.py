@@ -19,6 +19,7 @@ from django.http import HttpResponseBadRequest
 from .models import PrivateBankPartPayments
 from .models import ItemPartPayment
 from project.models import PaymentSettings
+from project.models import DeliveryMethod
 
 
 DOMAIN = config('DOMAIN')
@@ -196,3 +197,30 @@ def get_payment_context(request):
             pass
 
     return liqpay_available, cash_available
+
+
+def get_delivery_context(request):
+    cart = get_cart(request)
+    
+    nova_poshta_available = True
+    pickup_available = True
+    eleek_delivery_available = True
+
+    for cart_item in CartItem.objects.filter(cart=cart):
+        item = cart_item.item
+        try:
+            delivery_method = DeliveryMethod.objects.get(item=item)
+           
+            if not delivery_method.nova_poshta_enabled:
+                nova_poshta_available = False
+           
+            if not delivery_method.pickup_enabled:
+                pickup_available = False
+
+            if not delivery_method.eleek_delivery_enabled:
+                eleek_delivery_available = False
+        except DeliveryMethod.DoesNotExist:
+            pass
+
+    return nova_poshta_available, pickup_available, eleek_delivery_available
+

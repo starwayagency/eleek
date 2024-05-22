@@ -350,3 +350,32 @@ class PaymentSettings(models.Model):
         verbose_name = 'Налаштування способів оплати для товару'
         verbose_name_plural = 'Налаштування способів оплат для товарів'
 
+
+class DeliveryMethod(models.Model):
+    item = models.OneToOneField(
+        'sw_catalog.Item',
+        verbose_name="Товар",
+        on_delete=models.CASCADE,
+        related_name='delivery_option'
+    )
+    nova_poshta_enabled = models.BooleanField(
+        default=True,
+        verbose_name="Доступно для Нової Пошти"
+    )
+    pickup_enabled = models.BooleanField(
+        default=True,
+        verbose_name="Доступно для Самовивозу"
+    )
+    eleek_delivery_enabled = models.BooleanField(
+        default=True,
+        verbose_name="Доступно для Доставки від Eleek"
+    )
+
+    def __str__(self):
+        return f"Delivery method for item {self.item.id}"
+
+    class Meta:
+        verbose_name = 'Налаштування доставки для товару'
+        verbose_name_plural = 'Налаштування доставки для товарів'
+
+

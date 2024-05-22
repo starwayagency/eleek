@@ -9,7 +9,7 @@ from .resources import *
 from import_export.admin import ImportExportModelAdmin
 from modeltranslation.admin import TabbedTranslationAdmin, TranslationStackedInline
 from box.core.utils import AdminImageWidget
-# from .models import PaymentSettings
+from .models import PaymentSettings, DeliveryMethod
 admin.site.register(get_user_model(), BoxUserAdmin)
 
 
@@ -172,3 +172,14 @@ class PaymentSettingsAdmin(admin.ModelAdmin):
     list_filter = ('liqpay_enabled', 'cash_enabled')
 
 admin.site.register(PaymentSettings, PaymentSettingsAdmin)
+
+
+class DeliverySettingsAdmin(admin.ModelAdmin):
+    list_display = ('item', 'nova_poshta_enabled', 
+                   'pickup_enabled', 'eleek_delivery_enabled'
+    )
+    list_filter = ('nova_poshta_enabled', 'pickup_enabled', 
+        'eleek_delivery_enabled'
+    )
+
+admin.site.register(DeliveryMethod, DeliverySettingsAdmin)

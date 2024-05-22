@@ -11,7 +11,7 @@ from box.apps.sw_shop.sw_order.models import Order
 from box.apps.sw_shop.sw_order.utils import get_order_liqpay_context
 from part_payments.utils import get_part_payment_context
 from part_payments.models import ItemPartPayment
-from part_payments.utils import get_payment_context
+from part_payments.utils import get_payment_context, get_delivery_context
 
 from .models import * 
 
@@ -120,6 +120,7 @@ def order(request):
         payments_count_list = None
 
     liqpay_available, cash_available = get_payment_context(request)
+    nova_poshta, pickup_available, eleek_delivery = get_delivery_context(request)
 
     context = {
         'min_payments_count': min_payments_count,

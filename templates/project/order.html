@@ -84,6 +84,7 @@ item_section__wrapper
           </div>
           <div class="step_content step_content_delivery only_two_input">
 
+            {% if eleek_delivery == True %}
             <div data-radio='1' class="radio_block add_one_inp">
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>
@@ -95,6 +96,8 @@ item_section__wrapper
                 <!-- {% trans 'Доставка від Eleek' %} -->
               </div>
             </div>
+            {% endif %}
+            {% if nova_poshta == True %}
             <div data-radio='2' class="radio_block add_two_inp">
               <div class="radio_tchk">
                 <div class="radio_center radio_center_active absolute_center"></div>
@@ -106,6 +109,7 @@ item_section__wrapper
                 <!-- {% trans 'Нова пошта' %} -->
               </div>
             </div>
+            {% endif %}
 
             <!-- <div data-radio='3' class="radio_block add_two_inp">
               <div class="radio_tchk">
@@ -142,7 +146,7 @@ item_section__wrapper
                 TNT
               </div>
             </div> -->
-
+            {% if pickup_available == True %}
             <div data-radio='7' class="radio_block remove_input">
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>
@@ -154,6 +158,9 @@ item_section__wrapper
                 <!-- {% trans 'Самовивіз з магазину' %} -->
               </div>
             </div>
+            {% endif %}
+
+            {% if nova_poshta == True %}
             <div class="two_input__wrap">
               <div class="select-block">
                 {% render 'text122' as text122 %}
@@ -197,6 +204,7 @@ item_section__wrapper
                 <input type="text" id="order_address" name='address' class="order_input input_focus input_requared">
               </div>
             </div>
+            {% endif %}
             <div class="wrap_for_footer_btn">
               {% render 'text125' as text125 %}
               <div data-step-btn='2' class="db_content btn_standart btn_standart_yellow next_step_btn"
