@@ -4,7 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from django.db.models import Max, Min 
 
 from box.apps.sw_shop.sw_catalog.models import *
-from box.core.sw_content.models import IndexBannerVideo
+from box.core.sw_content.models import IndexBannerVideo, DeliveryMethodsText
 from box.core.sw_content.models import Page, PaymentMethodsText
 from box.apps.sw_shop.sw_cart.decorators import cart_exists
 from box.apps.sw_shop.sw_order.models import Order
@@ -125,6 +125,11 @@ def order(request):
     try:
         payment_text = PaymentMethodsText.objects.first()
     except PaymentMethodsText.DoesNotExist:
+        pass
+
+    try:
+        delivery_text = DeliveryMethodsText.objects.first()
+    except DeliveryMethodsText.DoesNotExist:
         pass
 
     context = {

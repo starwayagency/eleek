@@ -85,6 +85,9 @@ item_section__wrapper
           <div class="step_content step_content_delivery only_two_input">
 
             {% if eleek_delivery == True %}
+            {% if delivery_text.eleek_delivery_description %}
+              {{ delivery_text.eleek_delivery_description }}
+            {% endif %}
             <div data-radio='1' class="radio_block add_one_inp">
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>
@@ -98,6 +101,9 @@ item_section__wrapper
             </div>
             {% endif %}
             {% if nova_poshta == True %}
+            {% if delivery_text.nova_poshta_description %}
+              {{ delivery_text.nova_poshta_description }}
+            {% endif %}
             <div data-radio='2' class="radio_block add_two_inp">
               <div class="radio_tchk">
                 <div class="radio_center radio_center_active absolute_center"></div>
@@ -147,6 +153,9 @@ item_section__wrapper
               </div>
             </div> -->
             {% if pickup_available == True %}
+            {% if delivery_text.pickup_description %}
+              {{ delivery_text.pickup_description }}
+            {% endif %}
             <div data-radio='7' class="radio_block remove_input">
               <div class="radio_tchk">
                 <div class="radio_center absolute_center"></div>

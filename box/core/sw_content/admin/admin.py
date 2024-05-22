@@ -597,3 +597,17 @@ class PaymentMethodsAdmin(admin.ModelAdmin):
             return False
         else:
             return True
+
+
+@admin.register(DeliveryMethodsText)
+class DeliveryMethodsAdmin(admin.ModelAdmin):
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def has_add_permission(self, request):
+        if DeliveryMethodsText.objects.exists():
+            return False
+        else:
+            return True
+
+

@@ -290,3 +290,18 @@ class PaymentMethodsText(models.Model):
     class Meta:
         verbose_name = 'Описи методів оплати'
         verbose_name_plural = 'Описи методів оплати'
+
+
+class DeliveryMethodsText(models.Model):
+    pickup_description = models.TextField(verbose_name="Опис самовивозу")
+    nova_poshta_description = models.TextField(verbose_name="Опис доставки Новою поштою")
+    eleek_delivery_description = models.TextField(verbose_name="Опис доставки від Eleek")
+
+    def __str__(self):
+        return "Описи методів доставки"
+
+    class Meta:
+        verbose_name = 'Описи методів доставки'
+        verbose_name_plural = 'Описи методів доставки'
+
+
