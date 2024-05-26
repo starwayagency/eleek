@@ -281,6 +281,7 @@ class ItemRequestAdmin(admin.ModelAdmin):
         'email',
         'phone',
         'message',
+        'created',
     ]
     fields = [
         'show_item',
@@ -288,6 +289,7 @@ class ItemRequestAdmin(admin.ModelAdmin):
         'email',
         'phone',
         'message',
+        'created',
     ]
 
 
