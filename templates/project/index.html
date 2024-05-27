@@ -137,7 +137,7 @@ section__wrapper
                       0
                     </span>
                     {% render 'text85' as text85 %}
-                    <span class="sub_title sub_title_1 color_white"">
+                    <span class="sub_title sub_title_1 color_white">
                       {{block_two.text3}}
                     </span>
                 </div>
@@ -334,7 +334,7 @@ section__wrapper
               <img data-src="{% if category.image %}{{ category.image.url }}{% endif %}" alt="">
           </div>
           <a href="{{category.get_absolute_url}}" class="main__title main__title_5 color_white">
-            {{category.title|title}}
+            {{category.title|capfirst}}
             <div class="absolute_product_arrow">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">
                 <path fill="#1B1813" fill-rule="evenodd" d="M7.071 0l.707.707L1.91 6.574h22.67v1H1.917l5.861 5.861-.707.707L0 7.072 7.071 0z"/>
@@ -362,7 +362,7 @@ section__wrapper
         <div class="complect_slide">
             <img data-src="{% if category.image %}{{ category.image.url }}{% endif %}" alt="" class="complect_img">
             <div class="main__title main__title_5 color_white">
-              {{category.title|title}}
+              {{category.title|capfirst}}
             </div>
             <a href="{{category.get_absolute_url}}" class="absolute_product_arrow">
               <svg xmlns="http://www.w3.org/2000/svg" width="25" height="15" viewBox="0 0 25 15">

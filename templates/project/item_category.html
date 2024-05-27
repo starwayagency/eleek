@@ -50,7 +50,7 @@ item_section__wrapper
                 <a href="{{parent_category.get_absolute_url}}">
                   <div class="items_filter_title standart_title standart_title_4 color_black db_content"
                     data-admin_url="{{parent_category.get_admin_url}}">
-                    {{parent_category.title|title}}
+                    {{parent_category.title|capfirst}}
                   </div>
                 </a>
                 <div class="items_filter_content">
@@ -96,14 +96,14 @@ item_section__wrapper
           </span>
           <a href="{{cat.get_absolute_url}}" data-admin_url="{{cat.get_admin_url}}"
             class="db_content mini_nav_name sub_title sub_title_2 color_black_2">
-            {{cat.title|title}}
+            {{cat.title|capfirst}}
           </a>
           {% endif %}
           {% endfor %}
         </div>
         <h2 class="product_title main__title main__title_3 color_black db_content"
           data-admin_url="{{category.get_admin_url}}">
-          {{category.title|title}}
+          {{category.title|capfirst}}
         </h2>
         <div class="main_product-block">
           <div class="load_product">

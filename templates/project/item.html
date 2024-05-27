@@ -90,7 +90,7 @@ item_section__wrapper
         <a href="{{item.category.get_absolute_url}}">
           <div class="item_category_name sub_title sub_title_2 color_black db_content"
             data-admin_url="{{item.category.get_admin_url}}">
-            {{item.category.title|title}}
+            {{item.category.title|capfirst }}
           </div>
         </a>
         <div class="item_name__block">
