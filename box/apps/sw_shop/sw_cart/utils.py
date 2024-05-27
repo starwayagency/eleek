@@ -25,7 +25,7 @@ def get_cart_info(request):
   currency_code = request.session.get('current_currency_code', cart.currency)
   cart_currency = currency_code
   currency = Currency.objects.get(code=currency_code)
-  cart_total_price = floatformat(cart.get_price(currency, price_type='total_price'), 1)
+  cart_total_price = floatformat(cart.get_price(currency, price_type='total_price'), 2)
 
   # cart_total_price = cart.total_price
   return {

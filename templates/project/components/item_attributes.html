@@ -30,7 +30,7 @@
             <div class="option_text standart_title standart_title_6">
             <!-- {{value.value.value}} ({{value.price}} {{value.currency.code}}) -->
             {% get_item_attribute_value_price value current_currency  as item_attribute_value_price %}
-            {{value.value.value}} ({{item_attribute_value_price|floatformat}} {{current_currency.code}})
+            {{value.value.value}} ( {{item_attribute_value_price|stringformat:".2f"}} {{current_currency.code}})
             <input
                 class="hidden_color_attr"
                 type="hidden"
@@ -69,8 +69,12 @@
             <img class="option_img" src="/static/source/img/item/close.svg" alt="">
             <div class="option_text standart_title standart_title_6">
             <!-- {{option.value.value}} ({{option.price}} {{option.currency.code}}) -->
-            {{option.value.value}} ({{item_attribute_value_price|floatformat}} {{current_currency.code}})
+            {{option.value.value}}  {{item_attribute_value_price|stringformat:".2f"}} {{current_currency.code}})
             <!-- {{option.attribute}} -->
+
+            <!-- {{item_attribute_value_price|stringformat:".2f"}} -->
+            <!-- {{item_attribute_value_price|floatformat}} -->
+
             </div>
         </div>
         {% endfor %}

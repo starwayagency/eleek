@@ -152,7 +152,7 @@ item_section__wrapper
                 <div class="prod_card-info-wrapper">
                   <div class="prod_card-cost main__title main__title_5 color_black">
                     {% get_item_price item current_currency "price_with_discount" as item_price%}
-                    {{item_price|floatformat:1}} {{current_currency.code}}
+                    {{item_price|floatformat:2}} {{current_currency.code}}
                   </div>
 
                   {% for item_part_payment in item_part_payments %}
