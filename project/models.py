@@ -94,6 +94,13 @@ class TestDriveSlider(models.Model):
     item  = models.ForeignKey(verbose_name="Товар", to="sw_catalog.Item", on_delete=models.SET_NULL, null=True, blank=True)
     image = models.ImageField(verbose_name="Картинка",)
     alt   = models.CharField(verbose_name="Альт", max_length=255, blank=True, null=True)
+    link  = models.URLField(verbose_name="Посилання", null=True, blank=True)
+
+    def clean_link(self):
+        super().clean()
+        if self.link:
+            if not self.link.startswith('http://') and not self.link.startswith('https://'):
+                self.link = 'https://' + self.link
 
     def get_admin_url(self):
         return get_admin_url(self)

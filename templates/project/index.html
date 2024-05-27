@@ -70,9 +70,9 @@ section__wrapper
               {{text82.text}}
               <!-- {% trans 'Тест-драйв' %} -->
             </a>
-            {% if slider.item %}
+            {% if slider.link %}
             {% render 'text83' as text83 %}
-            <a href="{{slider.item.get_absolute_url}}" class="db_content btn_standart btn_standart_black" data-admin_url="{{text83.get_admin_url}}">
+            <a href="{{slider.link}}" class="db_content btn_standart btn_standart_black" data-admin_url="{{text83.get_admin_url}}">
               {{text83.text}}
               <!-- {% trans 'Детальніше' %} -->
             </a>

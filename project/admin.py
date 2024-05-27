@@ -72,6 +72,7 @@ class TestDriveSliderAdmin(
         'item',
     ]
     resource_class = TestDriveSliderResource
+    exclude = ('item',)
 
 
 @admin.register(TestDrive)
