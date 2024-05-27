@@ -378,11 +378,19 @@ section__wrapper
 <!-- /.five_section -->
 <section class="six_section">
   <!-- poster="/static/source/img/index/post.png" -->
+  {% if index_banner_video is not None %}
   <video class="eleek_video" data-src="{{index_banner_video.video.url}}" loop="loop" controls="controls" autoplay muted>
     Sorry, your browser doesn't support embedded videos, 
     but don't worry, you can <a href="{{banner_video.url}}">download it</a>
     and watch it with your favorite video player!
   </video>
+  {% else % }
+  <video class="eleek_video" data-src="/static/source/img/index/video.mp4" loop="loop" controls="controls" autoplay muted>
+    Sorry, your browser doesn't support embedded videos, 
+    but don't worry, you can <a href="/static/source/img/index/video.mp4">download it</a>
+    and watch it with your favorite video player!
+  </video>
+  {% endif %}
 </section>
 {% endblock content %}
 {% block scripts %}
