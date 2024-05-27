@@ -1,4 +1,12 @@
 server{
+    client_max_body_size 100M;
+    proxy_read_timeout 120;
+    proxy_connect_timeout 120;
+    proxy_send_timeout 120;
+    uwsgi_read_timeout 120;
+    send_timeout 120;
+    client_body_timeout 120s;
+
     server_name eleek.starway.agency;
     location /media {
         alias /home/jurgeon/projects/eleek/src/media;
@@ -33,6 +41,14 @@ server{
 
 
 server{
+    client_max_body_size 100M;
+    proxy_read_timeout 120;
+    proxy_connect_timeout 120;
+    proxy_send_timeout 120;
+    uwsgi_read_timeout 120;
+    send_timeout 120;
+    client_body_timeout 120s;
+
     server_name eleek.com.ua;
     location /media {
         alias /home/jurgeon/projects/eleek/src/media;
