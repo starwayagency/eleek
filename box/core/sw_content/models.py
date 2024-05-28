@@ -305,3 +305,19 @@ class DeliveryMethodsText(models.Model):
         verbose_name_plural = 'Описи методів доставки'
 
 
+class ShopBanner(models.Model):
+    photo = models.ImageField(
+        verbose_name=_("Зображення карточки"),
+        blank=False, null=False 
+    )
+    text = models.CharField(
+        max_length=100,
+        blank=True
+    )
+
+    def __str__(self):
+        return self.text
+
+    class Meta:
+        verbose_name = 'Карточка на сторінці /shop'
+        verbose_name_plural = 'Карточки на сторінці /shop'

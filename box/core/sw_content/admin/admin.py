@@ -610,4 +610,5 @@ class DeliveryMethodsAdmin(admin.ModelAdmin):
         else:
             return True
 
+admin.site.register(ShopBanner)
 
