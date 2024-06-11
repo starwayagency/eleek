@@ -57,6 +57,8 @@ class TestDrive(models.Model):
     email   = models.CharField(verbose_name="Емейл", max_length=255)
     model   = models.CharField(verbose_name="Модель", max_length=255)
     message = models.CharField(verbose_name="Повідомлення", max_length=255)
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Дата створення", 
+                                    blank=True, null=True)
         
     def get_admin_url(self):
         return get_admin_url(self)
