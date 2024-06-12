@@ -77,7 +77,15 @@ class TestDriveSliderAdmin(
 
 @admin.register(TestDrive)
 class TestDriveAdmin(admin.ModelAdmin):
-    pass 
+    list_display = ('name', 'phone', 'email', 'model')
+    readonly_fields = ('created_at',)
+    search_fields = ('name', 'phone', 'email', 'model')
+
+    def has_add_permission(self, request):
+        return False
+
+    # def has_delete_permission(self, request, obj=None):
+    #     return False 
 
 
 @admin.register(Faq)
