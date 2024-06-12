@@ -17,6 +17,8 @@ function create_error(text) {
   return error;
 }
 
+let isEmailValid = false;
+
 function check_active_input() {
   let wrap = $(this).parents(".step__wrap");
 
@@ -25,16 +27,23 @@ function check_active_input() {
   let counter = 0;
 
   $.each(all_input, function (index, value) {
-    if ($(value).val() == "") {
+    // Перевірка, чи елемент має id 'order_email'
+    const isOrderEmail = $(value).attr('id') === 'order_email';
+    const isOrderPhone = $(value).attr('id') === 'order_phone';
+    const inputValue = $(value).val();
+
+
+    if (inputValue === "" || (isOrderEmail && !isEmailValid) || (isOrderPhone && inputValue >= 6)) {
       $(value).parents(".inp-vak-wrap").find(".error").remove();
       $(value)
         .parents(".inp-vak-wrap")[0]
-        .appendChild(create_error(current_lang));
+        .appendChild(create_error(isOrderEmail ? 'Введіть правильний email' : current_lang));
     } else {
       $(value).parents(".inp-vak-wrap").find(".error").text("");
       counter++;
     }
   });
+
   if ($(all_input).length == counter) {
     $(wrap).find(".step_num").addClass("step_num_active");
     $(wrap).find(".step_title__wrap").addClass("step_title__wrap_done");
@@ -111,19 +120,27 @@ function check_next_step() {
       $("#order_address").addClass("input_requared");
     }
   }
+
   let all_input = $(wrap).find(".input_requared");
 
   $.each(all_input, function (index, value) {
-    if ($(value).val() == "") {
+    // Перевірка, чи елемент має id 'order_email'
+    const isOrderEmail = $(value).attr('id') === 'order_email';
+    const inputValue = $(value).val();
+
+    console.log(isEmailValid);
+
+    if (inputValue === "" || (isOrderEmail && !isEmailValid)) {
       $(value).parents(".inp-vak-wrap").find(".error").remove();
       $(value)
         .parents(".inp-vak-wrap")[0]
-        .appendChild(create_error(current_lang));
+        .appendChild(create_error(isOrderEmail ? 'Введіть правильний email' : current_lang));
     } else {
       $(value).parents(".inp-vak-wrap").find(".error").text("");
       counter++;
     }
   });
+
   if ($(all_input).length == counter) {
     $(wrap).find(".step_num").addClass("step_num_active");
     $(wrap).find(".step_num").removeClass("step_num_error");
@@ -393,8 +410,6 @@ $(".basket_next_order").on("click", function () {
 
 async function getSettlements(value) {
   try {
-    console.log(232);
-
     const { data } = await instance.get(`/settlements/?q=${value}`);
 
     return data;
@@ -405,7 +420,6 @@ async function getSettlements(value) {
 
 async function getWarehouses(value) {
   try {
-    console.log(232);
     const { data } = await instance.get(`/warehouses?q=${value}`);
 
     return data;
@@ -533,3 +547,35 @@ document.addEventListener('input', async ({ target }) => {
     settlementList.innerHTML = getListFromArray(results);
   }
 });
+
+const orderEmail = document.querySelector('#order_email');
+const orderName = document.querySelector('#order_name');
+
+// const submitBtn = document.querySelector('[data-step-btn="1"]')
+
+// submitBtn.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   if (validateEmail(orderEmail.value)) {
+//     check_active_input();
+//   }
+// });
+
+
+const nameReg = /[0-9]/g
+
+orderName.addEventListener('input', (e) => {
+  e.target.value = e.target.value.replace(nameReg, '');
+});
+
+orderEmail.addEventListener('input', () => {
+  validateEmail(orderEmail.value) ? isEmailValid = true : isEmailValid = false;
+
+  check_active_input();
+
+  console.log('gdfgdfhfghj');
+});
+
+function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}

@@ -2,7 +2,7 @@ import "./index.scss";
 import "./best_sales.scss";
 import "../../../utils/customMask";
 
-$(".main_item_btn").on("click", function () {
+$(".main_item_btn").on("click", function (e) {
   if ($(this).hasClass("NoActiveBtn")) {
   } else {
     $(this).addClass("NoActiveBtn");
@@ -10,6 +10,24 @@ $(".main_item_btn").on("click", function () {
     $(this).removeClass("btn_standart_black");
     $(this).text("Куплено");
   }
+
+  fetch(`/api/cart_items/`, {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+  })
+    .then(data => {
+      return data.json();
+    })
+    .then(data => {
+      const itemsCount = document.querySelector('.modal_basket_items_count');
+
+      if (!itemsCount.classList.contains('modal_basket_items_count--active')) {
+        itemsCount.classList.add('modal_basket_items_count--active');
+      }
+    });
 });
 
 $(".fast_btn").fancybox({
@@ -131,10 +149,10 @@ function check_active_option() {
       .find(".option_content_prof_active")
       .attr("data-price-option");
     console.log("current_sum: ", current_sum);
-    all_first_sum += Number(current_sum);
+    all_first_sum += parseFloat(current_sum);
   });
-  $(".additional_price").text(all_first_sum);
-  $(".absolute_additional_price").text(all_first_sum);
+  $(".additional_price").text(all_first_sum.toFixed(2));
+  $(".absolute_additional_price").text(all_first_sum.toFixed(2));
 }
 
 check_active_option();
@@ -365,11 +383,11 @@ $(".price_option").on("click", function () {
   let current_sum = $(this).attr("data-price-option");
   console.log("current_sum: ", current_sum);
   if ($(this).hasClass("option_content_prof_active")) {
-    $(all_price__block).text(all_summ - Number(current_sum));
-    $(absolute_additional_price).text(all_summ - Number(current_sum));
+    $(all_price__block).text((all_summ - Number(current_sum)).toFixed(2));
+    $(absolute_additional_price).text((all_summ - Number(current_sum)).toFixed(2));
   } else {
-    $(all_price__block).text(all_summ + Number(current_sum));
-    $(absolute_additional_price).text(all_summ + Number(current_sum));
+    $(all_price__block).text((all_summ + Number(current_sum)).toFixed(2));
+    $(absolute_additional_price).text((all_summ + Number(current_sum)).toFixed(2));
   }
 });
 
@@ -543,7 +561,7 @@ if (slickFinder2 >= 1) {
 }
 
 const threeDeBlockLink = $(".three_title").data("href");
-const threeDeBlock =  document.querySelector('.three_de__block');
+const threeDeBlock = document.querySelector('.three_de__block');
 const miniSlider = document.querySelector('.mini_slider');
 
 if (threeDeBlock) {

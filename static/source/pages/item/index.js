@@ -287,6 +287,20 @@ function create_animation(arrow, button) {
     arrow.style.opacity = 0;
   });
 }
+fetch("/api/cart_items/", {
+  method: 'GET',
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  }
+}).then(data => {
+  return data.json();
+}).then(data => {
+  if (data.cart_items_quantity) {
+    const itemsCount = document.querySelector('.modal_basket_items_count');
+    itemsCount.classList.add('modal_basket_items_count--active');
+  }
+});
 $('#menu-toggle').click(function () {
   $(this).toggleClass('open');
   $('.scroll_menu').toggleClass('scroll_menu_active');
@@ -352,7 +366,6 @@ $('.modal_basket').on('click', function () {
 });
 
 // корзина ===========+>
-
 $('.basket_input').on('blur', basket_blur);
 function basket_blur() {
   let curr_user_num = $(this);
@@ -1133,13 +1146,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-$(".main_item_btn").on("click", function () {
+$(".main_item_btn").on("click", function (e) {
   if ($(this).hasClass("NoActiveBtn")) {} else {
     $(this).addClass("NoActiveBtn");
     $(this).removeClass("item_btn_price");
     $(this).removeClass("btn_standart_black");
     $(this).text("Куплено");
   }
+  fetch("/api/cart_items/", {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    }
+  }).then(data => {
+    return data.json();
+  }).then(data => {
+    const itemsCount = document.querySelector('.modal_basket_items_count');
+    if (!itemsCount.classList.contains('modal_basket_items_count--active')) {
+      itemsCount.classList.add('modal_basket_items_count--active');
+    }
+  });
 });
 $(".fast_btn").fancybox({
   touch: false,
@@ -1234,10 +1261,10 @@ function check_active_option() {
     console.log("value: ", $(value)[0]);
     let current_sum = $(value).find(".option_content_prof_active").attr("data-price-option");
     console.log("current_sum: ", current_sum);
-    all_first_sum += Number(current_sum);
+    all_first_sum += parseFloat(current_sum);
   });
-  $(".additional_price").text(all_first_sum);
-  $(".absolute_additional_price").text(all_first_sum);
+  $(".additional_price").text(all_first_sum.toFixed(2));
+  $(".absolute_additional_price").text(all_first_sum.toFixed(2));
 }
 check_active_option();
 $(".item_tab_link").on("click", function () {
@@ -1410,11 +1437,11 @@ $(".price_option").on("click", function () {
   let current_sum = $(this).attr("data-price-option");
   console.log("current_sum: ", current_sum);
   if ($(this).hasClass("option_content_prof_active")) {
-    $(all_price__block).text(all_summ - Number(current_sum));
-    $(absolute_additional_price).text(all_summ - Number(current_sum));
+    $(all_price__block).text((all_summ - Number(current_sum)).toFixed(2));
+    $(absolute_additional_price).text((all_summ - Number(current_sum)).toFixed(2));
   } else {
-    $(all_price__block).text(all_summ + Number(current_sum));
-    $(absolute_additional_price).text(all_summ + Number(current_sum));
+    $(all_price__block).text((all_summ + Number(current_sum)).toFixed(2));
+    $(absolute_additional_price).text((all_summ + Number(current_sum)).toFixed(2));
   }
 });
 $(".price_multiple_option").on("click", function () {
@@ -1591,13 +1618,23 @@ window.handleRecaptchaClick = handleRecaptchaClick;
 
 const phoneInputs = document.querySelectorAll('[data-type="phone"]');
 phoneInputs.forEach(element => {
-  element.addEventListener("input", handleInput, false);
+  element.addEventListener("input", handleInput);
 });
 function handleInput(e) {
   e.target.value = phoneMask(e.target.value);
 }
 function phoneMask(phone) {
-  return phone.replace(/\D/g, "").replace(/^(\d)/, "($1").replace(/^(\(\d{3})(\d)/, "$1) $2").replace(/(\d{2})(\d{2})/, "$1-$2").replace(/(-\d{7})\d+?$/, "$1");
+  // Видаляємо всі нецифрові символи
+  phone = phone.replace(/\D/g, "");
+
+  // Додаємо "+" на початку номера
+  phone = "+" + phone;
+
+  // Форматуємо номер телефону: +38 (0XX) XXX-XX-XX
+  phone = phone.replace(/^(\+\d{2})(\d{0,3})?(\d{0,3})?(\d{0,2})?(\d{0,2})?/, "$1 ($2) $3-$4-$5");
+
+  // Обмежуємо максимальну довжину номера
+  return phone.slice(0, 19);
 }
 
 /***/ }),

@@ -6717,6 +6717,20 @@ function create_animation(arrow, button) {
     arrow.style.opacity = 0;
   });
 }
+fetch("/api/cart_items/", {
+  method: 'GET',
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  }
+}).then(data => {
+  return data.json();
+}).then(data => {
+  if (data.cart_items_quantity) {
+    const itemsCount = document.querySelector('.modal_basket_items_count');
+    itemsCount.classList.add('modal_basket_items_count--active');
+  }
+});
 $('#menu-toggle').click(function () {
   $(this).toggleClass('open');
   $('.scroll_menu').toggleClass('scroll_menu_active');
@@ -6782,7 +6796,6 @@ $('.modal_basket').on('click', function () {
 });
 
 // корзина ===========+>
-
 $('.basket_input').on('blur', basket_blur);
 function basket_blur() {
   let curr_user_num = $(this);
@@ -7561,14 +7574,19 @@ function create_error(text) {
   error.textContent = text;
   return error;
 }
+let isEmailValid = false;
 function check_active_input() {
   let wrap = $(this).parents(".step__wrap");
   let all_input = $(wrap).find(".input_requared");
   let counter = 0;
   $.each(all_input, function (index, value) {
-    if ($(value).val() == "") {
+    // Перевірка, чи елемент має id 'order_email'
+    const isOrderEmail = $(value).attr('id') === 'order_email';
+    const isOrderPhone = $(value).attr('id') === 'order_phone';
+    const inputValue = $(value).val();
+    if (inputValue === "" || isOrderEmail && !isEmailValid || isOrderPhone && inputValue >= 6) {
       $(value).parents(".inp-vak-wrap").find(".error").remove();
-      $(value).parents(".inp-vak-wrap")[0].appendChild(create_error(current_lang));
+      $(value).parents(".inp-vak-wrap")[0].appendChild(create_error(isOrderEmail ? 'Введіть правильний email' : current_lang));
     } else {
       $(value).parents(".inp-vak-wrap").find(".error").text("");
       counter++;
@@ -7644,9 +7662,13 @@ function check_next_step() {
   }
   let all_input = $(wrap).find(".input_requared");
   $.each(all_input, function (index, value) {
-    if ($(value).val() == "") {
+    // Перевірка, чи елемент має id 'order_email'
+    const isOrderEmail = $(value).attr('id') === 'order_email';
+    const inputValue = $(value).val();
+    console.log(isEmailValid);
+    if (inputValue === "" || isOrderEmail && !isEmailValid) {
       $(value).parents(".inp-vak-wrap").find(".error").remove();
-      $(value).parents(".inp-vak-wrap")[0].appendChild(create_error(current_lang));
+      $(value).parents(".inp-vak-wrap")[0].appendChild(create_error(isOrderEmail ? 'Введіть правильний email' : current_lang));
     } else {
       $(value).parents(".inp-vak-wrap").find(".error").text("");
       counter++;
@@ -7844,7 +7866,6 @@ $(".basket_next_order").on("click", function () {
 });
 async function getSettlements(value) {
   try {
-    console.log(232);
     const {
       data
     } = await _api_instance__WEBPACK_IMPORTED_MODULE_0__["instance"].get("/settlements/?q=".concat(value));
@@ -7855,7 +7876,6 @@ async function getSettlements(value) {
 }
 async function getWarehouses(value) {
   try {
-    console.log(232);
     const {
       data
     } = await _api_instance__WEBPACK_IMPORTED_MODULE_0__["instance"].get("/warehouses?q=".concat(value));
@@ -7966,6 +7986,31 @@ document.addEventListener('input', async _ref2 => {
     settlementList.innerHTML = getListFromArray(results);
   }
 });
+const orderEmail = document.querySelector('#order_email');
+const orderName = document.querySelector('#order_name');
+
+// const submitBtn = document.querySelector('[data-step-btn="1"]')
+
+// submitBtn.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   if (validateEmail(orderEmail.value)) {
+//     check_active_input();
+//   }
+// });
+
+const nameReg = /[0-9]/g;
+orderName.addEventListener('input', e => {
+  e.target.value = e.target.value.replace(nameReg, '');
+});
+orderEmail.addEventListener('input', () => {
+  validateEmail(orderEmail.value) ? isEmailValid = true : isEmailValid = false;
+  check_active_input();
+  console.log('gdfgdfhfghj');
+});
+function validateEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
 
 /***/ }),
 
@@ -7991,13 +8036,23 @@ document.addEventListener('input', async _ref2 => {
 
 const phoneInputs = document.querySelectorAll('[data-type="phone"]');
 phoneInputs.forEach(element => {
-  element.addEventListener("input", handleInput, false);
+  element.addEventListener("input", handleInput);
 });
 function handleInput(e) {
   e.target.value = phoneMask(e.target.value);
 }
 function phoneMask(phone) {
-  return phone.replace(/\D/g, "").replace(/^(\d)/, "($1").replace(/^(\(\d{3})(\d)/, "$1) $2").replace(/(\d{2})(\d{2})/, "$1-$2").replace(/(-\d{7})\d+?$/, "$1");
+  // Видаляємо всі нецифрові символи
+  phone = phone.replace(/\D/g, "");
+
+  // Додаємо "+" на початку номера
+  phone = "+" + phone;
+
+  // Форматуємо номер телефону: +38 (0XX) XXX-XX-XX
+  phone = phone.replace(/^(\+\d{2})(\d{0,3})?(\d{0,3})?(\d{0,2})?(\d{0,2})?/, "$1 ($2) $3-$4-$5");
+
+  // Обмежуємо максимальну довжину номера
+  return phone.slice(0, 19);
 }
 
 /***/ }),

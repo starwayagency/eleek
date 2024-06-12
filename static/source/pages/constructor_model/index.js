@@ -57233,6 +57233,20 @@ function create_animation(arrow, button) {
     arrow.style.opacity = 0;
   });
 }
+fetch("/api/cart_items/", {
+  method: 'GET',
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  }
+}).then(data => {
+  return data.json();
+}).then(data => {
+  if (data.cart_items_quantity) {
+    const itemsCount = document.querySelector('.modal_basket_items_count');
+    itemsCount.classList.add('modal_basket_items_count--active');
+  }
+});
 $('#menu-toggle').click(function () {
   $(this).toggleClass('open');
   $('.scroll_menu').toggleClass('scroll_menu_active');
@@ -57298,7 +57312,6 @@ $('.modal_basket').on('click', function () {
 });
 
 // корзина ===========+>
-
 $('.basket_input').on('blur', basket_blur);
 function basket_blur() {
   let curr_user_num = $(this);
