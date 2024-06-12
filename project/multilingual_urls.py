@@ -83,6 +83,7 @@ def item(request, slug):
     page = item
     item_has_options = ItemAttribute.objects.filter(is_option=True, item=item).exists()
     reviews = ItemReview.objects.filter(item=item, is_active=True)
+    print(f"QQQQQ   {item.three_dimensional_link}")
     return render(request, 'project/item.html', locals())
 
 
