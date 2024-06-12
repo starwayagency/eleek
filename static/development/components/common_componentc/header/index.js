@@ -1,10 +1,5 @@
 import './index.scss';
 
-
-
-
-
-
 $('.scroll_changer_profile').on('click', function () {
   $(this).find('.scroll_lang_hidden_content').toggleClass('active');
 });
@@ -15,7 +10,6 @@ $(document).mouseup(function (e) {
     $('.scroll_lang_hidden_content').removeClass('active');
   }
 });
-
 
 window.addEventListener('DOMContentLoaded', () => {
   const arrow_1 = document.getElementById('arrow_1');
@@ -38,7 +32,6 @@ window.addEventListener('DOMContentLoaded', () => {
   create_animation(arrow_3, button_3);
   create_animation(arrow_4, button_4);
   create_animation(arrow_5, button_5);
-
 });
 
 function create_animation(arrow, button) {
@@ -63,20 +56,22 @@ function create_animation(arrow, button) {
   });
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+fetch(`/api/cart_items/`, {
+  method: 'GET',
+  headers: {
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  },
+})
+  .then(data => {
+    return data.json();
+  })
+  .then(data => {
+    if (data.cart_items_quantity) {
+      const itemsCount = document.querySelector('.modal_basket_items_count');
+      itemsCount.classList.add('modal_basket_items_count--active');
+    }
+  });
 
 $('#menu-toggle').click(function () {
   $(this).toggleClass('open');
@@ -95,9 +90,8 @@ $('#menu-toggle').click(function () {
     $('.logo__wrap').addClass('logo_wrap_active');
     $('.logo__wrap').removeClass('logo_wrap_native');
   }
-
-
 })
+
 $('.modal_search').on('click', function () {
   $('.search_menu').toggleClass('search_menu_active');
   $('body').toggleClass('body_active');
@@ -107,8 +101,6 @@ $('.modal_basket').on('click', function () {
   $('.basket_menu').toggleClass('basket_menu_active');
   $('.black_bg').toggleClass('black_bg_active');
   $('body').toggleClass('body_active');
-
-
   $('.basket_content__block').find('.basket_content_profile').remove();
 
   fetch(`/api/cart_items/`, {
@@ -150,18 +142,11 @@ $('.modal_basket').on('click', function () {
         $('.discount__block').css('opacity', '1');
         $('.basket_nobtn_wrap').css('display', 'none');
         $('.basket_btn_wrap').css('display', 'block');
-
       }
     });
-
-
 });
 
 // корзина ===========+>
-
-
-
-
 $('.basket_input').on('blur', basket_blur);
 function basket_blur() {
   let curr_user_num = $(this);
@@ -190,11 +175,11 @@ function basket_blur() {
     })
     .then(data => {
       console.log('data: ', data);
-      
+
       $(this).parents('.basket_content_profile').find('.basket_summ')
         .text(`${Math.round(data.cart_item_total_price)
-        .toFixed(1)
-        .replace('.', ',')} ${data.cart_currency}`);
+          .toFixed(1)
+          .replace('.', ',')} ${data.cart_currency}`);
 
       $('.basket_all_result').text(`${data.cart_currency} ${data.cart_total_price}`);
     });
@@ -433,9 +418,9 @@ function basket_minus() {
 
         $(this).parents('.basket_content_profile').find('.basket_summ')
           .text(`${Math.round(data.cart_item_total_price)
-          .toFixed(1)
-          .replace('.', ',')} ${data.cart_currency}`);
-        
+            .toFixed(1)
+            .replace('.', ',')} ${data.cart_currency}`);
+
         $('.basket_all_result').text(`${currency} ${cart_total_price}`);
       });
   }
@@ -471,8 +456,8 @@ function basket_plus() {
 
         $(this).parents('.basket_content_profile').find('.basket_summ')
           .text(`${Math.round(data.cart_item_total_price)
-          .toFixed(1)
-          .replace('.', ',')} ${data.cart_currency}`);
+            .toFixed(1)
+            .replace('.', ',')} ${data.cart_currency}`);
 
         $('.basket_all_result').text(`${data.cart_currency} ${data.cart_total_price}`);
       });

@@ -1,7 +1,7 @@
 const phoneInputs = document.querySelectorAll('[data-type="phone"]');
 
 phoneInputs.forEach((element) => {
-  element.addEventListener("input", handleInput, false);
+  element.addEventListener("input", handleInput);
 });
 
 function handleInput(e) {
@@ -9,10 +9,15 @@ function handleInput(e) {
 }
 
 function phoneMask(phone) {
-  return phone
-    .replace(/\D/g, "")
-    .replace(/^(\d)/, "($1")
-    .replace(/^(\(\d{3})(\d)/, "$1) $2")
-    .replace(/(\d{2})(\d{2})/, "$1-$2")
-    .replace(/(-\d{7})\d+?$/, "$1");
+  // Видаляємо всі нецифрові символи
+  phone = phone.replace(/\D/g, "");
+
+  // Додаємо "+" на початку номера
+  phone = "+" + phone;
+
+  // Форматуємо номер телефону: +38 (0XX) XXX-XX-XX
+  phone = phone.replace(/^(\+\d{2})(\d{0,3})?(\d{0,3})?(\d{0,2})?(\d{0,2})?/, "$1 ($2) $3-$4-$5");
+
+  // Обмежуємо максимальну довжину номера
+  return phone.slice(0, 19);
 }

@@ -1892,6 +1892,22 @@ body .dribbble img {
 .nav_menu__block_active .nav_menu_burger::after {
   background-color: #2b2a27; }
 
+.modal_basket {
+  position: relative; }
+  .modal_basket_items_count {
+    display: none;
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    width: 10px;
+    height: 10px;
+    text-align: center;
+    line-height: normal;
+    background: #ff0a0a;
+    border-radius: 50%; }
+    .modal_basket_items_count--active {
+      display: block; }
+
 .scroll_category_img img {
   position: absolute;
   top: -10px;
@@ -2116,15 +2132,16 @@ body .dribbble img {
 .basket_menu {
   transition: all .4s;
   position: absolute;
-  right: -100vw;
+  transform: translateX(100%);
   top: 0;
+  right: 0;
   width: 400px;
   height: 100vh;
   opacity: 0;
   background-color: #fff;
   z-index: 999; }
   .basket_menu_active {
-    right: 0;
+    transform: translateX(0);
     opacity: 1; }
   .basket_menu .search_menu_title {
     padding: 25px;
@@ -2440,7 +2457,8 @@ body {
     font-size: 40px; }
   .scroll_search__block {
     margin-top: 40px; }
-  .scroll_bottom__block, .scroll_top__block {
+  .scroll_bottom__block,
+  .scroll_top__block {
     padding: 40px 20px; } }
 
 @media (max-width: 755px) {
