@@ -388,3 +388,13 @@ class DeliveryMethod(models.Model):
         verbose_name_plural = 'Налаштування доставки для товарів'
 
 
+class Oferta(models.Model):
+    text = models.TextField(verbose_name="Текст оферти")
+
+    def __str__(self):
+        return f"Текст оферти"
+
+    class Meta:
+        verbose_name = 'Оферта'
+        verbose_name_plural = 'Оферта'
+

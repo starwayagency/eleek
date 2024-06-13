@@ -298,6 +298,7 @@ def page_404(request):
 
 
 def oferta(request):
+    oferta = Oferta.objects.first()
     return render(request, 'project/oferta.html', locals())
 
 

@@ -192,3 +192,16 @@ class DeliverySettingsAdmin(admin.ModelAdmin):
     )
 
 admin.site.register(DeliveryMethod, DeliverySettingsAdmin)
+
+
+class OfertaAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        if Oferta.objects.exists():
+            return False  
+        else:
+            return True  
+
+    def has_delete_permission(self, request, obj=None):
+        return False 
+
+admin.site.register(Oferta, OfertaAdmin)
