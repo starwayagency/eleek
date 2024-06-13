@@ -314,6 +314,12 @@ class ShopBanner(models.Model):
         max_length=100,
         blank=True
     )
+    link = models.URLField(
+        max_length=200, 
+        verbose_name='Посилання',
+        blank=True,
+        null=True
+    )
 
     def __str__(self):
         return self.text

@@ -21,7 +21,7 @@ item_section__wrapper
     </h2>
     <div class="shop__wrapper">
       {% for banner in banners %}
-      <a href="{{velo.get_absolute_url}}" class="shop_item db_content" data-admin_url="{{velo.get_admin_url}}">
+      <a href="{{banner.link}}" class="shop_item db_content">
         <img src="{{banner.photo.url}}" alt="" class="shop_bg">
         <div class="shop_name_category main__title main__title_3 color_yellow db_content">
           {{ banner.text }}
