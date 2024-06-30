@@ -80,7 +80,6 @@ $('#menu-toggle').click(function () {
   $('.nav_menu__block').toggleClass('nav_menu__block_active');
   $('.header_logos').toggleClass('header_logos_active');
 
-
   $('.scroll_top__block').toggleClass('scroll_top__block_active');
   $('.scroll_bottom__block').toggleClass('scroll_bottom__block_active');
   if ($('.logo__wrap').hasClass('logo_wrap_active')) {

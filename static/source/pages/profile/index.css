@@ -1419,7 +1419,8 @@ body .dribbble img {
   .scroll_menu_active {
     right: 0;
     background: #2b2a27;
-    z-index: 10; }
+    z-index: 10;
+    height: 100svh; }
 
 .scroll_content__block {
   width: 100%;

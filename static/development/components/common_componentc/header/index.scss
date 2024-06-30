@@ -528,6 +528,7 @@
       right: 0;
       background: #2b2a27;
       z-index: 10;
+      height: 100svh;
     }
   }
 
@@ -536,7 +537,6 @@
     height: 100%;
     padding-top: 100px;
     display: flex;
-
   }
 
   &_left__block {
