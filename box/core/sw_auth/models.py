@@ -12,6 +12,7 @@ from django.contrib.auth.models import (
   UserManager,
   UnicodeUsernameValidator, 
   _user_has_module_perms,
+  _user_has_perm
 )
 from django.utils import timezone 
 from django.utils.crypto import get_random_string, salted_hmac
@@ -187,11 +188,16 @@ class BoxAbstractUser(models.Model):
     def get_all_permissions(self, obj=None):
         return _user_get_permissions(self, obj, 'all')
 
+    # def has_perm(self, perm, obj=None):
+    #     if self.is_active and self.is_superuser:
+    #         return True
+
+    #     return _user_has_perm(self, perm, obj)
+
     def has_perm(self, perm, obj=None):
         if self.is_active and self.is_superuser:
             return True
-
-        return _user_has_perm(self, perm, obj)
+        return super().has_perm(perm, obj)
 
     def has_perms(self, perm_list, obj=None):
         return all(self.has_perm(perm, obj) for perm in perm_list)
