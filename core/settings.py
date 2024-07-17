@@ -5,6 +5,7 @@ INSTALLED_APPS +=[
     'project',
     'nova_poshta',
     'part_payments',
+    'pumb_bank'
 ]
 
 

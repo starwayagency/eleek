@@ -167,15 +167,19 @@ item_section__wrapper
                       </div>
                       {% endif %}
                   {% endfor %}
+                  {% for item_pumb_payment in item_pumb_payments %}
+                    {% if item_pumb_payment.item == item %}
+                      <div class="prod_card-partial-payment">
+                        <div class="prod_card-partial-payment-img-wrapper">
+                          <img class="prod_card-partial-payment-img" src="/static/source/img/items/partial-payment-pumb.jpg"
+                            alt="Partial payment icon">
+                        </div>
 
-                  <div class="prod_card-partial-payment">
-                    <div class="prod_card-partial-payment-img-wrapper">
-                      <img class="prod_card-partial-payment-img" src="/static/source/img/items/partial-payment-pumb.jpg"
-                        alt="Partial payment icon">
-                    </div>
-
-                    <span class="prod_card-partial-payment-count">24</span>
-                  </div>
+                        <span class="prod_card-partial-payment-count">24</span>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                
                 </div>
 
                 <a href="{{item.get_absolute_url}}" class="prod_card-btn">

@@ -12,6 +12,7 @@ from box.apps.sw_shop.sw_order.utils import get_order_liqpay_context
 from part_payments.utils import get_part_payment_context
 from part_payments.models import ItemPartPayment
 from part_payments.utils import get_payment_context, get_delivery_context
+from pumb_bank.models import ItemPumbPayment
 
 from .models import * 
 
@@ -72,6 +73,7 @@ def item_category(request, slug):
     min_price         = str(raw_min_price).replace(',','.')
 
     item_part_payments = ItemPartPayment.objects.all()
+    item_pumb_payments = ItemPumbPayment.objects.all()
 
     return render(request, 'project/item_category.html', locals())
 
