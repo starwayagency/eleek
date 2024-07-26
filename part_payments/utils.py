@@ -35,7 +35,7 @@ def get_order_context(request):
 		ordered=False,
 	)
 	print(order)
-	  
+	
 	order.handle_user(request)
 	order.handle_amount(request)
 	order.total_price = cart.get_price(price_type='total_price')
@@ -50,8 +50,8 @@ def get_order_context(request):
 	products = []
 	  
 	for cart_item in CartItem.objects.filter(cart=cart):
-		amount += cart_item.total_price * cart_item.quantity
-		price = cart_item.total_price
+		amount += cart_item.get_price(price_type='price_with_discount_with_attributes') * cart_item.quantity
+		price = cart_item.get_price(price_type='price_with_discount_with_attributes') * cart_item.quantity
 		price_full = "{:.2f}".format(price)
 		product_data = {
 			"name": cart_item.item.title,  
@@ -61,7 +61,6 @@ def get_order_context(request):
 		products.append(product_data)
 		 
 	order_id = str(order.id)
-	print(amount)
 	print(products)
 	return amount, products, order_id  
 
@@ -73,8 +72,11 @@ def generate_random_string(length):
 
 def create_payment(request, partsCount):
 	order_data = get_order_context(request)
+	print(f'ТУТ ТУТ ТУТ {order_data}')
 	total_price = order_data[0]
+	print(f"ТУТ {total_price}")
 	amount = "{:.2f}".format(total_price)
+	print(f'PRICE PRICE {amount}')
 	if float(amount) > 300000.0:
 		return HttpResponseBadRequest("Сума товарів перевищує максимально допустиму")
 	
