@@ -14,7 +14,8 @@ def get_order_liqpay_context(request, params={}):
     )
     amount = 0 
     for cart_item in CartItem.objects.filter(cart=cart):
-        amount += cart_item.get_price(price_type='price_with_discount_with_attributes')
+        amount += cart_item.get_price(price_type='price_with_discount_with_attributes') * cart_item.quantity
+
     order_id = str(order.id)
     # order_id += datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     def_params = {
