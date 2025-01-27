@@ -46,6 +46,12 @@ def order_items(request):
         delivery_opt = query.get('delivery_opt', "---")
         part_payment_count = query.get('part_payment_count')
 
+        # Перевірка чи пуста корзина
+        cart = get_cart(request)
+        if int(cart.get_price()) <= 0:
+          url = reverse('thank_you')
+          return JsonResponse({"url":url})
+        
         order        = Order.objects.create(
             name         = name,
             email        = email,
@@ -55,7 +61,6 @@ def order_items(request):
             payment_opt  = payment_opt,
             delivery_opt = delivery_opt,
         )
-        cart        = get_cart(request)
         cart.order  = order
         cart.save()
 
